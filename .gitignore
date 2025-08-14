@@ -1,0 +1,4 @@
+node_modules/
+wards.geojson
+wards2.geojson
+dist/
