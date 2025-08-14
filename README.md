@@ -1,0 +1,2 @@
+# octolamp
+local election map
