@@ -49,7 +49,6 @@ let styleFunction = function(feature, resolution) {
 
 function getColorToUse(results) {
   if (results) {
-    console.log(colors[results["control"]])
     if (colors[results["control"]]) {
       return colors[results["control"]]
     } else {
@@ -67,7 +66,6 @@ const vectorLayer = new VectorLayer({
 
 vectorLayer.getSource().on('addfeature', function (event) {
   const feature = event.feature;
-  console.log(feature);
 })
 
 const map = new Map({
@@ -86,7 +84,10 @@ map.on('click', async function (evt) {
   try {
     const namePromise = await vectorLayer.getFeatures(evt.pixel)
     document.getElementById('name').innerText = ''
+    console.log(namePromise[0]["values_"])
     document.getElementById('name').insertAdjacentText('beforeend', namePromise[0]["values_"]["WD23NM"])
+    console.log(colors[resultsjsonObject[namePromise[0]["values_"]["WD23CD"]]["control"]])
+    document.getElementById('colorbar').style.backgroundColor = colors[resultsjsonObject[namePromise[0]["values_"]["WD23CD"]]["control"]]
   } catch ({ name, message }) {
     if (name == "TypeError"){
       console.log("clicked")
@@ -97,12 +98,12 @@ map.on('click', async function (evt) {
 });
 
 const colors = {
-  LAB: [228,0,59],
-  CON: [0,135,220],
-  LD: [253,187,48],
-  GREEN: [0,116,95],
+  LAB: "#e4003b",
+  CON: "#0087dc",
+  LD: "#fdbb30",
+  GREEN: "#02a95b",
   REF: "aqua",
   MIX: "purple",
-  PC: [63,132,40],
-  IND: [255, 5, 241]
+  PC: "#005b54",
+  IND: "#FF5FD"
 }
