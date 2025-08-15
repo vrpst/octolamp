@@ -18,12 +18,16 @@ for i in range(18480):
         else:
             data[ward_code]['elected'][df.loc[i]['Party group']] = '1'
 
+
 for j in data.keys():  # change format to array of objects as needed by chart.js
-    list = []
+    parties = []
+    votes = []
     for k in data[j]['party_votes'].keys():
-        list.append({'party': k, 'votes': data[j]['party_votes'][k]})
+        parties.append(k)
+        votes.append(data[j]['party_votes'][k])
     del data[j]['party_votes']
-    data[j]['results'] = list
+    data[j]['parties'] = parties
+    data[j]['votes'] = votes
 
 with open('2022-results.json', 'a') as f:  # thank you stack overflow
     f.write(json.dumps(data, ensure_ascii=True))

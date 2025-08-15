@@ -8,8 +8,9 @@ import Stroke from 'ol/style/Stroke.js';
 import Style from 'ol/style/Style.js';
 import Fill from 'ol/style/Fill';
 import Select from 'ol/interaction/Select.js';
-import { createStyleFunction } from 'ol/Feature';
 import Chart from 'chart.js/auto'
+import { getElectionResult } from './charts';
+import { createBarChart } from './charts';
 
 const geojson = await fetch('./wards2.geojson')
 const geojsonObject = await geojson.json()
@@ -123,42 +124,17 @@ async function openPanel(values) {
   document.getElementById('local-authority').innerText = ''
   document.getElementById('local-authority').insertAdjacentText('beforeend', location)
   const chart_data = await getElectionResult(values["WD23CD"])
-  chart = createBarChart(chart_data)
-}
-
-async function getElectionResult(id) {
-    const chartjson = await fetch('./2022-results.json')
-    const chartjsonObject = await chartjson.json()
-    console.log(chartjsonObject[id]['results'])
-    return await chartjsonObject[id]['results']
-}
-
-function createBarChart(info) {
-    const chart = new Chart(
-    document.getElementById('chart'),
-    {
-        type: 'bar',
-        data: { 
-            labels: info.map(row => row.party),
-            datasets: [
-                {
-                    label: 'Results',
-                    data: info.map(row => row.count)
-                }
-            ]
-        }
-    })
-    return chart
+  chart = createBarChart(chart_data, colors)
 }
 
 const colors = {
-  LAB: "#e4003b",
-  CON: "#0087dc",
-  LD: "#fdbb30",
-  GREEN: "#02a95b",
+  LAB: "#E4003B",
+  CON: "#0087DC",
+  LD: "#FDBB30",
+  GREEN: "#02A95B",
   REF: "aqua",
   MIX: "purple",
-  PC: "#005b54",
+  PC: "#005B54",
   IND: "#FF5FDD",
   OTHER: "#964B00"
 }
