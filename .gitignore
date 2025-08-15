@@ -1,4 +1,6 @@
 node_modules/
 wards.geojson
 wards2.geojson
+2022-simplified.json
+local-elections-candidates-2022.csv
 dist/
