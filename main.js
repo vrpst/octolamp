@@ -23,7 +23,7 @@ const selected = new Style({
     width: 1,
   }),
   fill: new Fill({
-    color: [220,220,220],
+    color: [0,255,255], //[220,220,220],
   }),
 });
 

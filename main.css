@@ -1,14 +1,33 @@
-#info {  
+#infobox     {  
     position: fixed;
     top: 0vh;
     right: 0vw;
-    width: fit-content;
+    width: 20vw;
     height: fit-content;
-    padding: 1vw;
-    border: 3px solid #73AD21;
+    border: 2px solid #AAAAAA;
+    border-radius: 5px;
+    margin: 2vw;
+    background-color: #F8F8F8;
 }
 
 #name {
-    width: fit-content;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
     margin: none;
+    overflow: hidden;
+}
+
+#colorbar {
+    background-color: aqua;
+    margin: none;
+    height: 1vh;
+    width: 100%;
+    margin-bottom: 2%;
+}
+
+#infobox-content {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: fit-content;
 }
