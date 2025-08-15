@@ -7,7 +7,12 @@ data = {}
 for i in range(18480):
     ward_code = df.loc[i]['Ward code']
     if ward_code not in data:
-        data[ward_code] = {'name': df.loc[i]['Ward name'], 'control': '', 'parties': {}}
+        data[ward_code] = {
+            'name': df.loc[i]['Ward name'],
+            'control': '',
+            'county_name': df.loc[i]['COUNTYNAME'],
+            'parties': {}
+        }
     if df.loc[i]['Elected'] == 1:
         if df.loc[i]['Party group'] in data[ward_code]:
             data[ward_code]['parties'][df.loc[i]['Party group']] += 1

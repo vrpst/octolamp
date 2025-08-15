@@ -10,6 +10,7 @@
     "vite": "^7.0.6"
   },
   "dependencies": {
+    "chart.js": "^4.5.0",
     "ol": "latest"
   }
 }

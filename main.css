@@ -19,7 +19,7 @@
 }
 
 #colorbar {
-    background-color: aqua;
+    background-color: #D8D8D8;
     margin: none;
     height: 1vh;
     width: 100%;
@@ -30,4 +30,12 @@
     margin-left: 5%;
     margin-right: 5%;
     width: fit-content;
+}
+
+#local-authority {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-style: italic;
+    margin: none;
+
 }

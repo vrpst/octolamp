@@ -52,7 +52,7 @@ function getColorToUse(results) {
     if (colors[results["control"]]) {
       return colors[results["control"]]
     } else {
-      return [137,81,41]
+      return colors["OTHER"]
     }
   } else {
     return [220,220,220]
@@ -81,21 +81,42 @@ const map = new Map({
 map.addInteraction(selectClick)
 
 map.on('click', async function (evt) {
+  const namePromise = await vectorLayer.getFeatures(evt.pixel)
+
+  // GET THE WARD NAME
   try {
-    const namePromise = await vectorLayer.getFeatures(evt.pixel)
     document.getElementById('name').innerText = ''
-    console.log(namePromise[0]["values_"])
     document.getElementById('name').insertAdjacentText('beforeend', namePromise[0]["values_"]["WD23NM"])
-    console.log(colors[resultsjsonObject[namePromise[0]["values_"]["WD23CD"]]["control"]])
-    document.getElementById('colorbar').style.backgroundColor = colors[resultsjsonObject[namePromise[0]["values_"]["WD23CD"]]["control"]]
   } catch ({ name, message }) {
     if (name == "TypeError"){
       console.log("clicked")
     }
   }
 
+  // GET THE COLOR OF THE SEAT
+  try {
+    const controling_party = resultsjsonObject[namePromise[0]["values_"]["WD23CD"]]["control"]
+    if (colors[controling_party]) {
+      document.getElementById('colorbar').style.backgroundColor = colors[resultsjsonObject[namePromise[0]["values_"]["WD23CD"]]["control"]]
+    } else {
+      document.getElementById('colorbar').style.backgroundColor = colors["OTHER"]  // TEMP
+    }
+    openPanel(namePromise[0]["values_"])
+  } catch {
+    document.getElementById('colorbar').style.backgroundColor = "#D8D8D8"  // TEMP
+    console.log("COLOR NOT FOUND (no election data)")
+  }
+
+
   //local area = LAD23NM
 });
+
+function openPanel(values) {
+  console.log(values["WD23CD"], resultsjsonObject[values["WD23CD"]])
+  const location = values["LAD23NM"] + ',' + ' ' + resultsjsonObject[values["WD23CD"]]['county_name']
+  document.getElementById('local-authority').innerText = ''
+  document.getElementById('local-authority').insertAdjacentText('beforeend', location)
+}
 
 const colors = {
   LAB: "#e4003b",
@@ -105,5 +126,6 @@ const colors = {
   REF: "aqua",
   MIX: "purple",
   PC: "#005b54",
-  IND: "#FF5FD"
+  IND: "#FF5FDD",
+  OTHER: "#964B00"
 }
