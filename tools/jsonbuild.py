@@ -14,10 +14,8 @@ for i in range(18480):
             'parties': {}
         }
     if df.loc[i]['Elected'] == 1:
-        if df.loc[i]['Party group'] in data[ward_code]:
-            data[ward_code]['parties'][df.loc[i]['Party group']] += 1
-        else:
-            data[ward_code]['parties'][df.loc[i]['Party group']] = 1
+        if df.loc[i]['Party group'] not in data[ward_code]:
+            data[ward_code]['parties'][df.loc[i]['Party group']] = True
         #print(f"{df.loc[i]['Ward name']}\t\t\t{df.loc[i]['Ward code']}\t\t\t{df.loc[i]['Party name']}")
 
 for j in data.keys():
@@ -26,6 +24,7 @@ for j in data.keys():
         data[j]['control'] = list(data[j]['parties'].keys())[0]
     else:
         data[j]['control'] = 'MIX'
+    del data[j]['parties']
 #print(data)
 
 with open('2022-simplified.json', 'a') as f:  # thank you stack overflow

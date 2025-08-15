@@ -9,10 +9,12 @@ import Style from 'ol/style/Style.js';
 import Fill from 'ol/style/Fill';
 import Select from 'ol/interaction/Select.js';
 import { createStyleFunction } from 'ol/Feature';
+import Chart from 'chart.js/auto'
 
 const geojson = await fetch('./wards2.geojson')
 const geojsonObject = await geojson.json()
 
+let chart = null
 
 const resultsjson = await fetch('./2022-simplified.json')
 const resultsjsonObject = await resultsjson.json()
@@ -94,28 +96,59 @@ map.on('click', async function (evt) {
   }
 
   // GET THE COLOR OF THE SEAT
-  try {
-    const controling_party = resultsjsonObject[namePromise[0]["values_"]["WD23CD"]]["control"]
-    if (colors[controling_party]) {
-      document.getElementById('colorbar').style.backgroundColor = colors[resultsjsonObject[namePromise[0]["values_"]["WD23CD"]]["control"]]
-    } else {
-      document.getElementById('colorbar').style.backgroundColor = colors["OTHER"]  // TEMP
-    }
-    openPanel(namePromise[0]["values_"])
-  } catch {
+ // try {
+  const controling_party = resultsjsonObject[namePromise[0]["values_"]["WD23CD"]]["control"]
+  if (colors[controling_party]) {
+    document.getElementById('colorbar').style.backgroundColor = colors[resultsjsonObject[namePromise[0]["values_"]["WD23CD"]]["control"]]
+  } else {
+    document.getElementById('colorbar').style.backgroundColor = colors["OTHER"]  // TEMP
+  }
+  await openPanel(namePromise[0]["values_"])
+  /*} catch {
     document.getElementById('colorbar').style.backgroundColor = "#D8D8D8"  // TEMP
     console.log("COLOR NOT FOUND (no election data)")
-  }
+  }*/
 
 
   //local area = LAD23NM
 });
 
-function openPanel(values) {
-  console.log(values["WD23CD"], resultsjsonObject[values["WD23CD"]])
+async function openPanel(values) {
+  try {
+    chart.destroy()
+  } catch {
+    //not needed
+  }
   const location = values["LAD23NM"] + ',' + ' ' + resultsjsonObject[values["WD23CD"]]['county_name']
   document.getElementById('local-authority').innerText = ''
   document.getElementById('local-authority').insertAdjacentText('beforeend', location)
+  const chart_data = await getElectionResult(values["WD23CD"])
+  chart = createBarChart(chart_data)
+}
+
+async function getElectionResult(id) {
+    const chartjson = await fetch('./2022-results.json')
+    const chartjsonObject = await chartjson.json()
+    console.log(chartjsonObject[id]['results'])
+    return await chartjsonObject[id]['results']
+}
+
+function createBarChart(info) {
+    const chart = new Chart(
+    document.getElementById('chart'),
+    {
+        type: 'bar',
+        data: { 
+            labels: info.map(row => row.party),
+            datasets: [
+                {
+                    label: 'Results',
+                    data: info.map(row => row.count)
+                }
+            ]
+        }
+    })
+    return chart
 }
 
 const colors = {
