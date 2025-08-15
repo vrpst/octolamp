@@ -18,6 +18,8 @@ const vectorSource = new VectorSource({
   features: new GeoJSON().readFeatures(geojsonObject),
 });
 
+
+
 const vectorLayer = new VectorLayer({
   source: vectorSource,
   style: new Style({
@@ -31,14 +33,10 @@ const vectorLayer = new VectorLayer({
 const map = new Map({
   target: 'map',
   layers: [
-    new TileLayer({
-      source: new OSM(),
-    }),
+    vectorLayer
   ],
   view: new View({
-    center: [0, 0],
-    zoom: 2,
+    center: [350000, 510000],
+    zoom: 7.1,
   }),
 });
-
-map.addLayer(vectorLayer)
