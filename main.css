@@ -1,0 +1,14 @@
+#info {  
+    position: fixed;
+    top: 0vh;
+    right: 0vw;
+    width: fit-content;
+    height: fit-content;
+    padding: 1vw;
+    border: 3px solid #73AD21;
+}
+
+#name {
+    width: fit-content;
+    margin: none;
+}
