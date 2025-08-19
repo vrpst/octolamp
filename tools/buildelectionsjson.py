@@ -13,8 +13,13 @@ for i in range(18480):
         }
         data[ward_code]['total_votes'] = str(df.loc[i]['Votes'])  # if there is just one candidate, take their votes since they don't fill the total column
 
-    data[ward_code]['party_votes'][df.loc[i]['Party group']] = str(df.loc[i]['Votes'])  # add the votes to the dict for the party
+    try:
+        data[ward_code]['party_votes'][df.loc[i]['Party group']] = str(int(df.loc[i]['Votes']) + int(data[ward_code]['party_votes'][df.loc[i]['Party group']])) # add the votes to the dict for the party
+    except:
+        data[ward_code]['party_votes'][df.loc[i]['Party group']] = str(df.loc[i]['Votes'])  # add the votes to the dict for the party
     if df.loc[i]['Elected'] == 1:  # add the elected members to the dict
+        if df.loc[i]["Ward code"] == "E05014237":
+            print(df.loc[i]['Party group'])
         if df.loc[i]['Party group'] in data[ward_code]['elected']:
             data[ward_code]['elected'][df.loc[i]['Party group']] = str(int(data[ward_code]['elected'][df.loc[i]['Party group']])+1) # i hate json
         else:

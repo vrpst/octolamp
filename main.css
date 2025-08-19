@@ -73,3 +73,8 @@ td {
     width: 14px;
     height: 1px;
 }
+
+.row-winner {
+    font-weight: bold;
+    font-style: italic;
+}
