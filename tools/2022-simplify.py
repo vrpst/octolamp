@@ -1,7 +1,7 @@
 import pandas as pd
 import json
 
-df = pd.read_csv('local-elections-candidates-2022.csv')
+df = pd.read_csv('./data/2022/2022.csv')
 data = {}
 
 for i in range(18480):
@@ -10,7 +10,6 @@ for i in range(18480):
         data[ward_code] = {
             'name': df.loc[i]['Ward name'],
             'control': '',
-            'county_name': df.loc[i]['COUNTYNAME'],
             'parties': {}
         }
     if df.loc[i]['Elected'] == 1:
@@ -27,5 +26,5 @@ for j in data.keys():
     del data[j]['parties']
 #print(data)
 
-with open('2022-simplified.json', 'a') as f:  # thank you stack overflow
+with open('./data/2022/2022-simplified.json', 'a') as f:  # thank you stack overflow
     f.write(json.dumps(data, ensure_ascii=True))
