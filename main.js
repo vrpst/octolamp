@@ -11,6 +11,7 @@ import Select from 'ol/interaction/Select.js';
 import Chart from 'chart.js/auto'
 import { getElectionResult } from './charts';
 import { createBarChart } from './charts';
+import { createTable } from './table';
 
 const geojson = await fetch('./wards2.geojson')
 const geojsonObject = await geojson.json()
@@ -99,12 +100,12 @@ map.on('click', async function (evt) {
   // GET THE COLOR OF THE SEAT
  // try {
   const controling_party = resultsjsonObject[namePromise[0]["values_"]["WD23CD"]]["control"]
+  await openPanel(namePromise[0]["values_"])
   if (colors[controling_party]) {
     document.getElementById('colorbar').style.backgroundColor = colors[resultsjsonObject[namePromise[0]["values_"]["WD23CD"]]["control"]]
   } else {
     document.getElementById('colorbar').style.backgroundColor = colors["OTHER"]  // TEMP
   }
-  await openPanel(namePromise[0]["values_"])
   /*} catch {
     document.getElementById('colorbar').style.backgroundColor = "#D8D8D8"  // TEMP
     console.log("COLOR NOT FOUND (no election data)")
@@ -115,16 +116,21 @@ map.on('click', async function (evt) {
 });
 
 async function openPanel(values) {
+  const location = values["LAD23NM"] + ',' + ' ' + resultsjsonObject[values["WD23CD"]]['county_name']
+  document.getElementById('local-authority').innerText = ''
+  document.getElementById('local-authority').insertAdjacentText('beforeend', location)
   try {
     chart.destroy()
   } catch {
     //not needed
   }
-  const location = values["LAD23NM"] + ',' + ' ' + resultsjsonObject[values["WD23CD"]]['county_name']
-  document.getElementById('local-authority').innerText = ''
-  document.getElementById('local-authority').insertAdjacentText('beforeend', location)
   const chart_data = await getElectionResult(values["WD23CD"])
   chart = createBarChart(chart_data, colors)
+  
+  document.getElementById('table').innerText = ""
+  let table = createTable("adad")
+  document.getElementById('table').insertAdjacentElement('beforeend', table)
+
 }
 
 const colors = {
