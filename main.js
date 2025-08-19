@@ -12,6 +12,7 @@ import Chart from 'chart.js/auto'
 import { getElectionResult } from './charts';
 import { createBarChart } from './charts';
 import { createTable } from './table';
+import { getPercentages } from './charts';
 
 const geojson = await fetch('./wards2.geojson')
 const geojsonObject = await geojson.json()
@@ -128,9 +129,24 @@ async function openPanel(values) {
   chart = createBarChart(chart_data, colors)
   
   document.getElementById('table').innerText = ""
-  let table = createTable("adad")
+  let td = createTableData(chart_data)
+  let table = createTable(td)
   document.getElementById('table').insertAdjacentElement('beforeend', table)
 
+}
+
+function createTableData(data) {
+  let table_data = []
+  const percentages = getPercentages(data['votes'], data['total_votes'])
+  for (let i=0; i<data['parties'].length; i++) {
+    let row_data = []
+    row_data.push('')
+    row_data.push(data['parties'][i])
+    row_data.push(percentages[i].toString() + "%")
+    row_data.push("change")
+    table_data.push(row_data)
+  }
+  return table_data
 }
 
 const colors = {

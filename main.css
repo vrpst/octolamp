@@ -27,8 +27,8 @@
 }
 
 #infobox-content {
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: auto;
+    margin-right: auto;
     width: fit-content;
 }
 
@@ -39,4 +39,37 @@
     margin: none;
     margin-bottom: 5vh;
     line-height: 0%;
+}
+
+#table {
+    border: 1px solid #000000;
+    width: fit-content;
+    margin: auto;
+    padding: 2%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+tbody {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+td {
+    font-size: 14px;
+}
+
+.cell-change {
+    padding-right: none;
+    padding-left: 1vw;
+    text-align: right;
+}
+
+.cell-standard {
+    padding-left: 0.5vw;
+    padding-right: 1vw;
+}
+
+.cell-color {
+    width: 14px;
+    height: 1px;
 }
