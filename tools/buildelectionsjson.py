@@ -11,13 +11,16 @@ for i in range(18480):
             'party_votes' : {},
             'elected': {}
         }
+        data[ward_code]['total_votes'] = str(df.loc[i]['Votes'])  # if there is just one candidate, take their votes since they don't fill the total column
+
     data[ward_code]['party_votes'][df.loc[i]['Party group']] = str(df.loc[i]['Votes'])  # add the votes to the dict for the party
     if df.loc[i]['Elected'] == 1:  # add the elected members to the dict
         if df.loc[i]['Party group'] in data[ward_code]['elected']:
             data[ward_code]['elected'][df.loc[i]['Party group']] = str(int(data[ward_code]['elected'][df.loc[i]['Party group']])+1) # i hate json
         else:
             data[ward_code]['elected'][df.loc[i]['Party group']] = '1'
-
+    if len(data[ward_code]['party_votes']) > 1:
+        data[ward_code]['total_votes'] = df.loc[i][' Total valid votes '].strip()
 
 for j in data.keys():  # change format to array of objects as needed by chart.js
     parties = []
@@ -28,6 +31,6 @@ for j in data.keys():  # change format to array of objects as needed by chart.js
     del data[j]['party_votes']
     data[j]['parties'] = parties
     data[j]['votes'] = votes
-
+    
 with open('2022-results.json', 'a') as f:  # thank you stack overflow
     f.write(json.dumps(data, ensure_ascii=True))
