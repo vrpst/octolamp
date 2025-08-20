@@ -19,7 +19,7 @@ const geojsonObject = await geojson.json()
 
 let chart = null
 
-const resultsjson = await fetch('./2022-simplified.json')
+const resultsjson = await fetch('./data/2022/2022-simplified.json')
 const resultsjsonObject = await resultsjson.json()
 
 const vectorSource = new VectorSource({
