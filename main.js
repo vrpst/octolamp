@@ -117,7 +117,9 @@ map.on('click', async function (evt) {
 });
 
 async function openPanel(values) {
-  const location = values["LAD23NM"] + ',' + ' ' + resultsjsonObject[values["WD23CD"]]['county_name']
+  console.log(values)
+  console.log("eeeeee")
+  const location = resultsjsonObject[values["WD23CD"]]['election'] //values["WD23NM"] + ',' + ' ' + resultsjsonObject[values["WD23CD"]]['county_name']
   document.getElementById('local-authority').innerText = ''
   document.getElementById('local-authority').insertAdjacentText('beforeend', location)
   try {
@@ -125,7 +127,7 @@ async function openPanel(values) {
   } catch {
     //not needed
   }
-  const chart_data = await getElectionResult(values["WD23CD"])
+  const chart_data = await getElectionResult(values["WD23CD"], resultsjsonObject[values["WD23CD"]]['election'])
   chart = createBarChart(chart_data, colors)
   
   document.getElementById('table').innerText = ""
