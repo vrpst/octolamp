@@ -14,12 +14,12 @@ import { createBarChart } from './charts';
 import { createTable } from './table';
 import { getPercentages } from './charts';
 
-const geojson = await fetch('./wards2.geojson')
+const geojson = await fetch('./geodata/wards-2024.geojson')
 const geojsonObject = await geojson.json()
 
 let chart = null
 
-const resultsjson = await fetch('./data/2022/2022-simplified.json')
+const resultsjson = await fetch('./data/2024/2024-past-elections.json')
 const resultsjsonObject = await resultsjson.json()
 
 const vectorSource = new VectorSource({
