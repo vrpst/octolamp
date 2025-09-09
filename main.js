@@ -19,8 +19,8 @@ const geojsonObject = await geojson.json()
 
 let chart = null
 
-const resultsjson = await fetch('./data/2024/2024-past-elections.json')
-const resultsjsonObject = await resultsjson.json()
+let resultsjson = await fetch('./data/2024/2024-past-elections.json')
+let resultsjsonObject = await resultsjson.json()
 
 const vectorSource = new VectorSource({
   features: new GeoJSON().readFeatures(geojsonObject),
@@ -52,12 +52,14 @@ let styleFunction = function(feature, resolution) {
   })
 }
 
+let yearonlyflag = false
+
 function getColorToUse(results) {
-  if (results != "NONE") {
+  console.log(resultsjsonObject, "ASDASDAD")
+  console.log(results)
+  if ((results != "NONE" && !yearonlyflag) || yearonlyflag && results["election"] == "2024") {
     if (colors[results["control"]]) {
       return colors[results["control"]]
-    } else {
-      return colors["OTHER"]
     }
   } else {
     return "#BCBCBC"
@@ -147,3 +149,7 @@ const colors = {
   IND: "#FF5FDD",
   OTH: "#964B00"
 }
+
+document.getElementById("only").addEventListener('click', function() {
+  yearonlyflag = !yearonlyflag
+})
