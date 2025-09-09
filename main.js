@@ -14,7 +14,7 @@ import { createBarChart } from './charts';
 import { createTable } from './table';
 import { getPercentages } from './charts';
 
-const geojson = await fetch('./geodata/wards-2024.geojson')
+const geojson = await fetch('./geodata/wards/wards-2024.geojson')
 const geojsonObject = await geojson.json()
 
 let chart = null
@@ -53,14 +53,14 @@ let styleFunction = function(feature, resolution) {
 }
 
 function getColorToUse(results) {
-  if (results) {
+  if (results != "NONE") {
     if (colors[results["control"]]) {
       return colors[results["control"]]
     } else {
       return colors["OTHER"]
     }
   } else {
-    return [220,220,220]
+    return "#BCBCBC"
   }
 }
 
@@ -100,40 +100,40 @@ map.on('click', async function (evt) {
 
   // GET THE COLOR OF THE SEAT
  // try {
-  const controling_party = resultsjsonObject[namePromise[0]["values_"]["WD23CD"]]["control"]
   await openPanel(namePromise[0]["values_"])
-  if (colors[controling_party]) {
-    document.getElementById('colorbar').style.backgroundColor = colors[resultsjsonObject[namePromise[0]["values_"]["WD23CD"]]["control"]]
-  } else {
-    document.getElementById('colorbar').style.backgroundColor = colors["OTHER"]  // TEMP
-  }
-  /*} catch {
-    document.getElementById('colorbar').style.backgroundColor = "#D8D8D8"  // TEMP
-    console.log("COLOR NOT FOUND (no election data)")
-  }*/
-
-
-  //local area = LAD23NM
 });
 
 async function openPanel(values) {
-  console.log(values)
-  console.log("eeeeee")
-  const location = resultsjsonObject[values["WD23CD"]]['election'] //values["WD23NM"] + ',' + ' ' + resultsjsonObject[values["WD23CD"]]['county_name']
-  document.getElementById('local-authority').innerText = ''
-  document.getElementById('local-authority').insertAdjacentText('beforeend', location)
-  try {
-    chart.destroy()
-  } catch {
-    //not needed
+  console.log(getColorToUse(resultsjsonObject[values["WD23CD"]]))
+  document.getElementById('colorbar').style.backgroundColor = getColorToUse(resultsjsonObject[values["WD23CD"]])
+  if (resultsjsonObject[values["WD23CD"]] == "NONE") {
+    showNoData()
+  } 
+  else {
+    const location = resultsjsonObject[values["WD23CD"]]['election'] + ', ' + values["WD23CD"] //values["WD23NM"] + ',' + ' ' + resultsjsonObject[values["WD23CD"]]['county_name']
+    document.getElementById('local-authority').innerText = ''
+    document.getElementById('local-authority').insertAdjacentText('beforeend', location)
+    
+    try {
+      chart.destroy()
+    } catch {
+      //not needed
+    }
+    const chart_data = await getElectionResult(values["WD23CD"], resultsjsonObject[values["WD23CD"]]['election'])
+    chart = createBarChart(chart_data, colors)
+    
+    document.getElementById('table').innerText = ""
+    let table = createTable(chart_data)
+    document.getElementById('table').insertAdjacentElement('beforeend', table)
   }
-  const chart_data = await getElectionResult(values["WD23CD"], resultsjsonObject[values["WD23CD"]]['election'])
-  chart = createBarChart(chart_data, colors)
-  
-  document.getElementById('table').innerText = ""
-  let table = createTable(chart_data)
-  document.getElementById('table').insertAdjacentElement('beforeend', table)
+}
 
+function showNoData() {
+    try {
+      chart.destroy()
+    } catch {}
+    document.getElementById('table').innerText = ""
+    document.getElementById('local-authority').innerText = "No data"
 }
 
 const colors = {
@@ -145,5 +145,5 @@ const colors = {
   MIX: "purple",
   PC: "#005B54",
   IND: "#FF5FDD",
-  OTHER: "#964B00"
+  OTH: "#964B00"
 }

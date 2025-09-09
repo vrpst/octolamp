@@ -1,9 +1,13 @@
 # to do
-1. Figure out Scotland data
-2. Add other parties
-3. Change selection highlight
-4. Convert to REST API
-5. Figure out 2023 data
+1. REDO 2023
+2. ADD LAD CODES AND USE TO VERIFY
+2. Figure out Scotland data
+3. Add other parties
+4. Change selection highlight
+5. Convert to REST API
 6. Add year-only suppotr
 7. Add LAD support
 8. Reconsider vote totals vs pct
+
+
+- Hampton Wick (vs South Teddington) 2022

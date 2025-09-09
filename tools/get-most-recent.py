@@ -2,7 +2,7 @@ import json
 y = 24
 data = {}
 wards = []
-with open(f'./geodata/wards-20{y}.geojson') as f:
+with open(f'./geodata/wards/wards-20{y}.geojson') as f:
     d = json.load(f)
     for i in d['features']:
         wards.append(i['properties'][f'WD{y-1}CD'])
@@ -15,10 +15,10 @@ for code in wards:
                 data[code] = e[code]
                 data[code]['election'] = str(2000+j)
                 break
-    print(f"{wards.index(code)+1}/{len(wards)}")
+    #print(f"{wards.index(code)+1}/{len(wards)}")
     if code not in data.keys():
-        data[code] = 2023 # SHOULD BE NONE BUT IT'S ONLY 2023 FOR NOW
-
+        print(code)
+        data[code] = "NONE"
 with open(f'./data/20{y}/20{y}-past-elections.json', 'w') as h:
     h.write(json.dumps(data, ensure_ascii=True))
 
