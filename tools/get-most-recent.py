@@ -1,11 +1,11 @@
 import json
-y = 24
+y = 22
 data = {}
 wards = []
 with open(f'./geodata/wards/wards-20{y}.geojson') as f:
     d = json.load(f)
     for i in d['features']:
-        wards.append(i['properties'][f'WD{y-1}CD'])
+        wards.append(i['properties'][f'WD{y}CD'])
 
 for code in wards:        
     for j in range(y, 20, -1):

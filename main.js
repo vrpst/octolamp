@@ -14,15 +14,37 @@ import { createBarChart } from './charts';
 import { createTable } from './table';
 import { getPercentages } from './charts';
 
-const geojson = await fetch('./geodata/wards/wards-2024.geojson')
-const geojsonObject = await geojson.json()
+let yearonlyflag = false
+let yearonlyyear = 2024
+
+let geojson = null
+let geojsonObject = null
+
+let resultsjson = null
+let resultsjsonObject = null
+
+let ward_code_code = null
 
 let chart = null
 
-let resultsjson = await fetch('./data/2024/2024-past-elections.json')
-let resultsjsonObject = await resultsjson.json()
+async function updateMap() {
+  let geojsonstring = './geodata/wards/wards-' + yearonlyyear.toString() + '.geojson'
+  geojson = await fetch(geojsonstring)
+  geojsonObject = await geojson.json()
 
-const vectorSource = new VectorSource({
+  let resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + yearonlyyear.toString() + '-past-elections.json'
+  resultsjson = await fetch(resultsjsonstring)
+  resultsjsonObject = await resultsjson.json()
+
+  console.log(geojsonstring)
+  console.log(resultsjsonstring)
+  
+  ward_code_code = "WD" + yearonlyyear.toString().slice(2,4) + "CD"
+}
+
+await updateMap(2024)
+
+let vectorSource = new VectorSource({
   features: new GeoJSON().readFeatures(geojsonObject),
 });
 
@@ -39,8 +61,9 @@ const selectClick = new Select({
   style: selected,
 });
 
+let col = "#07ee22"
 let styleFunction = function(feature, resolution) {
-  let code = feature.get("WD23CD")
+  let code = feature.get(ward_code_code)
   return new Style({
     stroke: new Stroke({
       color: [70,70,70],
@@ -52,12 +75,7 @@ let styleFunction = function(feature, resolution) {
   })
 }
 
-let yearonlyflag = false
-let yearonlyyear = 2024
-
 function getColorToUse(results) {
-  console.log(resultsjsonObject, "ASDASDAD")
-  console.log(results)
   if ((results != "NONE" && !yearonlyflag) || yearonlyflag && results["election"] == yearonlyyear) {
     if (colors[results["control"]]) {
       return colors[results["control"]]
@@ -76,7 +94,7 @@ vectorLayer.getSource().on('addfeature', function (event) {
   const feature = event.feature;
 })
 
-const map = new Map({
+let map = new Map({
   target: 'map',
   layers: [vectorLayer],
   view: new View({
@@ -84,6 +102,8 @@ const map = new Map({
     zoom: 7.1,
   }),
 });
+
+console.log(map)
 
 
 map.addInteraction(selectClick)
@@ -94,7 +114,7 @@ map.on('click', async function (evt) {
   // GET THE WARD NAME
   try {
     document.getElementById('name').innerText = ''
-    document.getElementById('name').insertAdjacentText('beforeend', namePromise[0]["values_"]["WD23NM"])
+    document.getElementById('name').insertAdjacentText('beforeend', namePromise[0]["values_"][ward_code_code.slice(0,4)+"NM"])
   } catch ({ name, message }) {
     if (name == "TypeError"){
       console.log("clicked")
@@ -107,13 +127,12 @@ map.on('click', async function (evt) {
 });
 
 async function openPanel(values) {
-  console.log(getColorToUse(resultsjsonObject[values["WD23CD"]]))
-  document.getElementById('colorbar').style.backgroundColor = getColorToUse(resultsjsonObject[values["WD23CD"]])
-  if (resultsjsonObject[values["WD23CD"]] == "NONE") {
+  document.getElementById('colorbar').style.backgroundColor = getColorToUse(resultsjsonObject[values[ward_code_code]])
+  if (resultsjsonObject[values[ward_code_code]] == "NONE") {
     showNoData()
   } 
   else {
-    const location = resultsjsonObject[values["WD23CD"]]['election'] + ', ' + values["WD23CD"] //values["WD23NM"] + ',' + ' ' + resultsjsonObject[values["WD23CD"]]['county_name']
+    const location = resultsjsonObject[values[ward_code_code]]['election'] + ', ' + values[ward_code_code] //values["WD23NM"] + ',' + ' ' + resultsjsonObject[values[ward_code_code]]['county_name']
     document.getElementById('local-authority').innerText = ''
     document.getElementById('local-authority').insertAdjacentText('beforeend', location)
     
@@ -122,7 +141,7 @@ async function openPanel(values) {
     } catch {
       //not needed
     }
-    const chart_data = await getElectionResult(values["WD23CD"], resultsjsonObject[values["WD23CD"]]['election'])
+    const chart_data = await getElectionResult(values[ward_code_code], resultsjsonObject[values[ward_code_code]]['election'])
     chart = createBarChart(chart_data, colors)
     
     document.getElementById('table').innerText = ""
@@ -159,11 +178,44 @@ document.getElementById("only").addEventListener('click', function() {
   else {
       document.getElementById("only").innerText = yearonlyyear + " only"
   }
+  map.removeLayer(vectorLayer)
+
+  vectorLayer = new VectorLayer({
+    source: vectorSource,
+    style: styleFunction,
+  });
+
+  map.addLayer(vectorLayer)
+  map.render()
+
 })
 
-document.getElementById("daterange").oninput = function() {
+// DATERANGE
+document.getElementById("daterange").oninput = async function() {
   yearonlyyear = this.value
   console.log(yearonlyyear)
+
+  await updateMap(yearonlyyear)
+
+  vectorSource.clear()
+  vectorSource = new VectorSource({
+    features: new GeoJSON().readFeatures(geojsonObject),
+  });
+
+  map.removeLayer(vectorLayer)
+
+  vectorLayer = new VectorLayer({
+    source: vectorSource,
+    style: styleFunction,
+  });
+
+  vectorLayer.getSource().on('addfeature', function (event) {
+    const feature = event.feature;
+  })
+
+  map.addLayer(vectorLayer)
+  map.render()
+
   if (!yearonlyflag) {
     document.getElementById("only").innerText = yearonlyyear + " only"
   }
