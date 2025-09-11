@@ -53,11 +53,12 @@ let styleFunction = function(feature, resolution) {
 }
 
 let yearonlyflag = false
+let yearonlyyear = 2024
 
 function getColorToUse(results) {
   console.log(resultsjsonObject, "ASDASDAD")
   console.log(results)
-  if ((results != "NONE" && !yearonlyflag) || yearonlyflag && results["election"] == "2024") {
+  if ((results != "NONE" && !yearonlyflag) || yearonlyflag && results["election"] == yearonlyyear) {
     if (colors[results["control"]]) {
       return colors[results["control"]]
     }
@@ -152,8 +153,19 @@ const colors = {
 
 document.getElementById("only").addEventListener('click', function() {
   yearonlyflag = !yearonlyflag
+  if (yearonlyflag) {
+    document.getElementById("only").innerText = "Show all wards"
+  }
+  else {
+      document.getElementById("only").innerText = yearonlyyear + " only"
+  }
 })
 
 document.getElementById("daterange").oninput = function() {
+  yearonlyyear = this.value
+  console.log(yearonlyyear)
+  if (!yearonlyflag) {
+    document.getElementById("only").innerText = yearonlyyear + " only"
+  }
   document.getElementById("slider-year").innerText = "Year: " + this.value;
 } 
