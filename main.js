@@ -66,7 +66,7 @@ function getColorToUse(results) {
   }
 }
 
-const vectorLayer = new VectorLayer({
+let vectorLayer = new VectorLayer({
   source: vectorSource,
   style: styleFunction,
 });
@@ -144,12 +144,16 @@ const colors = {
   LD: "#FDBB30",
   GREEN: "#02A95B",
   REF: "aqua",
-  MIX: "purple",
+  MIX: "#9507DB",
   PC: "#005B54",
-  IND: "#FF5FDD",
+  IND: "#F4A8FF",
   OTH: "#964B00"
 }
 
 document.getElementById("only").addEventListener('click', function() {
   yearonlyflag = !yearonlyflag
 })
+
+document.getElementById("daterange").oninput = function() {
+  document.getElementById("slider-year").innerText = "Year: " + this.value;
+} 

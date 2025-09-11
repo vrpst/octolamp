@@ -3,6 +3,7 @@ import { getPercentages } from "./charts"
 export function createTable(chart_data) {
     const data = createTableData(chart_data)
     const table = document.createElement('table')
+    table.setAttribute('class', 'text')
     for (let i=0; i<data.length; i++){
         let row = table.insertRow(-1)
         if (data[i][1].includes("*")) {
