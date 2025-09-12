@@ -129,3 +129,13 @@ td {
     font-weight: bold;
     font-style: italic;
 }
+
+#hover-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(256,256,256, 0.6);
+    padding-left: 2vw;
+    padding-right: 2vw;
+    border-radius: 3px
+}

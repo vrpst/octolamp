@@ -56,7 +56,14 @@ const selected = new Style({
     width: 1,
   }),
   fill: new Fill({
-    color: [0,255,255], //[220,220,220],
+    color: "#DCDCDC",
+  }),
+});
+
+const hovered = new Style({
+  stroke: new Stroke({
+    width: 1,
+    color: "#DCDCDC",
   }),
 });
 
@@ -64,7 +71,6 @@ const selectClick = new Select({
   style: selected,
 });
 
-let col = "#07ee22"
 let styleFunction = function(feature, resolution) {
   let code = feature.get(ward_code_code)
   return new Style({
@@ -84,7 +90,7 @@ function getColorToUse(results) {
       return colors[results["control"]]
     }
   } else {
-    return "#BCBCBC"
+    return "#999999"
   }
 }
 
@@ -106,15 +112,23 @@ let map = new Map({
   }),
 });
 
-console.log(map)
+// MAP HOVER FUNCTIONALITY
+map.on('pointermove', async function (evt) {
+  const f = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
+      return feature;
+  })
+  if (f) {
+    document.getElementById('hover-name').innerText = f['values_'][ward_code_code.slice(0,4)+"NM"]
+  } else {
+      document.getElementById('hover-name').innerText = ""
+  }
+})
 
-
+// MAP CLICK FUNCTIONALITY
 map.addInteraction(selectClick)
-
 map.on('click', async function (evt) {
   const namePromise = await vectorLayer.getFeatures(evt.pixel)
 
-  // GET THE WARD NAME
   try {
     document.getElementById('name').innerText = ''
     document.getElementById('name').insertAdjacentText('beforeend', namePromise[0]["values_"][ward_code_code.slice(0,4)+"NM"])
@@ -123,12 +137,11 @@ map.on('click', async function (evt) {
       console.log("clicked")
     }
   }
-
-  // GET THE COLOR OF THE SEAT
  // try {
   await openPanel(namePromise[0]["values_"])
 });
 
+// RENDER INFO PANEL
 async function openPanel(values) {
   document.getElementById('colorbar').style.backgroundColor = getColorToUse(resultsjsonObject[values[ward_code_code]])
   if (resultsjsonObject[values[ward_code_code]] == "NONE") {
@@ -153,6 +166,7 @@ async function openPanel(values) {
   }
 }
 
+// DON'T SHOW ANYTHING IF NO DATA
 function showNoData() {
     try {
       chart.destroy()
@@ -162,17 +176,18 @@ function showNoData() {
 }
 
 const colors = {
-  LAB: "#E4003B",
-  CON: "#0087DC",
-  LD: "#FDBB30",
-  GREEN: "#02A95B",
-  REF: "aqua",
-  MIX: "#9507DB",
-  PC: "#005B54",
-  IND: "#F4A8FF",
-  OTH: "#964B00"
+  LAB: "#E4003B",   //[228, 0, 59],
+  CON: "#0087DC",   //[0, 135, 220],
+  LD: "#FDBB30",    //[253, 187, 48],
+  GREEN: "#02A95B", //[2, 169, 91],
+  REF: "#00BED6",   //[0, 190, 214],
+  MIX: "#9507DB",   //[149, 7, 219],
+  PC: "#005B54",    //[0, 91, 84],
+  IND: "#F4A8FF",   //[244, 168, 255],
+  OTH: "#964B00",   //[150, 75, 0],
 }
 
+// UPDATE MAP FOR BUTTON SHOWING ONLY RESULTS FROM THAT YEAR
 document.getElementById("only").addEventListener('click', function() {
   yearonlyflag = !yearonlyflag
   if (yearonlyflag) {
@@ -193,7 +208,7 @@ document.getElementById("only").addEventListener('click', function() {
 
 })
 
-// DATERANGE
+// UPDATE MAP FOR CHANGE IN DATE
 document.getElementById("daterange").oninput = async function() {
   yearonlyyear = this.value
   console.log(yearonlyyear)
