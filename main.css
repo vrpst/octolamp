@@ -1,3 +1,22 @@
+.text {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.center {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#box {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 10vw;
+  background-color: #AAAAAA;
+}
+
 #infobox {  
     position: fixed;
     top: 0vh;
@@ -84,10 +103,6 @@
 
 #slider-year {
     margin: 0vh;
-}
-
-.text {
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 td {

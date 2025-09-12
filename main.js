@@ -27,6 +27,9 @@ let ward_code_code = null
 
 let chart = null
 
+document.getElementById("slider-year").innerText = "Year: " + document.getElementById("daterange").value
+document.getElementById("only").innerText = document.getElementById("daterange").value + " only"
+
 async function updateMap() {
   let geojsonstring = './geodata/wards/wards-' + yearonlyyear.toString() + '.geojson'
   geojson = await fetch(geojsonstring)

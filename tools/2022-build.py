@@ -35,5 +35,5 @@ for j in data.keys():  # change format to array of objects as needed by chart.js
     data[j]['parties'] = parties
     data[j]['votes'] = votes
     
-with open('./data/2022/2022-results.json', 'a') as f:  # thank you stack overflow
+with open('./data/2022/2022-results.json', 'w') as f:  # thank you stack overflow
     f.write(json.dumps(data, ensure_ascii=True))

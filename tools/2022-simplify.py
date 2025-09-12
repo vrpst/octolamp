@@ -26,5 +26,5 @@ for j in data.keys():
     del data[j]['parties']
 #print(data)
 
-with open('./data/2022/2022-simplified.json', 'a') as f:  # thank you stack overflow
+with open('./data/2022/2022-simplified.json', 'w') as f:  # thank you stack overflow
     f.write(json.dumps(data, ensure_ascii=True))
