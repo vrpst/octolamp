@@ -8,9 +8,9 @@ import Stroke from 'ol/style/Stroke.js';
 import Style from 'ol/style/Style.js';
 import Fill from 'ol/style/Fill';
 import Select from 'ol/interaction/Select.js';
-import { getElectionResult } from './charts';
-import { createBarChart } from './charts';
+import { getElectionResult, createBarChart } from './charts';
 import { createTable } from './table';
+import { getStrokeToUse, getColorToUse } from '/style' 
 
 let yearonlyflag = false
 let yearonlyyear = 2024
@@ -21,7 +21,7 @@ let geojsonObject = null
 let resultsjson = null
 let resultsjsonObject = null
 
-let ward_code_code = null
+let area_code_code = null
 
 let chart = null
 let ladswards = "wards"
@@ -47,13 +47,17 @@ async function updateMap() {
   resultsjson = await fetch(resultsjsonstring)
   resultsjsonObject = await resultsjson.json()
   
-  ward_code_code = "WD" + yearonlyyear.toString().slice(2,4) + "CD"
+  if (ladswards == "wards") {
+    area_code_code = "WD" + yearonlyyear.toString().slice(2,4) + "CD"
+  } else {
+    area_code_code = "LAD" + yearonlyyear.toString().slice(2,4) + "CD"
+  }
 }
 
-await updateMap(2024)
-purgeVectorSource()
+await updateMap(2024)  // get the data
+purgeVectorSource()  // create the source vector map using new data
 
-const selected = new Style({
+const selected = new Style({  // style for selected object
   stroke: new Stroke({
     width: 1,
   }),
@@ -62,52 +66,33 @@ const selected = new Style({
   }),
 });
 
-const selectClick = new Select({
+const selectClick = new Select({  // selected object
   style: selected,
 });
 
-let styleFunction = function(feature, resolution) {
-  let code = feature.get(ward_code_code)
+let styleFunction = function(feature, resolution) {  // determines how to render a given area
+  let code = feature.get(area_code_code)
   return new Style({
     stroke: new Stroke({
-      color: getStrokeToUse(resultsjsonObject[code]),
+      color: getStrokeToUse(resultsjsonObject[code], yearonlyflag, yearonlyyear),
       width: 1,
     }),
     fill: new Fill({
-      color: getColorToUse(resultsjsonObject[code]), //styleFunction
+      color: getColorToUse(resultsjsonObject[code], yearonlyflag, yearonlyyear, colors), //styleFunction
     })
   })
 }
 
-function getStrokeToUse(results) {
-  if (yearonlyflag && results["election"] != yearonlyyear) {
-    return "#808080"
-  } else {
-    return [70,70,70]
-  }
-}
-
-function getColorToUse(results) {
-  if ((results != "NONE" && !yearonlyflag) || yearonlyflag && results["election"] == yearonlyyear) {
-    if (colors[results["control"]]) {
-      return colors[results["control"]]
-    }
-  } else {
-    return "#999999"
-  }
-}
-
-
-let vectorLayer = new VectorLayer({
+let vectorLayer = new VectorLayer({  // layer object for the vector map
   source: vectorSource,
   style: styleFunction,
 });
 
-vectorLayer.getSource().on('addfeature', function (event) {
+vectorLayer.getSource().on('addfeature', function (event) {  // add the tiles to the layer
   const feature = event.feature;
 })
 
-let map = new Map({
+let map = new Map({  // create map object
   target: 'map',
   layers: [vectorLayer],
   view: new View({
@@ -122,10 +107,10 @@ map.on('pointermove', async function (evt) {
       return feature;
   })
   if (f) {
-    if ((!yearonlyflag) || (yearonlyflag && Number(resultsjsonObject[f['values_'][ward_code_code]]['election']) == yearonlyyear)) {
+    if ((!yearonlyflag) || (yearonlyflag && Number(resultsjsonObject[f['values_'][area_code_code]]['election']) == yearonlyyear)) {
       document.getElementById('hover-name').style.display = "block"
-      document.getElementById('hover-name').innerText = f['values_'][ward_code_code.slice(0,4)+"NM"]
-    } else {
+      document.getElementById('hover-name').innerText = f['values_'][area_code_code.slice(0,4)+"NM"]
+    } else {  // only hover in certain circumstances
         document.getElementById('hover-name').style.display = "none"
     }
   } else {
@@ -137,28 +122,29 @@ map.on('pointermove', async function (evt) {
 map.addInteraction(selectClick)
 map.on('click', async function (evt) {
   const namePromise = await vectorLayer.getFeatures(evt.pixel)
+  const feature = namePromise[0]["values_"]
 
   try {
     document.getElementById('name').innerText = ''
-    document.getElementById('name').insertAdjacentText('beforeend', namePromise[0]["values_"][ward_code_code.slice(0,4)+"NM"])
+    document.getElementById('name').insertAdjacentText('beforeend', feature[area_code_code.slice(0,4)+"NM"])
   } catch ({ name, message }) {
     if (name == "TypeError"){
       console.log("clicked")
     }
   }
  // try {
-  await openPanel(namePromise[0]["values_"])
+  await openPanel(feature)
 });
 
 // RENDER INFO PANEL
 async function openPanel(values) {
-  if ((!yearonlyflag) || (yearonlyflag && Number(resultsjsonObject[values[ward_code_code]]['election']) == yearonlyyear)) {
-    document.getElementById('colorbar').style.backgroundColor = getColorToUse(resultsjsonObject[values[ward_code_code]])
-    if (resultsjsonObject[values[ward_code_code]] == "NONE") {
+  if ((!yearonlyflag) || (yearonlyflag && Number(resultsjsonObject[values[area_code_code]]['election']) == yearonlyyear)) {
+    document.getElementById('colorbar').style.backgroundColor = getColorToUse(resultsjsonObject[values[area_code_code]], yearonlyflag, yearonlyyear, colors)
+    if (resultsjsonObject[values[area_code_code]] == "NONE") {
       showNoData()
     } 
     else {
-      const location = resultsjsonObject[values[ward_code_code]]['election'] + ', ' + values[ward_code_code] //values["WD23NM"] + ',' + ' ' + resultsjsonObject[values[ward_code_code]]['county_name']
+      const location = resultsjsonObject[values[area_code_code]]['election'] + ', ' + values[area_code_code] //values["WD23NM"] + ',' + ' ' + resultsjsonObject[values[area_code_code]]['county_name']
       document.getElementById('local-authority').innerText = ''
       document.getElementById('local-authority').insertAdjacentText('beforeend', location)
       
@@ -167,7 +153,7 @@ async function openPanel(values) {
       } catch {
         //not needed
       }
-      const chart_data = await getElectionResult(values[ward_code_code], resultsjsonObject[values[ward_code_code]]['election'])
+      const chart_data = await getElectionResult(values[area_code_code], resultsjsonObject[values[area_code_code]]['election'])
       chart = createBarChart(chart_data, colors)
       
       document.getElementById('table').innerText = ""
@@ -212,6 +198,7 @@ document.getElementById("only").addEventListener('click', function() {
   purgeMap()
 })
 
+// UPDATE MAP BY FLIPPING WARDS AND LADS
 document.getElementById("lad-ward-button").addEventListener('click', async function() {
   ladWardSwitch()
   await updateMap(yearonlyyear)
