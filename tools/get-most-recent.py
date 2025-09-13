@@ -1,5 +1,5 @@
 import json
-y = 22
+y = 24
 data = {}
 wards = []
 with open(f'./geodata/wards/wards-20{y}.geojson') as f:

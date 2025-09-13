@@ -8,11 +8,9 @@ import Stroke from 'ol/style/Stroke.js';
 import Style from 'ol/style/Style.js';
 import Fill from 'ol/style/Fill';
 import Select from 'ol/interaction/Select.js';
-import Chart from 'chart.js/auto'
 import { getElectionResult } from './charts';
 import { createBarChart } from './charts';
 import { createTable } from './table';
-import { getPercentages } from './charts';
 
 let yearonlyflag = false
 let yearonlyyear = 2024
@@ -26,43 +24,40 @@ let resultsjsonObject = null
 let ward_code_code = null
 
 let chart = null
+let ladswards = "wards"
+
+let vectorSource = null
 
 document.getElementById("slider-year").innerText = "Year: " + document.getElementById("daterange").value
 document.getElementById("only").innerText = document.getElementById("daterange").value + " only"
 
+function ladWardSwitch() {
+  if (ladswards == "lads") {
+    ladswards = "wards"
+  } else {
+    ladswards = "lads"
+  }
+}
 async function updateMap() {
-  let geojsonstring = './geodata/wards/wards-' + yearonlyyear.toString() + '.geojson'
+  let geojsonstring = './geodata/' + ladswards + '/' + ladswards + '-' + yearonlyyear.toString() + '.geojson'
   geojson = await fetch(geojsonstring)
   geojsonObject = await geojson.json()
 
   let resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + yearonlyyear.toString() + '-past-elections.json'
   resultsjson = await fetch(resultsjsonstring)
   resultsjsonObject = await resultsjson.json()
-
-  console.log(geojsonstring)
-  console.log(resultsjsonstring)
   
   ward_code_code = "WD" + yearonlyyear.toString().slice(2,4) + "CD"
 }
 
 await updateMap(2024)
-
-let vectorSource = new VectorSource({
-  features: new GeoJSON().readFeatures(geojsonObject),
-});
+purgeVectorSource()
 
 const selected = new Style({
   stroke: new Stroke({
     width: 1,
   }),
   fill: new Fill({
-    color: "#DCDCDC",
-  }),
-});
-
-const hovered = new Style({
-  stroke: new Stroke({
-    width: 1,
     color: "#DCDCDC",
   }),
 });
@@ -75,13 +70,21 @@ let styleFunction = function(feature, resolution) {
   let code = feature.get(ward_code_code)
   return new Style({
     stroke: new Stroke({
-      color: [70,70,70],
+      color: getStrokeToUse(resultsjsonObject[code]),
       width: 1,
     }),
     fill: new Fill({
       color: getColorToUse(resultsjsonObject[code]), //styleFunction
     })
   })
+}
+
+function getStrokeToUse(results) {
+  if (yearonlyflag && results["election"] != yearonlyyear) {
+    return "#808080"
+  } else {
+    return [70,70,70]
+  }
 }
 
 function getColorToUse(results) {
@@ -93,6 +96,7 @@ function getColorToUse(results) {
     return "#999999"
   }
 }
+
 
 let vectorLayer = new VectorLayer({
   source: vectorSource,
@@ -118,9 +122,14 @@ map.on('pointermove', async function (evt) {
       return feature;
   })
   if (f) {
-    document.getElementById('hover-name').innerText = f['values_'][ward_code_code.slice(0,4)+"NM"]
+    if ((!yearonlyflag) || (yearonlyflag && Number(resultsjsonObject[f['values_'][ward_code_code]]['election']) == yearonlyyear)) {
+      document.getElementById('hover-name').style.display = "block"
+      document.getElementById('hover-name').innerText = f['values_'][ward_code_code.slice(0,4)+"NM"]
+    } else {
+        document.getElementById('hover-name').style.display = "none"
+    }
   } else {
-      document.getElementById('hover-name').innerText = ""
+      document.getElementById('hover-name').style.display = "none"
   }
 })
 
@@ -143,26 +152,30 @@ map.on('click', async function (evt) {
 
 // RENDER INFO PANEL
 async function openPanel(values) {
-  document.getElementById('colorbar').style.backgroundColor = getColorToUse(resultsjsonObject[values[ward_code_code]])
-  if (resultsjsonObject[values[ward_code_code]] == "NONE") {
-    showNoData()
-  } 
-  else {
-    const location = resultsjsonObject[values[ward_code_code]]['election'] + ', ' + values[ward_code_code] //values["WD23NM"] + ',' + ' ' + resultsjsonObject[values[ward_code_code]]['county_name']
-    document.getElementById('local-authority').innerText = ''
-    document.getElementById('local-authority').insertAdjacentText('beforeend', location)
-    
-    try {
-      chart.destroy()
-    } catch {
-      //not needed
+  if ((!yearonlyflag) || (yearonlyflag && Number(resultsjsonObject[values[ward_code_code]]['election']) == yearonlyyear)) {
+    document.getElementById('colorbar').style.backgroundColor = getColorToUse(resultsjsonObject[values[ward_code_code]])
+    if (resultsjsonObject[values[ward_code_code]] == "NONE") {
+      showNoData()
+    } 
+    else {
+      const location = resultsjsonObject[values[ward_code_code]]['election'] + ', ' + values[ward_code_code] //values["WD23NM"] + ',' + ' ' + resultsjsonObject[values[ward_code_code]]['county_name']
+      document.getElementById('local-authority').innerText = ''
+      document.getElementById('local-authority').insertAdjacentText('beforeend', location)
+      
+      try {
+        chart.destroy()
+      } catch {
+        //not needed
+      }
+      const chart_data = await getElectionResult(values[ward_code_code], resultsjsonObject[values[ward_code_code]]['election'])
+      chart = createBarChart(chart_data, colors)
+      
+      document.getElementById('table').innerText = ""
+      let table = createTable(chart_data)
+      document.getElementById('table').insertAdjacentElement('beforeend', table)
     }
-    const chart_data = await getElectionResult(values[ward_code_code], resultsjsonObject[values[ward_code_code]]['election'])
-    chart = createBarChart(chart_data, colors)
-    
-    document.getElementById('table').innerText = ""
-    let table = createTable(chart_data)
-    document.getElementById('table').insertAdjacentElement('beforeend', table)
+  } else {
+      document.getElementById('local-authority').innerText = "No election in " + yearonlyyear.toString()
   }
 }
 
@@ -196,22 +209,24 @@ document.getElementById("only").addEventListener('click', function() {
   else {
       document.getElementById("only").innerText = yearonlyyear + " only"
   }
-  map.removeLayer(vectorLayer)
+  purgeMap()
+})
 
-  vectorLayer = new VectorLayer({
-    source: vectorSource,
-    style: styleFunction,
+document.getElementById("lad-ward-button").addEventListener('click', async function() {
+  ladWardSwitch()
+  await updateMap(yearonlyyear)
+  vectorSource.clear()
+  vectorSource = new VectorSource({
+    features: new GeoJSON().readFeatures(geojsonObject),
   });
-
-  map.addLayer(vectorLayer)
-  map.render()
+  
+  purgeMap()
 
 })
 
 // UPDATE MAP FOR CHANGE IN DATE
 document.getElementById("daterange").oninput = async function() {
   yearonlyyear = this.value
-  console.log(yearonlyyear)
 
   await updateMap(yearonlyyear)
 
@@ -239,3 +254,22 @@ document.getElementById("daterange").oninput = async function() {
   }
   document.getElementById("slider-year").innerText = "Year: " + this.value;
 } 
+
+function purgeMap() {
+  map.removeLayer(vectorLayer)
+
+  vectorLayer = new VectorLayer({
+    source: vectorSource,
+    style: styleFunction,
+  });
+
+  map.addLayer(vectorLayer)
+  map.render()
+
+}
+
+function purgeVectorSource() {
+  vectorSource = new VectorSource({
+    features: new GeoJSON().readFeatures(geojsonObject),
+  });
+}
