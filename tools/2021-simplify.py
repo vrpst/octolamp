@@ -1,14 +1,14 @@
 import pandas as pd
 import json
 
-df = pd.read_csv('./data/2022/2022.csv')
+df = pd.read_csv('./data/2021/2021.csv')
 data = {}
 
-for i in range(18480):
-    ward_code = df.loc[i]['Ward code']
+for i in range(18043):
+    ward_code = df.loc[i]['Ward/ED code']
     if ward_code not in data:
         data[ward_code] = {
-            'name': df.loc[i]['Ward name'],
+            'name': df.loc[i]['Ward/ED name'],
             'control': '',
             'parties': {}
         }
@@ -26,5 +26,5 @@ for j in data.keys():
     del data[j]['parties']
 #print(data)
 
-with open('./data/2022/2022-simplified.json', 'w') as f:  # thank you stack overflow
+with open('./data/2021/2021-simplified.json', 'a') as f:  # thank you stack overflow
     f.write(json.dumps(data, ensure_ascii=True))

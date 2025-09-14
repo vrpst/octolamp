@@ -1,9 +1,9 @@
 import { getPercentages } from "./charts"
 
 export function createTable(chart_data) {
-    console.log(chart_data)
     const data = createTableData(chart_data)
     const table = document.createElement('table')
+    table.setAttribute('class', 'text')
     for (let i=0; i<data.length; i++){
         let row = table.insertRow(-1)
         if (data[i][1].includes("*")) {
@@ -31,13 +31,11 @@ export function createTable(chart_data) {
 
 function createTableData(data) {
   let table_data = []
-  console.log(data)
   const percentages = getPercentages(data)
   for (let i=0; i<data['parties'].length; i++) {
     let row_data = []
     row_data.push('')
     if (data['elected'][data['parties'][i]]){
-      console.log("*".repeat(Number(data['elected'][data['parties'][i]])))
       row_data.push(data['parties'][i] + "*".repeat(Number(data['elected'][data['parties'][i]])))
     } else {
         row_data.push(data['parties'][i])
@@ -59,5 +57,5 @@ const colors = {
   MIX: "purple",
   PC: "#005B54",
   IND: "#FF5FDD",
-  OTH: "#000000"
+  OTH: "#964B00"
 }

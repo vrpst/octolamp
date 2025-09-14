@@ -1,4 +1,6 @@
 node_modules/
-wards2.geojson
 dist/
 data/
+geodata/
+CBP9545-detailed-results-for-download.csv
+csvs/
