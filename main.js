@@ -13,7 +13,7 @@ import { createTable } from './table';
 import { getStrokeToUse, getColorToUse } from '/style' 
 
 let yearonlyflag = false
-let yearonlyyear = 2024
+let yearonlyyear = 2023
 
 let geojson = null
 let geojsonObject = null
@@ -43,7 +43,14 @@ async function updateMap() {
   geojson = await fetch(geojsonstring)
   geojsonObject = await geojson.json()
 
-  let resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + yearonlyyear.toString() + '-past-elections.json'
+  let results_end = null  // get the right results file
+  if (ladswards == "lads") {
+    results_end = "-lads.json"
+  }
+  else {
+    results_end = "-past-elections.json"
+  }
+  let resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + yearonlyyear.toString() + results_end
   resultsjson = await fetch(resultsjsonstring)
   resultsjsonObject = await resultsjson.json()
   
@@ -72,13 +79,15 @@ const selectClick = new Select({  // selected object
 
 let styleFunction = function(feature, resolution) {  // determines how to render a given area
   let code = feature.get(area_code_code)
+  console.log(resultsjsonObject)
+  console.log(resultsjsonObject[code])
   return new Style({
     stroke: new Stroke({
-      color: getStrokeToUse(resultsjsonObject[code], yearonlyflag, yearonlyyear),
+      color: getStrokeToUse(resultsjsonObject, code, yearonlyflag, yearonlyyear),
       width: 1,
     }),
     fill: new Fill({
-      color: getColorToUse(resultsjsonObject[code], yearonlyflag, yearonlyyear, colors), //styleFunction
+      color: getColorToUse(resultsjsonObject, code, yearonlyflag, yearonlyyear, colors), //styleFunction
     })
   })
 }
@@ -110,6 +119,7 @@ map.on('pointermove', async function (evt) {
     if ((!yearonlyflag) || (yearonlyflag && Number(resultsjsonObject[f['values_'][area_code_code]]['election']) == yearonlyyear)) {
       document.getElementById('hover-name').style.display = "block"
       document.getElementById('hover-name').innerText = f['values_'][area_code_code.slice(0,4)+"NM"]
+      console.log(document.getElementById('hover-name').innerText = f['values_']['LAD23NM'], f['values_']['LAD23CD'])
     } else {  // only hover in certain circumstances
         document.getElementById('hover-name').style.display = "none"
     }
@@ -179,8 +189,12 @@ const colors = {
   CON: "#0087DC",   //[0, 135, 220],
   LD: "#FDBB30",    //[253, 187, 48],
   GREEN: "#02A95B", //[2, 169, 91],
+  GRN: "#02A95B",
   REF: "#00BED6",   //[0, 190, 214],
-  MIX: "#9507DB",   //[149, 7, 219],
+  UKIP: "#9507DB",   //[149, 7, 219],
+  SNP: "#FDF38E",
+  MIX: "#777777",
+  NOC: "#777777",
   PC: "#005B54",    //[0, 91, 84],
   IND: "#F4A8FF",   //[244, 168, 255],
   OTH: "#964B00",   //[150, 75, 0],

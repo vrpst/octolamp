@@ -1,7 +1,7 @@
 import pandas as pd
 import json
 
-df = pd.read_csv('./data/2021/2021.csv')
+df = pd.read_csv('2021.csv')
 data = {}
 
 def convertNum(num):

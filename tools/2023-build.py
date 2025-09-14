@@ -15,7 +15,7 @@ def lowerify(str):
     return str
 
 bb = []
-df = pd.read_csv('./data/2023/2023.csv')
+df = pd.read_csv('./csvs/wards/2023.csv')
 data = {}
 redistricted = [] #["Basildon", "Brentwood", "Cannock Chase", "Castle Point", "Cheltenham", "Epping Forest", "Fareham", "Harlow", "Havant", "Maidstone", "North Hertfordshire", "Nuneaton and Bedworth", "Redditch", "Rossendale", "Stevenage", "Tandridge", "Tunbridge Wells", "Worcester", "Wokingham", "Dudley", "North Tyneside"]
 for i in range(25697):

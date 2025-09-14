@@ -11,3 +11,8 @@
 
 
 - Hampton Wick (vs South Teddington) 2022
+
+- control, risers, fallers, swing L/R
+- do change on panel
+
+- LADs are unitary authorities and district councils and boroughs etc aaaaaaaaaaaaaaaaaaa

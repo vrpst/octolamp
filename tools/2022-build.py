@@ -1,7 +1,7 @@
 import pandas as pd
 import json
 
-df = pd.read_csv('./data/2022/2022.csv')
+df = pd.read_csv('./csvs/wards/2022.csv')
 data = {}
 
 for i in range(18480):
