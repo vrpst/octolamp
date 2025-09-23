@@ -280,3 +280,5 @@ function purgeVectorSource() {
     features: new GeoJSON().readFeatures(geojsonObject),
   });
 }
+
+// CHANGE YEAR TOGGLE TO USE YEAR-BASED RESULTS RATHER THAN RE-RENDERING
