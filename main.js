@@ -13,7 +13,7 @@ import { createTable } from './table';
 import { getStrokeToUse, getColorToUse } from '/style' 
 
 let yearonlyflag = false
-let yearonlyyear = 2023
+let yearonlyyear = 2025
 
 let geojson = null
 let geojsonObject = null
@@ -22,9 +22,10 @@ let resultsjson = null
 let resultsjsonObject = null
 
 let area_code_code = null
+let area_name = null
 
 let chart = null
-let ladswards = "wards"
+let ladswards = "lads"
 
 let vectorSource = null
 
@@ -56,8 +57,11 @@ async function updateMap() {
   
   if (ladswards == "wards") {
     area_code_code = "WD" + yearonlyyear.toString().slice(2,4) + "CD"
+    area_name = "WD" + yearonlyyear.toString().slice(2,4) + "NM"
   } else {
     area_code_code = "LAD" + yearonlyyear.toString().slice(2,4) + "CD"
+    area_name = "LAD" + yearonlyyear.toString().slice(2,4) + "NM"
+
   }
 }
 
@@ -69,7 +73,7 @@ const selected = new Style({  // style for selected object
     width: 1,
   }),
   fill: new Fill({
-    color: "#DCDCDC",
+    color: "#ECECEC",
   }),
 });
 
@@ -116,10 +120,11 @@ map.on('pointermove', async function (evt) {
       return feature;
   })
   if (f) {
+    console.log(resultsjsonObject[f['values_'][area_code_code]])
     if ((!yearonlyflag) || (yearonlyflag && Number(resultsjsonObject[f['values_'][area_code_code]]['election']) == yearonlyyear)) {
       document.getElementById('hover-name').style.display = "block"
-      document.getElementById('hover-name').innerText = f['values_'][area_code_code.slice(0,4)+"NM"]
-      console.log(document.getElementById('hover-name').innerText = f['values_']['LAD23NM'], f['values_']['LAD23CD'])
+      document.getElementById('hover-name').innerText = f['values_'][area_name]
+      console.log(document.getElementById('hover-name').innerText = f['values_'][area_name], f['values_'][area_code_code])
     } else {  // only hover in certain circumstances
         document.getElementById('hover-name').style.display = "none"
     }
@@ -136,7 +141,8 @@ map.on('click', async function (evt) {
 
   try {
     document.getElementById('name').innerText = ''
-    document.getElementById('name').insertAdjacentText('beforeend', feature[area_code_code.slice(0,4)+"NM"])
+
+    document.getElementById('name').insertAdjacentText('beforeend', feature[area_name])
   } catch ({ name, message }) {
     if (name == "TypeError"){
       console.log("clicked")
@@ -204,7 +210,7 @@ const colors = {
 document.getElementById("only").addEventListener('click', function() {
   yearonlyflag = !yearonlyflag
   if (yearonlyflag) {
-    document.getElementById("only").innerText = "Show all wards"
+    document.getElementById("only").innerText = "Show all years"
   }
   else {
       document.getElementById("only").innerText = yearonlyyear + " only"
