@@ -29,14 +29,34 @@ let ladswards = "lads"
 
 let vectorSource = null
 
+const colors = {
+  LAB: "#E4003B",   //[228, 0, 59],
+  CON: "#0087DC",   //[0, 135, 220],
+  LD: "#FDBB30",    //[253, 187, 48],
+  GREEN: "#02A95B", //[2, 169, 91],
+  GRN: "#02A95B",
+  REF: "#00BED6",   //[0, 190, 214],
+  UKIP: "#9507DB",   //[149, 7, 219],
+  SNP: "#FDF38E",
+  MIX: "#777777",
+  NOC: "#777777",
+  PC: "#005B54",    //[0, 91, 84],
+  IND: "#F4A8FF",   //[244, 168, 255],
+  OTH: "#F4A8FF",
+}
+
+
 document.getElementById("slider-year").innerText = "Year: " + document.getElementById("daterange").value
 document.getElementById("only").innerText = document.getElementById("daterange").value + " only"
 
 function ladWardSwitch() {
   if (ladswards == "lads") {
     ladswards = "wards"
+    colors['OTH'] = "#964B00"
+
   } else {
     ladswards = "lads"
+    colors['OTH'] = "#F4A8FF"
   }
 }
 async function updateMap() {
@@ -46,7 +66,7 @@ async function updateMap() {
 
   let results_end = null  // get the right results file
   if (ladswards == "lads") {
-    results_end = "-lads.json"
+    results_end = "-lads-past-elections.json"
   }
   else {
     results_end = "-past-elections.json"
@@ -190,22 +210,6 @@ function showNoData() {
     document.getElementById('local-authority').innerText = "No data"
 }
 
-const colors = {
-  LAB: "#E4003B",   //[228, 0, 59],
-  CON: "#0087DC",   //[0, 135, 220],
-  LD: "#FDBB30",    //[253, 187, 48],
-  GREEN: "#02A95B", //[2, 169, 91],
-  GRN: "#02A95B",
-  REF: "#00BED6",   //[0, 190, 214],
-  UKIP: "#9507DB",   //[149, 7, 219],
-  SNP: "#FDF38E",
-  MIX: "#777777",
-  NOC: "#777777",
-  PC: "#005B54",    //[0, 91, 84],
-  IND: "#F4A8FF",   //[244, 168, 255],
-  OTH: "#964B00",   //[150, 75, 0],
-}
-
 // UPDATE MAP FOR BUTTON SHOWING ONLY RESULTS FROM THAT YEAR
 document.getElementById("only").addEventListener('click', function() {
   yearonlyflag = !yearonlyflag
@@ -234,7 +238,12 @@ document.getElementById("lad-ward-button").addEventListener('click', async funct
 // UPDATE MAP FOR CHANGE IN DATE
 document.getElementById("daterange").oninput = async function() {
   yearonlyyear = this.value
-
+  const ward_years = ["2021", "2022", "2023", "2024"]
+  if (ward_years.includes(yearonlyyear)) {
+    document.getElementById('lad-ward-button').disabled = false
+  } else {
+    document.getElementById('lad-ward-button').disabled = true
+  }
   await updateMap(yearonlyyear)
 
   vectorSource.clear()
