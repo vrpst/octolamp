@@ -61,17 +61,27 @@ function ladWardSwitch() {
 }
 async function updateMap() {
   let geojsonstring = './geodata/' + ladswards + '/' + ladswards + '-' + yearonlyyear.toString() + '.geojson'
+  console.log(geojsonstring)
   geojson = await fetch(geojsonstring)
   geojsonObject = await geojson.json()
 
   let results_end = null  // get the right results file
   if (ladswards == "lads") {
-    results_end = "-lads-past-elections.json"
+    if (yearonlyflag) {
+      results_end = "-lads.json"
+    } else {
+      results_end = "-lads-past-elections.json"
+    }
   }
   else {
-    results_end = "-past-elections.json"
+    if (yearonlyflag) {
+      results_end = "-simplified.json"
+    } else {
+      results_end = "-past-elections.json"
+    }
   }
   let resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + yearonlyyear.toString() + results_end
+  console.log(resultsjsonstring)
   resultsjson = await fetch(resultsjsonstring)
   resultsjsonObject = await resultsjson.json()
   
@@ -85,7 +95,7 @@ async function updateMap() {
   }
 }
 
-await updateMap(2024)  // get the data
+await updateMap()  // get the data
 purgeVectorSource()  // create the source vector map using new data
 
 const selected = new Style({  // style for selected object
@@ -103,8 +113,6 @@ const selectClick = new Select({  // selected object
 
 let styleFunction = function(feature, resolution) {  // determines how to render a given area
   let code = feature.get(area_code_code)
-  console.log(resultsjsonObject)
-  console.log(resultsjsonObject[code])
   return new Style({
     stroke: new Stroke({
       color: getStrokeToUse(resultsjsonObject, code, yearonlyflag, yearonlyyear),
@@ -139,16 +147,14 @@ map.on('pointermove', async function (evt) {
   const f = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
       return feature;
   })
-  if (f) {
-    console.log(resultsjsonObject[f['values_'][area_code_code]])
+  try {
     if ((!yearonlyflag) || (yearonlyflag && Number(resultsjsonObject[f['values_'][area_code_code]]['election']) == yearonlyyear)) {
       document.getElementById('hover-name').style.display = "block"
       document.getElementById('hover-name').innerText = f['values_'][area_name]
-      console.log(document.getElementById('hover-name').innerText = f['values_'][area_name], f['values_'][area_code_code])
     } else {  // only hover in certain circumstances
         document.getElementById('hover-name').style.display = "none"
-    }
-  } else {
+  }} catch {
+      console.log("hovering over unknown area")
       document.getElementById('hover-name').style.display = "none"
   }
 })
@@ -211,26 +217,23 @@ function showNoData() {
 }
 
 // UPDATE MAP FOR BUTTON SHOWING ONLY RESULTS FROM THAT YEAR
-document.getElementById("only").addEventListener('click', function() {
+document.getElementById("only").addEventListener('click', async function() {
   yearonlyflag = !yearonlyflag
   if (yearonlyflag) {
-    document.getElementById("only").innerText = "Show all years"
-  }
+    document.getElementById("only").innerText = "Show all years"  }
   else {
       document.getElementById("only").innerText = yearonlyyear + " only"
   }
+  await updateMap()
   purgeMap()
 })
 
 // UPDATE MAP BY FLIPPING WARDS AND LADS
 document.getElementById("lad-ward-button").addEventListener('click', async function() {
   ladWardSwitch()
-  await updateMap(yearonlyyear)
+  await updateMap()  // why??
   vectorSource.clear()
-  vectorSource = new VectorSource({
-    features: new GeoJSON().readFeatures(geojsonObject),
-  });
-  
+  purgeVectorSource()
   purgeMap()
 
 })
@@ -244,7 +247,7 @@ document.getElementById("daterange").oninput = async function() {
   } else {
     document.getElementById('lad-ward-button').disabled = true
   }
-  await updateMap(yearonlyyear)
+  await updateMap()
 
   vectorSource.clear()
   vectorSource = new VectorSource({

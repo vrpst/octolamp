@@ -1,13 +1,9 @@
 export function getStrokeToUse(results, code, yearonlyflag, yearonlyyear) {
   if (results[code]){
     results = results[code]
-    if (yearonlyflag && results["election"] != yearonlyyear) {
-      return "#808080"
-    } else {
-      return [70,70,70]
-    }
+    return [70, 70, 70]
   } else {
-    return [70,70,70]
+    return "#808080"
   }
 
 }
@@ -15,7 +11,7 @@ export function getStrokeToUse(results, code, yearonlyflag, yearonlyyear) {
 export function getColorToUse(results, code, yearonlyflag, yearonlyyear, colors) {
   if (results[code]){
     results = results[code]
-    if ((results != "NONE" && !yearonlyflag) || yearonlyflag && results["election"] == yearonlyyear) {
+    if ((results != "NONE" && !yearonlyflag) || yearonlyflag ) {
       if (colors[results["control"]]) {
         return colors[results["control"]]
       }
