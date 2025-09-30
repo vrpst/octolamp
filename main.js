@@ -28,6 +28,7 @@ let chart = null
 let ladswards = "lads"
 
 let vectorSource = null
+document.getElementById("daterange").value = 2025  
 
 const colors = {
   LAB: "#E4003B",   //[228, 0, 59],
@@ -81,7 +82,6 @@ async function updateMap() {
     }
   }
   let resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + yearonlyyear.toString() + results_end
-  console.log(resultsjsonstring)
   resultsjson = await fetch(resultsjsonstring)
   resultsjsonObject = await resultsjson.json()
   
@@ -93,6 +93,7 @@ async function updateMap() {
     area_name = "LAD" + yearonlyyear.toString().slice(2,4) + "NM"
 
   }
+  console.log(resultsjsonstring)
 }
 
 await updateMap()  // get the data
