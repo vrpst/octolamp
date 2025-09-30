@@ -141,7 +141,7 @@ let map = new Map({  // create map object
     center: [440000, 350000],
     extent: [-500000, -100000, 1500000, 1300000],
     zoom: 8.2,
-    maxZoom: 18
+    maxZoom: 18,
   }),
 });
 
