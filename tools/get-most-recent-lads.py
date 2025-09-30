@@ -1,6 +1,6 @@
 import json
 
-ls = [25, 23, 22, 21, 19, 18, 17, 16]
+ls = [25, 24, 23, 22, 21, 19, 18, 17, 16]
 for y in ls:
     data = {}
     wards = []
@@ -20,7 +20,7 @@ for y in ls:
                     break
         #print(f"{wards.index(code)+1}/{len(wards)}")
         if code not in data.keys():
-            print(code)
+            print(y, code)
             data[code] = "NONE"
     with open(f'./data/20{y}/20{y}-lads-past-elections.json', 'w') as h:
         h.write(json.dumps(data, ensure_ascii=True))

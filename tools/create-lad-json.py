@@ -1,6 +1,7 @@
 import pandas as pd
 import json
 
+# GET RESULTS FROM ALL BUT 2024
 
 years = ["2025", "2023", "2022", "2021", "2018", "2017", "2016"]
 for year in years:
@@ -34,6 +35,40 @@ for year in years:
     with open(f'./data/{year}/{year}-lads.json', 'w') as f:  # thank you stack overflow
         f.write(json.dumps(data, ensure_ascii=True))
 
+year = "2024"
+print(year)
+df = pd.read_csv(f'./csvs/lads/{year}.csv')
+data = {}
+
+for i in range(len(df)):
+    code = df.loc[i]['CODE']
+    if code not in data:
+        data[code] = {}
+        data[code]['total'] = 0
+        data[code]['parties'] = []
+        data[code]['seats'] = []
+    if df.loc[i]["Elected"] == "Yes":
+        data[code]['total'] += 1
+        pg = df.loc[i]["Party Group"]
+        if df.loc[i]["Party Group"] == "IND":  # change all independents to other for now
+            pg = "OTH"
+        if pg not in data[code]['parties']:
+            data[code]['parties'].append(pg)
+            data[code]['seats'].append(0)
+        print(data[code]['seats'], data[code]['parties'])
+        data[code]['seats'][data[code]['parties'].index(pg)] += 1
+
+    if max(data[code]['seats']) > 0.5*data[code]['total']:
+        data[code]['control'] = data[code]['parties'][data[code]['seats'].index(max(data[code]['seats']))]
+    else:
+        data[code]['control'] = "NOC"
+    data[code]['election'] = year
+with open(f'./data/{year}/{year}-lads.json', 'w') as f:  # thank you stack overflow
+    f.write(json.dumps(data, ensure_ascii=True))
+
+# GET RESULTS FROM PREVIOUS YEARS
+
+years = ["2025", "2024", "2023", "2022", "2021", "2018", "2017", "2016"]
 flips = years.copy()
 flips.reverse()
 flips = flips[:-1]

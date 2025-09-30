@@ -11,6 +11,7 @@ import Select from 'ol/interaction/Select.js';
 import { getElectionResult, createBarChart, createLADChart } from './charts';
 import { createTable } from './table';
 import { getStrokeToUse, getColorToUse } from '/style' 
+import { transformExtent } from 'ol/proj';
 
 let yearonlyflag = false
 let yearonlyyear = 2025
@@ -137,13 +138,16 @@ let map = new Map({  // create map object
   target: 'map',
   layers: [vectorLayer],
   view: new View({
-    center: [350000, 510000],
-    zoom: 7.1,
+    center: [440000, 350000],
+    extent: [-500000, -100000, 1500000, 1300000],
+    zoom: 8.2,
+    maxZoom: 18
   }),
 });
 
 // MAP HOVER FUNCTIONALITY
 map.on('pointermove', async function (evt) {
+  console.log(map.getView().getCenter(), map.getView().getZoom())
   const f = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
       return feature;
   })
