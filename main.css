@@ -30,11 +30,11 @@
 }
 
 #only {
-    top: 80vh;
+    top: 85vh;
 }
 
 #lad-ward-button {
-    top: 40vh;
+    top: 90vh;
 }
 
 .right-button {
@@ -66,7 +66,7 @@
 
 #slider {
     position: fixed;
-    top: 60vh;
+    top: 73vh;
     right: 0vw;
     width: 18vw;
     height: fit-content;
@@ -120,6 +120,15 @@ td {
     padding-right: none;
     padding-left: 1vw;
     text-align: right;
+    font-weight: bold;
+}
+
+.cell-change-positive {
+    color: green;
+}
+
+.cell-change-negative {
+    color: red;
 }
 
 .cell-standard {

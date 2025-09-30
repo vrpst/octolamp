@@ -9,9 +9,8 @@ import Style from 'ol/style/Style.js';
 import Fill from 'ol/style/Fill';
 import Select from 'ol/interaction/Select.js';
 import { getElectionResult, createBarChart, createLADChart } from './charts';
-import { createTable } from './table';
+import { createWardTable, createLADTable } from './table';
 import { getStrokeToUse, getColorToUse } from '/style' 
-import { transformExtent } from 'ol/proj';
 
 let yearonlyflag = false
 let yearonlyyear = 2025
@@ -52,13 +51,14 @@ document.getElementById("slider-year").innerText = "Year: " + document.getElemen
 document.getElementById("only").innerText = document.getElementById("daterange").value + " only"
 
 function ladWardSwitch() {
-  console.log("SWITCHED")
   if (ladswards == "lads") {
     ladswards = "wards"
+    document.getElementById('lad-ward-button').innerText = ('View LAD data for ' + yearonlyyear.toString())
     colors['OTH'] = "#964B00"
 
   } else {
     ladswards = "lads"
+    document.getElementById('lad-ward-button').innerText = ('View ward data for ' + yearonlyyear.toString())
     colors['OTH'] = "#F4A8FF"
   }
 }
@@ -147,7 +147,6 @@ let map = new Map({  // create map object
 
 // MAP HOVER FUNCTIONALITY
 map.on('pointermove', async function (evt) {
-  console.log(map.getView().getCenter(), map.getView().getZoom())
   const f = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
       return feature;
   })
@@ -165,6 +164,7 @@ map.on('pointermove', async function (evt) {
 // MAP CLICK FUNCTIONALITY
 map.addInteraction(selectClick)
 map.on('click', async function (evt) {
+  console.log(ladswards)
   const namePromise = await vectorLayer.getFeatures(evt.pixel)
   const feature = namePromise[0]["values_"]
 
@@ -206,8 +206,13 @@ async function openPanel(code) {
       }
       
       document.getElementById('table').innerText = ""
-      /* let table = createTable(chart_data)
-      document.getElementById('table').insertAdjacentElement('beforeend', table) */
+      let table = null
+      if (ladswards == "wards") {
+        table = createWardTable(chart_data, colors)
+      } else {
+        table = await createLADTable(chart_data, colors, code)
+      }
+      document.getElementById('table').insertAdjacentElement('beforeend', table)
     }
   } else {
       showNoData()
@@ -257,8 +262,18 @@ document.getElementById("daterange").oninput = async function() {
     }
   if (ward_years.includes(yearonlyyear)) {
     document.getElementById('lad-ward-button').disabled = false
+    if (ladswards == "wards") {
+      document.getElementById('lad-ward-button').innerText = ('View LAD data for ' + yearonlyyear.toString())
+    } else {
+      document.getElementById('lad-ward-button').innerText = ('View ward data for ' + yearonlyyear.toString())
+    }
   } else {
     document.getElementById('lad-ward-button').disabled = true
+    if (ladswards == "wards") {
+      ladWardSwitch()  // switch if it's moved while in wards to a year without them
+    }
+    document.getElementById('lad-ward-button').innerText = "Ward data unavailable for " + yearonlyyear.toString()
+
   }
   await updateMap()
 

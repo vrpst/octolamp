@@ -1,35 +1,35 @@
 import { getPercentages } from "./charts"
 
-export function createTable(chart_data) {
-    const data = createTableData(chart_data)
-    const table = document.createElement('table')
-    table.setAttribute('class', 'text')
-    for (let i=0; i<data.length; i++){
-        let row = table.insertRow(-1)
-        if (data[i][1].includes("*")) {
-            row.setAttribute('class', 'row-winner')
-        }
-        let color = row.insertCell(0)
-        let party = row.insertCell(1)
-        let share = row.insertCell(2)
-        let change = row.insertCell(3)
-        color.setAttribute('class', 'cell-color')
-        party.setAttribute('class', 'cell-standard')
-        share.setAttribute('class', 'cell-standard')
-        change.setAttribute('class', 'cell-change')
+export function createWardTable(chart_data, colors) {
+  const data = createWardTableData(chart_data)
+  const table = document.createElement('table')
+  table.setAttribute('class', 'text')
+  for (let i=0; i<data.length; i++){
+      let row = table.insertRow(-1)
+      if (data[i][1].includes("*")) {
+          row.setAttribute('class', 'row-winner')
+      }
+      let color = row.insertCell(0)
+      let party = row.insertCell(1)
+      let share = row.insertCell(2)
+      let change = row.insertCell(3)
+      color.setAttribute('class', 'cell-color')
+      party.setAttribute('class', 'cell-standard')
+      share.setAttribute('class', 'cell-standard')
+      change.setAttribute('class', 'cell-change')
 
-        let row_data = [color, party, share, change]
+      let row_data = [color, party, share, change]
 
-        for (let j=0; j<4; j++) {
-            let text_to_insert = document.createTextNode(data[i][j])
-            color.style.backgroundColor = colors[chart_data["parties"][i]]
-            row_data[j].appendChild(text_to_insert)
-        }
-    } 
-    return table
+      for (let j=0; j<4; j++) {
+          let text_to_insert = document.createTextNode(data[i][j])
+          color.style.backgroundColor = colors[chart_data["parties"][i]]
+          row_data[j].appendChild(text_to_insert)
+      }
+  } 
+  return table
 }   
 
-function createTableData(data) {
+function createWardTableData(data) {
   let table_data = []
   const percentages = getPercentages(data)
   for (let i=0; i<data['parties'].length; i++) {
@@ -48,14 +48,77 @@ function createTableData(data) {
   return table_data
 }
 
-const colors = {
-  LAB: "#E4003B",
-  CON: "#0087DC",
-  LD: "#FDBB30",
-  GREEN: "#02A95B",
-  REF: "aqua",
-  MIX: "purple",
-  PC: "#005B54",
-  IND: "#FF5FDD",
-  OTH: "#964B00"
+export async function createLADTable(chart_data, colors, code) {
+  const data = await createLADTableData(chart_data, code)
+  const table = document.createElement('table')
+  table.setAttribute('class', 'text')
+  for (let i=0; i<data.length; i++){
+      let row = table.insertRow(-1)
+
+      let color = row.insertCell(0)
+      let party = row.insertCell(1)
+      let share = row.insertCell(2)
+      let change = row.insertCell(3)
+      color.setAttribute('class', 'cell-color')
+      party.setAttribute('class', 'cell-standard')
+      share.setAttribute('class', 'cell-standard')
+      change.setAttribute('class', 'cell-change')
+
+      let row_data = [color, party, share, change]
+
+      for (let j=0; j<4; j++) {
+          let text_to_insert = document.createTextNode(data[i][j])
+          color.style.backgroundColor = colors[chart_data["parties"][i]]
+          row_data[j].appendChild(text_to_insert)
+      
+      }
+      if (row_data[3].innerText.slice(0,1) == "+") {
+        row_data[3].setAttribute('class', 'cell-change cell-change-positive')
+      } else if (row_data[3].innerText.slice(0,1) == "-") {
+        row_data[3].setAttribute('class', 'cell-change cell-change-negative')
+      }
+  } 
+  return table
+}   
+
+async function createLADTableData(data, code) {
+  console.log(data)
+  let table_data = []
+  for (let i=0; i<data['parties'].length; i++) {
+    let row_data = []
+    row_data.push('')
+    row_data.push(data['parties'][i])
+    row_data.push(data['seats'][i])
+    if (data['prev_up'] == "INIT") {
+      row_data.push('new')
+    } else {
+      let prev_data = await getChange(data, code)
+      if (!(data['parties'][i] in prev_data)) {
+        prev_data[data['parties'][i]] = 0
+      }
+      console.log(data['parties'][i], data['seats'][i], prev_data[data['parties'][i]])
+      let party_seat_change = data['seats'][i] - prev_data[data['parties'][i]]
+      if (party_seat_change < 0) {
+        row_data.push(party_seat_change.toString())        
+      } else if (party_seat_change > 0) {
+        row_data.push("+" + party_seat_change.toString())
+      } else {
+        row_data.push(party_seat_change.toString())
+      }
+    }
+    table_data.push(row_data)
+  }
+  return table_data
+}
+
+async function getChange(data, code) {
+  console.log('./data/' + data['prev_up'] + '/' + data['prev_up'] + "-lads.json")
+  const prev = await fetch('./data/' + data['prev_up'] + '/' + data['prev_up'] + "-lads.json")
+  const prev_object = await prev.json()
+  console.log(prev_object[code])
+  const prev_result = {}
+  for (let i=0; i<prev_object[code]['parties'].length; i++) {
+    prev_result[prev_object[code]['parties'][i]] = prev_object[code]['seats'][i]
+  }
+  return prev_result
 }

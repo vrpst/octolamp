@@ -68,13 +68,14 @@ with open(f'./data/{year}/{year}-lads.json', 'w') as f:  # thank you stack overf
 
 # GET RESULTS FROM PREVIOUS YEARS
 
-years = ["2025", "2024", "2023", "2022", "2021", "2018", "2017", "2016"]
+years = ["2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016"]
 flips = years.copy()
 flips.reverse()
 flips = flips[:-1]
 results = {}
 for i in years:
-    areas = {}
+    print(i, flips)
+    results = {}
     for j in flips:
         print("CHECKING", j, "FOR", i)
         with open(f'./data/{j}/{j}-lads.json') as f:
@@ -93,12 +94,17 @@ for i in years:
             flip_lads[n] = y[n]['control']
     print("WRITING", i)
     for m in year_lads:
-        y[m]['prev_up'] = results[m]['prev_up']
-        y[m]['prev_control'] = results[m]['prev_control']
-        if results[m]['prev_control'] != flip_lads[m]:
-            y[m]['flip'] = "true"
+        if m in results:
+            y[m]['prev_up'] = results[m]['prev_up']
+            y[m]['prev_control'] = results[m]['prev_control']
+            if results[m]['prev_control'] != flip_lads[m]:
+                y[m]['flip'] = "true"
+            else:
+                y[m]['flip'] = "false"
         else:
-            y[m]['flip'] = "false"
+            y[m]['prev_up'] = "INIT"
+            y[m]['prev_control'] = "INIT"
+            y[m]['flip'] = "INIT"
     print("WRITTEN", i)
     with open(f'./data/{i}/{i}-lads.json', "w") as x:
         x.write(json.dumps(y, ensure_ascii=True))
