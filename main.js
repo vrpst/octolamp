@@ -189,9 +189,10 @@ async function openPanel(code) {
       showNoData()
     } 
     else {
-      const location = resultsjsonObject[code]['election'] + ', ' + code //values["WD23NM"] + ',' + ' ' + resultsjsonObject[values[area_code_code]]['county_name']
+      document.getElementById('name').insertAdjacentText('beforeend', ", " + resultsjsonObject[code]['election'])
+      //const location = "elected " + resultsjsonObject[code]['election'] + ', ' + code //values["WD23NM"] + ',' + ' ' + resultsjsonObject[values[area_code_code]]['county_name']
       document.getElementById('local-authority').innerText = ''
-      document.getElementById('local-authority').insertAdjacentText('beforeend', location)
+      document.getElementById('local-authority').insertAdjacentText('beforeend', code)
       
       try {
         chart.destroy()

@@ -110,3 +110,23 @@ for i in years:
         x.write(json.dumps(y, ensure_ascii=True))
 
     print("")
+
+years = ["2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016"]
+
+for y in years:
+    print("SORTING ", y)
+    with open(f'./data/{y}/{y}-lads.json') as f:
+        g = json.load(f)
+    for lad in g.keys():
+        max_parties = []
+        max_seats = []
+        while g[lad]["seats"] != []:
+            maxi = g[lad]["seats"].index(max(g[lad]["seats"]))
+            max_seats.append(g[lad]["seats"][maxi])
+            max_parties.append(g[lad]["parties"][maxi])
+            del g[lad]["parties"][maxi]
+            del g[lad]["seats"][maxi]
+        g[lad]["parties"] = max_parties
+        g[lad]["seats"] = max_seats
+    with open(f'./data/{y}/{y}-lads.json', "w") as x:
+        x.write(json.dumps(g, ensure_ascii=True))
