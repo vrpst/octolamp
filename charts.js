@@ -1,7 +1,13 @@
 import Chart from 'chart.js/auto'
 
-export async function getElectionResult(id, year) {
-    const url =  './data/' + year.toString() + '/' + year.toString() + '-results.json'
+export async function getElectionResult(id, year, sw) {
+    let url_end = ""
+    if (sw == "lads") {
+        url_end = "-lads.json"
+    } else {
+        url_end = "-results.json"
+    }
+    const url =  './data/' + year.toString() + '/' + year.toString() + url_end
     const chartjson = await fetch(url)
     const chartjsonObject = await chartjson.json()
     return await chartjsonObject[id]
@@ -42,6 +48,34 @@ export function createBarChart(info, colors) {
         return chart
     }
     
+}
+
+export function createLADChart(info, colors) {
+    console.log(info)
+    console.log(colors)
+    const chart = new Chart(
+    document.getElementById('chart'),
+    {
+        type: 'doughnut',
+        data: { 
+            labels: info['parties'],
+            datasets: [
+                {
+                    label: null,
+                    data: info["seats"],
+                    backgroundColor: findColors(info['parties'], colors)
+                }
+            ]
+        },
+        options: {
+            plugins: {
+            legend: {
+                display: false
+            }
+            },
+        }
+    })
+    return chart
 }
 
 export function getPercentages(info) {

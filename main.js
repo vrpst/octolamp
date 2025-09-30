@@ -8,7 +8,7 @@ import Stroke from 'ol/style/Stroke.js';
 import Style from 'ol/style/Style.js';
 import Fill from 'ol/style/Fill';
 import Select from 'ol/interaction/Select.js';
-import { getElectionResult, createBarChart } from './charts';
+import { getElectionResult, createBarChart, createLADChart } from './charts';
 import { createTable } from './table';
 import { getStrokeToUse, getColorToUse } from '/style' 
 
@@ -51,6 +51,7 @@ document.getElementById("slider-year").innerText = "Year: " + document.getElemen
 document.getElementById("only").innerText = document.getElementById("daterange").value + " only"
 
 function ladWardSwitch() {
+  console.log("SWITCHED")
   if (ladswards == "lads") {
     ladswards = "wards"
     colors['OTH'] = "#964B00"
@@ -62,7 +63,6 @@ function ladWardSwitch() {
 }
 async function updateMap() {
   let geojsonstring = './geodata/' + ladswards + '/' + ladswards + '-' + yearonlyyear.toString() + '.geojson'
-  console.log(geojsonstring)
   geojson = await fetch(geojsonstring)
   geojsonObject = await geojson.json()
 
@@ -93,7 +93,6 @@ async function updateMap() {
     area_name = "LAD" + yearonlyyear.toString().slice(2,4) + "NM"
 
   }
-  console.log(resultsjsonstring)
 }
 
 await updateMap()  // get the data
@@ -120,7 +119,7 @@ let styleFunction = function(feature, resolution) {  // determines how to render
       width: 1,
     }),
     fill: new Fill({
-      color: getColorToUse(resultsjsonObject, code, yearonlyflag, yearonlyyear, colors), //styleFunction
+      color: getColorToUse(resultsjsonObject[code], colors), //styleFunction
     })
   })
 }
@@ -155,7 +154,6 @@ map.on('pointermove', async function (evt) {
     } else {  // only hover in certain circumstances
         document.getElementById('hover-name').style.display = "none"
   }} catch {
-      console.log("hovering over unknown area")
       document.getElementById('hover-name').style.display = "none"
   }
 })
@@ -176,18 +174,18 @@ map.on('click', async function (evt) {
     }
   }
  // try {
-  await openPanel(feature)
+  await openPanel(feature[area_code_code])
 });
 
 // RENDER INFO PANEL
-async function openPanel(values) {
-  if ((!yearonlyflag) || (yearonlyflag && Number(resultsjsonObject[values[area_code_code]]['election']) == yearonlyyear)) {
-    document.getElementById('colorbar').style.backgroundColor = getColorToUse(resultsjsonObject[values[area_code_code]], yearonlyflag, yearonlyyear, colors)
-    if (resultsjsonObject[values[area_code_code]] == "NONE") {
+async function openPanel(code) {
+  if ((!yearonlyflag) || (yearonlyflag && code in resultsjsonObject)) {  // if any year OR only one year and the location is in the results
+    document.getElementById('colorbar').style.backgroundColor = getColorToUse(resultsjsonObject[code], colors, area_code_code)
+    if (resultsjsonObject[code] == "NONE") {
       showNoData()
     } 
     else {
-      const location = resultsjsonObject[values[area_code_code]]['election'] + ', ' + values[area_code_code] //values["WD23NM"] + ',' + ' ' + resultsjsonObject[values[area_code_code]]['county_name']
+      const location = resultsjsonObject[code]['election'] + ', ' + code //values["WD23NM"] + ',' + ' ' + resultsjsonObject[values[area_code_code]]['county_name']
       document.getElementById('local-authority').innerText = ''
       document.getElementById('local-authority').insertAdjacentText('beforeend', location)
       
@@ -196,14 +194,19 @@ async function openPanel(values) {
       } catch {
         //not needed
       }
-      const chart_data = await getElectionResult(values[area_code_code], resultsjsonObject[values[area_code_code]]['election'])
-      chart = createBarChart(chart_data, colors)
+      const chart_data = await getElectionResult(code, resultsjsonObject[code]['election'], ladswards)
+      if (ladswards == "wards") {
+        chart = createBarChart(chart_data, colors)
+      } else {
+        chart = createLADChart(chart_data, colors)
+      }
       
       document.getElementById('table').innerText = ""
-      let table = createTable(chart_data)
-      document.getElementById('table').insertAdjacentElement('beforeend', table)
+      /* let table = createTable(chart_data)
+      document.getElementById('table').insertAdjacentElement('beforeend', table) */
     }
   } else {
+      showNoData()
       document.getElementById('local-authority').innerText = "No election in " + yearonlyyear.toString()
   }
 }
@@ -213,6 +216,7 @@ function showNoData() {
     try {
       chart.destroy()
     } catch {}
+    document.getElementById('colorbar').style.backgroundColor = "#D1D1D1"
     document.getElementById('table').innerText = ""
     document.getElementById('local-authority').innerText = "No data"
 }
@@ -243,6 +247,10 @@ document.getElementById("lad-ward-button").addEventListener('click', async funct
 document.getElementById("daterange").oninput = async function() {
   yearonlyyear = this.value
   const ward_years = ["2021", "2022", "2023", "2024"]
+  if (yearonlyyear == "2020") {
+      document.getElementById('daterange').value = "2021"
+      yearonlyyear = "2021"
+    }
   if (ward_years.includes(yearonlyyear)) {
     document.getElementById('lad-ward-button').disabled = false
   } else {

@@ -8,10 +8,9 @@ export function getStrokeToUse(results, code, yearonlyflag, yearonlyyear) {
 
 }
 
-export function getColorToUse(results, code, yearonlyflag, yearonlyyear, colors) {
-  if (results[code]){
-    results = results[code]
-    if ((results != "NONE" && !yearonlyflag) || yearonlyflag ) {
+export function getColorToUse(results, colors) {
+  if (results){
+    if (results != "NONE") {
       if (colors[results["control"]]) {
         return colors[results["control"]]
       }
