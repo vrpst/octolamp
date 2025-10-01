@@ -7,7 +7,7 @@
 6. national results when opening up or error click
 
 6. highlight seat changes/boundary changes
-7. give council type (D, M, C, U, C, S, W)
+7. give council type (D, M, C, U, L, S, W)
 
 - Hampton Wick (vs South Teddington) 2022
 

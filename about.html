@@ -3,51 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <title>About | Octolamp</title>
+    <link rel="stylesheet" type="text/css" href="./info.css" />
   </head>
-  <body>
-    <h1>Octolamp</h1>
-    <h2>About</h2>
-    <p>Octolamp is a data visualization tool for viewing United Kingdom local election results. It started as what I thought would be a simple holiday project to build a web app for my politics-obsessed brother, but eventually grew to be a lot bigger. If you're curious about how it works under the hood, check out the relevant page on my website. If you're confused about what you're seeing, check out the <a href="explanation.html">explanation</a> page.</p>
-    <h2>Notes</h2>
-    <h3>Wards</h3>
-    <ul>
-      <li>The number of asterisks next to a party indicated the number of elected councillors.</li>
-      <li>The results have been calculated as the total number of votes recieved by candidates of a party, divided by the total number of votes cast in the ward, divided by the total number of seats available. Multi-member wards that have independents and parties running may look a little funny at first.</li>
-      <li>Votes are aggregated by party group, not by specific party. The brown group "OTH" represents all non-independents from smaller parties, and the pink group "IND" represents all independents.</li>
-      <li>Wards that elect councillors from more than one party group are colored in grey. Note that electing multiple councillors, only from smaller parties, would mean the ward is colored in brown.</li>
-    </ul>
-    <h3>Local authority districts (LADs)</h3>
-    <ul>
-      <li>A dagger next to the year indicates a change to boundaries or seat count.</li>
-      <li>If the change in seats per party don't add up to zero, it's because the total number of seats on the council have changed.</li>
-      <li>Unlike ward data, the data published on LADs does not differentiate between independents and small parties. While pink indicates an independent for a ward, it indicates an independent <em>or a member of a small party</em> for LADs. I chose to use pink over brown because in practice there are more independents than small parties in local government.</li>
-      <li>Be careful when looking at swing. Many councils do not elect their members all at once, and comparing one election cycle to the next may not necessarily be a fair comparison if they involved different wards. Octolamp currently does not support comparing exact tranches.</li>
-    </ul>
-    <h2>Omissions</h2>
-    <p>Octolamp uses data adapted from spreadsheets published by the UK House of Commons Library. This data is not consistent and therefore some features that are unavailable.</p>
-    <ul>
-      <li>Data on Northern Ireland, the City of London, and the Isles of Scilly is unavailable.</li>
-      <li>There is no centralised source of data for <em>vote counts</em> for the local authority district (LAD) elections. The seat totals are shown, but it is not possible to show raw vote counts — I don't have that data.</li>
-      <li>Ward-specific data (which does include vote counts) is only available from 2021 through 2024. It has not been published for other years (including 2025).</li>
-      <li>There is (infuriatingly) no centralised source of data for the 2024 LAD elections, but I have generated data for this using the ward election results.</li>
-      <li>There were no elections held in 2020. All elections scheduled to be held in 2020 were held in 2021 instead.</li>
-    </ul>
-    <h3>One-offs</h3>
-    <ul>
-      <li>2025 has no data for Sheffield and Barnsley councils. This is because their boundaries <a href="https://www.legislation.gov.uk/uksi/2024/1328/made">were changed</a> since the last election in 2024. Traditionally, boundary changes only go into effect after the inaugural set of elections for the new council, but in this instance the official maps have been updated to replace the old councils before any elections have been held.</li>
-      <li>2018–2021 have no data for Perth & Kinross and Fife councils. Similarly to above, this is because <a href="https://www.legislation.gov.uk/ssi/2017/430/contents/made">their boundaries changed</a> before elections were held (in 2022).</li>
-      <li>2016–2019 have no data for Aylesbury Vale, Wycombe, Chiltern, and South Bucks. This is because they were last elected in 2015 — they were due to hold elections in 2019, but these did not take place once <a href="https://www.legislation.gov.uk/uksi/2019/957/note/made?view=plain">it was confirmed</a> that the district councils would be abolished and replaced by Buckinghamshire Council, a unitary authority, in 2020.</li>
-      <li>2016–2019 have no data for Corby, Kettering, East Northamptonshire, Wellingborough, Northampton, and South Northamptonshire. This is because they were last elected in 2015 — they were due to hold elections in 2019, but these did not take place once <a href="https://www.gov.uk/government/news/new-local-authorities-will-be-created-in-northamptonshire">it was confirmed</a> in May 2019 that the district councils would be abolished and replaced two unitary authorities: North Northamptonshire Council, covering the first four councils, and West Northamptonshire Council, covering the latter two and Daventry (which held elections in 2018). These changes came into effect for the 2021 elections.</li>
-    </ul>
-    <h2>A word of warning</h2>
-    <p>The data this project is built off of has had errors that I have had to fix. These include:</p>
-    <ul>
-      <li>The 2022 Welsh results using ward code W05000325 instead of W05001154. The former was, at the time of the election, an inactive ward for an entirely different area.</li>
-      <li>An uncountable number of inconsistencies between when to use <code>&</code> vs <code>and</code>, <code>X on Y</code> vs <code>X-on-Y</code>, <code>St</code> vs <code>St.</code>, <code>'s</code> vs <code>s</code>.</li>
-      <li>Misspelling "Woughton" as "Wroughton" and not providing a ward code to actually look up the correct name. (2023)</li>
-      <li>Misspelling "Scarbrough & Seacroft", a ward in eastern Lincolnshire, as "Scarborough & Seacroft", depsite Scarborough being 100 miles north and in another county. (2023)</li>
-      <li>Using the code E05013778 (Hampton) to refer to both Hampton and Hampton Wick, despite them being entirely different wards (the latter has code E05013780), and the fact that "Hampton Wick" is not even named that, but is called "Hampton Wick & South Teddington".</li>
-    </ul>
-    <p>...this was parliamentary data I was using. All this is to say that while I have strong faith in the overall reliability of the data used, you may still find errors.</p>
+  <body class="text">
+    <div id="content-container">
+      <h1>Octolamp</h1>
+      <h2>About</h2>
+      <p>Octolamp is a data visualization tool for viewing United Kingdom local election results. It started as what I thought would be a simple holiday project to build a web app for my politics-obsessed brother, but eventually grew to be a lot bigger. If you're curious about how it works under the hood, check out the relevant page on my website. If you're confused about what you're seeing, check out the <a href="explanation.html">explanation</a> page.</p>
+      <h2>Notes</h2>
+      <h3>Wards</h3>
+      <ul>
+        <li>The number of asterisks next to a party indicated the number of elected councillors.</li>
+        <li>The results have been calculated as the total number of votes recieved by candidates of a party, divided by the total number of votes cast in the ward, divided by the total number of seats available. Multi-member wards that have independents and parties running may look a little funny at first.</li>
+        <li>Votes are aggregated by party group, not by specific party. The brown group "OTH" represents all non-independents from smaller parties, and the pink group "IND" represents all independents.</li>
+        <li>Wards that elect councillors from more than one party group are colored in grey. Note that electing multiple councillors, only from smaller parties, would mean the ward is colored in brown.</li>
+      </ul>
+      <h3>Local authority districts (LADs)</h3>
+      <ul>
+        <li>A dagger next to the year indicates a change to boundaries or seat count.</li>
+        <li>If the change in seats per party don't add up to zero, it's because the total number of seats on the council have changed.</li>
+        <li>Unlike ward data, the data published on LADs does not differentiate between independents and small parties. While pink indicates an independent for a ward, it indicates an independent <em>or a member of a small party</em> for LADs. I chose to use pink over brown because in practice there are more independents than small parties in local government.</li>
+        <li>Be careful when looking at swing. Many councils do not elect their members all at once, and comparing one election cycle to the next may not necessarily be a fair comparison if they involved different wards. Octolamp currently does not support comparing exact tranches.</li>
+      </ul>
+      <h2>Omissions</h2>
+      <p>Octolamp uses data adapted from spreadsheets published by the UK House of Commons Library. This data is not consistent and therefore some features that are unavailable.</p>
+      <ul>
+        <li>Data on Northern Ireland, the City of London, and the Isles of Scilly is unavailable.</li>
+        <li>There is no centralised source of data for <em>vote counts</em> for the local authority district (LAD) elections. The seat totals are shown, but it is not possible to show raw vote counts — I don't have that data.</li>
+        <li>Ward-specific data (which does include vote counts) is only available from 2021 through 2024. It has not been published for other years (including 2025).</li>
+        <li>There is (infuriatingly) no centralised source of data for the 2024 LAD elections, but I have generated data for this using the ward election results.</li>
+        <li>There were no elections held in 2020. All elections scheduled to be held in 2020 were held in 2021 instead.</li>
+      </ul>
+      <h3>One-offs</h3>
+      <ul>
+        <li>2025 has no data for Sheffield and Barnsley councils. This is because their boundaries <a href="https://www.legislation.gov.uk/uksi/2024/1328/made">were changed</a> since the last election in 2024. Traditionally, boundary changes only go into effect after the inaugural set of elections for the new council, but in this instance the official maps have been updated to replace the old councils before any elections have been held.</li>
+        <li>2018–2021 have no data for Perth & Kinross and Fife councils. Similarly to above, this is because <a href="https://www.legislation.gov.uk/ssi/2017/430/contents/made">their boundaries changed</a> before elections were held (in 2022).</li>
+        <li>2016–2019 have no data for Aylesbury Vale, Wycombe, Chiltern, and South Bucks. This is because they were last elected in 2015 — they were due to hold elections in 2019, but these did not take place once <a href="https://www.legislation.gov.uk/uksi/2019/957/note/made?view=plain">it was confirmed</a> that the district councils would be abolished and replaced by Buckinghamshire Council, a unitary authority, in 2020.</li>
+        <li>2016–2019 have no data for Corby, Kettering, East Northamptonshire, Wellingborough, Northampton, and South Northamptonshire. This is because they were last elected in 2015 — they were due to hold elections in 2019, but these did not take place once <a href="https://www.gov.uk/government/news/new-local-authorities-will-be-created-in-northamptonshire">it was confirmed</a> in May 2019 that the district councils would be abolished and replaced two unitary authorities: North Northamptonshire Council, covering the first four councils, and West Northamptonshire Council, covering the latter two and Daventry (which held elections in 2018). These changes came into effect for the 2021 elections.</li>
+      </ul>
+      <h2>A word of warning</h2>
+      <p>The data this project is built off of has had errors that I have had to fix. These include:</p>
+      <ul>
+        <li>The 2022 Welsh results using ward code W05000325 instead of W05001154. The former was, at the time of the election, an inactive ward for an entirely different area.</li>
+        <li>An uncountable number of inconsistencies between when to use <code>&</code> vs <code>and</code>, <code>X on Y</code> vs <code>X-on-Y</code>, <code>St</code> vs <code>St.</code>, <code>'s</code> vs <code>s</code>.</li>
+        <li>Misspelling "Woughton" as "Wroughton" and not providing a ward code to actually look up the correct name. (2023)</li>
+        <li>Misspelling "Scarbrough & Seacroft", a ward in eastern Lincolnshire, as "Scarborough & Seacroft", depsite Scarborough being 100 miles north and in another county. (2023)</li>
+        <li>Using the code E05013778 (Hampton) to refer to both Hampton and Hampton Wick, despite them being entirely different wards (the latter has code E05013780), and the fact that "Hampton Wick" is not even named that, but is called "Hampton Wick & South Teddington".</li>
+      </ul>
+      <p>...this was parliamentary data I was using. All this is to say that while I have strong faith in the overall reliability of the data used, you may still find errors.</p>
+    </div>
   </body>
 </html>

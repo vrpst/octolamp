@@ -1,0 +1,22 @@
+html {
+    font-family: Helvetica, Arial, sans-serif;
+    background-image: url('background.png');
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+}
+
+h1 {
+    font-size: 60px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+#content-container {
+    margin-top: 10vh;
+    max-width: fit-content;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
