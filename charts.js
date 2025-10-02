@@ -1,11 +1,12 @@
 import Chart from 'chart.js/auto'
 
 export async function getElectionResult(id, year, sw) {
+    console.log(id, year, sw)
     let url_end = ""
-    if (sw == "lads") {
-        url_end = "-lads.json"
-    } else {
+    if (sw == "wards") {
         url_end = "-results.json"
+    } else {
+        url_end = "-lads.json"
     }
     const url =  './data/' + year.toString() + '/' + year.toString() + url_end
     const chartjson = await fetch(url)
@@ -51,7 +52,7 @@ export function createBarChart(info, colors) {
 }
 
 export function createLADChart(info, colors) {
-    console.log(info)
+    console.log("INFO", info)
     console.log(colors)
     const chart = new Chart(
     document.getElementById('chart'),

@@ -9,6 +9,18 @@
     text-align: center;
 }
 
+#area-switch {
+    position: fixed;
+    top: 60vh;
+    right: 0vw;
+    width: 20vw;
+    height: fit-content;
+    border: 2px solid #AAAAAA;
+    border-radius: 5px;
+    margin: 2vw;
+    background-color: #F8F8F8;
+}
+
 #box {
   position: absolute;
   top: 0;

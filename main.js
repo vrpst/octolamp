@@ -25,7 +25,7 @@ let area_code_code = null
 let area_name = null
 
 let chart = null
-let ladswards = "lads"
+let areaswitch = "lads"
 
 let vectorSource = null
 document.getElementById("daterange").value = 2025  
@@ -50,49 +50,72 @@ const colors = {
 document.getElementById("slider-year").innerText = "Year: " + document.getElementById("daterange").value
 document.getElementById("only").innerText = document.getElementById("daterange").value + " only"
 
-function ladWardSwitch() {
-  if (ladswards == "lads") {
-    ladswards = "wards"
+function switchArea() { //REDO
+  if (areaswitch == "lads") {
+    areaswitch = "wards"
     document.getElementById('lad-ward-button').innerText = ('View LAD data for ' + yearonlyyear.toString())
     colors['OTH'] = "#964B00"
 
   } else {
-    ladswards = "lads"
+    areaswitch = "lads"
     document.getElementById('lad-ward-button').innerText = ('View ward data for ' + yearonlyyear.toString())
     colors['OTH'] = "#F4A8FF"
   }
 }
+
+document.getElementById("area-switch").oninput = async function() {
+  areaswitch = document.querySelector('input[name="area"]:checked').value
+  if (areaswitch == "wards") {
+      colors['OTH'] = "#964B00"
+  } else {
+      colors['OTH'] = "#F4A8FF"
+  }
+  await updateMap()  // get new geojson
+  vectorSource.clear()
+  purgeVectorSource()
+  purgeMap()
+}
+
 async function updateMap() {
-  let geojsonstring = './geodata/' + ladswards + '/' + ladswards + '-' + yearonlyyear.toString() + '.geojson'
+  let geojsonstring = './geodata/' + areaswitch + '/' + areaswitch + '-' + yearonlyyear.toString() + '.geojson'
   geojson = await fetch(geojsonstring)
   geojsonObject = await geojson.json()
 
   let results_end = null  // get the right results file
-  if (ladswards == "lads") {
+  if (areaswitch == "lads") {
     if (yearonlyflag) {
       results_end = "-lads.json"
     } else {
       results_end = "-lads-past-elections.json"
     }
   }
-  else {
+  else if (areaswitch == "wards") {
     if (yearonlyflag) {
       results_end = "-simplified.json"
     } else {
       results_end = "-past-elections.json"
     }
+  } else {
+    if (yearonlyflag) {
+      results_end = "-lads.json"
+    } else {
+      results_end = "-cuas-past-elections.json"
+    }
   }
   let resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + yearonlyyear.toString() + results_end
+  console.log(resultsjsonstring)
   resultsjson = await fetch(resultsjsonstring)
   resultsjsonObject = await resultsjson.json()
   
-  if (ladswards == "wards") {
+  if (areaswitch == "wards") {
     area_code_code = "WD" + yearonlyyear.toString().slice(2,4) + "CD"
     area_name = "WD" + yearonlyyear.toString().slice(2,4) + "NM"
-  } else {
+  } else if (areaswitch == "lads") {
     area_code_code = "LAD" + yearonlyyear.toString().slice(2,4) + "CD"
     area_name = "LAD" + yearonlyyear.toString().slice(2,4) + "NM"
-
+  } else {
+    area_code_code = "CTYUA" + yearonlyyear.toString().slice(2,4) + "CD"
+    area_name = "CTYUA" + yearonlyyear.toString().slice(2,4) + "NM"
   }
 }
 
@@ -164,7 +187,6 @@ map.on('pointermove', async function (evt) {
 // MAP CLICK FUNCTIONALITY
 map.addInteraction(selectClick)
 map.on('click', async function (evt) {
-  console.log(ladswards)
   const namePromise = await vectorLayer.getFeatures(evt.pixel)
   const feature = namePromise[0]["values_"]
 
@@ -199,16 +221,17 @@ async function openPanel(code) {
       } catch {
         //not needed
       }
-      const chart_data = await getElectionResult(code, resultsjsonObject[code]['election'], ladswards)
-      if (ladswards == "wards") {
+      const chart_data = await getElectionResult(code, resultsjsonObject[code]['election'], areaswitch)
+      if (areaswitch == "wards") {
         chart = createBarChart(chart_data, colors)
       } else {
+        console.log("MAINJS", chart_data)
         chart = createLADChart(chart_data, colors)
       }
       
       document.getElementById('table').innerText = ""
       let table = null
-      if (ladswards == "wards") {
+      if (areaswitch == "wards") {
         table = createWardTable(chart_data, colors)
       } else {
         table = await createLADTable(chart_data, colors, code)
@@ -243,16 +266,6 @@ document.getElementById("only").addEventListener('click', async function() {
   purgeMap()
 })
 
-// UPDATE MAP BY FLIPPING WARDS AND LADS
-document.getElementById("lad-ward-button").addEventListener('click', async function() {
-  ladWardSwitch()
-  await updateMap()  // why??
-  vectorSource.clear()
-  purgeVectorSource()
-  purgeMap()
-
-})
-
 // UPDATE MAP FOR CHANGE IN DATE
 document.getElementById("daterange").oninput = async function() {
   yearonlyyear = this.value
@@ -262,18 +275,18 @@ document.getElementById("daterange").oninput = async function() {
       yearonlyyear = "2021"
     }
   if (ward_years.includes(yearonlyyear)) {
-    document.getElementById('lad-ward-button').disabled = false
-    if (ladswards == "wards") {
+    document.getElementById('radio-wards').disabled = false
+    if (areaswitch == "wards") {
       document.getElementById('lad-ward-button').innerText = ('View LAD data for ' + yearonlyyear.toString())
     } else {
-      document.getElementById('lad-ward-button').innerText = ('View ward data for ' + yearonlyyear.toString())
+      document.getElementById('radio-wards').innerText = 'Wards'
     }
   } else {
-    document.getElementById('lad-ward-button').disabled = true
-    if (ladswards == "wards") {
-      ladWardSwitch()  // switch if it's moved while in wards to a year without them
+    document.getElementById('radio-wards').disabled = true
+    document.getElementById('wards-label').innerText = "Ward data unavailable for " + yearonlyyear.toString()
+    if (areaswitch == "wards") {
+      switchArea()  // switch if it's moved while in wards to a year without them
     }
-    document.getElementById('lad-ward-button').innerText = "Ward data unavailable for " + yearonlyyear.toString()
 
   }
   await updateMap()
