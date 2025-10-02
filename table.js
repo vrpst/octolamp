@@ -48,8 +48,8 @@ function createWardTableData(data) {
   return table_data
 }
 
-export async function createLADTable(chart_data, colors, code) {
-  const data = await createLADTableData(chart_data, code)
+export async function createOtherTable(chart_data, colors, code, areaswitch) {
+  const data = await createOtherTableData(chart_data, code, areaswitch)
   const table = document.createElement('table')
   table.setAttribute('class', 'text')
   for (let i=0; i<data.length; i++){
@@ -81,8 +81,7 @@ export async function createLADTable(chart_data, colors, code) {
   return table
 }   
 
-async function createLADTableData(data, code) {
-  console.log(data)
+async function createOtherTableData(data, code, areaswitch) {
   let table_data = []
   for (let i=0; i<data['parties'].length; i++) {
     let row_data = []
@@ -92,11 +91,10 @@ async function createLADTableData(data, code) {
     if (data['prev_up'] == "INIT") {
       row_data.push('new')
     } else {
-      let prev_data = await getChange(data, code)
+      let prev_data = await getChange(data, code, areaswitch)
       if (!(data['parties'][i] in prev_data)) {
         prev_data[data['parties'][i]] = 0
       }
-      console.log(data['parties'][i], data['seats'][i], prev_data[data['parties'][i]])
       let party_seat_change = data['seats'][i] - prev_data[data['parties'][i]]
       if (party_seat_change < 0) {
         row_data.push(party_seat_change.toString())        
@@ -111,11 +109,9 @@ async function createLADTableData(data, code) {
   return table_data
 }
 
-async function getChange(data, code) {
-  console.log('./data/' + data['prev_up'] + '/' + data['prev_up'] + "-lads.json")
-  const prev = await fetch('./data/' + data['prev_up'] + '/' + data['prev_up'] + "-lads.json")
+async function getChange(data, code, areaswitch) {
+  const prev = await fetch('./data/' + data['prev_up'] + '/' + data['prev_up'] + "-" + areaswitch + ".json")
   const prev_object = await prev.json()
-  console.log(prev_object[code])
   const prev_result = {}
   for (let i=0; i<prev_object[code]['parties'].length; i++) {
     prev_result[prev_object[code]['parties'][i]] = prev_object[code]['seats'][i]

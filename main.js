@@ -9,7 +9,7 @@ import Style from 'ol/style/Style.js';
 import Fill from 'ol/style/Fill';
 import Select from 'ol/interaction/Select.js';
 import { getElectionResult, createBarChart, createLADChart } from './charts';
-import { createWardTable, createLADTable } from './table';
+import { createWardTable, createOtherTable } from './table';
 import { getStrokeToUse, getColorToUse } from '/style' 
 
 let yearonlyflag = false
@@ -86,20 +86,19 @@ async function updateMap() {
     if (yearonlyflag) {
       results_end = "-lads.json"
     } else {
-      results_end = "-lads-past-elections.json"
+      results_end = "-lads-past.json"
     }
-  }
-  else if (areaswitch == "wards") {
+  } else if (areaswitch == "wards") {
     if (yearonlyflag) {
       results_end = "-simplified.json"
     } else {
       results_end = "-past-elections.json"
     }
-  } else {
+  } else if (areaswitch == "cuas") {
     if (yearonlyflag) {
-      results_end = "-lads.json"
+      results_end = "-cuas.json"
     } else {
-      results_end = "-cuas-past-elections.json"
+      results_end = "-cuas-past.json"
     }
   }
   let resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + yearonlyyear.toString() + results_end
@@ -113,7 +112,7 @@ async function updateMap() {
   } else if (areaswitch == "lads") {
     area_code_code = "LAD" + yearonlyyear.toString().slice(2,4) + "CD"
     area_name = "LAD" + yearonlyyear.toString().slice(2,4) + "NM"
-  } else {
+  } else if (areaswitch == "cuas"){
     area_code_code = "CTYUA" + yearonlyyear.toString().slice(2,4) + "CD"
     area_name = "CTYUA" + yearonlyyear.toString().slice(2,4) + "NM"
   }
@@ -214,7 +213,8 @@ async function openPanel(code) {
       document.getElementById('name').insertAdjacentText('beforeend', ", " + resultsjsonObject[code]['election'])
       //const location = "elected " + resultsjsonObject[code]['election'] + ', ' + code //values["WD23NM"] + ',' + ' ' + resultsjsonObject[values[area_code_code]]['county_name']
       document.getElementById('local-authority').innerText = ''
-      document.getElementById('local-authority').insertAdjacentText('beforeend', code)
+      document.getElementById('local-authority').insertAdjacentText('beforeend', getAreaType(resultsjsonObject[code]))
+      document.getElementById('local-authority').insertAdjacentText('beforeend', ' (' + code + ')')
       
       try {
         chart.destroy()
@@ -225,7 +225,6 @@ async function openPanel(code) {
       if (areaswitch == "wards") {
         chart = createBarChart(chart_data, colors)
       } else {
-        console.log("MAINJS", chart_data)
         chart = createLADChart(chart_data, colors)
       }
       
@@ -234,7 +233,8 @@ async function openPanel(code) {
       if (areaswitch == "wards") {
         table = createWardTable(chart_data, colors)
       } else {
-        table = await createLADTable(chart_data, colors, code)
+        console.log("areaer", areaswitch)
+        table = await createOtherTable(chart_data, colors, code, areaswitch)
       }
       document.getElementById('table').insertAdjacentElement('beforeend', table)
     }
@@ -333,4 +333,20 @@ function purgeVectorSource() {
   vectorSource = new VectorSource({
     features: new GeoJSON().readFeatures(geojsonObject),
   });
+}
+
+function getAreaType(area) {
+  const types = {
+    "U": "Unitary authority",
+    "D": "District council",
+    "C": "County council",
+    "M": "Metropolitan borough",
+    "L": "London borough",
+    "S": "Scottish council",
+    "W": "Welsh unitary"}
+  if (areaswitch != "wards") {
+    return types[area['type']]
+  } else {
+    return "Ward"
+  }
 }
