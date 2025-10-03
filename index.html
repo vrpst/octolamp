@@ -34,7 +34,7 @@
       <div id="hover-container">
         <p id="hover-name"></p>
       </div>
-      <button id="only" class="right-button border sb-top-padding sb-background">2025 only</button>
+      <button id="noc-plurality" class="border sb-top-padding sb-background">Show largest party</button>
       <form id="area-switch" class="border sb-top-padding sb-background">
         <input type="radio" id="radio-cuas" name="area" value="cuas">
         <label for="radio-cuas">County councils & unitary authorities</label><br>
@@ -43,6 +43,12 @@
         <input type="radio" id="radio-wards" name="area" value="wards" disabled="true">
         <label id="wards-label" class="ward-disable" for="radio-wards">Ward data unavailable for 2025</label>
       </form>
+      <div id="filters">
+        <button id="filter-gain" class="border sb-background filter-buttons filter-left">Gains only</button>
+        <button id="filter-flip" class="border sb-background filter-buttons filter-right">Flips only</button>
+        <button id="filter-year" class="border sb-background filter-buttons filter-left">2025 only</button>
+        <button id="filter-flip" class="border sb-background filter-buttons filter-right">Show decreases</button>
+      </div>
     </div> 
     <div id="bottom-container">
       <p id="bottom-text"><a href="about.html">About</a> · <a href="https://github.com/vrpst/octolamp">GitHub</a> · updated September 2025</p>

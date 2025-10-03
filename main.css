@@ -57,7 +57,24 @@ table {
     height: fit-content;
 }
 
-#only {
+#filters {
+    width: 100%;
+}
+
+.filter-buttons {
+    width: 48%;
+    margin-top: 1dvh;
+}
+
+.filter-left {
+    margin-right: 1.3%;
+}
+
+.filter-right {
+    margin-left: 1.3%;
+}
+
+#noc-plurality {
     width: 100%;
 }
 

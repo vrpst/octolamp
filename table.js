@@ -121,8 +121,7 @@ async function createOtherTableData(data, code, areaswitch) {
 }
 
 async function getChange(data, code, areaswitch) {
-  console.log('./data/' + data['prev_up'] + '/' + data['prev_up'] + "-" + areaswitch + ".json")
-  const prev = await fetch('./data/' + data['prev_up'] + '/' + data['prev_up'] + "-" + areaswitch + ".json")
+  const prev = await fetch('./data/' + data['prev_up'] + '/' + areaswitch + '/' + data['prev_up'] + "-" + areaswitch + ".json")
   const prev_object = await prev.json()
   const prev_result = {}
   for (let i=0; i<prev_object[code]['parties'].length; i++) {
