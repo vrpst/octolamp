@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node server.js",
-    "build": "vite build && vite",
+    "build": "vite build && vite --host",
     "serve": "vite preview"
   },
   "devDependencies": {

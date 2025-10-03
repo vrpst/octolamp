@@ -1,120 +1,103 @@
+/* BIG GENERAL THINGS */
+
 html {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.center {
+input {
+    margin-top: 0.5dvh;
+    margin-bottom: 0.5dvh;
     width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
 }
 
-input {
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+.sb-top-padding {
+    margin-top: 2dvh;
+}
+
+th, td {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 0px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table {
+    display: inline;
+    border-collapse: collapse;
+}
+
+.sb-background {
+    background-color: #F8F8F8;
+}
+
+.border {
+    border: 2px solid #AAAAAA;
+    border-radius: 5px;
+}
+
+/* SIDEBAR AND PIECES */
+
+#sidebar {
+    position: fixed;
+    top: 0dvh;
+    right: 0dvw;
+    width: 20dvw;
+    height: fit-content;
+    max-height: 90%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-right: 2dvw;
+    padding-top: 3dvh;
 }
 
 #area-switch {
-    position: fixed;
-    top: 60vh;
-    right: 0vw;
-    width: 20vw;
+    font-size: 14px;
+    width: 99%;
     height: fit-content;
-    border: 2px solid #AAAAAA;
-    border-radius: 5px;
-    margin: 2vw;
-    background-color: #F8F8F8;
-}
-
-#box {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 10vw;
-  background-color: #AAAAAA;
-}
-
-#infobox {  
-    position: fixed;
-    top: 0vh;
-    right: 0vw;
-    width: 20vw;
-    height: fit-content;
-    border: 2px solid;
-    border-color: #AAAAAA;
-    border-radius: 5px;
-    margin: 2vw;
-    background-color: #F8F8F8;
 }
 
 #only {
-    top: 85vh;
+    width: 100%;
 }
 
-#lad-ward-button {
-    top: 90vh;
-}
-
-.right-button {
-    position: fixed;
-    right: 0vw;
-    width: 20vw;
-    height: fit-content;
-    border: 2px solid #AAAAAA;
-    border-radius: 5px;
-    margin: 2vw;
-    background-color: #F8F8F8;
-
-}
 #name {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 1vh;
-    overflow: hidden;
+    margin-bottom: 1dvh;
+    overflow: scroll;
 }
 
 #colorbar {
     background-color: #D8D8D8;
     margin: none;
-    height: 1.2vh;
+    height: 1.2dvh;
     width: 100%;
     margin-bottom: 2%;
 }
 
-#slider {
-    position: fixed;
-    top: 73vh;
-    right: 0vw;
-    width: 18vw;
-    height: fit-content;
-    border: 2px solid #AAAAAA;
-    border-radius: 5px;
-    margin: 2vw;
-    padding: 1vw;
-    background-color: #F8F8F8;
+#daterange {
+    width: 99%;
 }
 
-#daterange {
-    width: 18vw;
-}
 #infobox-content {
     margin-left: auto;
     margin-right: auto;
-    width: fit-content;
+    width: 85%;
 }
 
 #local-authority {
     font-size: 16px;
-    margin-top: 0vh;
-    margin-bottom: 2vh;
+    margin-top: 0dvh;
+    margin-bottom: 2dvh;
 }
 
 #result {
     font-size: 22px;
     font-weight: bold;
-    padding-left: 1vw;
-    padding-right: 1vw;
+    padding-left: 1dvw;
+    padding-right: 1dvw;
     margin-left: auto;
     margin-right: auto;
     width: fit-content;
@@ -129,13 +112,15 @@ input {
     margin-bottom: 5%;
 }
 
-.slider-text {
-    font-size: 18px;
-    font-weight: bold;
+#slider-year {
+    margin-bottom: 0px;
+    width: fit-content;
 }
 
-#slider-year {
-    margin: 0vh;
+#slider-content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
 }
 
 td {
@@ -143,8 +128,8 @@ td {
 }
 
 .cell-change {
-    padding-right: none;
-    padding-left: 1vw;
+    padding-right: 3px;
+    padding-left: 1dvw;
     text-align: right;
     font-weight: bold;
 }
@@ -158,8 +143,8 @@ td {
 }
 
 .cell-standard {
-    padding-left: 0.5vw;
-    padding-right: 1vw;
+    padding-left: 3px;
+    padding-right: 20px;
 }
 
 .cell-color {
@@ -173,22 +158,22 @@ td {
 }
 
 #hover-container {
-    margin-bottom: 1vh;
+    margin-bottom: 1dvh;
     position: fixed;
-    bottom: 2vh;
-    left: 1vh;
+    bottom: 2dvh;
+    left: 1dvh;
     background-color: rgba(256,256,256, 0.6);
-    padding-left: 1vw;
-    padding-right: 2vw;
+    padding-left: 1dvw;
+    padding-right: 2dvw;
     border-radius: 1px
 }
 
 #bottom-container {
     position: fixed;
-    bottom: 0vh;
+    bottom: 0dvh;
     height: fit-content;
     background-color: rgba(256,256,256, 0.8);
-    width: 100vw;
+    width: 100dvw;
 }
 
 #bottom-text {

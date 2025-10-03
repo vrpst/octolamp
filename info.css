@@ -1,9 +1,5 @@
 html {
     font-family: Helvetica, Arial, sans-serif;
-    background-image: url('background.png');
-    background-size: cover;
-    background-attachment: fixed;
-    margin: 0;
 }
 
 h1 {

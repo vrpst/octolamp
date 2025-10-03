@@ -53,29 +53,38 @@ export async function createOtherTable(chart_data, colors, code, areaswitch) {
   const table = document.createElement('table')
   table.setAttribute('class', 'text')
   for (let i=0; i<data.length; i++){
+      let table_width = 4
       let row = table.insertRow(-1)
-
       let color = row.insertCell(0)
       let party = row.insertCell(1)
       let share = row.insertCell(2)
-      let change = row.insertCell(3)
+      let change = null
       color.setAttribute('class', 'cell-color')
       party.setAttribute('class', 'cell-standard')
       share.setAttribute('class', 'cell-standard')
-      change.setAttribute('class', 'cell-change')
 
-      let row_data = [color, party, share, change]
+      let row_data = [color, party, share]
+      if (chart_data['prev_up'] == "DATA") {
+        table_width = 3
+        row_data = [color, party, share]
+      } else {
+        change = row.insertCell(3)
+        change.setAttribute('class', 'cell-change')
+        row_data.push(change)
+      }
 
-      for (let j=0; j<4; j++) {
+      for (let j=0; j<table_width; j++) {
           let text_to_insert = document.createTextNode(data[i][j])
           color.style.backgroundColor = colors[chart_data["parties"][i]]
           row_data[j].appendChild(text_to_insert)
       
       }
-      if (row_data[3].innerText.slice(0,1) == "+") {
-        row_data[3].setAttribute('class', 'cell-change cell-change-positive')
-      } else if (row_data[3].innerText.slice(0,1) == "-") {
-        row_data[3].setAttribute('class', 'cell-change cell-change-negative')
+      if (chart_data['prev_up'] != "DATA") {
+        if (row_data[3].innerText.slice(0,1) == "+") {
+          row_data[3].setAttribute('class', 'cell-change cell-change-positive')
+        } else if (row_data[3].innerText.slice(0,1) == "-") {
+          row_data[3].setAttribute('class', 'cell-change cell-change-negative')
+        }
       }
   } 
   return table
@@ -90,6 +99,8 @@ async function createOtherTableData(data, code, areaswitch) {
     row_data.push(data['seats'][i])
     if (data['prev_up'] == "INIT") {
       row_data.push('new')
+    } else if (data['prev_up'] == "DATA") {
+      row_data.push('')
     } else {
       let prev_data = await getChange(data, code, areaswitch)
       if (!(data['parties'][i] in prev_data)) {
@@ -110,6 +121,7 @@ async function createOtherTableData(data, code, areaswitch) {
 }
 
 async function getChange(data, code, areaswitch) {
+  console.log('./data/' + data['prev_up'] + '/' + data['prev_up'] + "-" + areaswitch + ".json")
   const prev = await fetch('./data/' + data['prev_up'] + '/' + data['prev_up'] + "-" + areaswitch + ".json")
   const prev_object = await prev.json()
   const prev_result = {}

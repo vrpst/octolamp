@@ -33,7 +33,8 @@ def hashName2019(thing):
 with open(f'./geodata/lads/lads-2019.geojson', ) as g2:  # thank you stack overflow
     geo = json.load(g2)      
     geo = geo['features']  
-def generateResults(tp, years, output):
+def generateResults(tp, output):
+    years = ["2025", "2023", "2022", "2021", "2019", "2018", "2017", "2016"]
     for year in years:
         print(year)
         df = pd.read_csv(f'./csvs/lads/{year}.csv')
@@ -108,6 +109,7 @@ def generateResults(tp, years, output):
         f.write(json.dumps(data, ensure_ascii=True))
 
     # GET FLIPS AND PREVIOUS ELECTION DATES
+    years = ["2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016"]
     flips = years.copy()
     flips.reverse()
     flips = flips[:-1]
@@ -175,5 +177,5 @@ def generateResults(tp, years, output):
         with open(f'./data/{y}/{y}-{output}.json', "w") as x:
             x.write(json.dumps(g, ensure_ascii=True))
 
-generateResults("LAD", ["2025", "2023", "2022", "2021", "2019", "2018", "2017", "2016"], "lads")
-generateResults("CUA", ["2025", "2023", "2022", "2021", "2019", "2018", "2017", "2016"], "cuas")
+generateResults("LAD", "lads")
+generateResults("CUA", "cuas")

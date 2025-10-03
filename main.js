@@ -25,10 +25,11 @@ let area_code_code = null
 let area_name = null
 
 let chart = null
-let areaswitch = "lads"
+let areaswitch = "cuas"
 
 let vectorSource = null
-document.getElementById("daterange").value = 2025  
+document.getElementById("daterange").value = 2025 
+document.getElementById("radio-cuas").checked = "checked"  
 
 const colors = {
   LAB: "#E4003B",   //[228, 0, 59],
@@ -51,36 +52,28 @@ document.getElementById("slider-year").innerText = "Year: " + document.getElemen
 document.getElementById("only").innerText = document.getElementById("daterange").value + " only"
 
 function switchArea() { //REDO
-  if (areaswitch == "lads") {
-    areaswitch = "wards"
-    document.getElementById('lad-ward-button').innerText = ('View LAD data for ' + yearonlyyear.toString())
-    colors['OTH'] = "#964B00"
-
-  } else {
-    areaswitch = "lads"
-    document.getElementById('lad-ward-button').innerText = ('View ward data for ' + yearonlyyear.toString())
-    colors['OTH'] = "#F4A8FF"
-  }
-}
-
-document.getElementById("area-switch").oninput = async function() {
   areaswitch = document.querySelector('input[name="area"]:checked').value
   if (areaswitch == "wards") {
       colors['OTH'] = "#964B00"
   } else {
       colors['OTH'] = "#F4A8FF"
   }
-  await updateMap()  // get new geojson
+}
+
+document.getElementById("area-switch").oninput = async function() {
+  switchArea()
+  await updateMap(true)  // get new geojson
   vectorSource.clear()
   purgeVectorSource()
   purgeMap()
 }
 
-async function updateMap() {
-  let geojsonstring = './geodata/' + areaswitch + '/' + areaswitch + '-' + yearonlyyear.toString() + '.geojson'
-  geojson = await fetch(geojsonstring)
-  geojsonObject = await geojson.json()
-
+async function updateMap(geoswitch) {
+  if (geoswitch) {
+    let geojsonstring = './geodata/' + areaswitch + '/' + areaswitch + '-' + yearonlyyear.toString() + '.geojson'
+    geojson = await fetch(geojsonstring)
+    geojsonObject = await geojson.json()
+  }
   let results_end = null  // get the right results file
   if (areaswitch == "lads") {
     if (yearonlyflag) {
@@ -118,7 +111,7 @@ async function updateMap() {
   }
 }
 
-await updateMap()  // get the data
+await updateMap(true)  // get the data
 purgeVectorSource()  // create the source vector map using new data
 
 const selected = new Style({  // style for selected object
@@ -164,6 +157,7 @@ let map = new Map({  // create map object
     extent: [-500000, -100000, 1500000, 1300000],
     zoom: 8.2,
     maxZoom: 18,
+    enableRotation: false,
   }),
 });
 
@@ -225,19 +219,28 @@ async function openPanel(code) {
       document.getElementById('name').insertAdjacentText('beforeend', ", " + resultsjsonObject[code]['election'])
       //const location = "elected " + resultsjsonObject[code]['election'] + ', ' + code //values["WD23NM"] + ',' + ' ' + resultsjsonObject[values[area_code_code]]['county_name']
       const la = document.getElementById('local-authority')
-      la.innerText = ''
-      la.insertAdjacentText('beforeend', getAreaType(resultsjsonObject[code]))
-      la.insertAdjacentText('beforeend', ' [' + code + ']')
-      
-      try {
-        chart.destroy()
-      } catch {
-        //not needed
-      }
+      la.innerText = ""
+
+      la.insertAdjacentText('beforeend', getAreaType(resultsjsonObject[code]) + '; ')
+      const lac = document.createElement('code')
+      lac.setAttribute('id', 'local-authority-code')
+      lac.insertAdjacentText('beforeend', code)
+      la.insertAdjacentElement('beforeend', lac)
+
       const chart_data = await getElectionResult(code, resultsjsonObject[code]['election'], areaswitch)
-      if (areaswitch == "wards") {
+      if (areaswitch == "wards") {      
+        try {
+          chart.destroy()
+        } catch {
+          //not needed
+        }
         chart = createBarChart(chart_data, colors)
-      } else {
+      } else {         
+        try {
+          chart.destroy()
+        } catch {
+          //not needed
+        }
         chart = createLADChart(chart_data, colors)
       }
       
@@ -275,7 +278,7 @@ document.getElementById("only").addEventListener('click', async function() {
   else {
       document.getElementById("only").innerText = yearonlyyear + " only"
   }
-  await updateMap()
+  await updateMap(false)
   purgeMap()
 })
 
@@ -289,9 +292,7 @@ document.getElementById("daterange").oninput = async function() {
     }
   if (ward_years.includes(yearonlyyear)) {
     document.getElementById('radio-wards').disabled = false
-    if (areaswitch == "wards") {
-      document.getElementById('lad-ward-button').innerText = ('View LAD data for ' + yearonlyyear.toString())
-    } else {
+    if (areaswitch != "wards") {
       document.getElementById('wards-label').innerText = 'Wards'
       document.getElementById('wards-label').classList.remove('ward-disable')
 
@@ -300,31 +301,16 @@ document.getElementById("daterange").oninput = async function() {
     document.getElementById('radio-wards').disabled = true
     document.getElementById('wards-label').innerText = "Ward data unavailable for " + yearonlyyear.toString()
     document.getElementById('wards-label').classList.add('ward-disable')
+    document.getElementById("radio-lads").checked = "checked"  
     if (areaswitch == "wards") {
       switchArea()  // switch if it's moved while in wards to a year without them
     }
 
   }
-  await updateMap()
-
+  await updateMap(true)
   vectorSource.clear()
-  vectorSource = new VectorSource({
-    features: new GeoJSON().readFeatures(geojsonObject),
-  });
-
-  map.removeLayer(vectorLayer)
-
-  vectorLayer = new VectorLayer({
-    source: vectorSource,
-    style: styleFunction,
-  });
-
-  vectorLayer.getSource().on('addfeature', function (event) {
-    const feature = event.feature;
-  })
-
-  map.addLayer(vectorLayer)
-  map.render()
+  purgeVectorSource()
+  purgeMap()
 
   if (!yearonlyflag) {
     document.getElementById("only").innerText = yearonlyyear + " only"
