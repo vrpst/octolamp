@@ -102,13 +102,13 @@ async function updateMap() {
     }
   }
   let resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + yearonlyyear.toString() + results_end
-  console.log(resultsjsonstring)
   resultsjson = await fetch(resultsjsonstring)
   resultsjsonObject = await resultsjson.json()
   
   if (areaswitch == "wards") {
     area_code_code = "WD" + yearonlyyear.toString().slice(2,4) + "CD"
     area_name = "WD" + yearonlyyear.toString().slice(2,4) + "NM"
+    clearResult()
   } else if (areaswitch == "lads") {
     area_code_code = "LAD" + yearonlyyear.toString().slice(2,4) + "CD"
     area_name = "LAD" + yearonlyyear.toString().slice(2,4) + "NM"
@@ -205,16 +205,33 @@ map.on('click', async function (evt) {
 // RENDER INFO PANEL
 async function openPanel(code) {
   if ((!yearonlyflag) || (yearonlyflag && code in resultsjsonObject)) {  // if any year OR only one year and the location is in the results
-    document.getElementById('colorbar').style.backgroundColor = getColorToUse(resultsjsonObject[code], colors, area_code_code)
+    const ctu = getColorToUse(resultsjsonObject[code], colors, area_code_code)
+    if (areaswitch != "wards" ) {
+      const result = document.getElementById('result')
+      console.log(resultsjsonObject[code]['control'])
+      if (['OTH', 'PC'].includes(resultsjsonObject[code]['control'])) {
+        result.style.color = "#FFFFFF"
+      } else {
+        result.style.color = "#000000"
+      }
+      result.style.backgroundColor = ctu
+      if (resultsjsonObject[code]["flip"] == "true") {
+        document.getElementById('result-text').innerText = resultsjsonObject[code]['control'] + " GAIN"
+      } else {
+        document.getElementById('result-text').innerText = resultsjsonObject[code]['control'] + " HOLD"
+      }
+    }
+    document.getElementById('colorbar').style.backgroundColor = ctu
     if (resultsjsonObject[code] == "NONE") {
       showNoData()
     } 
     else {
       document.getElementById('name').insertAdjacentText('beforeend', ", " + resultsjsonObject[code]['election'])
       //const location = "elected " + resultsjsonObject[code]['election'] + ', ' + code //values["WD23NM"] + ',' + ' ' + resultsjsonObject[values[area_code_code]]['county_name']
-      document.getElementById('local-authority').innerText = ''
-      document.getElementById('local-authority').insertAdjacentText('beforeend', getAreaType(resultsjsonObject[code]))
-      document.getElementById('local-authority').insertAdjacentText('beforeend', ' (' + code + ')')
+      const la = document.getElementById('local-authority')
+      la.innerText = ''
+      la.insertAdjacentText('beforeend', getAreaType(resultsjsonObject[code]))
+      la.insertAdjacentText('beforeend', ' [' + code + ']')
       
       try {
         chart.destroy()
@@ -233,7 +250,6 @@ async function openPanel(code) {
       if (areaswitch == "wards") {
         table = createWardTable(chart_data, colors)
       } else {
-        console.log("areaer", areaswitch)
         table = await createOtherTable(chart_data, colors, code, areaswitch)
       }
       document.getElementById('table').insertAdjacentElement('beforeend', table)
@@ -246,12 +262,13 @@ async function openPanel(code) {
 
 // DON'T SHOW ANYTHING IF NO DATA
 function showNoData() {
-    try {
-      chart.destroy()
-    } catch {}
-    document.getElementById('colorbar').style.backgroundColor = "#D1D1D1"
-    document.getElementById('table').innerText = ""
-    document.getElementById('local-authority').innerText = "No data"
+  clearResult()
+  try {
+    chart.destroy()
+  } catch {}
+  document.getElementById('colorbar').style.backgroundColor = "#D1D1D1"
+  document.getElementById('table').innerText = ""
+  document.getElementById('local-authority').innerText = "No data"
 }
 
 // UPDATE MAP FOR BUTTON SHOWING ONLY RESULTS FROM THAT YEAR
@@ -279,11 +296,14 @@ document.getElementById("daterange").oninput = async function() {
     if (areaswitch == "wards") {
       document.getElementById('lad-ward-button').innerText = ('View LAD data for ' + yearonlyyear.toString())
     } else {
-      document.getElementById('radio-wards').innerText = 'Wards'
+      document.getElementById('wards-label').innerText = 'Wards'
+      document.getElementById('wards-label').classList.remove('ward-disable')
+
     }
   } else {
     document.getElementById('radio-wards').disabled = true
     document.getElementById('wards-label').innerText = "Ward data unavailable for " + yearonlyyear.toString()
+    document.getElementById('wards-label').classList.add('ward-disable')
     if (areaswitch == "wards") {
       switchArea()  // switch if it's moved while in wards to a year without them
     }
@@ -349,4 +369,9 @@ function getAreaType(area) {
   } else {
     return "Ward"
   }
+}
+
+function clearResult() {
+    document.getElementById('result-text').innerText = ''
+    document.getElementById('result').style = ''
 }

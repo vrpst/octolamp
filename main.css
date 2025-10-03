@@ -1,4 +1,4 @@
-.text {
+html {
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -7,6 +7,11 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+}
+
+input {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
 }
 
 #area-switch {
@@ -35,7 +40,8 @@
     right: 0vw;
     width: 20vw;
     height: fit-content;
-    border: 2px solid #AAAAAA;
+    border: 2px solid;
+    border-color: #AAAAAA;
     border-radius: 5px;
     margin: 2vw;
     background-color: #F8F8F8;
@@ -64,14 +70,14 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     font-weight: bold;
-    margin: none;
+    margin-bottom: 1vh;
     overflow: hidden;
 }
 
 #colorbar {
     background-color: #D8D8D8;
     margin: none;
-    height: 1vh;
+    height: 1.2vh;
     width: 100%;
     margin-bottom: 2%;
 }
@@ -99,12 +105,20 @@
 }
 
 #local-authority {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    /*font-style: italic;*/
-    margin: none;
-    margin-bottom: 5vh;
-    line-height: 0%;
+    margin-top: 0vh;
+    margin-bottom: 2vh;
+}
+
+#result {
+    font-size: 22px;
+    font-weight: bold;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+
 }
 
 #table {
@@ -183,6 +197,9 @@ td {
     width: fit-content;
     margin-top: 5px;
     margin-bottom: 5px;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: small;
+}
+
+.ward-disable {
+    color: #AAAAAA;
 }
