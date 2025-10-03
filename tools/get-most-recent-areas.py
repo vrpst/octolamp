@@ -24,5 +24,5 @@ def getMostRecent(ls, output, cd):
         with open(f'./data/20{y}/20{y}-{output}-past.json', 'w') as h:
             h.write(json.dumps(data, ensure_ascii=True))
 
-getMostRecent([25, 24, 23, 22, 21, 19, 18, 17], "lads", "LAD")  # DO LADS
-getMostRecent([25, 24, 23, 22, 21, 18, 17], "cuas", "CTYUA")  # DO LADS
+getMostRecent([25, 24, 23, 22, 21, 19, 18, 17, 16], "lads", "LAD")  # DO LADS
+getMostRecent([25, 24, 23, 22, 21, 19, 18, 17, 16], "cuas", "CTYUA")  # DO LADS

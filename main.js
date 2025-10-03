@@ -209,17 +209,13 @@ async function openPanel(code) {
     if (areaswitch != "wards" ) {
       const result = document.getElementById('result')
       console.log(resultsjsonObject[code]['control'])
-      if (['OTH', 'PC'].includes(resultsjsonObject[code]['control'])) {
+      if (resultsjsonObject[code]['control'] == "PC") {
         result.style.color = "#FFFFFF"
       } else {
         result.style.color = "#000000"
       }
       result.style.backgroundColor = ctu
-      if (resultsjsonObject[code]["flip"] == "true") {
-        document.getElementById('result-text').innerText = resultsjsonObject[code]['control'] + " GAIN"
-      } else {
-        document.getElementById('result-text').innerText = resultsjsonObject[code]['control'] + " HOLD"
-      }
+      getResultText(resultsjsonObject[code])
     }
     document.getElementById('colorbar').style.backgroundColor = ctu
     if (resultsjsonObject[code] == "NONE") {
@@ -374,4 +370,20 @@ function getAreaType(area) {
 function clearResult() {
     document.getElementById('result-text').innerText = ''
     document.getElementById('result').style = ''
+}
+
+function getResultText(info) {
+  if (info["flip"] == "true") {
+    if (info["control"] == "NOC") {
+      document.getElementById('result-text').innerText = info['prev_control'] + " LOSS"
+    } else {
+      document.getElementById('result-text').innerText = info['control'] + " GAIN FROM " +  info['prev_control']
+    } 
+  } else if (info["flip"] == "INIT") {
+      document.getElementById('result-text').innerText = info['control'] + " INIT"
+  } else if (info["flip"] == "DATA") {
+    document.getElementById('result-text').innerText = info['control']
+  } else {
+      document.getElementById('result-text').innerText = info['control'] + " HOLD"
+  }   
 }

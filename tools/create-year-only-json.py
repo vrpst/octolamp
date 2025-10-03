@@ -14,7 +14,25 @@ def checkValid(tocheck, typ):  # CHECK IF THE DATA APPLIES TO THE DESIRED TYPE
             return False
     else:
         raise ValueError
-        
+    
+def hashName2019(thing):
+    thing = thing.lower()
+    thing = thing.replace(' ', '')
+    thing = thing.replace('-','')
+    thing = thing.replace("'","")
+    thing = thing.replace("&","")
+    thing = thing.replace("and","")
+    thing = thing.replace("upon","on")
+    thing = thing.replace(",","")
+    thing = thing.replace("countyof","")
+    thing = thing.replace("cityof","")
+    thing = thing.replace("the","")
+    thing = thing.replace("kingstonon","")
+    return thing
+
+with open(f'./geodata/lads/lads-2019.geojson', ) as g2:  # thank you stack overflow
+    geo = json.load(g2)      
+    geo = geo['features']  
 def generateResults(tp, years, output):
     for year in years:
         print(year)
@@ -25,10 +43,17 @@ def generateResults(tp, years, output):
             if name in df:
                 data[code]["parties"].append(name)
                 data[code]["seats"].append(int(df.loc[i][name]))
-
+        
+        if year == "2019":
+            places = {}
+            for place in geo:
+                places[hashName2019(place['properties']['LAD19NM'])] = place['properties']['LAD19CD']
         for i in range(len(df)):
             if checkValid(df.loc[i]['TYPE'], tp):
-                code = df.loc[i]['CODE']
+                if year != "2019":
+                    code = df.loc[i]['CODE']
+                else:
+                    code = places[hashName2019(df.loc[i]['NAME'])]
                 data[code] = {
                     "total": int(df.loc[i]['TOTAL']),
                     "parties": ["CON", "LAB", "LD"],
@@ -38,6 +63,7 @@ def generateResults(tp, years, output):
                 checkInCSV("SNP")
                 checkInCSV("PC")
                 checkInCSV("REF")
+                checkInCSV("UKIP")
                 checkInCSV("OTH")
 
                 if max(data[code]['seats']) > 0.5*data[code]['total']:
@@ -113,6 +139,10 @@ def generateResults(tp, years, output):
                     y[m]['flip'] = "true"
                 else:
                     y[m]['flip'] = "false"
+            elif (int(i) <= 2017 and m[:1] in ['S', 'W']) or (int(i) < 2019) or (int(i) == 2019 and (m not in ['E07000244', 'E07000246', 'E07000245', 'E06000058', ' E06000059'])) :  # GET TYPES AND DO IT THEN
+                y[m]['prev_up'] = "DATA"
+                y[m]['prev_control'] = "DATA"
+                y[m]['flip'] = "DATA"
             else:
                 y[m]['prev_up'] = "INIT"
                 y[m]['prev_control'] = "INIT"
@@ -145,5 +175,5 @@ def generateResults(tp, years, output):
         with open(f'./data/{y}/{y}-{output}.json', "w") as x:
             x.write(json.dumps(g, ensure_ascii=True))
 
-generateResults("LAD", ["2025", "2023", "2022", "2021", "2018", "2017", "2016"], "lads")
-generateResults("CUA", ["2025", "2023", "2022", "2021", "2018", "2017", "2016"], "cuas")
+generateResults("LAD", ["2025", "2023", "2022", "2021", "2019", "2018", "2017", "2016"], "lads")
+generateResults("CUA", ["2025", "2023", "2022", "2021", "2019", "2018", "2017", "2016"], "cuas")

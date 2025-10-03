@@ -10,6 +10,122 @@
       <h1>Octolamp</h1>
       <h2>About</h2>
       <p>Octolamp is a data visualization tool for viewing United Kingdom local election results. It started as what I thought would be a simple holiday project to build a web app for my politics-obsessed brother, but eventually grew to be a lot bigger. If you're curious about how it works under the hood, check out the relevant page on my website. If you're confused about what you're seeing, check out the <a href="explanation.html">explanation</a> page.</p>
+      <h2>Terminology</h2>
+      <div id="tables">
+        <table>
+          <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Color</th>
+            <th>Notes</th>
+          </tr>
+          <tr>
+            <td>CON</td>
+            <td>Conservative</td>
+            <td style="background-color:#0087DC;"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>LAB</td>
+            <td>Labour</td>
+            <td style="background-color:#E4003B;"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>LD</td>
+            <td>Liberal Democrat</td>
+            <td style="background-color:#FDBB30;"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>REF</td>
+            <td>Reform UK</td>
+            <td style="background-color:#00BED6;"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>GRN</td>
+            <td>Green</td>
+            <td style="background-color:#02A95B;"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>SNP</td>
+            <td>Scottish National Party</td>
+            <td style="background-color:#FDF38E;"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>PC</td>
+            <td>Plaid Cymru</td>
+            <td style="background-color:#005B54;"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>UKIP</td>
+            <td>UK Independence Party</td>
+            <td style="background-color:#9507DB;"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>NOC/MIX</td>
+            <td>Independent</td>
+            <td style="background-color:#F4A8FF;"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>IND</td>
+            <td>Independent</td>
+            <td style="background-color:#F4A8FF;"></td>
+            <td></td>
+          </tr>
+          <tr>
+          <tr>
+            <td>OTH</td>
+            <td>Other party (wards only)</td>
+            <td style="background-color:#964B00;"></td>
+            <td>Only used for wards</td>
+          </tr>
+          <td>OTH</td>
+            <td>Other party or independent</td>
+            <td style="background-color:#F4A8FF;"></td>
+            <td>Non-ward data groups them together</td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <th>Word</th>
+            <th>Definition</th>
+          </tr>
+          <tr>
+            <td>GAIN</td>
+            <td>Won control of a council from another party's control or no overall control.</td>
+          </tr>
+          <tr>
+            <td>FLIP</td>
+            <td>Won control of a council from another party's control. This is only used as a filter.</td>
+          </tr>
+          <tr>
+            <td>HOLD</td>
+            <td>No change to council control.</td>
+          </tr>
+          <tr>
+            <td>INIT</td>
+            <td>The first election for the council, i.e. no gain/flip or hold.</td>
+          </tr>
+          <tr>
+            <td>INC</td>
+            <td>The party that gained the most seats in the election.</td>
+          </tr>
+          <tr>
+            <td>DEC</td>
+            <td>The party that lost the most seats in the election.</td>
+          </tr>
+          <tr>
+            <td colspan="2"><div id="table-gov-info">Explanations of local government terms are available <a href="explanation.html">here</a>.</div></td>
+          </tr>
+        </table>
+      </div>
       <h2>Notes</h2>
       <h3>Wards</h3>
       <ul>

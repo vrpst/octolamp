@@ -20,3 +20,24 @@ h2 {
     margin-left: 10vw;
     margin-right: 10vw;
 }
+
+th, td {
+    padding: 5px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table {
+    display: inline;
+    border-collapse: collapse;
+}
+
+#table-gov-info {
+    width: fit-content;
+    margin: auto;
+}
+
+code {
+    font-size: larger;
+    color: green;
+}
