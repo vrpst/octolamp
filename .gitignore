@@ -1,6 +1,5 @@
 node_modules/
 dist/
-data/
 geodata/
 CBP9545-detailed-results-for-download.csv
 csvs/

@@ -1,0 +1,7614 @@
+{
+    "E05007568": {
+        "name": "Marine",
+        "control": "IND"
+    },
+    "E05007562": {
+        "name": "Buckingham",
+        "control": "LAB"
+    },
+    "E05007563": {
+        "name": "Churchill",
+        "control": "LAB"
+    },
+    "E05007564": {
+        "name": "Cokeham",
+        "control": "LAB"
+    },
+    "E05007565": {
+        "name": "Eastbrook",
+        "control": "LAB"
+    },
+    "E05007566": {
+        "name": "Hillside",
+        "control": "LAB"
+    },
+    "E05007567": {
+        "name": "Manor",
+        "control": "CON"
+    },
+    "E05007569": {
+        "name": "Mash Barn",
+        "control": "LAB"
+    },
+    "E05007570": {
+        "name": "Peverel",
+        "control": "LAB"
+    },
+    "E05007571": {
+        "name": "St Mary's",
+        "control": "LAB"
+    },
+    "E05007572": {
+        "name": "St Nicolas",
+        "control": "GREEN"
+    },
+    "E05007573": {
+        "name": "Southlands",
+        "control": "LAB"
+    },
+    "E05007574": {
+        "name": "Southwick Green",
+        "control": "LAB"
+    },
+    "E05007575": {
+        "name": "Widewater",
+        "control": "LAB"
+    },
+    "E05000976": {
+        "name": "Central",
+        "control": "LAB"
+    },
+    "E05000977": {
+        "name": "Cudworth",
+        "control": "LAB"
+    },
+    "E05000978": {
+        "name": "Darfield",
+        "control": "LAB"
+    },
+    "E05000979": {
+        "name": "Darton East",
+        "control": "LD"
+    },
+    "E05000980": {
+        "name": "Darton West",
+        "control": "LAB"
+    },
+    "E05000981": {
+        "name": "Dearne North",
+        "control": "LAB"
+    },
+    "E05000982": {
+        "name": "Dearne South",
+        "control": "LAB"
+    },
+    "E05000983": {
+        "name": "Dodworth",
+        "control": "LD"
+    },
+    "E05000984": {
+        "name": "Hoyland Milton",
+        "control": "LAB"
+    },
+    "E05000985": {
+        "name": "Kingstone",
+        "control": "LD"
+    },
+    "E05000986": {
+        "name": "Monk Bretton",
+        "control": "LAB"
+    },
+    "E05000987": {
+        "name": "North East",
+        "control": "LAB"
+    },
+    "E05000988": {
+        "name": "Old Town",
+        "control": "LAB"
+    },
+    "E05000989": {
+        "name": "Penistone East",
+        "control": "LAB"
+    },
+    "E05000990": {
+        "name": "Penistone West",
+        "control": "LD"
+    },
+    "E05000991": {
+        "name": "Rockingham",
+        "control": "LAB"
+    },
+    "E05000992": {
+        "name": "Royston",
+        "control": "LAB"
+    },
+    "E05000993": {
+        "name": "St Helens",
+        "control": "LAB"
+    },
+    "E05000994": {
+        "name": "Stairfoot",
+        "control": "LAB"
+    },
+    "E05000995": {
+        "name": "Wombwell",
+        "control": "LAB"
+    },
+    "E05000996": {
+        "name": "Worsbrough",
+        "control": "LAB"
+    },
+    "E05015637": {
+        "name": "Billericay East",
+        "control": "CON"
+    },
+    "E05015649": {
+        "name": "Wickford North",
+        "control": "OTH"
+    },
+    "E05015638": {
+        "name": "Billericay West",
+        "control": "CON"
+    },
+    "E05015641": {
+        "name": "Fryerns",
+        "control": "LAB"
+    },
+    "E05015642": {
+        "name": "Laindon Park",
+        "control": "LAB"
+    },
+    "E05015644": {
+        "name": "Lee Chapel North",
+        "control": "LAB"
+    },
+    "E05015646": {
+        "name": "Pitsea North West",
+        "control": "LAB"
+    },
+    "E05015639": {
+        "name": "Burstead",
+        "control": "CON"
+    },
+    "E05015640": {
+        "name": "Castledon and Crouch",
+        "control": "CON"
+    },
+    "E05015643": {
+        "name": "Langdon Hills",
+        "control": "IND"
+    },
+    "E05015645": {
+        "name": "Nethermayne",
+        "control": "IND"
+    },
+    "E05015647": {
+        "name": "Pitsea South East",
+        "control": "LAB"
+    },
+    "E05015648": {
+        "name": "St Martin's",
+        "control": "LAB"
+    },
+    "E05015650": {
+        "name": "Wickford Park",
+        "control": "MIX"
+    },
+    "E05013082": {
+        "name": "Chineham",
+        "control": "GREEN"
+    },
+    "E05013087": {
+        "name": "Norden",
+        "control": "OTH"
+    },
+    "E05013078": {
+        "name": "Basing and Upton Grey",
+        "control": "IND"
+    },
+    "E05013079": {
+        "name": "Bramley",
+        "control": "OTH"
+    },
+    "E05013080": {
+        "name": "Brighton Hill",
+        "control": "LD"
+    },
+    "E05013081": {
+        "name": "Brookvale and Kings Furlong",
+        "control": "CON"
+    },
+    "E05013083": {
+        "name": "Eastrop and Grove",
+        "control": "LD"
+    },
+    "E05013084": {
+        "name": "Evingar",
+        "control": "CON"
+    },
+    "E05013085": {
+        "name": "Hatch Warren and Beggarwood",
+        "control": "OTH"
+    },
+    "E05013086": {
+        "name": "Kempshott and Buckskin",
+        "control": "CON"
+    },
+    "E05013088": {
+        "name": "Oakley and The Candovers",
+        "control": "OTH"
+    },
+    "E05013089": {
+        "name": "Popley",
+        "control": "LAB"
+    },
+    "E05013090": {
+        "name": "Sherborne St John and Rooksdown",
+        "control": "CON"
+    },
+    "E05013091": {
+        "name": "South Ham",
+        "control": "LAB"
+    },
+    "E05013092": {
+        "name": "Tadley and Pamber",
+        "control": "LD"
+    },
+    "E05013093": {
+        "name": "Tadley North, Kingsclere and Baughurst",
+        "control": "LD"
+    },
+    "E05013094": {
+        "name": "Whitchurch, Overton and Laverstoke",
+        "control": "OTH"
+    },
+    "E05013095": {
+        "name": "Winklebury and Manydown",
+        "control": "LAB"
+    },
+    "E05011508": {
+        "name": "Audley and Queen's Park",
+        "control": "IND"
+    },
+    "E05011509": {
+        "name": "Bastwell and Daisyfield",
+        "control": "IND"
+    },
+    "E05011510": {
+        "name": "Billinge and Beardwood",
+        "control": "IND"
+    },
+    "E05011511": {
+        "name": "Blackburn Central",
+        "control": "IND"
+    },
+    "E05011512": {
+        "name": "Blackburn South and Lower Darwen",
+        "control": "LAB"
+    },
+    "E05011513": {
+        "name": "Blackburn South East",
+        "control": "LAB"
+    },
+    "E05011514": {
+        "name": "Darwen East",
+        "control": "LAB"
+    },
+    "E05011515": {
+        "name": "Darwen South",
+        "control": "LAB"
+    },
+    "E05011516": {
+        "name": "Darwen West",
+        "control": "LAB"
+    },
+    "E05011517": {
+        "name": "Ewood",
+        "control": "LAB"
+    },
+    "E05011518": {
+        "name": "Little Harwood and Whitebirk",
+        "control": "IND"
+    },
+    "E05011519": {
+        "name": "Livesey with Pleasington",
+        "control": "CON"
+    },
+    "E05011520": {
+        "name": "Mill Hill and Moorgate",
+        "control": "LAB"
+    },
+    "E05011521": {
+        "name": "Roe Lee",
+        "control": "IND"
+    },
+    "E05011522": {
+        "name": "Shear Brow and Corporation Park",
+        "control": "IND"
+    },
+    "E05011523": {
+        "name": "Wensley Fold",
+        "control": "IND"
+    },
+    "E05011524": {
+        "name": "West Pennine",
+        "control": "CON"
+    },
+    "E05014818": {
+        "name": "Astley Bridge",
+        "control": "CON"
+    },
+    "E05014819": {
+        "name": "Bradshaw",
+        "control": "LAB"
+    },
+    "E05014820": {
+        "name": "Breightmet",
+        "control": "LAB"
+    },
+    "E05014821": {
+        "name": "Bromley Cross",
+        "control": "CON"
+    },
+    "E05014822": {
+        "name": "Farnworth North",
+        "control": "LAB"
+    },
+    "E05014823": {
+        "name": "Farnworth South",
+        "control": "OTH"
+    },
+    "E05014824": {
+        "name": "Great Lever",
+        "control": "LAB"
+    },
+    "E05014825": {
+        "name": "Halliwell",
+        "control": "GREEN"
+    },
+    "E05014826": {
+        "name": "Heaton, Lostock and Chew Moor",
+        "control": "CON"
+    },
+    "E05014827": {
+        "name": "Horwich North",
+        "control": "OTH"
+    },
+    "E05014828": {
+        "name": "Horwich South and Blackrod",
+        "control": "OTH"
+    },
+    "E05014829": {
+        "name": "Hulton",
+        "control": "LAB"
+    },
+    "E05014830": {
+        "name": "Kearsley",
+        "control": "OTH"
+    },
+    "E05014831": {
+        "name": "Little Lever and Darcy Lever",
+        "control": "LAB"
+    },
+    "E05014832": {
+        "name": "Queens Park and Central",
+        "control": "LAB"
+    },
+    "E05014833": {
+        "name": "Rumworth",
+        "control": "IND"
+    },
+    "E05014834": {
+        "name": "Smithills",
+        "control": "LD"
+    },
+    "E05014835": {
+        "name": "Tonge with the Haulgh",
+        "control": "LAB"
+    },
+    "E05014836": {
+        "name": "Westhoughton North and Hunger Hill",
+        "control": "LD"
+    },
+    "E05014837": {
+        "name": "Westhoughton South",
+        "control": "LAB"
+    },
+    "E05001349": {
+        "name": "Craven",
+        "control": "GREEN"
+    },
+    "E05001341": {
+        "name": "Baildon",
+        "control": "CON"
+    },
+    "E05001342": {
+        "name": "Bingley",
+        "control": "LAB"
+    },
+    "E05001343": {
+        "name": "Bingley Rural",
+        "control": "CON"
+    },
+    "E05001344": {
+        "name": "Bolton and Undercliffe",
+        "control": "IND"
+    },
+    "E05001345": {
+        "name": "Bowling and Barkerend",
+        "control": "IND"
+    },
+    "E05001346": {
+        "name": "Bradford Moor",
+        "control": "LD"
+    },
+    "E05001347": {
+        "name": "City",
+        "control": "IND"
+    },
+    "E05001348": {
+        "name": "Clayton and Fairweather Green",
+        "control": "LAB"
+    },
+    "E05001350": {
+        "name": "Eccleshill",
+        "control": "LD"
+    },
+    "E05001351": {
+        "name": "Great Horton",
+        "control": "IND"
+    },
+    "E05001352": {
+        "name": "Heaton",
+        "control": "IND"
+    },
+    "E05001353": {
+        "name": "Idle and Thackley",
+        "control": "LD"
+    },
+    "E05001354": {
+        "name": "Ilkley",
+        "control": "GREEN"
+    },
+    "E05001355": {
+        "name": "Keighley Central",
+        "control": "LAB"
+    },
+    "E05001356": {
+        "name": "Keighley East",
+        "control": "LAB"
+    },
+    "E05001357": {
+        "name": "Keighley West",
+        "control": "LAB"
+    },
+    "E05001358": {
+        "name": "Little Horton",
+        "control": "IND"
+    },
+    "E05001359": {
+        "name": "Manningham",
+        "control": "IND"
+    },
+    "E05001360": {
+        "name": "Queensbury",
+        "control": "IND"
+    },
+    "E05001361": {
+        "name": "Royds",
+        "control": "LAB"
+    },
+    "E05001362": {
+        "name": "Shipley",
+        "control": "GREEN"
+    },
+    "E05001363": {
+        "name": "Thornton and Allerton",
+        "control": "LAB"
+    },
+    "E05001364": {
+        "name": "Toller",
+        "control": "IND"
+    },
+    "E05001365": {
+        "name": "Tong",
+        "control": "GREEN"
+    },
+    "E05001366": {
+        "name": "Wharfedale",
+        "control": "CON"
+    },
+    "E05001367": {
+        "name": "Wibsey",
+        "control": "LAB"
+    },
+    "E05001368": {
+        "name": "Windhill and Wrose",
+        "control": "LAB"
+    },
+    "E05001369": {
+        "name": "Worth Valley",
+        "control": "CON"
+    },
+    "E05001370": {
+        "name": "Wyke",
+        "control": "LAB"
+    },
+    "E05015660": {
+        "name": "Ingatestone, Fryerning and Mountnessing",
+        "control": "MIX"
+    },
+    "E05015661": {
+        "name": "Pilgrims Hatch",
+        "control": "LD"
+    },
+    "E05015662": {
+        "name": "Shenfield",
+        "control": "MIX"
+    },
+    "E05015651": {
+        "name": "Blackmore and Doddinghurst",
+        "control": "CON"
+    },
+    "E05015652": {
+        "name": "Brentwood North",
+        "control": "LD"
+    },
+    "E05015653": {
+        "name": "Brentwood South",
+        "control": "LAB"
+    },
+    "E05015654": {
+        "name": "Brentwood West",
+        "control": "LD"
+    },
+    "E05015655": {
+        "name": "Brizes, Stondon Massey and South Weald",
+        "control": "CON"
+    },
+    "E05015656": {
+        "name": "Herongate, Ingrave and West Horndon",
+        "control": "CON"
+    },
+    "E05015657": {
+        "name": "Hutton East",
+        "control": "MIX"
+    },
+    "E05015658": {
+        "name": "Hutton North",
+        "control": "CON"
+    },
+    "E05015659": {
+        "name": "Hutton South",
+        "control": "CON"
+    },
+    "E05015663": {
+        "name": "Warley",
+        "control": "LD"
+    },
+    "E05010885": {
+        "name": "Ashley",
+        "control": "GREEN"
+    },
+    "E05010886": {
+        "name": "Avonmouth and Lawrence Weston",
+        "control": "LAB"
+    },
+    "E05010887": {
+        "name": "Bedminster",
+        "control": "MIX"
+    },
+    "E05010888": {
+        "name": "Bishopston and Ashley Down",
+        "control": "GREEN"
+    },
+    "E05010889": {
+        "name": "Bishopsworth",
+        "control": "MIX"
+    },
+    "E05010890": {
+        "name": "Brislington East",
+        "control": "LAB"
+    },
+    "E05010891": {
+        "name": "Brislington West",
+        "control": "LD"
+    },
+    "E05010892": {
+        "name": "Central",
+        "control": "GREEN"
+    },
+    "E05010894": {
+        "name": "Clifton Down",
+        "control": "GREEN"
+    },
+    "E05010893": {
+        "name": "Clifton",
+        "control": "GREEN"
+    },
+    "E05010895": {
+        "name": "Cotham",
+        "control": "GREEN"
+    },
+    "E05010896": {
+        "name": "Easton",
+        "control": "GREEN"
+    },
+    "E05010897": {
+        "name": "Eastville",
+        "control": "GREEN"
+    },
+    "E05010898": {
+        "name": "Filwood",
+        "control": "LAB"
+    },
+    "E05010899": {
+        "name": "Frome Vale",
+        "control": "LAB"
+    },
+    "E05010900": {
+        "name": "Hartcliffe and Withywood",
+        "control": "LAB"
+    },
+    "E05010901": {
+        "name": "Henbury and Brentry",
+        "control": "CON"
+    },
+    "E05010902": {
+        "name": "Hengrove and Whitchurch Park",
+        "control": "LD"
+    },
+    "E05010903": {
+        "name": "Hillfields",
+        "control": "LAB"
+    },
+    "E05010904": {
+        "name": "Horfield",
+        "control": "LAB"
+    },
+    "E05010905": {
+        "name": "Hotwells and Harbourside",
+        "control": "GREEN"
+    },
+    "E05010906": {
+        "name": "Knowle",
+        "control": "GREEN"
+    },
+    "E05010907": {
+        "name": "Lawrence Hill",
+        "control": "GREEN"
+    },
+    "E05010908": {
+        "name": "Lockleaze",
+        "control": "GREEN"
+    },
+    "E05010909": {
+        "name": "Redland",
+        "control": "GREEN"
+    },
+    "E05010913": {
+        "name": "Southmead",
+        "control": "LAB"
+    },
+    "E05010914": {
+        "name": "Southville",
+        "control": "GREEN"
+    },
+    "E05010910": {
+        "name": "St George Central",
+        "control": "GREEN"
+    },
+    "E05010911": {
+        "name": "St George Troopers Hill",
+        "control": "LAB"
+    },
+    "E05010912": {
+        "name": "St George West",
+        "control": "GREEN"
+    },
+    "E05010915": {
+        "name": "Stockwood",
+        "control": "CON"
+    },
+    "E05010916": {
+        "name": "Stoke Bishop",
+        "control": "CON"
+    },
+    "E05010917": {
+        "name": "Westbury-on-Trym and Henleaze",
+        "control": "LD"
+    },
+    "E05010918": {
+        "name": "Windmill Hill",
+        "control": "GREEN"
+    },
+    "E05009002": {
+        "name": "Broxbourne and Hoddesdon South",
+        "control": "CON"
+    },
+    "E05009003": {
+        "name": "Cheshunt North",
+        "control": "CON"
+    },
+    "E05009004": {
+        "name": "Cheshunt South and Theobalds",
+        "control": "CON"
+    },
+    "E05009005": {
+        "name": "Flamstead End",
+        "control": "CON"
+    },
+    "E05009006": {
+        "name": "Goffs Oak",
+        "control": "CON"
+    },
+    "E05009007": {
+        "name": "Hoddesdon North",
+        "control": "CON"
+    },
+    "E05009008": {
+        "name": "Hoddesdon Town and Rye Park",
+        "control": "CON"
+    },
+    "E05009009": {
+        "name": "Rosedale and Bury Green",
+        "control": "CON"
+    },
+    "E05009010": {
+        "name": "Waltham Cross",
+        "control": "LAB"
+    },
+    "E05009011": {
+        "name": "Wormley and Turnford",
+        "control": "CON"
+    },
+    "E05005151": {
+        "name": "Briercliffe",
+        "control": "LD"
+    },
+    "E05005159": {
+        "name": "Lanehead",
+        "control": "LAB"
+    },
+    "E05005150": {
+        "name": "Bank Hall",
+        "control": "IND"
+    },
+    "E05005152": {
+        "name": "Brunshaw",
+        "control": "LAB"
+    },
+    "E05005153": {
+        "name": "Cliviger With Worsthorne",
+        "control": "CON"
+    },
+    "E05005154": {
+        "name": "Coal Clough With Deerplay",
+        "control": "LD"
+    },
+    "E05005155": {
+        "name": "Daneshouse With Stoneyholme",
+        "control": "IND"
+    },
+    "E05005156": {
+        "name": "Gannow",
+        "control": "LAB"
+    },
+    "E05005157": {
+        "name": "Gawthorpe",
+        "control": "LAB"
+    },
+    "E05005158": {
+        "name": "Hapton With Park",
+        "control": "CON"
+    },
+    "E05005160": {
+        "name": "Queensgate",
+        "control": "IND"
+    },
+    "E05005161": {
+        "name": "Rosegrove With Lowerhouse",
+        "control": "LAB"
+    },
+    "E05005162": {
+        "name": "Rosehill With Burnley Wood",
+        "control": "LAB"
+    },
+    "E05005163": {
+        "name": "Trinity",
+        "control": "GREEN"
+    },
+    "E05005164": {
+        "name": "Whittlefield With Ightenhill",
+        "control": "CON"
+    },
+    "E05014152": {
+        "name": "Besses",
+        "control": "LAB"
+    },
+    "E05014156": {
+        "name": "Holyrood",
+        "control": "LAB"
+    },
+    "E05014159": {
+        "name": "Pilkington Park",
+        "control": "LAB"
+    },
+    "E05014163": {
+        "name": "Ramsbottom",
+        "control": "LAB"
+    },
+    "E05014153": {
+        "name": "Bury East",
+        "control": "LAB"
+    },
+    "E05014154": {
+        "name": "Bury West",
+        "control": "CON"
+    },
+    "E05014155": {
+        "name": "Elton",
+        "control": "LAB"
+    },
+    "E05014157": {
+        "name": "Moorside",
+        "control": "LAB"
+    },
+    "E05014158": {
+        "name": "North Manor",
+        "control": "LAB"
+    },
+    "E05014160": {
+        "name": "Radcliffe East",
+        "control": "OTH"
+    },
+    "E05014161": {
+        "name": "Radcliffe North and Ainsworth",
+        "control": "OTH"
+    },
+    "E05014162": {
+        "name": "Radcliffe West",
+        "control": "OTH"
+    },
+    "E05014164": {
+        "name": "Redvales",
+        "control": "LAB"
+    },
+    "E05014165": {
+        "name": "Sedgley",
+        "control": "LAB"
+    },
+    "E05014166": {
+        "name": "St. Mary's",
+        "control": "LAB"
+    },
+    "E05014167": {
+        "name": "Tottington",
+        "control": "CON"
+    },
+    "E05014168": {
+        "name": "Unsworth",
+        "control": "LAB"
+    },
+    "E05001371": {
+        "name": "Brighouse",
+        "control": "CON"
+    },
+    "E05001372": {
+        "name": "Calder",
+        "control": "LAB"
+    },
+    "E05001373": {
+        "name": "Elland",
+        "control": "CON"
+    },
+    "E05001374": {
+        "name": "Greetland and Stainland",
+        "control": "LD"
+    },
+    "E05001375": {
+        "name": "Hipperholme and Lightcliffe",
+        "control": "CON"
+    },
+    "E05001376": {
+        "name": "Illingworth and Mixenden",
+        "control": "LAB"
+    },
+    "E05001377": {
+        "name": "Luddendenfoot",
+        "control": "LAB"
+    },
+    "E05001378": {
+        "name": "Northowram and Shelf",
+        "control": "GREEN"
+    },
+    "E05001379": {
+        "name": "Ovenden",
+        "control": "LAB"
+    },
+    "E05001380": {
+        "name": "Park",
+        "control": "OTH"
+    },
+    "E05001381": {
+        "name": "Rastrick",
+        "control": "LAB"
+    },
+    "E05001382": {
+        "name": "Ryburn",
+        "control": "LAB"
+    },
+    "E05001383": {
+        "name": "Skircoat",
+        "control": "LAB"
+    },
+    "E05001384": {
+        "name": "Sowerby Bridge",
+        "control": "LAB"
+    },
+    "E05001385": {
+        "name": "Todmorden",
+        "control": "LAB"
+    },
+    "E05001386": {
+        "name": "Town",
+        "control": "LAB"
+    },
+    "E05001387": {
+        "name": "Warley",
+        "control": "LD"
+    },
+    "E05013053": {
+        "name": "Cherry Hinton",
+        "control": "LAB"
+    },
+    "E05013054": {
+        "name": "Coleridge",
+        "control": "LAB"
+    },
+    "E05013055": {
+        "name": "East Chesterton",
+        "control": "LAB"
+    },
+    "E05013060": {
+        "name": "Queen Edith's",
+        "control": "LD"
+    },
+    "E05013061": {
+        "name": "Romsey",
+        "control": "LAB"
+    },
+    "E05013050": {
+        "name": "Abbey",
+        "control": "GREEN"
+    },
+    "E05013051": {
+        "name": "Arbury",
+        "control": "LAB"
+    },
+    "E05013052": {
+        "name": "Castle",
+        "control": "LAB"
+    },
+    "E05013056": {
+        "name": "King's Hedges",
+        "control": "LAB"
+    },
+    "E05013057": {
+        "name": "Market",
+        "control": "LD"
+    },
+    "E05013058": {
+        "name": "Newnham",
+        "control": "GREEN"
+    },
+    "E05013059": {
+        "name": "Petersfield",
+        "control": "LAB"
+    },
+    "E05013062": {
+        "name": "Trumpington",
+        "control": "LD"
+    },
+    "E05013063": {
+        "name": "West Chesterton",
+        "control": "LAB"
+    },
+    "E05015752": {
+        "name": "Norton Canes",
+        "control": "LAB"
+    },
+    "E05015742": {
+        "name": "Brereton and Ravenhill",
+        "control": "LAB"
+    },
+    "E05015743": {
+        "name": "Chadsmoor",
+        "control": "LAB"
+    },
+    "E05015744": {
+        "name": "Cannock Longford and Bridgtown",
+        "control": "MIX"
+    },
+    "E05015745": {
+        "name": "Cannock Park and Old Fallow",
+        "control": "MIX"
+    },
+    "E05015746": {
+        "name": "Etching Hill and the Heath",
+        "control": "CON"
+    },
+    "E05015747": {
+        "name": "Hawks Green with Rumer Hill",
+        "control": "MIX"
+    },
+    "E05015748": {
+        "name": "Heath Hayes and Wimblebury",
+        "control": "LAB"
+    },
+    "E05015749": {
+        "name": "Hednesford Green Heath",
+        "control": "LAB"
+    },
+    "E05015750": {
+        "name": "Hednesford Hills and Rawnsley",
+        "control": "GREEN"
+    },
+    "E05015751": {
+        "name": "Hednesford Pye Green",
+        "control": "MIX"
+    },
+    "E05015753": {
+        "name": "Western Springs",
+        "control": "MIX"
+    },
+    "E05015691": {
+        "name": "Appleton",
+        "control": "OTH"
+    },
+    "E05015692": {
+        "name": "Canvey Island Central",
+        "control": "OTH"
+    },
+    "E05015693": {
+        "name": "Canvey Island East",
+        "control": "OTH"
+    },
+    "E05015694": {
+        "name": "Canvey Island North",
+        "control": "OTH"
+    },
+    "E05015695": {
+        "name": "Canvey Island South",
+        "control": "OTH"
+    },
+    "E05015696": {
+        "name": "Canvey Island Winter Gardens",
+        "control": "OTH"
+    },
+    "E05015697": {
+        "name": "Hadleigh St James",
+        "control": "OTH"
+    },
+    "E05015698": {
+        "name": "St George's",
+        "control": "OTH"
+    },
+    "E05015699": {
+        "name": "St Mary's",
+        "control": "OTH"
+    },
+    "E05015700": {
+        "name": "St Michael's",
+        "control": "OTH"
+    },
+    "E05015701": {
+        "name": "Tarpots",
+        "control": "OTH"
+    },
+    "E05015702": {
+        "name": "Thundersley North",
+        "control": "OTH"
+    },
+    "E05015703": {
+        "name": "Thundersley South",
+        "control": "OTH"
+    },
+    "E05015707": {
+        "name": "Charlton Kings",
+        "control": "LD"
+    },
+    "E05015713": {
+        "name": "Oakley",
+        "control": "LD"
+    },
+    "E05015718": {
+        "name": "St Mark's",
+        "control": "LD"
+    },
+    "E05015704": {
+        "name": "All Saints",
+        "control": "LD"
+    },
+    "E05015705": {
+        "name": "Battledown",
+        "control": "LD"
+    },
+    "E05015706": {
+        "name": "Benhall, the Reddings and Fiddler's Green",
+        "control": "LD"
+    },
+    "E05015708": {
+        "name": "Charlton Park",
+        "control": "LD"
+    },
+    "E05015709": {
+        "name": "College",
+        "control": "LD"
+    },
+    "E05015710": {
+        "name": "Hesters Way",
+        "control": "LD"
+    },
+    "E05015711": {
+        "name": "Lansdown",
+        "control": "LD"
+    },
+    "E05015712": {
+        "name": "Leckhampton",
+        "control": "LD"
+    },
+    "E05015714": {
+        "name": "Park",
+        "control": "LD"
+    },
+    "E05015715": {
+        "name": "Pittville",
+        "control": "LD"
+    },
+    "E05015716": {
+        "name": "Prestbury",
+        "control": "MIX"
+    },
+    "E05015717": {
+        "name": "Springbank",
+        "control": "LD"
+    },
+    "E05015719": {
+        "name": "St Paul's",
+        "control": "GREEN"
+    },
+    "E05015720": {
+        "name": "St Peter's",
+        "control": "LD"
+    },
+    "E05015721": {
+        "name": "Swindon Village",
+        "control": "LD"
+    },
+    "E05015722": {
+        "name": "Up Hatherley",
+        "control": "LD"
+    },
+    "E05015723": {
+        "name": "Warden Hill",
+        "control": "LD"
+    },
+    "E05010923": {
+        "name": "Banbury Hardwick",
+        "control": "LAB"
+    },
+    "E05011348": {
+        "name": "Adderbury, Bloxham and Bodicote",
+        "control": "LD"
+    },
+    "E05011349": {
+        "name": "Banbury Calthorpe and Easington",
+        "control": "CON"
+    },
+    "E05010921": {
+        "name": "Banbury Cross and Neithrop",
+        "control": "LAB"
+    },
+    "E05010922": {
+        "name": "Banbury Grimsbury and Hightown",
+        "control": "LAB"
+    },
+    "E05010924": {
+        "name": "Banbury Ruscote",
+        "control": "LAB"
+    },
+    "E05010925": {
+        "name": "Bicester East",
+        "control": "LD"
+    },
+    "E05010926": {
+        "name": "Bicester North and Caversfield",
+        "control": "LD"
+    },
+    "E05012968": {
+        "name": "Bicester South and Ambrosden",
+        "control": "LD"
+    },
+    "E05010928": {
+        "name": "Bicester West",
+        "control": "IND"
+    },
+    "E05010929": {
+        "name": "Cropredy, Sibfords and Wroxton",
+        "control": "LD"
+    },
+    "E05010930": {
+        "name": "Deddington",
+        "control": "CON"
+    },
+    "E05012969": {
+        "name": "Fringford and Heyfords",
+        "control": "LD"
+    },
+    "E05010932": {
+        "name": "Kidlington East",
+        "control": "GREEN"
+    },
+    "E05010933": {
+        "name": "Kidlington West",
+        "control": "LD"
+    },
+    "E05010934": {
+        "name": "Launton and Otmoor",
+        "control": "LD"
+    },
+    "E05013064": {
+        "name": "Adlington and Anderton",
+        "control": "LAB"
+    },
+    "E05013065": {
+        "name": "Buckshaw and Whittle",
+        "control": "LAB"
+    },
+    "E05013066": {
+        "name": "Chorley East",
+        "control": "LAB"
+    },
+    "E05013067": {
+        "name": "Chorley North East",
+        "control": "LAB"
+    },
+    "E05013068": {
+        "name": "Chorley North West",
+        "control": "LAB"
+    },
+    "E05013069": {
+        "name": "Chorley North and Astley",
+        "control": "LAB"
+    },
+    "E05013070": {
+        "name": "Chorley South East and Heath Charnock",
+        "control": "LAB"
+    },
+    "E05013071": {
+        "name": "Chorley South West",
+        "control": "LAB"
+    },
+    "E05013072": {
+        "name": "Clayton East, Brindle and Hoghton",
+        "control": "LAB"
+    },
+    "E05013073": {
+        "name": "Clayton West and Cuerden",
+        "control": "LAB"
+    },
+    "E05013074": {
+        "name": "Coppull",
+        "control": "LAB"
+    },
+    "E05013075": {
+        "name": "Croston, Mawdesley and Euxton South",
+        "control": "CON"
+    },
+    "E05013076": {
+        "name": "Eccleston, Heskin and Charnock Richard",
+        "control": "LAB"
+    },
+    "E05013077": {
+        "name": "Euxton",
+        "control": "LAB"
+    },
+    "E05010828": {
+        "name": "Castle",
+        "control": "GREEN"
+    },
+    "E05010840": {
+        "name": "Shrub End",
+        "control": "LAB"
+    },
+    "E05010841": {
+        "name": "Stanway",
+        "control": "CON"
+    },
+    "E05010827": {
+        "name": "Berechurch",
+        "control": "LAB"
+    },
+    "E05010829": {
+        "name": "Greenstead",
+        "control": "LAB"
+    },
+    "E05010830": {
+        "name": "Highwoods",
+        "control": "LD"
+    },
+    "E05010831": {
+        "name": "Lexden and Braiswick",
+        "control": "CON"
+    },
+    "E05010832": {
+        "name": "Marks Tey and Layer",
+        "control": "CON"
+    },
+    "E05010833": {
+        "name": "Mersea and Pyefleet",
+        "control": "CON"
+    },
+    "E05010834": {
+        "name": "Mile End",
+        "control": "LD"
+    },
+    "E05010835": {
+        "name": "New Town and Christ Church",
+        "control": "LAB"
+    },
+    "E05010836": {
+        "name": "Old Heath and The Hythe",
+        "control": "LAB"
+    },
+    "E05010837": {
+        "name": "Prettygate",
+        "control": "CON"
+    },
+    "E05010838": {
+        "name": "Rural North",
+        "control": "CON"
+    },
+    "E05010839": {
+        "name": "St Anne's and St John's",
+        "control": "LD"
+    },
+    "E05010842": {
+        "name": "Tiptree",
+        "control": "CON"
+    },
+    "E05010843": {
+        "name": "Wivenhoe",
+        "control": "LD"
+    },
+    "E05001218": {
+        "name": "Bablake",
+        "control": "LAB"
+    },
+    "E05001219": {
+        "name": "Binley and Willenhall",
+        "control": "LAB"
+    },
+    "E05001220": {
+        "name": "Cheylesmore",
+        "control": "CON"
+    },
+    "E05001221": {
+        "name": "Earlsdon",
+        "control": "LAB"
+    },
+    "E05001222": {
+        "name": "Foleshill",
+        "control": "LAB"
+    },
+    "E05001223": {
+        "name": "Henley",
+        "control": "LAB"
+    },
+    "E05001224": {
+        "name": "Holbrook",
+        "control": "LAB"
+    },
+    "E05001225": {
+        "name": "Longford",
+        "control": "LAB"
+    },
+    "E05001226": {
+        "name": "Lower Stoke",
+        "control": "LAB"
+    },
+    "E05001227": {
+        "name": "Radford",
+        "control": "LAB"
+    },
+    "E05001228": {
+        "name": "St Michael's",
+        "control": "LAB"
+    },
+    "E05001229": {
+        "name": "Sherbourne",
+        "control": "LAB"
+    },
+    "E05001230": {
+        "name": "Upper Stoke",
+        "control": "LAB"
+    },
+    "E05001231": {
+        "name": "Wainbody",
+        "control": "CON"
+    },
+    "E05001232": {
+        "name": "Westwood",
+        "control": "LAB"
+    },
+    "E05001233": {
+        "name": "Whoberley",
+        "control": "LAB"
+    },
+    "E05001234": {
+        "name": "Woodlands",
+        "control": "CON"
+    },
+    "E05001235": {
+        "name": "Wyken",
+        "control": "LAB"
+    },
+    "E05012924": {
+        "name": "Southgate",
+        "control": "LAB"
+    },
+    "E05012922": {
+        "name": "Pound Hill North And Forge Wood",
+        "control": "LAB"
+    },
+    "E05012920": {
+        "name": "Maidenbower",
+        "control": "CON"
+    },
+    "E05012923": {
+        "name": "Pound Hill South and Worth",
+        "control": "CON"
+    },
+    "E05012926": {
+        "name": "Tilgate",
+        "control": "LAB"
+    },
+    "E05012914": {
+        "name": "Bewbush and North Broadfield",
+        "control": "LAB"
+    },
+    "E05012915": {
+        "name": "Broadfield",
+        "control": "LAB"
+    },
+    "E05012917": {
+        "name": "Gossops Green and North East Broadfield",
+        "control": "LAB"
+    },
+    "E05012918": {
+        "name": "Ifield",
+        "control": "LAB"
+    },
+    "E05012919": {
+        "name": "Langley Green and Tushmore",
+        "control": "LAB"
+    },
+    "E05012921": {
+        "name": "Northgate and West Green",
+        "control": "LAB"
+    },
+    "E05012925": {
+        "name": "Three Bridges",
+        "control": "LAB"
+    },
+    "E05012682": {
+        "name": "Beacon",
+        "control": "CON"
+    },
+    "E05012683": {
+        "name": "Beaminster",
+        "control": "CON"
+    },
+    "E05012684": {
+        "name": "Blackmore Vale",
+        "control": "CON"
+    },
+    "E05012685": {
+        "name": "Blandford",
+        "control": "CON"
+    },
+    "E05015779": {
+        "name": "Bridport",
+        "control": "LD"
+    },
+    "E05012687": {
+        "name": "Chalk Valleys",
+        "control": "CON"
+    },
+    "E05012688": {
+        "name": "Charminster St Mary's",
+        "control": "LD"
+    },
+    "E05015780": {
+        "name": "Chesil Bank",
+        "control": "LD"
+    },
+    "E05012690": {
+        "name": "Chickerell",
+        "control": "LD"
+    },
+    "E05012691": {
+        "name": "Colehill and Wimborne Minster East",
+        "control": "LD"
+    },
+    "E05012692": {
+        "name": "Corfe Mullen",
+        "control": "LD"
+    },
+    "E05012693": {
+        "name": "Cranborne and Alderholt",
+        "control": "LD"
+    },
+    "E05012694": {
+        "name": "Cranborne Chase",
+        "control": "CON"
+    },
+    "E05012695": {
+        "name": "Crossways",
+        "control": "LD"
+    },
+    "E05012696": {
+        "name": "Dorchester East",
+        "control": "LD"
+    },
+    "E05012697": {
+        "name": "Dorchester Poundbury",
+        "control": "LD"
+    },
+    "E05012698": {
+        "name": "Dorchester West",
+        "control": "MIX"
+    },
+    "E05015781": {
+        "name": "Eggardon",
+        "control": "LD"
+    },
+    "E05012700": {
+        "name": "Ferndown North",
+        "control": "CON"
+    },
+    "E05012701": {
+        "name": "Ferndown South",
+        "control": "MIX"
+    },
+    "E05012702": {
+        "name": "Gillingham",
+        "control": "MIX"
+    },
+    "E05012703": {
+        "name": "Hill Forts and Upper Tarrants",
+        "control": "CON"
+    },
+    "E05012704": {
+        "name": "Littlemoor and Preston",
+        "control": "CON"
+    },
+    "E05012705": {
+        "name": "Lyme and Charmouth",
+        "control": "GREEN"
+    },
+    "E05012706": {
+        "name": "Lytchett Matravers and Upton",
+        "control": "LD"
+    },
+    "E05015782": {
+        "name": "Marshwood Vale",
+        "control": "CON"
+    },
+    "E05012708": {
+        "name": "Melcombe Regis",
+        "control": "GREEN"
+    },
+    "E05012709": {
+        "name": "Portland",
+        "control": "MIX"
+    },
+    "E05012710": {
+        "name": "Puddletown and Lower Winterborne",
+        "control": "CON"
+    },
+    "E05012711": {
+        "name": "Radipole",
+        "control": "LD"
+    },
+    "E05012712": {
+        "name": "Rodwell and Wyke",
+        "control": "MIX"
+    },
+    "E05012714": {
+        "name": "Shaftesbury Town",
+        "control": "LD"
+    },
+    "E05012715": {
+        "name": "Sherborne East",
+        "control": "LD"
+    },
+    "E05012716": {
+        "name": "Sherborne Rural",
+        "control": "LD"
+    },
+    "E05012717": {
+        "name": "Sherborne West",
+        "control": "LD"
+    },
+    "E05012718": {
+        "name": "South East Purbeck",
+        "control": "LD"
+    },
+    "E05012713": {
+        "name": "St Leonards and St Ives",
+        "control": "CON"
+    },
+    "E05012719": {
+        "name": "Stalbridge and Marnhull",
+        "control": "CON"
+    },
+    "E05012720": {
+        "name": "Stour and Allen Vale",
+        "control": "LD"
+    },
+    "E05012721": {
+        "name": "Sturminster Newton",
+        "control": "CON"
+    },
+    "E05012722": {
+        "name": "Swanage",
+        "control": "CON"
+    },
+    "E05012723": {
+        "name": "Upwey and Broadwey",
+        "control": "LD"
+    },
+    "E05012724": {
+        "name": "Verwood",
+        "control": "CON"
+    },
+    "E05012725": {
+        "name": "Wareham",
+        "control": "LD"
+    },
+    "E05012726": {
+        "name": "West Moors and Three Legged Cross",
+        "control": "CON"
+    },
+    "E05012727": {
+        "name": "West Parley",
+        "control": "CON"
+    },
+    "E05012728": {
+        "name": "West Purbeck",
+        "control": "MIX"
+    },
+    "E05012729": {
+        "name": "Westham",
+        "control": "LD"
+    },
+    "E05012730": {
+        "name": "Wimborne Minster",
+        "control": "LD"
+    },
+    "E05012731": {
+        "name": "Winterborne and Broadmayne",
+        "control": "LD"
+    },
+    "E05012732": {
+        "name": "Winterborne North",
+        "control": "LD"
+    },
+    "E05012733": {
+        "name": "Yetminster",
+        "control": "LD"
+    },
+    "E05015903": {
+        "name": "Amblecote",
+        "control": "CON"
+    },
+    "E05015905": {
+        "name": "Brierley Hill and Wordsley South",
+        "control": "MIX"
+    },
+    "E05015906": {
+        "name": "Brockmoor and Pensnett",
+        "control": "LAB"
+    },
+    "E05015910": {
+        "name": "Gornal",
+        "control": "MIX"
+    },
+    "E05015911": {
+        "name": "Halesowen North",
+        "control": "MIX"
+    },
+    "E05015912": {
+        "name": "Halesowen South",
+        "control": "CON"
+    },
+    "E05015914": {
+        "name": "Kingswinford North and Wall Heath",
+        "control": "CON"
+    },
+    "E05015915": {
+        "name": "Kingswinford South",
+        "control": "CON"
+    },
+    "E05015917": {
+        "name": "Netherton and Holly Hall",
+        "control": "LAB"
+    },
+    "E05015919": {
+        "name": "Pedmore and Stourbridge East",
+        "control": "CON"
+    },
+    "E05015920": {
+        "name": "Quarry Bank and Dudley Wood",
+        "control": "LAB"
+    },
+    "E05015922": {
+        "name": "St. James's",
+        "control": "LAB"
+    },
+    "E05015923": {
+        "name": "St. Thomas's",
+        "control": "LAB"
+    },
+    "E05015926": {
+        "name": "Wordsley North",
+        "control": "MIX"
+    },
+    "E05015904": {
+        "name": "Belle Vale",
+        "control": "CON"
+    },
+    "E05015907": {
+        "name": "Castle and Priory",
+        "control": "MIX"
+    },
+    "E05015908": {
+        "name": "Coseley",
+        "control": "LAB"
+    },
+    "E05015909": {
+        "name": "Cradley North and Wollescote",
+        "control": "LD"
+    },
+    "E05015913": {
+        "name": "Hayley Green and Cradley South",
+        "control": "CON"
+    },
+    "E05015916": {
+        "name": "Lye and Stourbridge North",
+        "control": "LAB"
+    },
+    "E05015918": {
+        "name": "Norton",
+        "control": "CON"
+    },
+    "E05015921": {
+        "name": "Sedgley",
+        "control": "MIX"
+    },
+    "E05015924": {
+        "name": "Upper Gornal and Woodsetton",
+        "control": "LAB"
+    },
+    "E05015925": {
+        "name": "Wollaston and Stourbridge Town",
+        "control": "LAB"
+    },
+    "E05011188": {
+        "name": "Botley",
+        "control": "LD"
+    },
+    "E05011193": {
+        "name": "Eastleigh South",
+        "control": "LD"
+    },
+    "E05011187": {
+        "name": "Bishopstoke",
+        "control": "IND"
+    },
+    "E05011189": {
+        "name": "Bursledon and Hound North",
+        "control": "LD"
+    },
+    "E05011190": {
+        "name": "Chandler's Ford",
+        "control": "LD"
+    },
+    "E05011191": {
+        "name": "Eastleigh Central",
+        "control": "LD"
+    },
+    "E05011192": {
+        "name": "Eastleigh North",
+        "control": "LD"
+    },
+    "E05011194": {
+        "name": "Fair Oak and Horton Heath",
+        "control": "CON"
+    },
+    "E05011195": {
+        "name": "Hamble and Netley",
+        "control": "LD"
+    },
+    "E05011196": {
+        "name": "Hedge End North",
+        "control": "LD"
+    },
+    "E05011197": {
+        "name": "Hedge End South",
+        "control": "LD"
+    },
+    "E05011198": {
+        "name": "Hiltingbury",
+        "control": "LD"
+    },
+    "E05011074": {
+        "name": "Claygate",
+        "control": "IND"
+    },
+    "E05011075": {
+        "name": "Cobham and Downside",
+        "control": "CON"
+    },
+    "E05011076": {
+        "name": "Esher",
+        "control": "OTH"
+    },
+    "E05011077": {
+        "name": "Hersham Village",
+        "control": "LD"
+    },
+    "E05011078": {
+        "name": "Hinchley Wood and Weston Green",
+        "control": "OTH"
+    },
+    "E05011079": {
+        "name": "Long Ditton",
+        "control": "LD"
+    },
+    "E05011080": {
+        "name": "Molesey East",
+        "control": "LD"
+    },
+    "E05011081": {
+        "name": "Molesey West",
+        "control": "OTH"
+    },
+    "E05011082": {
+        "name": "Oatlands and Burwood Park",
+        "control": "CON"
+    },
+    "E05011083": {
+        "name": "Oxshott and Stoke D'Abernon",
+        "control": "CON"
+    },
+    "E05011084": {
+        "name": "Thames Ditton",
+        "control": "OTH"
+    },
+    "E05011085": {
+        "name": "Walton Central",
+        "control": "LD"
+    },
+    "E05011086": {
+        "name": "Walton North",
+        "control": "LD"
+    },
+    "E05011087": {
+        "name": "Walton South",
+        "control": "LD"
+    },
+    "E05011088": {
+        "name": "Weybridge Riverside",
+        "control": "LD"
+    },
+    "E05011089": {
+        "name": "Weybridge St George's Hill",
+        "control": "OTH"
+    },
+    "E05015725": {
+        "name": "Buckhurst Hill West",
+        "control": "CON"
+    },
+    "E05015724": {
+        "name": "Buckhurst Hill East and Whitebridge",
+        "control": "MIX"
+    },
+    "E05015726": {
+        "name": "Chigwell with Lambourne",
+        "control": "CON"
+    },
+    "E05015727": {
+        "name": "Epping East",
+        "control": "LD"
+    },
+    "E05015728": {
+        "name": "Epping West and Rural",
+        "control": "MIX"
+    },
+    "E05015729": {
+        "name": "Grange Hill",
+        "control": "MIX"
+    },
+    "E05015730": {
+        "name": "Loughton Fairmead",
+        "control": "OTH"
+    },
+    "E05015731": {
+        "name": "Loughton Forest",
+        "control": "OTH"
+    },
+    "E05015732": {
+        "name": "Loughton Roding",
+        "control": "MIX"
+    },
+    "E05015733": {
+        "name": "Loughton St John's",
+        "control": "OTH"
+    },
+    "E05015734": {
+        "name": "North Weald Bassett",
+        "control": "MIX"
+    },
+    "E05015735": {
+        "name": "Ongar",
+        "control": "CON"
+    },
+    "E05015736": {
+        "name": "Roydon and Lower Nazeing",
+        "control": "CON"
+    },
+    "E05015737": {
+        "name": "Rural East",
+        "control": "CON"
+    },
+    "E05015738": {
+        "name": "Theydon Bois with Passingford",
+        "control": "MIX"
+    },
+    "E05015739": {
+        "name": "Waltham Abbey North",
+        "control": "MIX"
+    },
+    "E05015740": {
+        "name": "Waltham Abbey South and Rural",
+        "control": "CON"
+    },
+    "E05015741": {
+        "name": "Waltham Abbey West",
+        "control": "CON"
+    },
+    "E05011011": {
+        "name": "Alphington",
+        "control": "LAB"
+    },
+    "E05011012": {
+        "name": "Duryard and St James",
+        "control": "LD"
+    },
+    "E05011013": {
+        "name": "Exwick",
+        "control": "LAB"
+    },
+    "E05011014": {
+        "name": "Heavitree",
+        "control": "IND"
+    },
+    "E05011015": {
+        "name": "Mincinglake and Whipton",
+        "control": "LAB"
+    },
+    "E05011016": {
+        "name": "Newtown and St Leonard's",
+        "control": "GREEN"
+    },
+    "E05011017": {
+        "name": "Pennsylvania",
+        "control": "LAB"
+    },
+    "E05011018": {
+        "name": "Pinhoe",
+        "control": "LAB"
+    },
+    "E05011019": {
+        "name": "Priory",
+        "control": "LAB"
+    },
+    "E05011021": {
+        "name": "St Loyes",
+        "control": "CON"
+    },
+    "E05011020": {
+        "name": "St David's",
+        "control": "GREEN"
+    },
+    "E05011022": {
+        "name": "St Thomas",
+        "control": "LAB"
+    },
+    "E05011023": {
+        "name": "Topsham",
+        "control": "LAB"
+    },
+    "E05015664": {
+        "name": "Avenue",
+        "control": "CON"
+    },
+    "E05015665": {
+        "name": "Fareham Park",
+        "control": "CON"
+    },
+    "E05015666": {
+        "name": "Fareham Town",
+        "control": "LD"
+    },
+    "E05015667": {
+        "name": "Fort Fareham",
+        "control": "MIX"
+    },
+    "E05015668": {
+        "name": "Hill Head",
+        "control": "CON"
+    },
+    "E05015669": {
+        "name": "Hook-with-Warsash",
+        "control": "CON"
+    },
+    "E05015670": {
+        "name": "Locks Heath",
+        "control": "CON"
+    },
+    "E05015671": {
+        "name": "Park Gate",
+        "control": "CON"
+    },
+    "E05015672": {
+        "name": "Portchester Castle",
+        "control": "LD"
+    },
+    "E05015673": {
+        "name": "Portchester Wicor",
+        "control": "LD"
+    },
+    "E05015674": {
+        "name": "Sarisbury and Whiteley",
+        "control": "CON"
+    },
+    "E05015675": {
+        "name": "Stubbington",
+        "control": "CON"
+    },
+    "E05015676": {
+        "name": "Titchfield",
+        "control": "CON"
+    },
+    "E05015677": {
+        "name": "Titchfield Common",
+        "control": "MIX"
+    },
+    "E05015678": {
+        "name": "Uplands and Funtley",
+        "control": "CON"
+    },
+    "E05015679": {
+        "name": "Wallington and Downend",
+        "control": "LD"
+    },
+    "E05001067": {
+        "name": "Birtley",
+        "control": "LD"
+    },
+    "E05001068": {
+        "name": "Blaydon",
+        "control": "LAB"
+    },
+    "E05001069": {
+        "name": "Bridges",
+        "control": "LAB"
+    },
+    "E05009313": {
+        "name": "Chopwell and Rowlands Gill",
+        "control": "LAB"
+    },
+    "E05001071": {
+        "name": "Chowdene",
+        "control": "LAB"
+    },
+    "E05001072": {
+        "name": "Crawcrook and Greenside",
+        "control": "LAB"
+    },
+    "E05001073": {
+        "name": "Deckham",
+        "control": "LAB"
+    },
+    "E05001074": {
+        "name": "Dunston and Teams",
+        "control": "LAB"
+    },
+    "E05001075": {
+        "name": "Dunston Hill and Whickham East",
+        "control": "LD"
+    },
+    "E05001076": {
+        "name": "Felling",
+        "control": "LAB"
+    },
+    "E05001077": {
+        "name": "High Fell",
+        "control": "LAB"
+    },
+    "E05001078": {
+        "name": "Lamesley",
+        "control": "LAB"
+    },
+    "E05001079": {
+        "name": "Lobley Hill and Bensham",
+        "control": "LAB"
+    },
+    "E05001080": {
+        "name": "Low Fell",
+        "control": "LD"
+    },
+    "E05001081": {
+        "name": "Pelaw and Heworth",
+        "control": "LD"
+    },
+    "E05001082": {
+        "name": "Ryton, Crookhill and Stella",
+        "control": "LAB"
+    },
+    "E05001083": {
+        "name": "Saltwell",
+        "control": "LAB"
+    },
+    "E05001084": {
+        "name": "Wardley and Leam Lane",
+        "control": "LAB"
+    },
+    "E05001085": {
+        "name": "Whickham North",
+        "control": "LD"
+    },
+    "E05001086": {
+        "name": "Whickham South and Sunniside",
+        "control": "LD"
+    },
+    "E05001087": {
+        "name": "Windy Nook and Whitehills",
+        "control": "LAB"
+    },
+    "E05001088": {
+        "name": "Winlaton and High Spen",
+        "control": "LAB"
+    },
+    "E05010953": {
+        "name": "Barton and Tredworth",
+        "control": "MIX"
+    },
+    "E05010960": {
+        "name": "Longlevens",
+        "control": "LD"
+    },
+    "E05010962": {
+        "name": "Moreland",
+        "control": "LAB"
+    },
+    "E05010963": {
+        "name": "Podsmead",
+        "control": "LD"
+    },
+    "E05010966": {
+        "name": "Tuffley",
+        "control": "MIX"
+    },
+    "E05010967": {
+        "name": "Westgate",
+        "control": "MIX"
+    },
+    "E05010950": {
+        "name": "Abbeydale",
+        "control": "CON"
+    },
+    "E05010951": {
+        "name": "Abbeymead",
+        "control": "CON"
+    },
+    "E05010952": {
+        "name": "Barnwood",
+        "control": "LD"
+    },
+    "E05010954": {
+        "name": "Coney Hill",
+        "control": "LAB"
+    },
+    "E05010955": {
+        "name": "Elmbridge",
+        "control": "LD"
+    },
+    "E05010956": {
+        "name": "Grange",
+        "control": "MIX"
+    },
+    "E05010957": {
+        "name": "Hucclecote",
+        "control": "LD"
+    },
+    "E05010958": {
+        "name": "Kingsholm and Wotton",
+        "control": "LD"
+    },
+    "E05010959": {
+        "name": "Kingsway",
+        "control": "LAB"
+    },
+    "E05010961": {
+        "name": "Matson, Robinswood and White City",
+        "control": "IND"
+    },
+    "E05010964": {
+        "name": "Quedgeley Fieldcourt",
+        "control": "CON"
+    },
+    "E05010965": {
+        "name": "Quedgeley Severn Vale",
+        "control": "MIX"
+    },
+    "E05014147": {
+        "name": "Lee East",
+        "control": "LD"
+    },
+    "E05014148": {
+        "name": "Lee West",
+        "control": "CON"
+    },
+    "E05014138": {
+        "name": "Alverstoke",
+        "control": "CON"
+    },
+    "E05014139": {
+        "name": "Anglesey",
+        "control": "CON"
+    },
+    "E05014140": {
+        "name": "Bridgemary",
+        "control": "LD"
+    },
+    "E05014141": {
+        "name": "Brockhurst and Privett",
+        "control": "LD"
+    },
+    "E05014142": {
+        "name": "Elson",
+        "control": "LD"
+    },
+    "E05014143": {
+        "name": "Forton",
+        "control": "LD"
+    },
+    "E05014144": {
+        "name": "Grange and Alver Valley",
+        "control": "CON"
+    },
+    "E05014145": {
+        "name": "Harbourside and Town",
+        "control": "LAB"
+    },
+    "E05014146": {
+        "name": "Hardway",
+        "control": "LD"
+    },
+    "E05014149": {
+        "name": "Leesland and Newtown",
+        "control": "LD"
+    },
+    "E05014150": {
+        "name": "Peel Common",
+        "control": "CON"
+    },
+    "E05014151": {
+        "name": "Rowner and Holbrook",
+        "control": "LD"
+    },
+    "E05013169": {
+        "name": "Appleton",
+        "control": "LAB"
+    },
+    "E05013170": {
+        "name": "Bankfield",
+        "control": "LAB"
+    },
+    "E05013171": {
+        "name": "Beechwood and Heath",
+        "control": "LD"
+    },
+    "E05013172": {
+        "name": "Birchfield",
+        "control": "LAB"
+    },
+    "E05013173": {
+        "name": "Bridgewater",
+        "control": "LAB"
+    },
+    "E05013174": {
+        "name": "Central and West Bank",
+        "control": "LAB"
+    },
+    "E05013175": {
+        "name": "Daresbury, Moore and Sandymoor",
+        "control": "LAB"
+    },
+    "E05013176": {
+        "name": "Ditton, Hale Village and Halebank",
+        "control": "LAB"
+    },
+    "E05013177": {
+        "name": "Farnworth",
+        "control": "LAB"
+    },
+    "E05013178": {
+        "name": "Grange",
+        "control": "LAB"
+    },
+    "E05013179": {
+        "name": "Halton Castle",
+        "control": "LAB"
+    },
+    "E05013180": {
+        "name": "Halton Lea",
+        "control": "LAB"
+    },
+    "E05013181": {
+        "name": "Halton View",
+        "control": "LAB"
+    },
+    "E05013182": {
+        "name": "Highfield",
+        "control": "LAB"
+    },
+    "E05013183": {
+        "name": "Hough Green",
+        "control": "LAB"
+    },
+    "E05013184": {
+        "name": "Mersey and Weston",
+        "control": "LAB"
+    },
+    "E05013185": {
+        "name": "Norton North",
+        "control": "LAB"
+    },
+    "E05013186": {
+        "name": "Norton South and Preston Brook",
+        "control": "LAB"
+    },
+    "E05015680": {
+        "name": "Bush Fair",
+        "control": "LAB"
+    },
+    "E05015681": {
+        "name": "Church Langley North and Newhall",
+        "control": "CON"
+    },
+    "E05015682": {
+        "name": "Church Langley South and Potter Street",
+        "control": "CON"
+    },
+    "E05015683": {
+        "name": "Great Parndon",
+        "control": "CON"
+    },
+    "E05015684": {
+        "name": "Latton Bush and Stewards",
+        "control": "MIX"
+    },
+    "E05015685": {
+        "name": "Little Parndon and Town Centre",
+        "control": "LAB"
+    },
+    "E05015686": {
+        "name": "Mark Hall",
+        "control": "LAB"
+    },
+    "E05015687": {
+        "name": "Netteswell",
+        "control": "LAB"
+    },
+    "E05015688": {
+        "name": "Old Harlow",
+        "control": "CON"
+    },
+    "E05015689": {
+        "name": "Passmores",
+        "control": "LAB"
+    },
+    "E05015690": {
+        "name": "Sumners and Kingsmoor",
+        "control": "CON"
+    },
+    "E05009359": {
+        "name": "Hook",
+        "control": "CON"
+    },
+    "E05009352": {
+        "name": "Blackwater and Hawley",
+        "control": "LD"
+    },
+    "E05009353": {
+        "name": "Crookham East",
+        "control": "OTH"
+    },
+    "E05009354": {
+        "name": "Crookham West and Ewshot",
+        "control": "OTH"
+    },
+    "E05009355": {
+        "name": "Fleet Central",
+        "control": "OTH"
+    },
+    "E05009356": {
+        "name": "Fleet East",
+        "control": "LD"
+    },
+    "E05009357": {
+        "name": "Fleet West",
+        "control": "CON"
+    },
+    "E05009358": {
+        "name": "Hartley Wintney",
+        "control": "CON"
+    },
+    "E05009360": {
+        "name": "Odiham",
+        "control": "CON"
+    },
+    "E05009361": {
+        "name": "Yateley East",
+        "control": "LD"
+    },
+    "E05009362": {
+        "name": "Yateley West",
+        "control": "LD"
+    },
+    "E05013049": {
+        "name": "Victoria",
+        "control": "LAB"
+    },
+    "E05013038": {
+        "name": "Burn Valley",
+        "control": "LAB"
+    },
+    "E05013039": {
+        "name": "De Bruce",
+        "control": "LAB"
+    },
+    "E05013040": {
+        "name": "Fens and Greatham",
+        "control": "IND"
+    },
+    "E05013041": {
+        "name": "Foggy Furze",
+        "control": "LAB"
+    },
+    "E05013042": {
+        "name": "Hart",
+        "control": "LAB"
+    },
+    "E05013043": {
+        "name": "Headland and Harbour",
+        "control": "LAB"
+    },
+    "E05013044": {
+        "name": "Manor House",
+        "control": "LAB"
+    },
+    "E05013045": {
+        "name": "Rossmere",
+        "control": "LAB"
+    },
+    "E05013046": {
+        "name": "Rural West",
+        "control": "CON"
+    },
+    "E05013047": {
+        "name": "Seaton",
+        "control": "IND"
+    },
+    "E05013048": {
+        "name": "Throston",
+        "control": "LAB"
+    },
+    "E05011202": {
+        "name": "Baird",
+        "control": "GREEN"
+    },
+    "E05011209": {
+        "name": "Maze Hill",
+        "control": "GREEN"
+    },
+    "E05011201": {
+        "name": "Ashdown",
+        "control": "CON"
+    },
+    "E05011203": {
+        "name": "Braybrooke",
+        "control": "GREEN"
+    },
+    "E05011204": {
+        "name": "Castle",
+        "control": "GREEN"
+    },
+    "E05011205": {
+        "name": "Central St Leonards",
+        "control": "GREEN"
+    },
+    "E05011206": {
+        "name": "Conquest",
+        "control": "CON"
+    },
+    "E05011207": {
+        "name": "Gensing",
+        "control": "GREEN"
+    },
+    "E05011208": {
+        "name": "Hollington",
+        "control": "LAB"
+    },
+    "E05011210": {
+        "name": "Old Hastings",
+        "control": "GREEN"
+    },
+    "E05011211": {
+        "name": "Ore",
+        "control": "GREEN"
+    },
+    "E05011213": {
+        "name": "Silverhill",
+        "control": "LAB"
+    },
+    "E05011212": {
+        "name": "St Helens",
+        "control": "LAB"
+    },
+    "E05011214": {
+        "name": "Tressell",
+        "control": "GREEN"
+    },
+    "E05011215": {
+        "name": "West St Leonards",
+        "control": "LAB"
+    },
+    "E05011216": {
+        "name": "Wishing Tree",
+        "control": "LAB"
+    },
+    "E05015586": {
+        "name": "Hayling East",
+        "control": "MIX"
+    },
+    "E05015587": {
+        "name": "Hayling West",
+        "control": "LD"
+    },
+    "E05015584": {
+        "name": "Hart Plain",
+        "control": "CON"
+    },
+    "E05015590": {
+        "name": "Purbrook",
+        "control": "MIX"
+    },
+    "E05015591": {
+        "name": "Stakes",
+        "control": "MIX"
+    },
+    "E05015581": {
+        "name": "Bedhampton",
+        "control": "MIX"
+    },
+    "E05015582": {
+        "name": "Cowplain",
+        "control": "CON"
+    },
+    "E05015583": {
+        "name": "Emsworth",
+        "control": "GREEN"
+    },
+    "E05015585": {
+        "name": "Havant St Faith's",
+        "control": "LAB"
+    },
+    "E05015588": {
+        "name": "Leigh Park Central and West Leigh",
+        "control": "MIX"
+    },
+    "E05015589": {
+        "name": "Leigh Park Hermitage",
+        "control": "MIX"
+    },
+    "E05015592": {
+        "name": "Waterloo",
+        "control": "CON"
+    },
+    "E05005206": {
+        "name": "Altham",
+        "control": "LAB"
+    },
+    "E05005207": {
+        "name": "Barnfield",
+        "control": "LAB"
+    },
+    "E05005208": {
+        "name": "Baxenden",
+        "control": "LAB"
+    },
+    "E05005209": {
+        "name": "Central",
+        "control": "GREEN"
+    },
+    "E05005210": {
+        "name": "Church",
+        "control": "LAB"
+    },
+    "E05005215": {
+        "name": "Netherton",
+        "control": "LAB"
+    },
+    "E05005216": {
+        "name": "Overton",
+        "control": "LAB"
+    },
+    "E05005217": {
+        "name": "Peel",
+        "control": "LAB"
+    },
+    "E05005218": {
+        "name": "Rishton",
+        "control": "LAB"
+    },
+    "E05005221": {
+        "name": "Spring Hill",
+        "control": "LAB"
+    },
+    "E05005219": {
+        "name": "St Andrew's",
+        "control": "LAB"
+    },
+    "E05005220": {
+        "name": "St Oswald's",
+        "control": "CON"
+    },
+    "E05007118": {
+        "name": "Bixley",
+        "control": "CON"
+    },
+    "E05007117": {
+        "name": "Alexandra",
+        "control": "LAB"
+    },
+    "E05007119": {
+        "name": "Bridge",
+        "control": "LAB"
+    },
+    "E05007120": {
+        "name": "Castle Hill",
+        "control": "CON"
+    },
+    "E05007121": {
+        "name": "Gainsborough",
+        "control": "LAB"
+    },
+    "E05007122": {
+        "name": "Gipping",
+        "control": "LAB"
+    },
+    "E05007123": {
+        "name": "Holywells",
+        "control": "LAB"
+    },
+    "E05007124": {
+        "name": "Priory Heath",
+        "control": "LAB"
+    },
+    "E05007125": {
+        "name": "Rushmere",
+        "control": "LAB"
+    },
+    "E05007128": {
+        "name": "Sprites",
+        "control": "LAB"
+    },
+    "E05007126": {
+        "name": "St John's",
+        "control": "LAB"
+    },
+    "E05007127": {
+        "name": "St Margaret's",
+        "control": "LD"
+    },
+    "E05007129": {
+        "name": "Stoke Park",
+        "control": "LAB"
+    },
+    "E05007130": {
+        "name": "Westgate",
+        "control": "LAB"
+    },
+    "E05007131": {
+        "name": "Whitehouse",
+        "control": "LAB"
+    },
+    "E05007132": {
+        "name": "Whitton",
+        "control": "LAB"
+    },
+    "E05011525": {
+        "name": "Avenue",
+        "control": "LAB"
+    },
+    "E05011528": {
+        "name": "Bricknell",
+        "control": "LAB"
+    },
+    "E05011526": {
+        "name": "Beverley and Newland",
+        "control": "LD"
+    },
+    "E05011527": {
+        "name": "Boothferry",
+        "control": "LD"
+    },
+    "E05011530": {
+        "name": "Derringham",
+        "control": "LAB"
+    },
+    "E05011531": {
+        "name": "Drypool",
+        "control": "LD"
+    },
+    "E05011532": {
+        "name": "Holderness",
+        "control": "LD"
+    },
+    "E05011533": {
+        "name": "Ings",
+        "control": "LAB"
+    },
+    "E05011534": {
+        "name": "Kingswood",
+        "control": "LD"
+    },
+    "E05011535": {
+        "name": "Longhill and Bilton Grange",
+        "control": "LD"
+    },
+    "E05011536": {
+        "name": "Marfleet",
+        "control": "LAB"
+    },
+    "E05011537": {
+        "name": "Newington and Gipsyville",
+        "control": "LAB"
+    },
+    "E05011538": {
+        "name": "North Carr",
+        "control": "LAB"
+    },
+    "E05011539": {
+        "name": "Orchard Park",
+        "control": "LAB"
+    },
+    "E05011542": {
+        "name": "Southcoates",
+        "control": "LAB"
+    },
+    "E05011541": {
+        "name": "St Andrew's and Docklands",
+        "control": "LAB"
+    },
+    "E05011543": {
+        "name": "Sutton",
+        "control": "LD"
+    },
+    "E05011544": {
+        "name": "University",
+        "control": "LD"
+    },
+    "E05011545": {
+        "name": "West Carr",
+        "control": "LD"
+    },
+    "E05001399": {
+        "name": "Dewsbury South",
+        "control": "IND"
+    },
+    "E05008558": {
+        "name": "Almondbury",
+        "control": "LD"
+    },
+    "E05001389": {
+        "name": "Ashbrow",
+        "control": "LAB"
+    },
+    "E05001390": {
+        "name": "Batley East",
+        "control": "IND"
+    },
+    "E05001391": {
+        "name": "Batley West",
+        "control": "IND"
+    },
+    "E05001392": {
+        "name": "Birstall and Birkenshaw",
+        "control": "CON"
+    },
+    "E05001393": {
+        "name": "Cleckheaton",
+        "control": "LD"
+    },
+    "E05008559": {
+        "name": "Colne Valley",
+        "control": "LAB"
+    },
+    "E05008560": {
+        "name": "Crosland Moor and Netherton",
+        "control": "GREEN"
+    },
+    "E05001396": {
+        "name": "Dalton",
+        "control": "LAB"
+    },
+    "E05001397": {
+        "name": "Denby Dale",
+        "control": "CON"
+    },
+    "E05001398": {
+        "name": "Dewsbury East",
+        "control": "LAB"
+    },
+    "E05001400": {
+        "name": "Dewsbury West",
+        "control": "IND"
+    },
+    "E05001401": {
+        "name": "Golcar",
+        "control": "LAB"
+    },
+    "E05001402": {
+        "name": "Greenhead",
+        "control": "LAB"
+    },
+    "E05001403": {
+        "name": "Heckmondwike",
+        "control": "IND"
+    },
+    "E05008561": {
+        "name": "Holme Valley North",
+        "control": "IND"
+    },
+    "E05001405": {
+        "name": "Holme Valley South",
+        "control": "LAB"
+    },
+    "E05008562": {
+        "name": "Kirkburton",
+        "control": "CON"
+    },
+    "E05001407": {
+        "name": "Lindley",
+        "control": "LD"
+    },
+    "E05001408": {
+        "name": "Liversedge and Gomersal",
+        "control": "CON"
+    },
+    "E05001409": {
+        "name": "Mirfield",
+        "control": "CON"
+    },
+    "E05001410": {
+        "name": "Newsome",
+        "control": "GREEN"
+    },
+    "E05010935": {
+        "name": "Cherryfield",
+        "control": "LAB"
+    },
+    "E05010936": {
+        "name": "Halewood North",
+        "control": "LAB"
+    },
+    "E05010937": {
+        "name": "Halewood South",
+        "control": "LAB"
+    },
+    "E05010938": {
+        "name": "Northwood",
+        "control": "LAB"
+    },
+    "E05010939": {
+        "name": "Page Moss",
+        "control": "LAB"
+    },
+    "E05010940": {
+        "name": "Prescot North",
+        "control": "LD"
+    },
+    "E05010941": {
+        "name": "Prescot South",
+        "control": "GREEN"
+    },
+    "E05010942": {
+        "name": "Roby",
+        "control": "LAB"
+    },
+    "E05010943": {
+        "name": "Shevington",
+        "control": "LAB"
+    },
+    "E05010944": {
+        "name": "St Gabriels",
+        "control": "LAB"
+    },
+    "E05010945": {
+        "name": "St Michaels",
+        "control": "LAB"
+    },
+    "E05010946": {
+        "name": "Stockbridge",
+        "control": "LAB"
+    },
+    "E05010947": {
+        "name": "Swanside",
+        "control": "LAB"
+    },
+    "E05010948": {
+        "name": "Whiston and Cronton",
+        "control": "LAB"
+    },
+    "E05010949": {
+        "name": "Whitefield",
+        "control": "IND"
+    },
+    "E05012841": {
+        "name": "Adel and Wharfedale",
+        "control": "CON"
+    },
+    "E05012842": {
+        "name": "Alwoodley",
+        "control": "CON"
+    },
+    "E05011388": {
+        "name": "Burmantofts and Richmond Hill",
+        "control": "LAB"
+    },
+    "E05011390": {
+        "name": "Chapel Allerton",
+        "control": "LAB"
+    },
+    "E05011391": {
+        "name": "Cross Gates and Whinmoor",
+        "control": "LAB"
+    },
+    "E05012648": {
+        "name": "Farnley and Wortley",
+        "control": "LAB"
+    },
+    "E05013830": {
+        "name": "Garforth and Swillington",
+        "control": "OTH"
+    },
+    "E05011394": {
+        "name": "Gipton and Harehills",
+        "control": "GREEN"
+    },
+    "E05011395": {
+        "name": "Guiseley and Rawdon",
+        "control": "LAB"
+    },
+    "E05011396": {
+        "name": "Harewood",
+        "control": "CON"
+    },
+    "E05011547": {
+        "name": "Horsforth",
+        "control": "LAB"
+    },
+    "E05011400": {
+        "name": "Killingbeck and Seacroft",
+        "control": "LAB"
+    },
+    "E05011401": {
+        "name": "Kippax and Methley",
+        "control": "LAB"
+    },
+    "E05011402": {
+        "name": "Kirkstall",
+        "control": "LAB"
+    },
+    "E05011404": {
+        "name": "Middleton Park",
+        "control": "OTH"
+    },
+    "E05011405": {
+        "name": "Moortown",
+        "control": "LAB"
+    },
+    "E05011406": {
+        "name": "Morley North",
+        "control": "OTH"
+    },
+    "E05011407": {
+        "name": "Morley South",
+        "control": "OTH"
+    },
+    "E05011549": {
+        "name": "Otley and Yeadon",
+        "control": "LD"
+    },
+    "E05011410": {
+        "name": "Rothwell",
+        "control": "LD"
+    },
+    "E05011411": {
+        "name": "Roundhay",
+        "control": "LAB"
+    },
+    "E05013831": {
+        "name": "Temple Newsam",
+        "control": "LAB"
+    },
+    "E05011413": {
+        "name": "Weetwood",
+        "control": "LAB"
+    },
+    "E05011414": {
+        "name": "Wetherby",
+        "control": "CON"
+    },
+    "E05011384": {
+        "name": "Ardsley and Robin Hood",
+        "control": "LAB"
+    },
+    "E05011385": {
+        "name": "Armley",
+        "control": "GREEN"
+    },
+    "E05012647": {
+        "name": "Beeston and Holbeck",
+        "control": "LAB"
+    },
+    "E05011387": {
+        "name": "Bramley and Stanningley",
+        "control": "LAB"
+    },
+    "E05011389": {
+        "name": "Calverley and Farsley",
+        "control": "LAB"
+    },
+    "E05011397": {
+        "name": "Headingley and Hyde Park",
+        "control": "GREEN"
+    },
+    "E05011399": {
+        "name": "Hunslet and Riverside",
+        "control": "LAB"
+    },
+    "E05011403": {
+        "name": "Little London and Woodhouse",
+        "control": "LAB"
+    },
+    "E05011409": {
+        "name": "Pudsey",
+        "control": "CON"
+    },
+    "E05010784": {
+        "name": "Abbey",
+        "control": "LD"
+    },
+    "E05010785": {
+        "name": "Birchwood",
+        "control": "LAB"
+    },
+    "E05010786": {
+        "name": "Boultham",
+        "control": "LAB"
+    },
+    "E05010787": {
+        "name": "Carholme",
+        "control": "LAB"
+    },
+    "E05010788": {
+        "name": "Castle",
+        "control": "LAB"
+    },
+    "E05010789": {
+        "name": "Glebe",
+        "control": "LD"
+    },
+    "E05010790": {
+        "name": "Hartsholme",
+        "control": "LAB"
+    },
+    "E05010791": {
+        "name": "Minster",
+        "control": "LAB"
+    },
+    "E05010792": {
+        "name": "Moorland",
+        "control": "LAB"
+    },
+    "E05010793": {
+        "name": "Park",
+        "control": "LAB"
+    },
+    "E05010794": {
+        "name": "Witham",
+        "control": "CON"
+    },
+    "E05015613": {
+        "name": "Staplehurst",
+        "control": "CON"
+    },
+    "E05015593": {
+        "name": "Allington and Bridge",
+        "control": "GREEN"
+    },
+    "E05015594": {
+        "name": "Barming Heath and Teston",
+        "control": "MIX"
+    },
+    "E05015595": {
+        "name": "Bearsted and Downswood",
+        "control": "MIX"
+    },
+    "E05015596": {
+        "name": "Boughton Monchelsea and Chart Sutton",
+        "control": "IND"
+    },
+    "E05015597": {
+        "name": "Boxley Downs",
+        "control": "MIX"
+    },
+    "E05015598": {
+        "name": "Coxheath and Farleigh",
+        "control": "MIX"
+    },
+    "E05015599": {
+        "name": "Fant and Oakwood",
+        "control": "MIX"
+    },
+    "E05015600": {
+        "name": "Grove Green and Vinters Park",
+        "control": "MIX"
+    },
+    "E05015601": {
+        "name": "Harrietsham, Lenham and North Downs",
+        "control": "IND"
+    },
+    "E05015602": {
+        "name": "Headcorn and Sutton Valence",
+        "control": "CON"
+    },
+    "E05015603": {
+        "name": "High Street",
+        "control": "MIX"
+    },
+    "E05015604": {
+        "name": "Leeds and Langley",
+        "control": "CON"
+    },
+    "E05015605": {
+        "name": "Loose and Linton",
+        "control": "LD"
+    },
+    "E05015606": {
+        "name": "Marden and Yalding",
+        "control": "MIX"
+    },
+    "E05015607": {
+        "name": "Palace Wood",
+        "control": "CON"
+    },
+    "E05015608": {
+        "name": "Park Wood and Mangravet",
+        "control": "LAB"
+    },
+    "E05015609": {
+        "name": "Penenden Heath",
+        "control": "LD"
+    },
+    "E05015610": {
+        "name": "Ringlestone",
+        "control": "LD"
+    },
+    "E05015611": {
+        "name": "Senacre",
+        "control": "LAB"
+    },
+    "E05015612": {
+        "name": "Shepway",
+        "control": "LAB"
+    },
+    "E05015614": {
+        "name": "Tovil",
+        "control": "LD"
+    },
+    "E05011352": {
+        "name": "Baguley",
+        "control": "LAB"
+    },
+    "E05011350": {
+        "name": "Ancoats and Beswick",
+        "control": "LD"
+    },
+    "E05011351": {
+        "name": "Ardwick",
+        "control": "LAB"
+    },
+    "E05011353": {
+        "name": "Brooklands",
+        "control": "LAB"
+    },
+    "E05011354": {
+        "name": "Burnage",
+        "control": "LAB"
+    },
+    "E05011355": {
+        "name": "Charlestown",
+        "control": "LAB"
+    },
+    "E05011356": {
+        "name": "Cheetham",
+        "control": "LAB"
+    },
+    "E05011357": {
+        "name": "Chorlton",
+        "control": "LAB"
+    },
+    "E05011358": {
+        "name": "Chorlton Park",
+        "control": "LAB"
+    },
+    "E05011359": {
+        "name": "Clayton and Openshaw",
+        "control": "LAB"
+    },
+    "E05011360": {
+        "name": "Crumpsall",
+        "control": "LAB"
+    },
+    "E05011361": {
+        "name": "Deansgate",
+        "control": "LAB"
+    },
+    "E05011362": {
+        "name": "Didsbury East",
+        "control": "LAB"
+    },
+    "E05011363": {
+        "name": "Didsbury West",
+        "control": "LAB"
+    },
+    "E05011364": {
+        "name": "Fallowfield",
+        "control": "LAB"
+    },
+    "E05011365": {
+        "name": "Gorton and Abbey Hey",
+        "control": "LAB"
+    },
+    "E05011366": {
+        "name": "Harpurhey",
+        "control": "LAB"
+    },
+    "E05011367": {
+        "name": "Higher Blackley",
+        "control": "LAB"
+    },
+    "E05011368": {
+        "name": "Hulme",
+        "control": "LAB"
+    },
+    "E05011369": {
+        "name": "Levenshulme",
+        "control": "LAB"
+    },
+    "E05011370": {
+        "name": "Longsight",
+        "control": "OTH"
+    },
+    "E05011371": {
+        "name": "Miles Platting and Newton Heath",
+        "control": "LAB"
+    },
+    "E05011372": {
+        "name": "Moss Side",
+        "control": "LAB"
+    },
+    "E05011373": {
+        "name": "Moston",
+        "control": "LAB"
+    },
+    "E05011374": {
+        "name": "Northenden",
+        "control": "LAB"
+    },
+    "E05011375": {
+        "name": "Old Moat",
+        "control": "LAB"
+    },
+    "E05011376": {
+        "name": "Piccadilly",
+        "control": "LAB"
+    },
+    "E05011377": {
+        "name": "Rusholme",
+        "control": "LAB"
+    },
+    "E05011378": {
+        "name": "Sharston",
+        "control": "LAB"
+    },
+    "E05011379": {
+        "name": "Whalley Range",
+        "control": "LAB"
+    },
+    "E05011380": {
+        "name": "Withington",
+        "control": "LAB"
+    },
+    "E05011381": {
+        "name": "Woodhouse Park",
+        "control": "GREEN"
+    },
+    "E05009406": {
+        "name": "Bletchley East",
+        "control": "LAB"
+    },
+    "E05009407": {
+        "name": "Bletchley Park",
+        "control": "LAB"
+    },
+    "E05009408": {
+        "name": "Bletchley West",
+        "control": "LAB"
+    },
+    "E05009409": {
+        "name": "Bradwell",
+        "control": "LD"
+    },
+    "E05009410": {
+        "name": "Broughton",
+        "control": "LD"
+    },
+    "E05009411": {
+        "name": "Campbell Park and Old Woughton",
+        "control": "LD"
+    },
+    "E05009412": {
+        "name": "Central Milton Keynes",
+        "control": "LAB"
+    },
+    "E05009413": {
+        "name": "Danesborough and Walton",
+        "control": "CON"
+    },
+    "E05009414": {
+        "name": "Loughton and Shenley",
+        "control": "LAB"
+    },
+    "E05009415": {
+        "name": "Monkston",
+        "control": "LD"
+    },
+    "E05009416": {
+        "name": "Newport Pagnell North and Hanslope",
+        "control": "CON"
+    },
+    "E05009417": {
+        "name": "Newport Pagnell South",
+        "control": "LD"
+    },
+    "E05009418": {
+        "name": "Olney",
+        "control": "CON"
+    },
+    "E05009419": {
+        "name": "Shenley Brook End",
+        "control": "LD"
+    },
+    "E05009420": {
+        "name": "Stantonbury",
+        "control": "LAB"
+    },
+    "E05009421": {
+        "name": "Stony Stratford",
+        "control": "LAB"
+    },
+    "E05009422": {
+        "name": "Tattenhoe",
+        "control": "CON"
+    },
+    "E05009423": {
+        "name": "Wolverton",
+        "control": "LAB"
+    },
+    "E05009424": {
+        "name": "Woughton and Fishermead",
+        "control": "LAB"
+    },
+    "E05015341": {
+        "name": "Ashtead Lanes and Common",
+        "control": "IND"
+    },
+    "E05015342": {
+        "name": "Ashtead Park",
+        "control": "IND"
+    },
+    "E05015343": {
+        "name": "Bookham East and Eastwick Park",
+        "control": "LD"
+    },
+    "E05015344": {
+        "name": "Bookham West",
+        "control": "LD"
+    },
+    "E05015345": {
+        "name": "Brockham, Betchworth, Buckland, Box Hill and Headley",
+        "control": "LD"
+    },
+    "E05015346": {
+        "name": "Capel, Leigh, Newdigate and Charlwood",
+        "control": "LD"
+    },
+    "E05015347": {
+        "name": "Dorking North",
+        "control": "LD"
+    },
+    "E05015348": {
+        "name": "Dorking South",
+        "control": "LD"
+    },
+    "E05015349": {
+        "name": "Fetcham",
+        "control": "LD"
+    },
+    "E05015350": {
+        "name": "Holmwoods and Beare Green",
+        "control": "LD"
+    },
+    "E05015351": {
+        "name": "Leatherhead North",
+        "control": "LD"
+    },
+    "E05015352": {
+        "name": "Leatherhead South",
+        "control": "LD"
+    },
+    "E05015353": {
+        "name": "Mickleham, Westcott and Okewood",
+        "control": "LD"
+    },
+    "E05011458": {
+        "name": "Walker",
+        "control": "LAB"
+    },
+    "E05011436": {
+        "name": "Arthur's Hill",
+        "control": "LAB"
+    },
+    "E05011437": {
+        "name": "Benwell and Scotswood",
+        "control": "LAB"
+    },
+    "E05011438": {
+        "name": "Blakelaw",
+        "control": "LAB"
+    },
+    "E05011439": {
+        "name": "Byker",
+        "control": "GREEN"
+    },
+    "E05011440": {
+        "name": "Callerton and Throckley",
+        "control": "LAB"
+    },
+    "E05011441": {
+        "name": "Castle",
+        "control": "LAB"
+    },
+    "E05011442": {
+        "name": "Chapel",
+        "control": "IND"
+    },
+    "E05011443": {
+        "name": "Dene and South Gosforth",
+        "control": "LD"
+    },
+    "E05011444": {
+        "name": "Denton and Westerhope",
+        "control": "OTH"
+    },
+    "E05011445": {
+        "name": "Elswick",
+        "control": "GREEN"
+    },
+    "E05011446": {
+        "name": "Fawdon and West Gosforth",
+        "control": "LD"
+    },
+    "E05011447": {
+        "name": "Gosforth",
+        "control": "CON"
+    },
+    "E05011448": {
+        "name": "Heaton",
+        "control": "LAB"
+    },
+    "E05011449": {
+        "name": "Kenton",
+        "control": "LAB"
+    },
+    "E05011450": {
+        "name": "Kingston Park South and Newbiggin Hall",
+        "control": "LAB"
+    },
+    "E05011451": {
+        "name": "Lemington",
+        "control": "LAB"
+    },
+    "E05011452": {
+        "name": "Manor Park",
+        "control": "LD"
+    },
+    "E05011453": {
+        "name": "Monument",
+        "control": "LAB"
+    },
+    "E05011454": {
+        "name": "North Jesmond",
+        "control": "LD"
+    },
+    "E05011455": {
+        "name": "Ouseburn",
+        "control": "LAB"
+    },
+    "E05011456": {
+        "name": "Parklands",
+        "control": "LD"
+    },
+    "E05011457": {
+        "name": "South Jesmond",
+        "control": "LAB"
+    },
+    "E05011459": {
+        "name": "Walkergate",
+        "control": "LAB"
+    },
+    "E05011460": {
+        "name": "West Fenham",
+        "control": "LD"
+    },
+    "E05011461": {
+        "name": "Wingrove",
+        "control": "LAB"
+    },
+    "E05001715": {
+        "name": "Freshney",
+        "control": "IND"
+    },
+    "E05001719": {
+        "name": "Immingham",
+        "control": "CON"
+    },
+    "E05001713": {
+        "name": "Croft Baker",
+        "control": "LAB"
+    },
+    "E05001714": {
+        "name": "East Marsh",
+        "control": "LD"
+    },
+    "E05001716": {
+        "name": "Haverstoe",
+        "control": "CON"
+    },
+    "E05001717": {
+        "name": "Heneage",
+        "control": "LAB"
+    },
+    "E05001718": {
+        "name": "Humberston and New Waltham",
+        "control": "CON"
+    },
+    "E05001720": {
+        "name": "Park",
+        "control": "LAB"
+    },
+    "E05001721": {
+        "name": "Scartho",
+        "control": "LAB"
+    },
+    "E05001722": {
+        "name": "Sidney Sussex",
+        "control": "LAB"
+    },
+    "E05001723": {
+        "name": "South",
+        "control": "LAB"
+    },
+    "E05001727": {
+        "name": "Yarborough",
+        "control": "IND"
+    },
+    "E05015757": {
+        "name": "Cadwell",
+        "control": "LD"
+    },
+    "E05015759": {
+        "name": "Ermine",
+        "control": "CON"
+    },
+    "E05015768": {
+        "name": "Knebworth",
+        "control": "LD"
+    },
+    "E05015766": {
+        "name": "Hitchin Walsworth",
+        "control": "LAB"
+    },
+    "E05015754": {
+        "name": "Arbury",
+        "control": "LD"
+    },
+    "E05015755": {
+        "name": "Baldock East",
+        "control": "LAB"
+    },
+    "E05015756": {
+        "name": "Baldock West",
+        "control": "MIX"
+    },
+    "E05015758": {
+        "name": "Codicote and Kimpton",
+        "control": "CON"
+    },
+    "E05015760": {
+        "name": "Graveley, St Ippolyts and Wymondley",
+        "control": "LD"
+    },
+    "E05015761": {
+        "name": "Great Ashby",
+        "control": "LAB"
+    },
+    "E05015762": {
+        "name": "Hitchin Bearton",
+        "control": "LAB"
+    },
+    "E05015763": {
+        "name": "Hitchin Highbury",
+        "control": "LD"
+    },
+    "E05015764": {
+        "name": "Hitchin Oughton",
+        "control": "LAB"
+    },
+    "E05015765": {
+        "name": "Hitchin Priory",
+        "control": "LD"
+    },
+    "E05015767": {
+        "name": "Hitchwood",
+        "control": "CON"
+    },
+    "E05015769": {
+        "name": "Letchworth Grange",
+        "control": "LAB"
+    },
+    "E05015770": {
+        "name": "Letchworth Norton",
+        "control": "LAB"
+    },
+    "E05015771": {
+        "name": "Letchworth South East",
+        "control": "LAB"
+    },
+    "E05015772": {
+        "name": "Letchworth South West",
+        "control": "LD"
+    },
+    "E05015773": {
+        "name": "Letchworth Wilbury",
+        "control": "LAB"
+    },
+    "E05015774": {
+        "name": "Offa",
+        "control": "CON"
+    },
+    "E05015775": {
+        "name": "Royston Heath",
+        "control": "LD"
+    },
+    "E05015776": {
+        "name": "Royston Meridian",
+        "control": "LD"
+    },
+    "E05015777": {
+        "name": "Royston Palace",
+        "control": "LAB"
+    },
+    "E05015778": {
+        "name": "Weston and Sandon",
+        "control": "LD"
+    },
+    "E05015866": {
+        "name": "Battle Hill",
+        "control": "LAB"
+    },
+    "E05015865": {
+        "name": "Backworth and Holystone",
+        "control": "LAB"
+    },
+    "E05015867": {
+        "name": "Camperdown",
+        "control": "LAB"
+    },
+    "E05015868": {
+        "name": "Chirton and Percy Main",
+        "control": "LAB"
+    },
+    "E05015869": {
+        "name": "Cullercoats and Whitley Bay South",
+        "control": "LAB"
+    },
+    "E05015870": {
+        "name": "Forest Hall",
+        "control": "LAB"
+    },
+    "E05015871": {
+        "name": "Howdon",
+        "control": "LAB"
+    },
+    "E05015872": {
+        "name": "Killingworth",
+        "control": "LAB"
+    },
+    "E05015873": {
+        "name": "Longbenton and Benton",
+        "control": "LAB"
+    },
+    "E05015874": {
+        "name": "Monkseaton",
+        "control": "LAB"
+    },
+    "E05015875": {
+        "name": "New York and Murton",
+        "control": "CON"
+    },
+    "E05015876": {
+        "name": "North Shields",
+        "control": "LAB"
+    },
+    "E05015877": {
+        "name": "Preston with Preston Grange",
+        "control": "CON"
+    },
+    "E05015878": {
+        "name": "Shiremoor",
+        "control": "LAB"
+    },
+    "E05015879": {
+        "name": "St Mary's",
+        "control": "MIX"
+    },
+    "E05015880": {
+        "name": "Tynemouth",
+        "control": "MIX"
+    },
+    "E05015881": {
+        "name": "Wallsend Central",
+        "control": "LAB"
+    },
+    "E05015882": {
+        "name": "Wallsend North",
+        "control": "LAB"
+    },
+    "E05015883": {
+        "name": "Weetslade",
+        "control": "LAB"
+    },
+    "E05015884": {
+        "name": "Whitley Bay North",
+        "control": "LAB"
+    },
+    "E05012909": {
+        "name": "Sewell",
+        "control": "GREEN"
+    },
+    "E05012901": {
+        "name": "Bowthorpe",
+        "control": "LAB"
+    },
+    "E05012902": {
+        "name": "Catton Grove",
+        "control": "LAB"
+    },
+    "E05012903": {
+        "name": "Crome",
+        "control": "LAB"
+    },
+    "E05012904": {
+        "name": "Eaton",
+        "control": "LD"
+    },
+    "E05012905": {
+        "name": "Lakenham",
+        "control": "LAB"
+    },
+    "E05012906": {
+        "name": "Mancroft",
+        "control": "GREEN"
+    },
+    "E05012907": {
+        "name": "Mile Cross",
+        "control": "GREEN"
+    },
+    "E05012908": {
+        "name": "Nelson",
+        "control": "GREEN"
+    },
+    "E05012910": {
+        "name": "Thorpe Hamlet",
+        "control": "GREEN"
+    },
+    "E05012911": {
+        "name": "Town Close",
+        "control": "LAB"
+    },
+    "E05012912": {
+        "name": "University",
+        "control": "LAB"
+    },
+    "E05012913": {
+        "name": "Wensum",
+        "control": "GREEN"
+    },
+    "E05015827": {
+        "name": "Arbury",
+        "control": "LAB"
+    },
+    "E05015828": {
+        "name": "Attleborough",
+        "control": "LAB"
+    },
+    "E05015829": {
+        "name": "Bede",
+        "control": "LAB"
+    },
+    "E05015830": {
+        "name": "Bulkington",
+        "control": "CON"
+    },
+    "E05015831": {
+        "name": "Camp Hill",
+        "control": "LAB"
+    },
+    "E05015832": {
+        "name": "Chilvers Coton",
+        "control": "LAB"
+    },
+    "E05015833": {
+        "name": "Eastboro",
+        "control": "CON"
+    },
+    "E05015834": {
+        "name": "Exhall",
+        "control": "MIX"
+    },
+    "E05015835": {
+        "name": "Galley Common",
+        "control": "MIX"
+    },
+    "E05015836": {
+        "name": "Heath",
+        "control": "LAB"
+    },
+    "E05015837": {
+        "name": "Milby",
+        "control": "CON"
+    },
+    "E05015838": {
+        "name": "Poplar",
+        "control": "CON"
+    },
+    "E05015839": {
+        "name": "Slough",
+        "control": "CON"
+    },
+    "E05015840": {
+        "name": "St Mary's",
+        "control": "LAB"
+    },
+    "E05015841": {
+        "name": "St Nicolas",
+        "control": "CON"
+    },
+    "E05015842": {
+        "name": "Stockingford East",
+        "control": "LAB"
+    },
+    "E05015843": {
+        "name": "Stockingford West",
+        "control": "LAB"
+    },
+    "E05015844": {
+        "name": "Weddington",
+        "control": "GREEN"
+    },
+    "E05015845": {
+        "name": "Whitestone",
+        "control": "CON"
+    },
+    "E05014646": {
+        "name": "Alexandra",
+        "control": "IND"
+    },
+    "E05014658": {
+        "name": "Saddleworth North",
+        "control": "LD"
+    },
+    "E05014659": {
+        "name": "Saddleworth South",
+        "control": "CON"
+    },
+    "E05014660": {
+        "name": "Saddleworth West and Lees",
+        "control": "LD"
+    },
+    "E05014647": {
+        "name": "Chadderton Central",
+        "control": "LAB"
+    },
+    "E05014648": {
+        "name": "Chadderton North",
+        "control": "LAB"
+    },
+    "E05014649": {
+        "name": "Chadderton South",
+        "control": "LAB"
+    },
+    "E05014650": {
+        "name": "Coldhurst",
+        "control": "IND"
+    },
+    "E05014651": {
+        "name": "Crompton",
+        "control": "LD"
+    },
+    "E05014652": {
+        "name": "Failsworth East",
+        "control": "LAB"
+    },
+    "E05014653": {
+        "name": "Failsworth West",
+        "control": "IND"
+    },
+    "E05014654": {
+        "name": "Hollinwood",
+        "control": "LAB"
+    },
+    "E05014655": {
+        "name": "Medlock Vale",
+        "control": "LAB"
+    },
+    "E05014656": {
+        "name": "Royton North",
+        "control": "CON"
+    },
+    "E05014657": {
+        "name": "Royton South",
+        "control": "IND"
+    },
+    "E05014661": {
+        "name": "Shaw",
+        "control": "IND"
+    },
+    "E05014662": {
+        "name": "St James'",
+        "control": "LAB"
+    },
+    "E05014663": {
+        "name": "St Mary's",
+        "control": "IND"
+    },
+    "E05014664": {
+        "name": "Waterhead",
+        "control": "IND"
+    },
+    "E05014665": {
+        "name": "Werneth",
+        "control": "IND"
+    },
+    "E05013099": {
+        "name": "Churchill",
+        "control": "LAB"
+    },
+    "E05013105": {
+        "name": "Hinksey Park",
+        "control": "LAB"
+    },
+    "E05013109": {
+        "name": "Marston",
+        "control": "LAB"
+    },
+    "E05013113": {
+        "name": "Rose Hill and Iffley",
+        "control": "OTH"
+    },
+    "E05013096": {
+        "name": "Barton and Sandhills",
+        "control": "LAB"
+    },
+    "E05013097": {
+        "name": "Blackbird Leys",
+        "control": "LAB"
+    },
+    "E05013098": {
+        "name": "Carfax and Jericho",
+        "control": "LAB"
+    },
+    "E05013100": {
+        "name": "Cowley",
+        "control": "OTH"
+    },
+    "E05013101": {
+        "name": "Cutteslowe and Sunnymead",
+        "control": "LD"
+    },
+    "E05013102": {
+        "name": "Donnington",
+        "control": "GREEN"
+    },
+    "E05013103": {
+        "name": "Headington",
+        "control": "LD"
+    },
+    "E05013104": {
+        "name": "Headington Hill and Northway",
+        "control": "LAB"
+    },
+    "E05013106": {
+        "name": "Holywell",
+        "control": "GREEN"
+    },
+    "E05013107": {
+        "name": "Littlemore",
+        "control": "OTH"
+    },
+    "E05013108": {
+        "name": "Lye Valley",
+        "control": "OTH"
+    },
+    "E05013110": {
+        "name": "Northfield Brook",
+        "control": "LAB"
+    },
+    "E05013111": {
+        "name": "Osney and St Thomas",
+        "control": "LAB"
+    },
+    "E05013112": {
+        "name": "Quarry and Risinghurst",
+        "control": "LD"
+    },
+    "E05013114": {
+        "name": "St Clement's",
+        "control": "GREEN"
+    },
+    "E05013115": {
+        "name": "St Mary's",
+        "control": "GREEN"
+    },
+    "E05013116": {
+        "name": "Summertown",
+        "control": "LD"
+    },
+    "E05013117": {
+        "name": "Temple Cowley",
+        "control": "IND"
+    },
+    "E05013118": {
+        "name": "Walton Manor",
+        "control": "LAB"
+    },
+    "E05013119": {
+        "name": "Wolvercote",
+        "control": "LD"
+    },
+    "E05015546": {
+        "name": "Barnoldswick",
+        "control": "LD"
+    },
+    "E05013201": {
+        "name": "Barrowford and Pendleside",
+        "control": "CON"
+    },
+    "E05013202": {
+        "name": "Boulsworth and Foulridge",
+        "control": "CON"
+    },
+    "E05013203": {
+        "name": "Bradley",
+        "control": "IND"
+    },
+    "E05013204": {
+        "name": "Brierfield East and Clover Hill",
+        "control": "IND"
+    },
+    "E05013205": {
+        "name": "Brierfield West and Reedley",
+        "control": "IND"
+    },
+    "E05015547": {
+        "name": "Earby and Coates",
+        "control": "LD"
+    },
+    "E05013207": {
+        "name": "Fence and Higham",
+        "control": "LD"
+    },
+    "E05013208": {
+        "name": "Marsden and Southfield",
+        "control": "IND"
+    },
+    "E05013209": {
+        "name": "Vivary Bridge",
+        "control": "CON"
+    },
+    "E05013210": {
+        "name": "Waterside and Horsfield",
+        "control": "CON"
+    },
+    "E05013211": {
+        "name": "Whitefield and Walverden",
+        "control": "IND"
+    },
+    "E05010820": {
+        "name": "Park",
+        "control": "LAB"
+    },
+    "E05010805": {
+        "name": "Barnack",
+        "control": "CON"
+    },
+    "E05010806": {
+        "name": "Bretton",
+        "control": "LAB"
+    },
+    "E05010808": {
+        "name": "Dogsthorpe",
+        "control": "LAB"
+    },
+    "E05010807": {
+        "name": "Central",
+        "control": "LAB"
+    },
+    "E05010809": {
+        "name": "East",
+        "control": "LAB"
+    },
+    "E05010810": {
+        "name": "Eye, Thorney and Newborough",
+        "control": "OTH"
+    },
+    "E05010811": {
+        "name": "Fletton and Stanground",
+        "control": "LD"
+    },
+    "E05010812": {
+        "name": "Fletton and Woodston",
+        "control": "LAB"
+    },
+    "E05010813": {
+        "name": "Glinton and Castor",
+        "control": "OTH"
+    },
+    "E05010814": {
+        "name": "Gunthorpe",
+        "control": "LD"
+    },
+    "E05010815": {
+        "name": "Hampton Vale",
+        "control": "OTH"
+    },
+    "E05010816": {
+        "name": "Hargate and Hempsted",
+        "control": "OTH"
+    },
+    "E05010817": {
+        "name": "North",
+        "control": "LAB"
+    },
+    "E05010818": {
+        "name": "Orton Longueville",
+        "control": "GREEN"
+    },
+    "E05010819": {
+        "name": "Orton Waterville",
+        "control": "IND"
+    },
+    "E05010821": {
+        "name": "Paston and Walton",
+        "control": "CON"
+    },
+    "E05010822": {
+        "name": "Ravensthorpe",
+        "control": "GREEN"
+    },
+    "E05010823": {
+        "name": "Stanground South",
+        "control": "OTH"
+    },
+    "E05010824": {
+        "name": "Werrington",
+        "control": "OTH"
+    },
+    "E05010825": {
+        "name": "West",
+        "control": "CON"
+    },
+    "E05010826": {
+        "name": "Wittering",
+        "control": "OTH"
+    },
+    "E05002078": {
+        "name": "Budshead",
+        "control": "LAB"
+    },
+    "E05002079": {
+        "name": "Compton",
+        "control": "LAB"
+    },
+    "E05002080": {
+        "name": "Devonport",
+        "control": "LAB"
+    },
+    "E05002082": {
+        "name": "Efford and Lipson",
+        "control": "LAB"
+    },
+    "E05002083": {
+        "name": "Eggbuckland",
+        "control": "CON"
+    },
+    "E05002084": {
+        "name": "Ham",
+        "control": "LAB"
+    },
+    "E05002085": {
+        "name": "Honicknowle",
+        "control": "LAB"
+    },
+    "E05002086": {
+        "name": "Moor View",
+        "control": "LAB"
+    },
+    "E05002087": {
+        "name": "Peverell",
+        "control": "LAB"
+    },
+    "E05002088": {
+        "name": "Plympton Chaddlewood",
+        "control": "GREEN"
+    },
+    "E05002089": {
+        "name": "Plympton Erle",
+        "control": "IND"
+    },
+    "E05002090": {
+        "name": "Plympton St Mary",
+        "control": "IND"
+    },
+    "E05002091": {
+        "name": "Plymstock Dunstone",
+        "control": "LAB"
+    },
+    "E05002092": {
+        "name": "Plymstock Radford",
+        "control": "LAB"
+    },
+    "E05002095": {
+        "name": "Southway",
+        "control": "LAB"
+    },
+    "E05002093": {
+        "name": "St Budeaux",
+        "control": "LAB"
+    },
+    "E05002094": {
+        "name": "St Peter and the Waterfront",
+        "control": "LAB"
+    },
+    "E05002096": {
+        "name": "Stoke",
+        "control": "LAB"
+    },
+    "E05002097": {
+        "name": "Sutton and Mount Gould",
+        "control": "LAB"
+    },
+    "E05002441": {
+        "name": "Baffins",
+        "control": "LD"
+    },
+    "E05002442": {
+        "name": "Central Southsea",
+        "control": "LAB"
+    },
+    "E05002443": {
+        "name": "Charles Dickens",
+        "control": "LAB"
+    },
+    "E05002444": {
+        "name": "Copnor",
+        "control": "OTH"
+    },
+    "E05002445": {
+        "name": "Cosham",
+        "control": "OTH"
+    },
+    "E05002446": {
+        "name": "Drayton and Farlington",
+        "control": "CON"
+    },
+    "E05002447": {
+        "name": "Eastney and Craneswater",
+        "control": "LD"
+    },
+    "E05002448": {
+        "name": "Fratton",
+        "control": "LD"
+    },
+    "E05002449": {
+        "name": "Hilsea",
+        "control": "OTH"
+    },
+    "E05002450": {
+        "name": "Milton",
+        "control": "LD"
+    },
+    "E05002451": {
+        "name": "Nelson",
+        "control": "LD"
+    },
+    "E05002452": {
+        "name": "Paulsgrove",
+        "control": "OTH"
+    },
+    "E05002453": {
+        "name": "St Jude",
+        "control": "LD"
+    },
+    "E05002454": {
+        "name": "St Thomas",
+        "control": "LD"
+    },
+    "E05012193": {
+        "name": "Ashton",
+        "control": "LAB"
+    },
+    "E05012194": {
+        "name": "Brookfield",
+        "control": "LAB"
+    },
+    "E05012195": {
+        "name": "Cadley",
+        "control": "LD"
+    },
+    "E05012196": {
+        "name": "City Centre",
+        "control": "LAB"
+    },
+    "E05012197": {
+        "name": "Deepdale",
+        "control": "LAB"
+    },
+    "E05012198": {
+        "name": "Fishwick and Frenchwood",
+        "control": "LAB"
+    },
+    "E05012199": {
+        "name": "Garrison",
+        "control": "LAB"
+    },
+    "E05012200": {
+        "name": "Greyfriars",
+        "control": "LD"
+    },
+    "E05012201": {
+        "name": "Ingol and Cottam",
+        "control": "LD"
+    },
+    "E05012202": {
+        "name": "Lea and Larches",
+        "control": "LD"
+    },
+    "E05012203": {
+        "name": "Plungington",
+        "control": "LAB"
+    },
+    "E05012204": {
+        "name": "Preston Rural East",
+        "control": "CON"
+    },
+    "E05012205": {
+        "name": "Preston Rural North",
+        "control": "LD"
+    },
+    "E05012206": {
+        "name": "Ribbleton",
+        "control": "LAB"
+    },
+    "E05012208": {
+        "name": "Sharoe Green",
+        "control": "LD"
+    },
+    "E05012207": {
+        "name": "St Matthew's",
+        "control": "LAB"
+    },
+    "E05013874": {
+        "name": "Park",
+        "control": "GREEN"
+    },
+    "E05013864": {
+        "name": "Abbey",
+        "control": "LAB"
+    },
+    "E05013865": {
+        "name": "Battle",
+        "control": "LAB"
+    },
+    "E05013866": {
+        "name": "Caversham",
+        "control": "LAB"
+    },
+    "E05013867": {
+        "name": "Caversham Heights",
+        "control": "LAB"
+    },
+    "E05013868": {
+        "name": "Church",
+        "control": "LAB"
+    },
+    "E05013869": {
+        "name": "Coley",
+        "control": "LAB"
+    },
+    "E05013870": {
+        "name": "Emmer Green",
+        "control": "LAB"
+    },
+    "E05013871": {
+        "name": "Katesgrove",
+        "control": "GREEN"
+    },
+    "E05013872": {
+        "name": "Kentwood",
+        "control": "LAB"
+    },
+    "E05013873": {
+        "name": "Norcot",
+        "control": "LAB"
+    },
+    "E05013875": {
+        "name": "Redlands",
+        "control": "GREEN"
+    },
+    "E05013876": {
+        "name": "Southcote",
+        "control": "LAB"
+    },
+    "E05013877": {
+        "name": "Thames",
+        "control": "LAB"
+    },
+    "E05013878": {
+        "name": "Tilehurst",
+        "control": "LD"
+    },
+    "E05013879": {
+        "name": "Whitley",
+        "control": "LAB"
+    },
+    "E05015615": {
+        "name": "Astwood Bank and Feckenham",
+        "control": "CON"
+    },
+    "E05015616": {
+        "name": "Batchley and Brockhill",
+        "control": "LAB"
+    },
+    "E05015617": {
+        "name": "Central",
+        "control": "LAB"
+    },
+    "E05015618": {
+        "name": "Greenlands and Lakeside",
+        "control": "LAB"
+    },
+    "E05015619": {
+        "name": "Headless Cross and Oakenshaw",
+        "control": "LAB"
+    },
+    "E05015620": {
+        "name": "Matchborough and Woodrow",
+        "control": "LAB"
+    },
+    "E05015621": {
+        "name": "North",
+        "control": "LAB"
+    },
+    "E05015622": {
+        "name": "Webheath and Callow Hill",
+        "control": "MIX"
+    },
+    "E05015623": {
+        "name": "Winyates",
+        "control": "LAB"
+    },
+    "E05012872": {
+        "name": "Banstead Village",
+        "control": "CON"
+    },
+    "E05012873": {
+        "name": "Chipstead, Kingswood and Woodmansterne",
+        "control": "CON"
+    },
+    "E05012874": {
+        "name": "Earlswood and Whitebushes",
+        "control": "GREEN"
+    },
+    "E05012875": {
+        "name": "Hooley, Merstham and Netherne",
+        "control": "GREEN"
+    },
+    "E05012876": {
+        "name": "Horley Central and South",
+        "control": "CON"
+    },
+    "E05012877": {
+        "name": "Horley East and Salfords",
+        "control": "GREEN"
+    },
+    "E05012878": {
+        "name": "Horley West and Sidlow",
+        "control": "LD"
+    },
+    "E05012879": {
+        "name": "Lower Kingswood, Tadworth and Walton",
+        "control": "IND"
+    },
+    "E05012880": {
+        "name": "Meadvale and St John's",
+        "control": "LD"
+    },
+    "E05012881": {
+        "name": "Nork",
+        "control": "OTH"
+    },
+    "E05012882": {
+        "name": "Redhill East",
+        "control": "GREEN"
+    },
+    "E05012883": {
+        "name": "Redhill West and Wray Common",
+        "control": "LAB"
+    },
+    "E05012884": {
+        "name": "Reigate",
+        "control": "CON"
+    },
+    "E05012885": {
+        "name": "South Park and Woodhatch",
+        "control": "GREEN"
+    },
+    "E05012886": {
+        "name": "Tattenham Corner and Preston",
+        "control": "OTH"
+    },
+    "E05014033": {
+        "name": "Balderstone and Kirkholt",
+        "control": "LAB"
+    },
+    "E05014034": {
+        "name": "Bamford",
+        "control": "CON"
+    },
+    "E05014035": {
+        "name": "Castleton",
+        "control": "LAB"
+    },
+    "E05014036": {
+        "name": "Central Rochdale",
+        "control": "OTH"
+    },
+    "E05014037": {
+        "name": "East Middleton",
+        "control": "LAB"
+    },
+    "E05014038": {
+        "name": "Healey",
+        "control": "LAB"
+    },
+    "E05014039": {
+        "name": "Hopwood Hall",
+        "control": "LAB"
+    },
+    "E05014040": {
+        "name": "Kingsway",
+        "control": "LAB"
+    },
+    "E05014041": {
+        "name": "Littleborough Lakeside",
+        "control": "LAB"
+    },
+    "E05014042": {
+        "name": "Milkstone and Deeplish",
+        "control": "OTH"
+    },
+    "E05014043": {
+        "name": "Milnrow and Newhey",
+        "control": "LD"
+    },
+    "E05014044": {
+        "name": "Norden",
+        "control": "CON"
+    },
+    "E05014045": {
+        "name": "North Heywood",
+        "control": "LAB"
+    },
+    "E05014046": {
+        "name": "North Middleton",
+        "control": "LAB"
+    },
+    "E05014047": {
+        "name": "Smallbridge and Firgrove",
+        "control": "LAB"
+    },
+    "E05014048": {
+        "name": "South Middleton",
+        "control": "LAB"
+    },
+    "E05014049": {
+        "name": "Spotland and Falinge",
+        "control": "LAB"
+    },
+    "E05014050": {
+        "name": "Wardle, Shore and West Littleborough",
+        "control": "CON"
+    },
+    "E05014051": {
+        "name": "West Heywood",
+        "control": "LAB"
+    },
+    "E05014052": {
+        "name": "West Middleton",
+        "control": "LAB"
+    },
+    "E05010850": {
+        "name": "Hullbridge",
+        "control": "IND"
+    },
+    "E05010844": {
+        "name": "Downhall and Rawreth",
+        "control": "LD"
+    },
+    "E05010845": {
+        "name": "Foulness and The Wakerings",
+        "control": "IND"
+    },
+    "E05010846": {
+        "name": "Hawkwell East",
+        "control": "IND"
+    },
+    "E05010847": {
+        "name": "Hawkwell West",
+        "control": "OTH"
+    },
+    "E05010848": {
+        "name": "Hockley",
+        "control": "OTH"
+    },
+    "E05010849": {
+        "name": "Hockley and Ashingdon",
+        "control": "CON"
+    },
+    "E05010851": {
+        "name": "Lodge",
+        "control": "LD"
+    },
+    "E05010852": {
+        "name": "Roche North and Rural",
+        "control": "CON"
+    },
+    "E05010853": {
+        "name": "Roche South",
+        "control": "CON"
+    },
+    "E05010854": {
+        "name": "Sweyne Park and Grange",
+        "control": "IND"
+    },
+    "E05010855": {
+        "name": "Trinity",
+        "control": "LD"
+    },
+    "E05010856": {
+        "name": "Wheatley",
+        "control": "LD"
+    },
+    "E05015817": {
+        "name": "Bacup",
+        "control": "LAB"
+    },
+    "E05015818": {
+        "name": "Britannia and Lee Mill",
+        "control": "LAB"
+    },
+    "E05015819": {
+        "name": "Goodshaw and Cribden",
+        "control": "LAB"
+    },
+    "E05015820": {
+        "name": "Greenfield and Eden",
+        "control": "MIX"
+    },
+    "E05015821": {
+        "name": "Hareholme and Waterfoot",
+        "control": "LAB"
+    },
+    "E05015822": {
+        "name": "Haslingden",
+        "control": "LAB"
+    },
+    "E05015823": {
+        "name": "Helmshore",
+        "control": "MIX"
+    },
+    "E05015824": {
+        "name": "Longholme",
+        "control": "LAB"
+    },
+    "E05015825": {
+        "name": "Whitewell and Stacksteads",
+        "control": "GREEN"
+    },
+    "E05015826": {
+        "name": "Whitworth",
+        "control": "MIX"
+    },
+    "E05012993": {
+        "name": "Anston and Woodsetts",
+        "control": "MIX"
+    },
+    "E05012994": {
+        "name": "Aston and Todwick",
+        "control": "MIX"
+    },
+    "E05012995": {
+        "name": "Aughton and Swallownest",
+        "control": "LAB"
+    },
+    "E05012996": {
+        "name": "Boston Castle",
+        "control": "MIX"
+    },
+    "E05012997": {
+        "name": "Bramley and Ravenfield",
+        "control": "MIX"
+    },
+    "E05012998": {
+        "name": "Brinsworth",
+        "control": "LD"
+    },
+    "E05012999": {
+        "name": "Dalton and Thrybergh",
+        "control": "IND"
+    },
+    "E05013000": {
+        "name": "Dinnington",
+        "control": "MIX"
+    },
+    "E05013001": {
+        "name": "Greasbrough",
+        "control": "MIX"
+    },
+    "E05013002": {
+        "name": "Hellaby and Maltby West",
+        "control": "CON"
+    },
+    "E05013003": {
+        "name": "Hoober",
+        "control": "LAB"
+    },
+    "E05013004": {
+        "name": "Keppel",
+        "control": "MIX"
+    },
+    "E05013005": {
+        "name": "Kilnhurst and Swinton East",
+        "control": "LAB"
+    },
+    "E05013006": {
+        "name": "Maltby East",
+        "control": "MIX"
+    },
+    "E05013007": {
+        "name": "Rawmarsh East",
+        "control": "LAB"
+    },
+    "E05013008": {
+        "name": "Rawmarsh West",
+        "control": "LAB"
+    },
+    "E05013009": {
+        "name": "Rother Vale",
+        "control": "LAB"
+    },
+    "E05013010": {
+        "name": "Rotherham East",
+        "control": "LAB"
+    },
+    "E05013011": {
+        "name": "Rotherham West",
+        "control": "MIX"
+    },
+    "E05013012": {
+        "name": "Sitwell",
+        "control": "MIX"
+    },
+    "E05013013": {
+        "name": "Swinton Rockingham",
+        "control": "LAB"
+    },
+    "E05013014": {
+        "name": "Thurcroft and Wickersley South",
+        "control": "CON"
+    },
+    "E05013015": {
+        "name": "Wales",
+        "control": "IND"
+    },
+    "E05013016": {
+        "name": "Wath",
+        "control": "LAB"
+    },
+    "E05013017": {
+        "name": "Wickersley North",
+        "control": "LAB"
+    },
+    "E05010758": {
+        "name": "Admirals and Cawston",
+        "control": "LAB"
+    },
+    "E05008974": {
+        "name": "Benn",
+        "control": "LAB"
+    },
+    "E05008975": {
+        "name": "Bilton",
+        "control": "CON"
+    },
+    "E05008976": {
+        "name": "Clifton, Newton and Churchover",
+        "control": "CON"
+    },
+    "E05008977": {
+        "name": "Coton and Boughton",
+        "control": "LAB"
+    },
+    "E05010759": {
+        "name": "Dunsmore",
+        "control": "CON"
+    },
+    "E05008979": {
+        "name": "Hillmorton",
+        "control": "CON"
+    },
+    "E05008981": {
+        "name": "New Bilton",
+        "control": "LAB"
+    },
+    "E05008982": {
+        "name": "Newbold and Brownsover",
+        "control": "LAB"
+    },
+    "E05008985": {
+        "name": "Rokeby and Overslade",
+        "control": "LD"
+    },
+    "E05008983": {
+        "name": "Paddox",
+        "control": "LD"
+    },
+    "E05008984": {
+        "name": "Revel and Binley Woods",
+        "control": "CON"
+    },
+    "E05008986": {
+        "name": "Eastlands",
+        "control": "LD"
+    },
+    "E05010760": {
+        "name": "Wolston and the Lawfords",
+        "control": "CON"
+    },
+    "E05012887": {
+        "name": "Addlestone North",
+        "control": "GREEN"
+    },
+    "E05012888": {
+        "name": "Addlestone South",
+        "control": "CON"
+    },
+    "E05012889": {
+        "name": "Chertsey Riverside",
+        "control": "LAB"
+    },
+    "E05012890": {
+        "name": "Chertsey St Ann's",
+        "control": "LAB"
+    },
+    "E05012891": {
+        "name": "Egham Hythe",
+        "control": "LAB"
+    },
+    "E05012892": {
+        "name": "Egham Town",
+        "control": "OTH"
+    },
+    "E05012894": {
+        "name": "Englefield Green West",
+        "control": "LAB"
+    },
+    "E05012895": {
+        "name": "Longcross, Lyne and Chertsey South",
+        "control": "LD"
+    },
+    "E05012896": {
+        "name": "New Haw",
+        "control": "LD"
+    },
+    "E05012897": {
+        "name": "Ottershaw",
+        "control": "IND"
+    },
+    "E05012898": {
+        "name": "Thorpe",
+        "control": "OTH"
+    },
+    "E05012899": {
+        "name": "Virginia Water",
+        "control": "LD"
+    },
+    "E05012900": {
+        "name": "Woodham and Rowtown",
+        "control": "CON"
+    },
+    "E05008989": {
+        "name": "Aldershot Park",
+        "control": "LAB"
+    },
+    "E05008990": {
+        "name": "Cherrywood",
+        "control": "LAB"
+    },
+    "E05008991": {
+        "name": "Cove and Southwood",
+        "control": "CON"
+    },
+    "E05008992": {
+        "name": "Empress",
+        "control": "LAB"
+    },
+    "E05008993": {
+        "name": "Fernhill",
+        "control": "CON"
+    },
+    "E05008994": {
+        "name": "Knellwood",
+        "control": "CON"
+    },
+    "E05008995": {
+        "name": "Manor Park",
+        "control": "LAB"
+    },
+    "E05008996": {
+        "name": "North Town",
+        "control": "LAB"
+    },
+    "E05008997": {
+        "name": "Rowhill",
+        "control": "LAB"
+    },
+    "E05008998": {
+        "name": "St John's",
+        "control": "LAB"
+    },
+    "E05008999": {
+        "name": "St Mark's",
+        "control": "LD"
+    },
+    "E05009000": {
+        "name": "Wellington",
+        "control": "LAB"
+    },
+    "E05009001": {
+        "name": "West Heath",
+        "control": "LAB"
+    },
+    "E05013034": {
+        "name": "Walkden North",
+        "control": "LAB"
+    },
+    "E05013018": {
+        "name": "Barton and Winton",
+        "control": "LAB"
+    },
+    "E05013019": {
+        "name": "Blackfriars and Trinity",
+        "control": "LAB"
+    },
+    "E05013020": {
+        "name": "Boothstown and Ellenbrook",
+        "control": "CON"
+    },
+    "E05013021": {
+        "name": "Broughton",
+        "control": "LAB"
+    },
+    "E05013022": {
+        "name": "Cadishead and Lower Irlam",
+        "control": "LAB"
+    },
+    "E05013023": {
+        "name": "Claremont",
+        "control": "LAB"
+    },
+    "E05013024": {
+        "name": "Eccles",
+        "control": "LAB"
+    },
+    "E05013025": {
+        "name": "Higher Irlam and Peel Green",
+        "control": "LAB"
+    },
+    "E05013026": {
+        "name": "Kersal and Broughton Park",
+        "control": "CON"
+    },
+    "E05013027": {
+        "name": "Little Hulton",
+        "control": "LAB"
+    },
+    "E05013028": {
+        "name": "Ordsall",
+        "control": "LAB"
+    },
+    "E05013029": {
+        "name": "Pendlebury and Clifton",
+        "control": "LAB"
+    },
+    "E05013030": {
+        "name": "Pendleton and Charlestown",
+        "control": "LAB"
+    },
+    "E05013031": {
+        "name": "Quays",
+        "control": "LD"
+    },
+    "E05013032": {
+        "name": "Swinton and Wardley",
+        "control": "LAB"
+    },
+    "E05013033": {
+        "name": "Swinton Park",
+        "control": "LAB"
+    },
+    "E05013035": {
+        "name": "Walkden South",
+        "control": "LAB"
+    },
+    "E05013036": {
+        "name": "Weaste and Seedley",
+        "control": "LAB"
+    },
+    "E05013037": {
+        "name": "Worsley and Westwood Park",
+        "control": "LAB"
+    },
+    "E05001260": {
+        "name": "ABBEY",
+        "control": "LAB"
+    },
+    "E05001261": {
+        "name": "Blackheath",
+        "control": "LAB"
+    },
+    "E05001262": {
+        "name": "Bristnall",
+        "control": "LAB"
+    },
+    "E05001263": {
+        "name": "Charlemont With Grove Vale",
+        "control": "LAB"
+    },
+    "E05001264": {
+        "name": "Cradley Heath and Old Hill",
+        "control": "LAB"
+    },
+    "E05001265": {
+        "name": "Friar Park",
+        "control": "LAB"
+    },
+    "E05001266": {
+        "name": "Great Barr With Yew Tree",
+        "control": "LAB"
+    },
+    "E05001267": {
+        "name": "Great Bridge",
+        "control": "CON"
+    },
+    "E05001268": {
+        "name": "Greets Green and Lyng",
+        "control": "LAB"
+    },
+    "E05001269": {
+        "name": "Hateley Heath",
+        "control": "LAB"
+    },
+    "E05001270": {
+        "name": "Langley",
+        "control": "LAB"
+    },
+    "E05001271": {
+        "name": "Newton",
+        "control": "LAB"
+    },
+    "E05001273": {
+        "name": "Oldbury",
+        "control": "LAB"
+    },
+    "E05001272": {
+        "name": "Old Warley",
+        "control": "LAB"
+    },
+    "E05001274": {
+        "name": "Princes End",
+        "control": "LAB"
+    },
+    "E05001275": {
+        "name": "Rowley",
+        "control": "LAB"
+    },
+    "E05001276": {
+        "name": "St Pauls",
+        "control": "LAB"
+    },
+    "E05001277": {
+        "name": "Smethwick",
+        "control": "LAB"
+    },
+    "E05001278": {
+        "name": "Soho and Victoria",
+        "control": "LAB"
+    },
+    "E05001279": {
+        "name": "Tipton Green",
+        "control": "IND"
+    },
+    "E05001280": {
+        "name": "Tividale",
+        "control": "LAB"
+    },
+    "E05001281": {
+        "name": "Wednesbury North",
+        "control": "LAB"
+    },
+    "E05001282": {
+        "name": "Wednesbury South",
+        "control": "LAB"
+    },
+    "E05001283": {
+        "name": "West Bromwich Central",
+        "control": "LAB"
+    },
+    "E05000934": {
+        "name": "Blundellsands",
+        "control": "LAB"
+    },
+    "E05000932": {
+        "name": "Ainsdale",
+        "control": "LD"
+    },
+    "E05000935": {
+        "name": "Cambridge",
+        "control": "LD"
+    },
+    "E05000936": {
+        "name": "CHURCH",
+        "control": "GREEN"
+    },
+    "E05000938": {
+        "name": "Duke's",
+        "control": "CON"
+    },
+    "E05000945": {
+        "name": "Meols",
+        "control": "LD"
+    },
+    "E05000933": {
+        "name": "Birkdale",
+        "control": "LAB"
+    },
+    "E05000937": {
+        "name": "Derby",
+        "control": "LAB"
+    },
+    "E05000939": {
+        "name": "Ford",
+        "control": "LAB"
+    },
+    "E05000940": {
+        "name": "Harington",
+        "control": "LAB"
+    },
+    "E05000941": {
+        "name": "Kew",
+        "control": "LAB"
+    },
+    "E05000942": {
+        "name": "Linacre",
+        "control": "LAB"
+    },
+    "E05000943": {
+        "name": "Litherland",
+        "control": "LAB"
+    },
+    "E05000944": {
+        "name": "Manor",
+        "control": "LAB"
+    },
+    "E05000946": {
+        "name": "Molyneux",
+        "control": "LAB"
+    },
+    "E05000947": {
+        "name": "Netherton and Orrell",
+        "control": "LAB"
+    },
+    "E05000948": {
+        "name": "Norwood",
+        "control": "LAB"
+    },
+    "E05000949": {
+        "name": "Park",
+        "control": "LAB"
+    },
+    "E05000950": {
+        "name": "Ravenmeols",
+        "control": "LAB"
+    },
+    "E05000951": {
+        "name": "St Oswald",
+        "control": "LAB"
+    },
+    "E05000952": {
+        "name": "Sudell",
+        "control": "LAB"
+    },
+    "E05000953": {
+        "name": "Victoria",
+        "control": "LAB"
+    },
+    "E05010876": {
+        "name": "Park and Arbourthorne",
+        "control": "LAB"
+    },
+    "E05010866": {
+        "name": "East Ecclesfield",
+        "control": "LD"
+    },
+    "E05010873": {
+        "name": "Manor Castle",
+        "control": "LAB"
+    },
+    "E05010874": {
+        "name": "Mosborough",
+        "control": "LAB"
+    },
+    "E05010878": {
+        "name": "Shiregreen and Brightside",
+        "control": "LAB"
+    },
+    "E05010880": {
+        "name": "Stannington",
+        "control": "LD"
+    },
+    "E05010881": {
+        "name": "Stocksbridge and Upper Don",
+        "control": "LAB"
+    },
+    "E05010883": {
+        "name": "West Ecclesfield",
+        "control": "LD"
+    },
+    "E05010857": {
+        "name": "Beauchief and Greenhill",
+        "control": "LD"
+    },
+    "E05010858": {
+        "name": "Beighton",
+        "control": "LD"
+    },
+    "E05010859": {
+        "name": "Birley",
+        "control": "LAB"
+    },
+    "E05010860": {
+        "name": "Broomhill and Sharrow Vale",
+        "control": "GREEN"
+    },
+    "E05010861": {
+        "name": "Burngreave",
+        "control": "LAB"
+    },
+    "E05010862": {
+        "name": "City",
+        "control": "GREEN"
+    },
+    "E05010863": {
+        "name": "Crookes and Crosspool",
+        "control": "LAB"
+    },
+    "E05010864": {
+        "name": "Darnall",
+        "control": "IND"
+    },
+    "E05010865": {
+        "name": "Dore and Totley",
+        "control": "LD"
+    },
+    "E05010867": {
+        "name": "Ecclesall",
+        "control": "GREEN"
+    },
+    "E05010868": {
+        "name": "Firth Park",
+        "control": "LAB"
+    },
+    "E05010869": {
+        "name": "Fulwood",
+        "control": "LD"
+    },
+    "E05010870": {
+        "name": "Gleadless Valley",
+        "control": "GREEN"
+    },
+    "E05010871": {
+        "name": "Graves Park",
+        "control": "LAB"
+    },
+    "E05010872": {
+        "name": "Hillsborough",
+        "control": "GREEN"
+    },
+    "E05010875": {
+        "name": "Nether Edge and Sharrow",
+        "control": "GREEN"
+    },
+    "E05010877": {
+        "name": "Richmond",
+        "control": "LAB"
+    },
+    "E05010879": {
+        "name": "Southey",
+        "control": "LAB"
+    },
+    "E05010882": {
+        "name": "Walkley",
+        "control": "LAB"
+    },
+    "E05010884": {
+        "name": "Woodhouse",
+        "control": "LAB"
+    },
+    "E05001286": {
+        "name": "Castle Bromwich",
+        "control": "CON"
+    },
+    "E05001298": {
+        "name": "Shirley West",
+        "control": "CON"
+    },
+    "E05001284": {
+        "name": "Bickenhill",
+        "control": "CON"
+    },
+    "E05001285": {
+        "name": "Blythe",
+        "control": "CON"
+    },
+    "E05001287": {
+        "name": "Chelmsley Wood",
+        "control": "GREEN"
+    },
+    "E05001288": {
+        "name": "Dorridge and Hockley Heath",
+        "control": "CON"
+    },
+    "E05001289": {
+        "name": "Elmdon",
+        "control": "LD"
+    },
+    "E05001290": {
+        "name": "Kingshurst and Fordbridge",
+        "control": "LAB"
+    },
+    "E05001291": {
+        "name": "Knowle",
+        "control": "CON"
+    },
+    "E05001292": {
+        "name": "Lyndon",
+        "control": "CON"
+    },
+    "E05001293": {
+        "name": "Meriden",
+        "control": "CON"
+    },
+    "E05001294": {
+        "name": "Olton",
+        "control": "LD"
+    },
+    "E05001295": {
+        "name": "St Alphege",
+        "control": "CON"
+    },
+    "E05001296": {
+        "name": "Shirley East",
+        "control": "CON"
+    },
+    "E05001297": {
+        "name": "Shirley South",
+        "control": "GREEN"
+    },
+    "E05001299": {
+        "name": "Silhill",
+        "control": "CON"
+    },
+    "E05001300": {
+        "name": "Smith's Wood",
+        "control": "GREEN"
+    },
+    "E05001135": {
+        "name": "Beacon and Bents",
+        "control": "GREEN"
+    },
+    "E05001136": {
+        "name": "Bede",
+        "control": "IND"
+    },
+    "E05001137": {
+        "name": "Biddick and All Saints",
+        "control": "GREEN"
+    },
+    "E05001138": {
+        "name": "Boldon Colliery",
+        "control": "IND"
+    },
+    "E05001139": {
+        "name": "Cleadon and East Boldon",
+        "control": "GREEN"
+    },
+    "E05001140": {
+        "name": "Cleadon Park",
+        "control": "IND"
+    },
+    "E05001141": {
+        "name": "Fellgate and Hedworth",
+        "control": "IND"
+    },
+    "E05001142": {
+        "name": "Harton",
+        "control": "IND"
+    },
+    "E05001143": {
+        "name": "Hebburn North",
+        "control": "LAB"
+    },
+    "E05001144": {
+        "name": "Hebburn South",
+        "control": "LAB"
+    },
+    "E05001145": {
+        "name": "Horsley Hill",
+        "control": "IND"
+    },
+    "E05001146": {
+        "name": "Monkton",
+        "control": "LAB"
+    },
+    "E05001147": {
+        "name": "Primrose",
+        "control": "IND"
+    },
+    "E05001148": {
+        "name": "Simonside and Rekendyke",
+        "control": "IND"
+    },
+    "E05001150": {
+        "name": "West Park",
+        "control": "GREEN"
+    },
+    "E05001149": {
+        "name": "Westoe",
+        "control": "IND"
+    },
+    "E05001151": {
+        "name": "Whitburn and Marsden",
+        "control": "LAB"
+    },
+    "E05001152": {
+        "name": "Whiteleas",
+        "control": "IND"
+    },
+    "E05015495": {
+        "name": "Coxford",
+        "control": "LAB"
+    },
+    "E05015502": {
+        "name": "Shirley",
+        "control": "LAB"
+    },
+    "E05015490": {
+        "name": "Banister and Polygon",
+        "control": "LAB"
+    },
+    "E05015491": {
+        "name": "Bargate",
+        "control": "LAB"
+    },
+    "E05015492": {
+        "name": "Bassett",
+        "control": "LD"
+    },
+    "E05015493": {
+        "name": "Bevois",
+        "control": "LAB"
+    },
+    "E05015494": {
+        "name": "Bitterne Park",
+        "control": "LAB"
+    },
+    "E05015496": {
+        "name": "Freemantle",
+        "control": "LAB"
+    },
+    "E05015497": {
+        "name": "Harefield",
+        "control": "CON"
+    },
+    "E05015498": {
+        "name": "Millbrook",
+        "control": "LAB"
+    },
+    "E05015499": {
+        "name": "Peartree",
+        "control": "LAB"
+    },
+    "E05015500": {
+        "name": "Portswood",
+        "control": "LAB"
+    },
+    "E05015501": {
+        "name": "Redbridge",
+        "control": "LAB"
+    },
+    "E05015503": {
+        "name": "Sholing",
+        "control": "CON"
+    },
+    "E05015504": {
+        "name": "Swaythling",
+        "control": "LD"
+    },
+    "E05015505": {
+        "name": "Thornhill",
+        "control": "LAB"
+    },
+    "E05015506": {
+        "name": "Woolston",
+        "control": "CON"
+    },
+    "E05002212": {
+        "name": "Belfairs",
+        "control": "CON"
+    },
+    "E05002213": {
+        "name": "Blenheim Park",
+        "control": "LAB"
+    },
+    "E05002214": {
+        "name": "Chalkwell",
+        "control": "CON"
+    },
+    "E05002215": {
+        "name": "Eastwood Park",
+        "control": "LD"
+    },
+    "E05002216": {
+        "name": "Kursaal",
+        "control": "LAB"
+    },
+    "E05002217": {
+        "name": "Leigh",
+        "control": "GREEN"
+    },
+    "E05002218": {
+        "name": "Milton",
+        "control": "LAB"
+    },
+    "E05002219": {
+        "name": "Prittlewell",
+        "control": "CON"
+    },
+    "E05002220": {
+        "name": "St Laurence",
+        "control": "LAB"
+    },
+    "E05002221": {
+        "name": "St. Luke's",
+        "control": "LAB"
+    },
+    "E05002222": {
+        "name": "Shoeburyness",
+        "control": "CON"
+    },
+    "E05002223": {
+        "name": "Southchurch",
+        "control": "CON"
+    },
+    "E05002224": {
+        "name": "Thorpe",
+        "control": "IND"
+    },
+    "E05002225": {
+        "name": "Victoria",
+        "control": "LAB"
+    },
+    "E05002226": {
+        "name": "Westborough",
+        "control": "LAB"
+    },
+    "E05002227": {
+        "name": "West Leigh",
+        "control": "CON"
+    },
+    "E05002228": {
+        "name": "West Shoebury",
+        "control": "CON"
+    },
+    "E05013963": {
+        "name": "Sopwell",
+        "control": "LD"
+    },
+    "E05013955": {
+        "name": "Harpenden West",
+        "control": "LD"
+    },
+    "E05013947": {
+        "name": "Batchwood",
+        "control": "LD"
+    },
+    "E05013948": {
+        "name": "Bernards Heath",
+        "control": "LD"
+    },
+    "E05013949": {
+        "name": "Clarence",
+        "control": "LD"
+    },
+    "E05013951": {
+        "name": "Cunningham",
+        "control": "LD"
+    },
+    "E05013952": {
+        "name": "Harpenden East",
+        "control": "LD"
+    },
+    "E05013953": {
+        "name": "Harpenden North and Rural",
+        "control": "LD"
+    },
+    "E05013954": {
+        "name": "Harpenden South",
+        "control": "CON"
+    },
+    "E05013956": {
+        "name": "Hill End",
+        "control": "LD"
+    },
+    "E05013957": {
+        "name": "London Colney",
+        "control": "LAB"
+    },
+    "E05015801": {
+        "name": "Marshalswick East and Jersey Farm",
+        "control": "LD"
+    },
+    "E05015802": {
+        "name": "Marshalswick West",
+        "control": "LD"
+    },
+    "E05013960": {
+        "name": "Park Street",
+        "control": "LD"
+    },
+    "E05013962": {
+        "name": "Sandridge and Wheathampstead",
+        "control": "LD"
+    },
+    "E05013964": {
+        "name": "St Peters",
+        "control": "GREEN"
+    },
+    "E05013965": {
+        "name": "St Stephen",
+        "control": "LD"
+    },
+    "E05013966": {
+        "name": "Verulam",
+        "control": "LD"
+    },
+    "E05015624": {
+        "name": "Almond Hill",
+        "control": "LAB"
+    },
+    "E05015625": {
+        "name": "Bandley Hill and Poplars",
+        "control": "LAB"
+    },
+    "E05015626": {
+        "name": "Bedwell",
+        "control": "LAB"
+    },
+    "E05015627": {
+        "name": "Chells",
+        "control": "LD"
+    },
+    "E05015628": {
+        "name": "Longmeadow",
+        "control": "LAB"
+    },
+    "E05015629": {
+        "name": "Manor",
+        "control": "LD"
+    },
+    "E05015630": {
+        "name": "Martins Wood",
+        "control": "LAB"
+    },
+    "E05015631": {
+        "name": "Old Town",
+        "control": "LAB"
+    },
+    "E05015632": {
+        "name": "Roebuck",
+        "control": "LAB"
+    },
+    "E05015633": {
+        "name": "Shephall",
+        "control": "LAB"
+    },
+    "E05015634": {
+        "name": "St Nicholas",
+        "control": "LAB"
+    },
+    "E05015635": {
+        "name": "Symonds Green",
+        "control": "LAB"
+    },
+    "E05015636": {
+        "name": "Woodfield",
+        "control": "MIX"
+    },
+    "E05015015": {
+        "name": "Bramhall South and Woodford",
+        "control": "LD"
+    },
+    "E05015026": {
+        "name": "Heatons North",
+        "control": "LAB"
+    },
+    "E05015027": {
+        "name": "Heatons South",
+        "control": "LAB"
+    },
+    "E05015029": {
+        "name": "Marple North",
+        "control": "LD"
+    },
+    "E05015030": {
+        "name": "Marple South and High Lane",
+        "control": "LD"
+    },
+    "E05015014": {
+        "name": "Bramhall North",
+        "control": "LD"
+    },
+    "E05015016": {
+        "name": "Bredbury and Woodley",
+        "control": "LAB"
+    },
+    "E05015017": {
+        "name": "Bredbury Green and Romiley",
+        "control": "LD"
+    },
+    "E05015018": {
+        "name": "Brinnington and Stockport Central",
+        "control": "LAB"
+    },
+    "E05015019": {
+        "name": "Cheadle East and Cheadle Hulme North",
+        "control": "LD"
+    },
+    "E05015020": {
+        "name": "Cheadle Hulme South",
+        "control": "LD"
+    },
+    "E05015021": {
+        "name": "Cheadle West and Gatley",
+        "control": "LD"
+    },
+    "E05015022": {
+        "name": "Davenport and Cale Green",
+        "control": "LAB"
+    },
+    "E05015023": {
+        "name": "Edgeley",
+        "control": "OTH"
+    },
+    "E05015024": {
+        "name": "Hazel Grove",
+        "control": "LD"
+    },
+    "E05015025": {
+        "name": "Heald Green",
+        "control": "IND"
+    },
+    "E05015028": {
+        "name": "Manor",
+        "control": "LAB"
+    },
+    "E05015031": {
+        "name": "Norbury and Woodsmoor",
+        "control": "LD"
+    },
+    "E05015032": {
+        "name": "Offerton",
+        "control": "LD"
+    },
+    "E05015033": {
+        "name": "Reddish North",
+        "control": "LAB"
+    },
+    "E05015034": {
+        "name": "Reddish South",
+        "control": "GREEN"
+    },
+    "E05013193": {
+        "name": "Nailsworth",
+        "control": "MIX"
+    },
+    "E05010976": {
+        "name": "Dursley",
+        "control": "LAB"
+    },
+    "E05013188": {
+        "name": "Bisley",
+        "control": "GREEN"
+    },
+    "E05013187": {
+        "name": "Amberley and Woodchester",
+        "control": "GREEN"
+    },
+    "E05013189": {
+        "name": "Chalford",
+        "control": "GREEN"
+    },
+    "E05010975": {
+        "name": "Coaley and Uley",
+        "control": "GREEN"
+    },
+    "E05013192": {
+        "name": "Minchinhampton",
+        "control": "GREEN"
+    },
+    "E05013194": {
+        "name": "Rodborough",
+        "control": "LAB"
+    },
+    "E05010992": {
+        "name": "The Stanleys",
+        "control": "GREEN"
+    },
+    "E05013198": {
+        "name": "Thrupp",
+        "control": "GREEN"
+    },
+    "E05013197": {
+        "name": "Stroud Trinity",
+        "control": "GREEN"
+    },
+    "E05010969": {
+        "name": "Berkeley Vale",
+        "control": "CON"
+    },
+    "E05013212": {
+        "name": "Cainscross",
+        "control": "LAB"
+    },
+    "E05010972": {
+        "name": "Cam East",
+        "control": "LAB"
+    },
+    "E05010973": {
+        "name": "Cam West",
+        "control": "LAB"
+    },
+    "E05015846": {
+        "name": "Hardwicke",
+        "control": "CON"
+    },
+    "E05013191": {
+        "name": "Kingswood",
+        "control": "LD"
+    },
+    "E05010981": {
+        "name": "Painswick and Upton",
+        "control": "GREEN"
+    },
+    "E05010982": {
+        "name": "Randwick, Whiteshill and Ruscombe",
+        "control": "GREEN"
+    },
+    "E05015847": {
+        "name": "Severn",
+        "control": "MIX"
+    },
+    "E05015848": {
+        "name": "Stonehouse",
+        "control": "MIX"
+    },
+    "E05010986": {
+        "name": "Stroud Central",
+        "control": "LAB"
+    },
+    "E05010987": {
+        "name": "Stroud Farmhill and Paganhill",
+        "control": "LAB"
+    },
+    "E05010988": {
+        "name": "Stroud Slade",
+        "control": "GREEN"
+    },
+    "E05010990": {
+        "name": "Stroud Uplands",
+        "control": "LAB"
+    },
+    "E05010991": {
+        "name": "Stroud Valley",
+        "control": "GREEN"
+    },
+    "E05013199": {
+        "name": "Wotton-under-Edge",
+        "control": "MIX"
+    },
+    "E05001159": {
+        "name": "Hetton",
+        "control": "LAB"
+    },
+    "E05001153": {
+        "name": "Barnes",
+        "control": "LAB"
+    },
+    "E05001154": {
+        "name": "Castle",
+        "control": "LAB"
+    },
+    "E05001155": {
+        "name": "Copt Hill",
+        "control": "LAB"
+    },
+    "E05001156": {
+        "name": "Doxford",
+        "control": "LD"
+    },
+    "E05001157": {
+        "name": "Fulwell",
+        "control": "CON"
+    },
+    "E05001158": {
+        "name": "Hendon",
+        "control": "LAB"
+    },
+    "E05001160": {
+        "name": "Houghton",
+        "control": "LAB"
+    },
+    "E05001161": {
+        "name": "Millfield",
+        "control": "LD"
+    },
+    "E05001162": {
+        "name": "Pallion",
+        "control": "LD"
+    },
+    "E05001163": {
+        "name": "Redhill",
+        "control": "LAB"
+    },
+    "E05001164": {
+        "name": "Ryhope",
+        "control": "LAB"
+    },
+    "E05001165": {
+        "name": "St Anne's",
+        "control": "LAB"
+    },
+    "E05001166": {
+        "name": "St Chad's",
+        "control": "CON"
+    },
+    "E05001167": {
+        "name": "St Michael's",
+        "control": "CON"
+    },
+    "E05001168": {
+        "name": "St Peter's",
+        "control": "LAB"
+    },
+    "E05001169": {
+        "name": "Sandhill",
+        "control": "LD"
+    },
+    "E05001170": {
+        "name": "Shiney Row",
+        "control": "LAB"
+    },
+    "E05001171": {
+        "name": "Silksworth",
+        "control": "LAB"
+    },
+    "E05001172": {
+        "name": "Southwick",
+        "control": "LAB"
+    },
+    "E05001173": {
+        "name": "Washington Central",
+        "control": "LAB"
+    },
+    "E05001174": {
+        "name": "Washington East",
+        "control": "LAB"
+    },
+    "E05001175": {
+        "name": "Washington North",
+        "control": "LAB"
+    },
+    "E05001176": {
+        "name": "Washington South",
+        "control": "LAB"
+    },
+    "E05001177": {
+        "name": "Washington West",
+        "control": "LAB"
+    },
+    "E05008966": {
+        "name": "Ridgeway",
+        "control": "CON"
+    },
+    "E05010755": {
+        "name": "Blunsdon and Highworth",
+        "control": "CON"
+    },
+    "E05008954": {
+        "name": "Central",
+        "control": "LAB"
+    },
+    "E05008956": {
+        "name": "Covingham and Dorcan",
+        "control": "CON"
+    },
+    "E05008957": {
+        "name": "Eastcott",
+        "control": "LAB"
+    },
+    "E05008958": {
+        "name": "Gorse Hill and Pinehurst",
+        "control": "LAB"
+    },
+    "E05010756": {
+        "name": "Haydon Wick",
+        "control": "LAB"
+    },
+    "E05008960": {
+        "name": "Liden, Eldene and Park South",
+        "control": "LAB"
+    },
+    "E05008961": {
+        "name": "Lydiard and Freshbrook",
+        "control": "LAB"
+    },
+    "E05008962": {
+        "name": "Mannington and Western",
+        "control": "LAB"
+    },
+    "E05008963": {
+        "name": "Old Town",
+        "control": "LAB"
+    },
+    "E05010757": {
+        "name": "Penhill and Upper Stratton",
+        "control": "LAB"
+    },
+    "E05008965": {
+        "name": "Priory Vale",
+        "control": "LAB"
+    },
+    "E05008967": {
+        "name": "Rodbourne Cheney",
+        "control": "LAB"
+    },
+    "E05008970": {
+        "name": "Shaw",
+        "control": "LAB"
+    },
+    "E05008968": {
+        "name": "St Andrews",
+        "control": "CON"
+    },
+    "E05008969": {
+        "name": "St Margaret and South Marston",
+        "control": "LAB"
+    },
+    "E05008971": {
+        "name": "Walcot and Park North",
+        "control": "LAB"
+    },
+    "E05008972": {
+        "name": "Wroughton and Wichelstowe",
+        "control": "CON"
+    },
+    "E05014525": {
+        "name": "Denton West",
+        "control": "LAB"
+    },
+    "E05014527": {
+        "name": "Droylsden West",
+        "control": "LAB"
+    },
+    "E05014534": {
+        "name": "Mossley",
+        "control": "LAB"
+    },
+    "E05014519": {
+        "name": "Ashton Hurst",
+        "control": "LAB"
+    },
+    "E05014520": {
+        "name": "Ashton St Michael's",
+        "control": "LAB"
+    },
+    "E05014521": {
+        "name": "Ashton Waterloo",
+        "control": "LAB"
+    },
+    "E05014522": {
+        "name": "Audenshaw",
+        "control": "LAB"
+    },
+    "E05014523": {
+        "name": "Denton North East",
+        "control": "LAB"
+    },
+    "E05014524": {
+        "name": "Denton South",
+        "control": "LAB"
+    },
+    "E05014526": {
+        "name": "Droylsden East",
+        "control": "LAB"
+    },
+    "E05014528": {
+        "name": "Dukinfield",
+        "control": "LAB"
+    },
+    "E05014529": {
+        "name": "Dukinfield Stalybridge",
+        "control": "LAB"
+    },
+    "E05014530": {
+        "name": "Hyde Godley",
+        "control": "CON"
+    },
+    "E05014531": {
+        "name": "Hyde Newton",
+        "control": "LAB"
+    },
+    "E05014532": {
+        "name": "Hyde Werneth",
+        "control": "CON"
+    },
+    "E05014533": {
+        "name": "Longdendale",
+        "control": "LAB"
+    },
+    "E05014535": {
+        "name": "St Peter's",
+        "control": "IND"
+    },
+    "E05014536": {
+        "name": "Stalybridge North",
+        "control": "IND"
+    },
+    "E05014537": {
+        "name": "Stalybridge South",
+        "control": "CON"
+    },
+    "E05007074": {
+        "name": "TRINITY",
+        "control": "CON"
+    },
+    "E05007066": {
+        "name": "Amington",
+        "control": "LAB"
+    },
+    "E05007067": {
+        "name": "Belgrave",
+        "control": "LAB"
+    },
+    "E05007068": {
+        "name": "Bolehall",
+        "control": "LAB"
+    },
+    "E05007069": {
+        "name": "Castle",
+        "control": "LAB"
+    },
+    "E05007070": {
+        "name": "Glascote",
+        "control": "LAB"
+    },
+    "E05007071": {
+        "name": "Mercian",
+        "control": "LAB"
+    },
+    "E05007072": {
+        "name": "Spital",
+        "control": "LAB"
+    },
+    "E05007073": {
+        "name": "Stonydelph",
+        "control": "LAB"
+    },
+    "E05007075": {
+        "name": "Wilnecote",
+        "control": "LAB"
+    },
+    "E05015902": {
+        "name": "Woldingham",
+        "control": "IND"
+    },
+    "E05015886": {
+        "name": "Burstow, Horne and Outwood",
+        "control": "OTH"
+    },
+    "E05015889": {
+        "name": "Godstone",
+        "control": "OTH"
+    },
+    "E05015891": {
+        "name": "Limpsfield",
+        "control": "OTH"
+    },
+    "E05015890": {
+        "name": "Harestone",
+        "control": "LD"
+    },
+    "E05015897": {
+        "name": "Valley",
+        "control": "LD"
+    },
+    "E05015885": {
+        "name": "Bletchingley And Nutfield",
+        "control": "MIX"
+    },
+    "E05015887": {
+        "name": "Chaldon",
+        "control": "CON"
+    },
+    "E05015896": {
+        "name": "Tatsfield And Titsey",
+        "control": "IND"
+    },
+    "E05015898": {
+        "name": "Warlingham East And Chelsham And Farleigh",
+        "control": "MIX"
+    },
+    "E05015888": {
+        "name": "Dormansland and Felbridge",
+        "control": "MIX"
+    },
+    "E05015892": {
+        "name": "Lingfield and Crowhurst",
+        "control": "MIX"
+    },
+    "E05015893": {
+        "name": "Oxted North",
+        "control": "OTH"
+    },
+    "E05015894": {
+        "name": "Oxted South",
+        "control": "OTH"
+    },
+    "E05015895": {
+        "name": "Portley and Queens Park",
+        "control": "MIX"
+    },
+    "E05015899": {
+        "name": "Warlingham West",
+        "control": "CON"
+    },
+    "E05015900": {
+        "name": "Westway",
+        "control": "MIX"
+    },
+    "E05015901": {
+        "name": "Whyteleafe",
+        "control": "MIX"
+    },
+    "E05009425": {
+        "name": "Abbots Langley and Bedmond",
+        "control": "LD"
+    },
+    "E05009426": {
+        "name": "Carpenders Park",
+        "control": "CON"
+    },
+    "E05009427": {
+        "name": "Chorleywood North and Sarratt",
+        "control": "CON"
+    },
+    "E05009428": {
+        "name": "Chorleywood South and Maple Cross",
+        "control": "LD"
+    },
+    "E05009429": {
+        "name": "Dickinsons",
+        "control": "GREEN"
+    },
+    "E05009430": {
+        "name": "Durrants",
+        "control": "LD"
+    },
+    "E05009431": {
+        "name": "Gade Valley",
+        "control": "LD"
+    },
+    "E05009432": {
+        "name": "Leavesden",
+        "control": "LD"
+    },
+    "E05009433": {
+        "name": "Moor Park and Eastbury",
+        "control": "CON"
+    },
+    "E05009434": {
+        "name": "Oxhey Hall and Hayling",
+        "control": "LD"
+    },
+    "E05009435": {
+        "name": "Penn and Mill End",
+        "control": "LD"
+    },
+    "E05009436": {
+        "name": "Rickmansworth Town",
+        "control": "CON"
+    },
+    "E05009437": {
+        "name": "South Oxhey",
+        "control": "LAB"
+    },
+    "E05002240": {
+        "name": "Orsett",
+        "control": "CON"
+    },
+    "E05002247": {
+        "name": "Tilbury St Chads",
+        "control": "LAB"
+    },
+    "E05002229": {
+        "name": "Aveley and Uplands",
+        "control": "LAB"
+    },
+    "E05002230": {
+        "name": "Belhus",
+        "control": "LAB"
+    },
+    "E05002231": {
+        "name": "Chadwell St Mary",
+        "control": "LAB"
+    },
+    "E05002232": {
+        "name": "Chafford and North Stifford",
+        "control": "LAB"
+    },
+    "E05002233": {
+        "name": "Corringham and Fobbing",
+        "control": "IND"
+    },
+    "E05002234": {
+        "name": "East Tilbury",
+        "control": "IND"
+    },
+    "E05002235": {
+        "name": "Grays Riverside",
+        "control": "LAB"
+    },
+    "E05002236": {
+        "name": "Grays Thurrock",
+        "control": "LAB"
+    },
+    "E05002237": {
+        "name": "Little Thurrock Blackshots",
+        "control": "LAB"
+    },
+    "E05002239": {
+        "name": "Ockendon",
+        "control": "LAB"
+    },
+    "E05002241": {
+        "name": "South Chafford",
+        "control": "LAB"
+    },
+    "E05002242": {
+        "name": "Stanford East and Corringham Town",
+        "control": "IND"
+    },
+    "E05002243": {
+        "name": "Stanford-le-Hope West",
+        "control": "IND"
+    },
+    "E05002245": {
+        "name": "The Homesteads",
+        "control": "LAB"
+    },
+    "E05002248": {
+        "name": "West Thurrock and South Stifford",
+        "control": "LAB"
+    },
+    "E05015243": {
+        "name": "BROOKLANDS",
+        "control": "LAB"
+    },
+    "E05015240": {
+        "name": "Ashton Upon Mersey",
+        "control": "LAB"
+    },
+    "E05015244": {
+        "name": "Bucklow-St Martins",
+        "control": "LAB"
+    },
+    "E05015239": {
+        "name": "Altrincham",
+        "control": "GREEN"
+    },
+    "E05015241": {
+        "name": "Bowdon",
+        "control": "CON"
+    },
+    "E05015242": {
+        "name": "Broadheath",
+        "control": "LAB"
+    },
+    "E05015245": {
+        "name": "Davyhulme",
+        "control": "LAB"
+    },
+    "E05015246": {
+        "name": "Flixton",
+        "control": "LAB"
+    },
+    "E05015247": {
+        "name": "Gorse Hill and Cornbrook",
+        "control": "LAB"
+    },
+    "E05015248": {
+        "name": "Hale",
+        "control": "GREEN"
+    },
+    "E05015249": {
+        "name": "Hale Barns and Timperley South",
+        "control": "CON"
+    },
+    "E05015250": {
+        "name": "Longford",
+        "control": "LAB"
+    },
+    "E05015251": {
+        "name": "Lostock and Barton",
+        "control": "LAB"
+    },
+    "E05015252": {
+        "name": "Manor",
+        "control": "LAB"
+    },
+    "E05015253": {
+        "name": "Old Trafford",
+        "control": "LAB"
+    },
+    "E05015254": {
+        "name": "Sale Central",
+        "control": "LAB"
+    },
+    "E05015255": {
+        "name": "Sale Moor",
+        "control": "LAB"
+    },
+    "E05015256": {
+        "name": "Stretford and Humphrey Park",
+        "control": "LAB"
+    },
+    "E05015257": {
+        "name": "Timperley Central",
+        "control": "LD"
+    },
+    "E05015258": {
+        "name": "Timperley North",
+        "control": "LD"
+    },
+    "E05015259": {
+        "name": "Urmston",
+        "control": "LAB"
+    },
+    "E05015804": {
+        "name": "Culverden",
+        "control": "LD"
+    },
+    "E05015803": {
+        "name": "Cranbrook, Sissinghurst and Frittenden",
+        "control": "MIX"
+    },
+    "E05015805": {
+        "name": "Rural Tunbridge Wells",
+        "control": "MIX"
+    },
+    "E05015806": {
+        "name": "Hawkhurst, Sandhurst and Benenden",
+        "control": "MIX"
+    },
+    "E05015807": {
+        "name": "High Brooms",
+        "control": "LAB"
+    },
+    "E05015808": {
+        "name": "Paddock Wood",
+        "control": "LD"
+    },
+    "E05015809": {
+        "name": "Pantiles",
+        "control": "LD"
+    },
+    "E05015810": {
+        "name": "Park",
+        "control": "LD"
+    },
+    "E05015811": {
+        "name": "Pembury and Capel",
+        "control": "MIX"
+    },
+    "E05015812": {
+        "name": "Rusthall and Speldhurst",
+        "control": "MIX"
+    },
+    "E05015813": {
+        "name": "Sherwood",
+        "control": "MIX"
+    },
+    "E05015814": {
+        "name": "Southborough and Bidborough",
+        "control": "LD"
+    },
+    "E05015815": {
+        "name": "St James'",
+        "control": "LD"
+    },
+    "E05015816": {
+        "name": "St John's",
+        "control": "LD"
+    },
+    "E05001461": {
+        "name": "Wakefield Rural",
+        "control": "LAB"
+    },
+    "E05001444": {
+        "name": "Ackworth, North Elmsall and Upton",
+        "control": "LAB"
+    },
+    "E05001445": {
+        "name": "Airedale and Ferry Fryston",
+        "control": "LAB"
+    },
+    "E05001446": {
+        "name": "Altofts and Whitwood",
+        "control": "LAB"
+    },
+    "E05001447": {
+        "name": "Castleford Central and Glasshoughton",
+        "control": "LAB"
+    },
+    "E05001448": {
+        "name": "Crofton, Ryhill and Walton",
+        "control": "LAB"
+    },
+    "E05001449": {
+        "name": "Featherstone",
+        "control": "LAB"
+    },
+    "E05001450": {
+        "name": "Hemsworth",
+        "control": "LAB"
+    },
+    "E05001451": {
+        "name": "Horbury and South Ossett",
+        "control": "LAB"
+    },
+    "E05001452": {
+        "name": "Knottingley",
+        "control": "LD"
+    },
+    "E05001453": {
+        "name": "Normanton",
+        "control": "LAB"
+    },
+    "E05001454": {
+        "name": "Ossett",
+        "control": "LAB"
+    },
+    "E05001455": {
+        "name": "Pontefract North",
+        "control": "LAB"
+    },
+    "E05001456": {
+        "name": "Pontefract South",
+        "control": "LAB"
+    },
+    "E05001457": {
+        "name": "South Elmsall and South Kirkby",
+        "control": "LAB"
+    },
+    "E05001458": {
+        "name": "Stanley and Outwood East",
+        "control": "LAB"
+    },
+    "E05001459": {
+        "name": "Wakefield East",
+        "control": "LAB"
+    },
+    "E05001460": {
+        "name": "Wakefield North",
+        "control": "LAB"
+    },
+    "E05001462": {
+        "name": "Wakefield South",
+        "control": "LAB"
+    },
+    "E05001463": {
+        "name": "Wakefield West",
+        "control": "LAB"
+    },
+    "E05001464": {
+        "name": "Wrenthorpe and Outwood West",
+        "control": "LAB"
+    },
+    "E05001311": {
+        "name": "Palfrey",
+        "control": "IND"
+    },
+    "E05001319": {
+        "name": "Willenhall North",
+        "control": "CON"
+    },
+    "E05001301": {
+        "name": "Aldridge Central and South",
+        "control": "CON"
+    },
+    "E05001302": {
+        "name": "Aldridge North and Walsall Wood",
+        "control": "CON"
+    },
+    "E05001303": {
+        "name": "Bentley and Darlaston North",
+        "control": "LAB"
+    },
+    "E05001304": {
+        "name": "Birchills-Leamore",
+        "control": "CON"
+    },
+    "E05001305": {
+        "name": "Blakenall",
+        "control": "IND"
+    },
+    "E05001306": {
+        "name": "Bloxwich East",
+        "control": "CON"
+    },
+    "E05001307": {
+        "name": "Bloxwich West",
+        "control": "LAB"
+    },
+    "E05001308": {
+        "name": "Brownhills",
+        "control": "CON"
+    },
+    "E05001309": {
+        "name": "Darlaston South",
+        "control": "LAB"
+    },
+    "E05001310": {
+        "name": "Paddock",
+        "control": "CON"
+    },
+    "E05001312": {
+        "name": "Pelsall",
+        "control": "CON"
+    },
+    "E05001313": {
+        "name": "Pheasey Park Farm",
+        "control": "CON"
+    },
+    "E05001314": {
+        "name": "Pleck",
+        "control": "IND"
+    },
+    "E05001315": {
+        "name": "Rushall-Shelfield",
+        "control": "CON"
+    },
+    "E05001316": {
+        "name": "St Matthew's",
+        "control": "LAB"
+    },
+    "E05001317": {
+        "name": "Short Heath",
+        "control": "CON"
+    },
+    "E05001318": {
+        "name": "Streetly",
+        "control": "CON"
+    },
+    "E05001320": {
+        "name": "Willenhall South",
+        "control": "LAB"
+    },
+    "E05011024": {
+        "name": "Appleton",
+        "control": "LD"
+    },
+    "E05011025": {
+        "name": "Bewsey and Whitecross",
+        "control": "LAB"
+    },
+    "E05011026": {
+        "name": "Birchwood",
+        "control": "LAB"
+    },
+    "E05011027": {
+        "name": "Burtonwood and Winwick",
+        "control": "MIX"
+    },
+    "E05011028": {
+        "name": "Chapelford and Old Hall",
+        "control": "LAB"
+    },
+    "E05011029": {
+        "name": "Culcheth, Glazebury and Croft",
+        "control": "LAB"
+    },
+    "E05011030": {
+        "name": "Fairfield and Howley",
+        "control": "LAB"
+    },
+    "E05011031": {
+        "name": "Grappenhall",
+        "control": "LD"
+    },
+    "E05011032": {
+        "name": "Great Sankey North and Whittle Hall",
+        "control": "LAB"
+    },
+    "E05011033": {
+        "name": "Great Sankey South",
+        "control": "LAB"
+    },
+    "E05011034": {
+        "name": "Latchford East",
+        "control": "LAB"
+    },
+    "E05011035": {
+        "name": "Latchford West",
+        "control": "LAB"
+    },
+    "E05011036": {
+        "name": "Lymm North and Thelwall",
+        "control": "LD"
+    },
+    "E05011037": {
+        "name": "Lymm South",
+        "control": "LD"
+    },
+    "E05011038": {
+        "name": "Orford",
+        "control": "LAB"
+    },
+    "E05011039": {
+        "name": "Penketh and Cuerdley",
+        "control": "MIX"
+    },
+    "E05011040": {
+        "name": "Poplars and Hulme",
+        "control": "LAB"
+    },
+    "E05011041": {
+        "name": "Poulton North",
+        "control": "LAB"
+    },
+    "E05011042": {
+        "name": "Poulton South",
+        "control": "LAB"
+    },
+    "E05011043": {
+        "name": "Rixton and Woolston",
+        "control": "MIX"
+    },
+    "E05011044": {
+        "name": "Stockton Heath",
+        "control": "LD"
+    },
+    "E05011045": {
+        "name": "Westbrook",
+        "control": "LAB"
+    },
+    "E05011052": {
+        "name": "Oxhey",
+        "control": "LD"
+    },
+    "E05011046": {
+        "name": "Callowland",
+        "control": "LD"
+    },
+    "E05011047": {
+        "name": "Central",
+        "control": "LD"
+    },
+    "E05011048": {
+        "name": "Holywell",
+        "control": "LAB"
+    },
+    "E05011049": {
+        "name": "Leggatts",
+        "control": "LD"
+    },
+    "E05011050": {
+        "name": "Meriden",
+        "control": "LD"
+    },
+    "E05011051": {
+        "name": "Nascot",
+        "control": "LD"
+    },
+    "E05011053": {
+        "name": "Park",
+        "control": "LD"
+    },
+    "E05011054": {
+        "name": "Stanborough",
+        "control": "LD"
+    },
+    "E05011055": {
+        "name": "Tudor",
+        "control": "LD"
+    },
+    "E05011056": {
+        "name": "Vicarage",
+        "control": "LD"
+    },
+    "E05011057": {
+        "name": "Woodside",
+        "control": "LD"
+    },
+    "E05011060": {
+        "name": "Handside",
+        "control": "LD"
+    },
+    "E05011070": {
+        "name": "Sherrards",
+        "control": "LAB"
+    },
+    "E05011058": {
+        "name": "Brookmans Park and Little Heath",
+        "control": "CON"
+    },
+    "E05011059": {
+        "name": "Haldens",
+        "control": "LAB"
+    },
+    "E05011061": {
+        "name": "Hatfield Central",
+        "control": "LAB"
+    },
+    "E05011062": {
+        "name": "Hatfield East",
+        "control": "LAB"
+    },
+    "E05011063": {
+        "name": "Hatfield South West",
+        "control": "LAB"
+    },
+    "E05011064": {
+        "name": "Hatfield Villages",
+        "control": "LAB"
+    },
+    "E05011065": {
+        "name": "Hollybush",
+        "control": "LAB"
+    },
+    "E05011066": {
+        "name": "Howlands",
+        "control": "LAB"
+    },
+    "E05011067": {
+        "name": "Northaw and Cuffley",
+        "control": "CON"
+    },
+    "E05011068": {
+        "name": "Panshanger",
+        "control": "LD"
+    },
+    "E05011069": {
+        "name": "Peartree",
+        "control": "LD"
+    },
+    "E05011071": {
+        "name": "Welham Green and Hatfield South",
+        "control": "LD"
+    },
+    "E05011072": {
+        "name": "Welwyn East",
+        "control": "CON"
+    },
+    "E05011073": {
+        "name": "Welwyn West",
+        "control": "CON"
+    },
+    "E05014929": {
+        "name": "Aughton and Holborn",
+        "control": "LAB"
+    },
+    "E05014930": {
+        "name": "Burscough Bridge and Rufford",
+        "control": "OTH"
+    },
+    "E05014931": {
+        "name": "Burscough Town",
+        "control": "LAB"
+    },
+    "E05014932": {
+        "name": "North Meols and Hesketh Bank",
+        "control": "CON"
+    },
+    "E05014933": {
+        "name": "Old Skelmersdale",
+        "control": "LAB"
+    },
+    "E05014934": {
+        "name": "Ormskirk East",
+        "control": "OTH"
+    },
+    "E05014935": {
+        "name": "Ormskirk West",
+        "control": "LAB"
+    },
+    "E05014936": {
+        "name": "Rural North East",
+        "control": "CON"
+    },
+    "E05014937": {
+        "name": "Rural South",
+        "control": "OTH"
+    },
+    "E05014938": {
+        "name": "Rural West",
+        "control": "CON"
+    },
+    "E05014939": {
+        "name": "Skelmersdale North",
+        "control": "LAB"
+    },
+    "E05014940": {
+        "name": "Skelmersdale South",
+        "control": "LAB"
+    },
+    "E05014941": {
+        "name": "Tanhouse and Skelmersdale Town Centre",
+        "control": "LAB"
+    },
+    "E05014942": {
+        "name": "Tarleton Village",
+        "control": "CON"
+    },
+    "E05014943": {
+        "name": "Up Holland",
+        "control": "LAB"
+    },
+    "E05006637": {
+        "name": "Chipping Norton",
+        "control": "LAB"
+    },
+    "E05006643": {
+        "name": "Milton-Under-Wychwood",
+        "control": "LD"
+    },
+    "E05006640": {
+        "name": "Freeland And Hanborough",
+        "control": "CON"
+    },
+    "E05006644": {
+        "name": "North Leigh",
+        "control": "CON"
+    },
+    "E05010781": {
+        "name": "Chadlington and Churchill",
+        "control": "LD"
+    },
+    "E05010782": {
+        "name": "Charlbury and Finstock",
+        "control": "LD"
+    },
+    "E05006639": {
+        "name": "Eynsham and Cassington",
+        "control": "LD"
+    },
+    "E05010783": {
+        "name": "Hailey, Minster Lovell and Leafield",
+        "control": "LD"
+    },
+    "E05006642": {
+        "name": "Kingham, Rollright and Enstone",
+        "control": "CON"
+    },
+    "E05006645": {
+        "name": "Standlake Aston & Stanton Harcourt",
+        "control": "LD"
+    },
+    "E05006646": {
+        "name": "Stonesfield and Tackley",
+        "control": "GREEN"
+    },
+    "E05006648": {
+        "name": "Witney Central",
+        "control": "LAB"
+    },
+    "E05006649": {
+        "name": "Witney East",
+        "control": "LAB"
+    },
+    "E05006650": {
+        "name": "Witney North",
+        "control": "GREEN"
+    },
+    "E05006651": {
+        "name": "Witney South",
+        "control": "LAB"
+    },
+    "E05006652": {
+        "name": "Witney West",
+        "control": "CON"
+    },
+    "E05006653": {
+        "name": "Woodstock and Bladon",
+        "control": "LD"
+    },
+    "E05014996": {
+        "name": "Douglas",
+        "control": "LAB"
+    },
+    "E05015005": {
+        "name": "Orrell",
+        "control": "LAB"
+    },
+    "E05015006": {
+        "name": "Pemberton",
+        "control": "LAB"
+    },
+    "E05015010": {
+        "name": "Wigan Central",
+        "control": "LAB"
+    },
+    "E05015011": {
+        "name": "Wigan West",
+        "control": "LAB"
+    },
+    "E05015012": {
+        "name": "Winstanley",
+        "control": "LAB"
+    },
+    "E05015013": {
+        "name": "Worsley Mesnes",
+        "control": "LAB"
+    },
+    "E05014989": {
+        "name": "Abram",
+        "control": "LAB"
+    },
+    "E05014990": {
+        "name": "Ashton-in-Makerfield South",
+        "control": "LAB"
+    },
+    "E05014991": {
+        "name": "Aspull, New Springs and Whelley",
+        "control": "LAB"
+    },
+    "E05014992": {
+        "name": "Astley",
+        "control": "LAB"
+    },
+    "E05014993": {
+        "name": "Atherton North",
+        "control": "OTH"
+    },
+    "E05014994": {
+        "name": "Atherton South and Lilford",
+        "control": "LAB"
+    },
+    "E05014995": {
+        "name": "Bryn with Ashton-in-Makerfield North",
+        "control": "IND"
+    },
+    "E05014997": {
+        "name": "Golborne and Lowton West",
+        "control": "LAB"
+    },
+    "E05014998": {
+        "name": "Hindley",
+        "control": "LAB"
+    },
+    "E05014999": {
+        "name": "Hindley Green",
+        "control": "LAB"
+    },
+    "E05015000": {
+        "name": "Ince",
+        "control": "IND"
+    },
+    "E05015001": {
+        "name": "Leigh Central and Higher Folds",
+        "control": "LAB"
+    },
+    "E05015002": {
+        "name": "Leigh South",
+        "control": "LAB"
+    },
+    "E05015003": {
+        "name": "Leigh West",
+        "control": "LAB"
+    },
+    "E05015004": {
+        "name": "Lowton East",
+        "control": "LAB"
+    },
+    "E05015007": {
+        "name": "Shevington with Lower Ground and Moor",
+        "control": "LAB"
+    },
+    "E05015008": {
+        "name": "Standish with Langtree",
+        "control": "LAB"
+    },
+    "E05015009": {
+        "name": "Tyldesley and Mosley Common",
+        "control": "IND"
+    },
+    "E05010995": {
+        "name": "Alresford and Itchen Valley",
+        "control": "LD"
+    },
+    "E05010996": {
+        "name": "Badger Farm and Oliver's Battery",
+        "control": "CON"
+    },
+    "E05010997": {
+        "name": "Bishop's Waltham",
+        "control": "LD"
+    },
+    "E05010998": {
+        "name": "Central Meon Valley",
+        "control": "GREEN"
+    },
+    "E05011000": {
+        "name": "Denmead",
+        "control": "LD"
+    },
+    "E05011001": {
+        "name": "St Barnabas",
+        "control": "LD"
+    },
+    "E05011002": {
+        "name": "St Bartholomew",
+        "control": "LD"
+    },
+    "E05011003": {
+        "name": "St Luke",
+        "control": "LD"
+    },
+    "E05011004": {
+        "name": "St Michael",
+        "control": "LD"
+    },
+    "E05011005": {
+        "name": "St Paul",
+        "control": "LD"
+    },
+    "E05011006": {
+        "name": "Southwick and Wickham",
+        "control": "LD"
+    },
+    "E05011007": {
+        "name": "The Worthys",
+        "control": "LD"
+    },
+    "E05011009": {
+        "name": "Whiteley and Shedfield",
+        "control": "LD"
+    },
+    "E05011010": {
+        "name": "Wonston and Micheldever",
+        "control": "CON"
+    },
+    "E05010795": {
+        "name": "Byfleet and West Byfleet",
+        "control": "IND"
+    },
+    "E05010796": {
+        "name": "Canalside",
+        "control": "LD"
+    },
+    "E05010797": {
+        "name": "Goldsworth Park",
+        "control": "LD"
+    },
+    "E05010798": {
+        "name": "Heathlands",
+        "control": "LD"
+    },
+    "E05010799": {
+        "name": "Hoe Valley",
+        "control": "LD"
+    },
+    "E05010800": {
+        "name": "Horsell",
+        "control": "LD"
+    },
+    "E05010801": {
+        "name": "Knaphill",
+        "control": "LD"
+    },
+    "E05010802": {
+        "name": "Mount Hermon",
+        "control": "LD"
+    },
+    "E05010803": {
+        "name": "Pyrford",
+        "control": "LD"
+    },
+    "E05010804": {
+        "name": "St John's",
+        "control": "LD"
+    },
+    "E05015799": {
+        "name": "Winnersh",
+        "control": "LD"
+    },
+    "E05015785": {
+        "name": "Emmbrook",
+        "control": "LD"
+    },
+    "E05015786": {
+        "name": "Evendons",
+        "control": "LD"
+    },
+    "E05015800": {
+        "name": "Wokingham Without",
+        "control": "MIX"
+    },
+    "E05015783": {
+        "name": "Barkham and Arborfield",
+        "control": "MIX"
+    },
+    "E05015784": {
+        "name": "Bulmershe and Coronation",
+        "control": "CON"
+    },
+    "E05015787": {
+        "name": "Finchampstead",
+        "control": "CON"
+    },
+    "E05015788": {
+        "name": "Hawkedon",
+        "control": "MIX"
+    },
+    "E05015789": {
+        "name": "Hillside",
+        "control": "MIX"
+    },
+    "E05015790": {
+        "name": "Loddon",
+        "control": "LAB"
+    },
+    "E05015791": {
+        "name": "Maiden Erlegh and Whitegates",
+        "control": "MIX"
+    },
+    "E05015792": {
+        "name": "Norreys",
+        "control": "LAB"
+    },
+    "E05015793": {
+        "name": "Shinfield",
+        "control": "MIX"
+    },
+    "E05015794": {
+        "name": "South Lake",
+        "control": "MIX"
+    },
+    "E05015795": {
+        "name": "Spencers Wood and Swallowfield",
+        "control": "MIX"
+    },
+    "E05015796": {
+        "name": "Thames",
+        "control": "MIX"
+    },
+    "E05015797": {
+        "name": "Twyford, Ruscombe and Hurst",
+        "control": "LD"
+    },
+    "E05015798": {
+        "name": "Wescott",
+        "control": "LD"
+    },
+    "E05014840": {
+        "name": "Blakenhall",
+        "control": "LAB"
+    },
+    "E05014847": {
+        "name": "Graiseley",
+        "control": "LAB"
+    },
+    "E05014849": {
+        "name": "Merry Hill",
+        "control": "LAB"
+    },
+    "E05014852": {
+        "name": "Penn",
+        "control": "CON"
+    },
+    "E05014854": {
+        "name": "Tettenhall Regis",
+        "control": "CON"
+    },
+    "E05014855": {
+        "name": "Tettenhall Wightwick",
+        "control": "CON"
+    },
+    "E05014838": {
+        "name": "Bilston North",
+        "control": "LAB"
+    },
+    "E05014839": {
+        "name": "Bilston South",
+        "control": "LAB"
+    },
+    "E05014841": {
+        "name": "Bushbury North",
+        "control": "CON"
+    },
+    "E05014842": {
+        "name": "Bushbury South and Low Hill",
+        "control": "LAB"
+    },
+    "E05014843": {
+        "name": "East Park",
+        "control": "LAB"
+    },
+    "E05014844": {
+        "name": "Ettingshall North",
+        "control": "LAB"
+    },
+    "E05014845": {
+        "name": "Ettingshall South and Spring Vale",
+        "control": "LAB"
+    },
+    "E05014846": {
+        "name": "Fallings Park",
+        "control": "LAB"
+    },
+    "E05014848": {
+        "name": "Heath Town",
+        "control": "LAB"
+    },
+    "E05014850": {
+        "name": "Oxley",
+        "control": "LAB"
+    },
+    "E05014851": {
+        "name": "Park",
+        "control": "LAB"
+    },
+    "E05014853": {
+        "name": "St Peters",
+        "control": "LAB"
+    },
+    "E05014856": {
+        "name": "Wednesfield North",
+        "control": "LAB"
+    },
+    "E05014857": {
+        "name": "Wednesfield South",
+        "control": "LAB"
+    },
+    "E05015849": {
+        "name": "Arboretum",
+        "control": "GREEN"
+    },
+    "E05015852": {
+        "name": "Claines",
+        "control": "LD"
+    },
+    "E05015857": {
+        "name": "Nunnery",
+        "control": "LAB"
+    },
+    "E05015859": {
+        "name": "St Clement",
+        "control": "GREEN"
+    },
+    "E05015862": {
+        "name": "St Peter's Parish",
+        "control": "GREEN"
+    },
+    "E05015850": {
+        "name": "Battenhall",
+        "control": "GREEN"
+    },
+    "E05015851": {
+        "name": "Cathedral",
+        "control": "LAB"
+    },
+    "E05015853": {
+        "name": "Dines Green and Grove Farm",
+        "control": "LAB"
+    },
+    "E05015854": {
+        "name": "Fort Royal",
+        "control": "LAB"
+    },
+    "E05015855": {
+        "name": "Leopard Hill",
+        "control": "GREEN"
+    },
+    "E05015856": {
+        "name": "Lower Wick and Pitmaston",
+        "control": "MIX"
+    },
+    "E05015858": {
+        "name": "Rainbow Hill",
+        "control": "LAB"
+    },
+    "E05015860": {
+        "name": "St John's",
+        "control": "LAB"
+    },
+    "E05015861": {
+        "name": "St Nicholas",
+        "control": "LD"
+    },
+    "E05015863": {
+        "name": "St Stephen",
+        "control": "GREEN"
+    },
+    "E05015864": {
+        "name": "Warndon and Elbury Park",
+        "control": "LAB"
+    },
+    "E05007699": {
+        "name": "Goring",
+        "control": "GREEN"
+    },
+    "E05007694": {
+        "name": "Broadwater",
+        "control": "LAB"
+    },
+    "E05007701": {
+        "name": "Marine",
+        "control": "LAB"
+    },
+    "E05007695": {
+        "name": "Castle",
+        "control": "LAB"
+    },
+    "E05007697": {
+        "name": "Durrington",
+        "control": "CON"
+    },
+    "E05007698": {
+        "name": "Gaisford",
+        "control": "LAB"
+    },
+    "E05007700": {
+        "name": "Heene",
+        "control": "LAB"
+    },
+    "E05007702": {
+        "name": "Northbrook",
+        "control": "LAB"
+    },
+    "E05007703": {
+        "name": "Offington",
+        "control": "CON"
+    },
+    "E05007704": {
+        "name": "Salvington",
+        "control": "CON"
+    },
+    "E05007705": {
+        "name": "Selden",
+        "control": "LAB"
+    },
+    "E05007706": {
+        "name": "Tarring",
+        "control": "LAB"
+    },
+    "E05007696": {
+        "name": "Central",
+        "control": "LAB"
+    }
+}
