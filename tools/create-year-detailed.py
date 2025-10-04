@@ -30,6 +30,12 @@ def hashName2019(thing):
     thing = thing.replace("kingstonon","")
     return thing
 
+def fillOut2024(p, d):
+    d['parties'].append(p)
+    d['seats'].append(0)
+    return d
+
+
 with open(f'./geodata/lads/lads-2019.geojson', ) as g2:  # thank you stack overflow
     geo = json.load(g2)      
     geo = geo['features']  
@@ -41,9 +47,11 @@ def generateResults(tp, output):
         data = {}
 
         def checkInCSV(name):
+            data[code]["parties"].append(name)
             if name in df:
-                data[code]["parties"].append(name)
                 data[code]["seats"].append(int(df.loc[i][name]))
+            else:
+                data[code]["seats"].append(0)
         
         if year == "2019":
             places = {}
@@ -73,7 +81,7 @@ def generateResults(tp, output):
                     data[code]['control'] = "NOC"
                 data[code]['election'] = year
                 data[code]['type'] = df.loc[i]['TYPE']
-        with open(f'./data/{year}/{year}-{output}.json', 'w') as f:  # thank you stack overflow
+        with open(f'./data/{year}/{output}/{year}-{output}.json', 'w') as f:  # thank you stack overflow
             f.write(json.dumps(data, ensure_ascii=True))
 
     # USE WARD DATA TO MAKE 2024 RESULT; doesn't actually matter since 2024 had no C elections
@@ -105,7 +113,10 @@ def generateResults(tp, output):
             else:
                 data[code]['control'] = "NOC"
             data[code]['election'] = year
-    with open(f'./data/{year}/{year}-{output}.json', 'w') as f:  # thank you stack overflow
+            for p in ["CON", "LAB", "LD", "GRN", "SNP", "PC", "REF", "UKIP", "OTH"]:
+                if p not in list(data[code]['parties']):
+                    data[code] = fillOut2024(p, data[code])
+    with open(f'./data/{year}/{output}/{year}-{output}.json', "w") as f:  # thank you stack overflow
         f.write(json.dumps(data, ensure_ascii=True))
 
     # GET FLIPS AND PREVIOUS ELECTION DATES
@@ -114,20 +125,25 @@ def generateResults(tp, output):
     flips.reverse()
     flips = flips[:-1]
     results = {}
+    print(years, flips)
     for i in years:
+        print(years, flips)
         results = {}
+        incdec = {}
         for j in flips:
-            print("CHECKING", j, "FOR", i)
-            with open(f'./data/{j}/{j}-{output}.json') as f:
+            with open(f'./data/{j}/{output}/{j}-{output}.json') as f:
                 g = json.load(f)
                 for k in g:
                     results[k] = {}
+                    incdec[k] = {}
                     results[k]['prev_up'] = j
                     results[k]['prev_control'] = g[k]['control']
+                    incdec[k]["parties"] = g[k]["parties"]
+                    incdec[k]["seats"] = g[k]["seats"]
         flips = flips[:-1]
         year_lads = []
         flip_lads = {}
-        with open(f'./data/{i}/{i}-{output}.json') as x:
+        with open(f'./data/{i}/{output}/{i}-{output}.json') as x:
             y = json.load(x)
             for n in y:
                 year_lads.append(n)
@@ -135,8 +151,17 @@ def generateResults(tp, output):
         print("WRITING", i)
         for m in year_lads:
             if m in results:
+                incdec[m]["incdec"] = []
+                for q in range(len(incdec[m]["parties"])):
+                    incdec[m]["incdec"].append(y[m]["seats"][y[m]["parties"].index(incdec[m]["parties"][q])] - incdec[m]["seats"][q])
                 y[m]['prev_up'] = results[m]['prev_up']
                 y[m]['prev_control'] = results[m]['prev_control']
+                y[m]['inc'] = incdec[m]["parties"][incdec[m]['incdec'].index(max(incdec[m]['incdec']))]
+                y[m]['dec'] = incdec[m]["parties"][incdec[m]['incdec'].index(min(incdec[m]['incdec']))]
+                if incdec[m]['incdec'].count(max(incdec[m]['incdec'])) > 1:
+                    y[m]['inc'] = "NOC"
+                if incdec[m]['incdec'].count(max(incdec[m]['incdec'])) > 1:
+                    y[m]['dec'] = "NOC"
                 if results[m]['prev_control'] != flip_lads[m]:
                     y[m]['flip'] = "true"
                 else:
@@ -145,12 +170,16 @@ def generateResults(tp, output):
                 y[m]['prev_up'] = "DATA"
                 y[m]['prev_control'] = "DATA"
                 y[m]['flip'] = "DATA"
+                y[m]['inc'] = "DATA"
+                y[m]['dec'] = "DATA"
             else:
                 y[m]['prev_up'] = "INIT"
                 y[m]['prev_control'] = "INIT"
                 y[m]['flip'] = "INIT"
+                y[m]['inc'] = "INIT"
+                y[m]['dec'] = "INIT"
         print("WRITTEN", i)
-        with open(f'./data/{i}/{i}-{output}.json', "w") as x:
+        with open(f'./data/{i}/{output}/{i}-{output}.json', "w") as x:
             x.write(json.dumps(y, ensure_ascii=True))
 
         print("")
@@ -158,7 +187,7 @@ def generateResults(tp, output):
     # ORDER THE RESULTS
     for y in years:
         print("SORTING ", y)
-        with open(f'./data/{y}/{y}-{output}.json') as f:
+        with open(f'./data/{y}/{output}/{y}-{output}.json') as f:
             g = json.load(f)
         for lad in g.keys():
             max_parties = []
@@ -174,7 +203,7 @@ def generateResults(tp, output):
                     break
             g[lad]["parties"] = max_parties
             g[lad]["seats"] = max_seats
-        with open(f'./data/{y}/{y}-{output}.json', "w") as x:
+        with open(f'./data/{y}/{output}/{y}-{output}.json', "w") as x:
             x.write(json.dumps(g, ensure_ascii=True))
 
 generateResults("LAD", "lads")

@@ -10,8 +10,12 @@ input {
     width: fit-content;
 }
 
+label {
+    font-size: 14px;
+}
+
 .sb-top-padding {
-    margin-top: 2dvh;
+    margin-top: 1dvh;
 }
 
 th, td {
@@ -57,7 +61,7 @@ table {
     height: fit-content;
 }
 
-#only {
+#year-only {
     width: 100%;
 }
 
@@ -187,4 +191,10 @@ td {
 
 .ward-disable {
     color: #AAAAAA;
+}
+
+.sb-dropdown {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }

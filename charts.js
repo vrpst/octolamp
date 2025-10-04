@@ -9,7 +9,7 @@ export async function getElectionResult(id, year, sw) {
     } else if (sw == "cuas") {
         url_end = "-cuas.json"
     }
-    const url =  './data/' + year.toString() + '/' + year.toString() + url_end
+    const url =  './data/' + year.toString() + '/' + sw +'/' + year.toString() + url_end
     const chartjson = await fetch(url)
     const chartjsonObject = await chartjson.json()
     return await chartjsonObject[id]

@@ -12,14 +12,15 @@ import { getElectionResult, createBarChart, createLADChart } from './charts';
 import { createWardTable, createOtherTable } from './table';
 import { getStrokeToUse, getColorToUse } from '/style' 
 
-let yearonlyflag = false
 let yearonlyyear = 2025
+
+let yearonlyflag = true
 
 let geojson = null
 let geojsonObject = null
 
 let resultsjson = null
-let resultsjsonObject = null
+let simpres = null
 
 let area_code_code = null
 let area_name = null
@@ -29,7 +30,13 @@ let areaswitch = "cuas"
 
 let vectorSource = null
 document.getElementById("daterange").value = 2025 
-document.getElementById("radio-cuas").checked = "checked"  
+document.getElementById("radio-cuas").checked = "checked"
+document.getElementById("highlight-noc").selected = "selected"
+document.getElementById("filter-none").selected = "selected"  
+
+let filterflag = document.getElementById('filter').value
+let highlightflag = document.getElementById('highlight').value
+
 
 const colors = {
   LAB: "#E4003B",   //[228, 0, 59],
@@ -45,11 +52,13 @@ const colors = {
   PC: "#005B54",    //[0, 91, 84],
   IND: "#F4A8FF",   //[244, 168, 255],
   OTH: "#F4A8FF",
+  INIT: "#D1D1D1",  // used for coloring inc dec when there may not necessarily be data
+  DATA: "#D1D1D1",
 }
 
 
 document.getElementById("slider-year").innerText = "Year: " + document.getElementById("daterange").value
-document.getElementById("only").innerText = document.getElementById("daterange").value + " only"
+document.getElementById("year-only").innerText = "Show " + document.getElementById("daterange").value + " only"
 
 function switchArea() { //REDO
   areaswitch = document.querySelector('input[name="area"]:checked').value
@@ -62,41 +71,46 @@ function switchArea() { //REDO
 
 document.getElementById("area-switch").oninput = async function() {
   switchArea()
-  await updateMap(true)  // get new geojson
+  await updateMap()  // get new geojson
   vectorSource.clear()
   purgeVectorSource()
   purgeMap()
 }
 
-async function updateMap(geoswitch) {
+document.getElementById("highlight").oninput = async function() {
+  highlightflag = document.getElementById('highlight').value
+  console.log("HF UPDATED TO", highlightflag)
+  await updateMap(false)
+  purgeMap()
+}
+
+document.getElementById("filter").oninput = async function() {
+  filterflag = document.getElementById('filter').value
+  console.log(filterflag)
+  purgeMap()
+}
+
+async function updateMap(geoswitch=true) {
   if (geoswitch) {
     let geojsonstring = './geodata/' + areaswitch + '/' + areaswitch + '-' + yearonlyyear.toString() + '.geojson'
     geojson = await fetch(geojsonstring)
     geojsonObject = await geojson.json()
   }
   let results_end = null  // get the right results file
-  if (areaswitch == "lads") {
-    if (yearonlyflag) {
-      results_end = "-lads.json"
+  if (areaswitch == "wards") {
+    if (highlightflag == "year") {
+      results_end = "-simplified"
     } else {
-      results_end = "-lads-past.json"
-    }
-  } else if (areaswitch == "wards") {
-    if (yearonlyflag) {
-      results_end = "-simplified.json"
-    } else {
-      results_end = "-past-elections.json"
-    }
-  } else if (areaswitch == "cuas") {
-    if (yearonlyflag) {
-      results_end = "-cuas.json"
-    } else {
-      results_end = "-cuas-past.json"
+      results_end = "-past-elections"
     }
   }
-  let resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + yearonlyyear.toString() + results_end
+  let resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + areaswitch + "/" + yearonlyyear.toString() + "-" + areaswitch + "-simp.json"
+    if (yearonlyflag) {
+      resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + areaswitch + "/" + yearonlyyear.toString() + "-" + areaswitch + "-simp-past.json"
+
+  }
   resultsjson = await fetch(resultsjsonstring)
-  resultsjsonObject = await resultsjson.json()
+  simpres = await resultsjson.json()
   
   if (areaswitch == "wards") {
     area_code_code = "WD" + yearonlyyear.toString().slice(2,4) + "CD"
@@ -111,7 +125,7 @@ async function updateMap(geoswitch) {
   }
 }
 
-await updateMap(true)  // get the data
+await updateMap()  // get the data
 purgeVectorSource()  // create the source vector map using new data
 
 const selected = new Style({  // style for selected object
@@ -131,11 +145,11 @@ let styleFunction = function(feature, resolution) {  // determines how to render
   let code = feature.get(area_code_code)
   return new Style({
     stroke: new Stroke({
-      color: getStrokeToUse(resultsjsonObject, code, yearonlyflag, yearonlyyear),
+      color: getStrokeToUse(simpres, code),
       width: 1,
     }),
     fill: new Fill({
-      color: getColorToUse(resultsjsonObject[code], colors), //styleFunction
+      color: getColorToUse(simpres[code], colors, filterflag, highlightflag), //styleFunction
     })
   })
 }
@@ -167,7 +181,7 @@ map.on('pointermove', async function (evt) {
       return feature;
   })
   try {
-    if ((!yearonlyflag) || (yearonlyflag && Number(resultsjsonObject[f['values_'][area_code_code]]['election']) == yearonlyyear)) {
+    if (highlightflag != "year" || (highlightflag == "year" && Number(simpres[f['values_'][area_code_code]]['election']) == yearonlyyear)) {
       document.getElementById('hover-name').style.display = "block"
       document.getElementById('hover-name').innerText = f['values_'][area_name]
     } else {  // only hover in certain circumstances
@@ -193,41 +207,41 @@ map.on('click', async function (evt) {
     }
   }
  // try {
-  await openPanel(feature[area_code_code])
+  await openPanel(feature[area_code_code], simpres[feature[area_code_code]]['election'])
 });
 
 // RENDER INFO PANEL
-async function openPanel(code) {
-  if ((!yearonlyflag) || (yearonlyflag && code in resultsjsonObject)) {  // if any year OR only one year and the location is in the results
-    const ctu = getColorToUse(resultsjsonObject[code], colors, area_code_code)
+async function openPanel(code, year_to_find) {
+  let dr = await fetch('./data/' + year_to_find.toString() + '/' + areaswitch + "/" + year_to_find.toString() + "-" + areaswitch + ".json")
+  const detailed_results = await dr.json()
+  if ((highlightflag != "year") || (highlightflag == "year" && code in detailed_results)) {  // if any year OR only one year and the location is in the results
+    const ctu = getColorToUse(detailed_results[code], colors)
     if (areaswitch != "wards" ) {
       const result = document.getElementById('result')
-      console.log(resultsjsonObject[code]['control'])
-      if (resultsjsonObject[code]['control'] == "PC") {
+      if (detailed_results[code]['control'] == "PC") {
         result.style.color = "#FFFFFF"
       } else {
         result.style.color = "#000000"
       }
       result.style.backgroundColor = ctu
-      getResultText(resultsjsonObject[code])
+      getResultText(detailed_results[code])
     }
     document.getElementById('colorbar').style.backgroundColor = ctu
-    if (resultsjsonObject[code] == "NONE") {
+    if (detailed_results[code] == "NONE") {
       showNoData()
     } 
     else {
-      document.getElementById('name').insertAdjacentText('beforeend', ", " + resultsjsonObject[code]['election'])
-      //const location = "elected " + resultsjsonObject[code]['election'] + ', ' + code //values["WD23NM"] + ',' + ' ' + resultsjsonObject[values[area_code_code]]['county_name']
+      document.getElementById('name').insertAdjacentText('beforeend', ", " + detailed_results[code]['election'])
       const la = document.getElementById('local-authority')
       la.innerText = ""
 
-      la.insertAdjacentText('beforeend', getAreaType(resultsjsonObject[code]) + '; ')
+      la.insertAdjacentText('beforeend', getAreaType(detailed_results[code]) + '; ')
       const lac = document.createElement('code')
       lac.setAttribute('id', 'local-authority-code')
       lac.insertAdjacentText('beforeend', code)
       la.insertAdjacentElement('beforeend', lac)
 
-      const chart_data = await getElectionResult(code, resultsjsonObject[code]['election'], areaswitch)
+      const chart_data = await getElectionResult(code, detailed_results[code]['election'], areaswitch)
       if (areaswitch == "wards") {      
         try {
           chart.destroy()
@@ -271,16 +285,19 @@ function showNoData() {
 }
 
 // UPDATE MAP FOR BUTTON SHOWING ONLY RESULTS FROM THAT YEAR
-document.getElementById("only").addEventListener('click', async function() {
-  yearonlyflag = !yearonlyflag
+document.getElementById("year-only").addEventListener('click', async function() {
   if (yearonlyflag) {
-    document.getElementById("only").innerText = "Show all years"  }
+    document.getElementById("year-only").innerText = "Show past years"  }
   else {
-      document.getElementById("only").innerText = yearonlyyear + " only"
+      document.getElementById("year-only").innerText = "Show " + yearonlyyear + " only"
   }
+  yearonlyflag = !yearonlyflag
   await updateMap(false)
   purgeMap()
 })
+
+/*document.getElementById("filter-gain").addEventListener('click', async function() {
+})*/
 
 // UPDATE MAP FOR CHANGE IN DATE
 document.getElementById("daterange").oninput = async function() {
@@ -307,13 +324,15 @@ document.getElementById("daterange").oninput = async function() {
     }
 
   }
-  await updateMap(true)
+  await updateMap()
   vectorSource.clear()
   purgeVectorSource()
   purgeMap()
 
-  if (!yearonlyflag) {
-    document.getElementById("only").innerText = yearonlyyear + " only"
+  if (yearonlyflag) {
+    document.getElementById("year-only").innerText = "Show " + yearonlyyear + " only"
+  } else {
+    document.getElementById("year-only").innerText = "Show past years"
   }
   document.getElementById("slider-year").innerText = "Year: " + this.value;
 } 
