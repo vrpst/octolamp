@@ -1,16 +1,16 @@
-import './style.css';
+import './map.css';
 import Map from 'ol/Map.js';
 import View from 'ol/View.js';
-import GeoJSON from 'ol/format/GeoJSON.js';
+import GeoJSON from 'ol/format/GeoJSON.js'
 import VectorLayer from 'ol/layer/Vector.js';
 import VectorSource from 'ol/source/Vector.js';
 import Stroke from 'ol/style/Stroke.js';
-import Style from 'ol/style/Style.js';
+import Style from 'ol/style/Style';
 import Fill from 'ol/style/Fill';
-import Select from 'ol/interaction/Select.js';
-import { getElectionResult, createBarChart, createLADChart } from './charts';
-import { createWardTable, createOtherTable } from './table';
-import { getStrokeToUse, getColorToUse } from '/style' 
+import Select from 'ol/interaction/Select.js'
+import { getElectionResult, createBarChart, createLADChart } from './utils/charts.js';
+import { createWardTable, createOtherTable } from './utils/table.js';
+import { getStrokeToUse, getColorToUse } from './utils/style.js' 
 
 let yearonlyyear = 2025
 
