@@ -207,14 +207,18 @@ map.on('click', async function (evt) {
     }
   }
  // try {
-  await openPanel(feature[area_code_code], simpres[feature[area_code_code]]['election'])
+  if (simpres[feature[area_code_code]]) {
+    await openPanel(feature[area_code_code], simpres[feature[area_code_code]]['election'])
+  } else {
+    showNoData()
+    document.getElementById('local-authority').innerText = "No election in " + yearonlyyear.toString()
+  }
 });
 
 // RENDER INFO PANEL
 async function openPanel(code, year_to_find) {
-  let dr = await fetch('./data/' + year_to_find.toString() + '/' + areaswitch + "/" + year_to_find.toString() + "-" + areaswitch + ".json")
-  const detailed_results = await dr.json()
-  if ((highlightflag != "year") || (highlightflag == "year" && code in detailed_results)) {  // if any year OR only one year and the location is in the results
+    let dr = await fetch('./data/' + year_to_find.toString() + '/' + areaswitch + "/" + year_to_find.toString() + "-" + areaswitch + ".json")
+    const detailed_results = await dr.json()
     const ctu = getColorToUse(detailed_results[code], colors)
     if (areaswitch != "wards" ) {
       const result = document.getElementById('result')
@@ -267,10 +271,6 @@ async function openPanel(code, year_to_find) {
       }
       document.getElementById('table').insertAdjacentElement('beforeend', table)
     }
-  } else {
-      showNoData()
-      document.getElementById('local-authority').innerText = "No election in " + yearonlyyear.toString()
-  }
 }
 
 // DON'T SHOW ANYTHING IF NO DATA
@@ -318,8 +318,8 @@ document.getElementById("daterange").oninput = async function() {
     document.getElementById('radio-wards').disabled = true
     document.getElementById('wards-label').innerText = "Ward data unavailable for " + yearonlyyear.toString()
     document.getElementById('wards-label').classList.add('ward-disable')
-    document.getElementById("radio-lads").checked = "checked"  
     if (areaswitch == "wards") {
+      document.getElementById("radio-lads").checked = "checked"  
       switchArea()  // switch if it's moved while in wards to a year without them
     }
 
