@@ -79,14 +79,12 @@ document.getElementById("area-switch").oninput = async function() {
 
 document.getElementById("highlight").oninput = async function() {
   highlightflag = document.getElementById('highlight').value
-  console.log("HF UPDATED TO", highlightflag)
   await updateMap(false)
   purgeMap()
 }
 
 document.getElementById("filter").oninput = async function() {
   filterflag = document.getElementById('filter').value
-  console.log(filterflag)
   purgeMap()
 }
 
@@ -196,6 +194,7 @@ map.addInteraction(selectClick)
 map.on('click', async function (evt) {
   const namePromise = await vectorLayer.getFeatures(evt.pixel)
   const feature = namePromise[0]["values_"]
+  console.log(feature)
 
   try {
     document.getElementById('name').innerText = ''
@@ -207,6 +206,7 @@ map.on('click', async function (evt) {
     }
   }
  // try {
+ console.log("sipimpip", simpres[feature[area_code_code]])
   if (simpres[feature[area_code_code]]) {
     await openPanel(feature[area_code_code], simpres[feature[area_code_code]]['election'])
   } else {

@@ -9,7 +9,6 @@ export function getStrokeToUse(results, code) {
 }
 
 export function getColorToUse(results, colors, ff="noflag", hl="nohl") {
-  console.log("hf is", hl)
   if (results){
     if (results != "NONE") {
       if (colors[results["control"]]) {
@@ -46,6 +45,5 @@ function getColorFromHighlight(res, col, hl) {
     "increase": "inc",
     "decrease": "dec"
   }
-  console.log("ababa", hl, highlights[hl])
   return col[res[highlights[hl]]]
 }
