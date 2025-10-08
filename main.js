@@ -287,7 +287,7 @@ function showNoData(code) {
     if (!yearonlyflag) {
       la_error.innerText = "No election in " + yearonlyyear
     } else {
-      la_error.innerText = "No data available" + yearonlyyear
+      la_error.innerText = "No data available"
     }
   }
 }
