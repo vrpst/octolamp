@@ -14,7 +14,7 @@ import { getStrokeToUse, getColorToUse } from './utils/style.js'
 
 let yearonlyyear = 2025
 
-let yearonlyflag = true
+let allyearflag = true
 
 let geojson = null
 let geojsonObject = null
@@ -57,10 +57,11 @@ const colors = {
 }
 
 
-document.getElementById("slider-year").innerText = "Year: " + document.getElementById("daterange").value
+document.getElementById("slider-year").innerText = document.getElementById("daterange").value
 document.getElementById("year-only").innerText = "Show " + document.getElementById("daterange").value + " only"
 
 function switchArea() { //REDO
+  clearResult()
   areaswitch = document.querySelector('input[name="area"]:checked').value
   if (areaswitch == "wards") {
       colors['OTH'] = "#964B00"
@@ -79,14 +80,12 @@ document.getElementById("area-switch").oninput = async function() {
 
 document.getElementById("highlight").oninput = async function() {
   highlightflag = document.getElementById('highlight').value
-  console.log("HF UPDATED TO", highlightflag)
   await updateMap(false)
   purgeMap()
 }
 
 document.getElementById("filter").oninput = async function() {
   filterflag = document.getElementById('filter').value
-  console.log(filterflag)
   purgeMap()
 }
 
@@ -105,7 +104,7 @@ async function updateMap(geoswitch=true) {
     }
   }
   let resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + areaswitch + "/" + yearonlyyear.toString() + "-" + areaswitch + "-simp.json"
-    if (yearonlyflag) {
+    if (allyearflag) {
       resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + areaswitch + "/" + yearonlyyear.toString() + "-" + areaswitch + "-simp-past.json"
 
   }
@@ -115,7 +114,6 @@ async function updateMap(geoswitch=true) {
   if (areaswitch == "wards") {
     area_code_code = "WD" + yearonlyyear.toString().slice(2,4) + "CD"
     area_name = "WD" + yearonlyyear.toString().slice(2,4) + "NM"
-    clearResult()
   } else if (areaswitch == "lads") {
     area_code_code = "LAD" + yearonlyyear.toString().slice(2,4) + "CD"
     area_name = "LAD" + yearonlyyear.toString().slice(2,4) + "NM"
@@ -130,6 +128,7 @@ purgeVectorSource()  // create the source vector map using new data
 
 const selected = new Style({  // style for selected object
   stroke: new Stroke({
+    color: getStrokeToUse(allyearflag),
     width: 1,
   }),
   fill: new Fill({
@@ -145,7 +144,7 @@ let styleFunction = function(feature, resolution) {  // determines how to render
   let code = feature.get(area_code_code)
   return new Style({
     stroke: new Stroke({
-      color: getStrokeToUse(simpres, code),
+      color: getStrokeToUse(allyearflag),
       width: 1,
     }),
     fill: new Fill({
@@ -196,22 +195,17 @@ map.addInteraction(selectClick)
 map.on('click', async function (evt) {
   const namePromise = await vectorLayer.getFeatures(evt.pixel)
   const feature = namePromise[0]["values_"]
-
   try {
-    document.getElementById('name').innerText = ''
-
-    document.getElementById('name').insertAdjacentText('beforeend', feature[area_name])
-  } catch ({ name, message }) {
-    if (name == "TypeError"){
-      console.log("clicked")
-    }
+    chart.destroy()
+  } catch {
+      //not needed, if there's no chart there's no chart
   }
- // try {
-  if (simpres[feature[area_code_code]]) {
+  document.getElementById('name').innerText = ''
+  document.getElementById('name').insertAdjacentText('beforeend', feature[area_name])
+  if (simpres[feature[area_code_code]] && getColorToUse(simpres[feature[area_code_code]], colors, filterflag) != "#D1D1D1") {
     await openPanel(feature[area_code_code], simpres[feature[area_code_code]]['election'])
   } else {
-    showNoData()
-    document.getElementById('local-authority').innerText = "No election in " + yearonlyyear.toString()
+    showNoData(feature[area_code_code], filterflag, simpres[feature[area_code_code]], simpres[feature[area_code_code]])
   }
 });
 
@@ -231,67 +225,81 @@ async function openPanel(code, year_to_find) {
       getResultText(detailed_results[code])
     }
     document.getElementById('colorbar').style.backgroundColor = ctu
-    if (detailed_results[code] == "NONE") {
-      showNoData()
-    } 
-    else {
-      document.getElementById('name').insertAdjacentText('beforeend', ", " + detailed_results[code]['election'])
-      const la = document.getElementById('local-authority')
-      la.innerText = ""
+    document.getElementById('name').insertAdjacentText('beforeend', ", " + detailed_results[code]['election'])
+    const la = document.getElementById('local-authority')
+    la.innerText = ""
 
-      la.insertAdjacentText('beforeend', getAreaType(detailed_results[code]) + '; ')
-      const lac = document.createElement('code')
-      lac.setAttribute('id', 'local-authority-code')
-      lac.insertAdjacentText('beforeend', code)
-      la.insertAdjacentElement('beforeend', lac)
+    la.insertAdjacentText('beforeend', getAreaType(detailed_results[code]) + '; ')
+    const lac = document.createElement('code')
+    lac.setAttribute('id', 'local-authority-code')
+    lac.insertAdjacentText('beforeend', code)
+    la.insertAdjacentElement('beforeend', lac)
 
-      const chart_data = await getElectionResult(code, detailed_results[code]['election'], areaswitch)
-      if (areaswitch == "wards") {      
-        try {
-          chart.destroy()
-        } catch {
-          //not needed
-        }
-        chart = createBarChart(chart_data, colors)
-      } else {         
-        try {
-          chart.destroy()
-        } catch {
-          //not needed
-        }
-        chart = createLADChart(chart_data, colors)
-      }
-      
-      document.getElementById('table').innerText = ""
-      let table = null
-      if (areaswitch == "wards") {
-        table = createWardTable(chart_data, colors)
-      } else {
-        table = await createOtherTable(chart_data, colors, code, areaswitch)
-      }
-      document.getElementById('table').insertAdjacentElement('beforeend', table)
+    const chart_data = await getElectionResult(code, detailed_results[code]['election'], areaswitch)
+    if (areaswitch == "wards") {      
+      chart = createBarChart(chart_data, colors)
+    } else {         
+      chart = createLADChart(chart_data, colors)
     }
+    
+    document.getElementById('table').innerText = ""
+    let table = null
+    if (areaswitch == "wards") {
+      table = createWardTable(chart_data, colors)
+    } else {
+      table = await createOtherTable(chart_data, colors, code, areaswitch)
+    }
+    document.getElementById('table').insertAdjacentElement('beforeend', table)
 }
 
 // DON'T SHOW ANYTHING IF NO DATA
-function showNoData() {
-  clearResult()
-  try {
-    chart.destroy()
-  } catch {}
+function showNoData(code, filter, indata) {
   document.getElementById('colorbar').style.backgroundColor = "#D1D1D1"
   document.getElementById('table').innerText = ""
-  document.getElementById('local-authority').innerText = "No data"
+  document.getElementById('result-text').innerText = ""
+  const la_error = document.getElementById('local-authority')
+  if (code.charAt(0) == "N") {
+    la_error.innerText = "No data available for Northern Ireland"
+  } else if (code == "E09000001") {
+    la_error.innerText = "No data available for the City Of London"
+  } else if (code == "E06000053") {
+    la_error.innerText = "No data available for the Isles of Scilly"
+  } else {
+    if (indata) {  // if there is a result (either an election in that year or an election in previous years)
+      if (indata["prev_control"] == "DATA") {  // if there is insufficient data to know if there was a flip or not
+        la_error.innerText = "No pre-" + yearonlyyear + " data to determine a gain/flip"
+      } else if (indata["prev_control"] == "INIT") {  // if the council was first elected then
+          la_error.innerText = "First election to new council; excluded from flips/gains"
+      } else {
+        if (filter == "filter-gain") {
+          la_error.innerText = "No change in control in most recent election (" + indata["election"] + ")"
+        } else if (filter == "filter-flip" && indata["change"] == "gain") {
+          la_error.innerText = "Control changed but not flipped in most recent election (" + indata["election"] + ")"
+        } else {
+          la_error.innerText = "Not flipped in most recent election (" + indata["election"] + ")"
+        }
+      }
+    } else {
+      if (!allyearflag) {
+        la_error.innerText = "No election in " + yearonlyyear
+      } else {
+        la_error.innerText = "No data pre-" + yearonlyyear
+      }
+    }
+  }
 }
 
 // UPDATE MAP FOR BUTTON SHOWING ONLY RESULTS FROM THAT YEAR
 document.getElementById("year-only").addEventListener('click', async function() {
-  if (yearonlyflag) {
-    document.getElementById("year-only").innerText = "Show past years"  }
+  if (allyearflag) {
+    document.getElementById("slider-year").innerText = yearonlyyear + " only";
+    document.getElementById("year-only").innerText = "Show past years"
+  }
   else {
       document.getElementById("year-only").innerText = "Show " + yearonlyyear + " only"
+      document.getElementById("slider-year").innerText = yearonlyyear
   }
-  yearonlyflag = !yearonlyflag
+  allyearflag = !allyearflag
   await updateMap(false)
   purgeMap()
 })
@@ -329,12 +337,13 @@ document.getElementById("daterange").oninput = async function() {
   purgeVectorSource()
   purgeMap()
 
-  if (yearonlyflag) {
+  if (allyearflag) {
     document.getElementById("year-only").innerText = "Show " + yearonlyyear + " only"
+    document.getElementById("slider-year").innerText = this.value;
   } else {
     document.getElementById("year-only").innerText = "Show past years"
+    document.getElementById("slider-year").innerText = this.value + " only"
   }
-  document.getElementById("slider-year").innerText = "Year: " + this.value;
 } 
 
 function purgeMap() {
@@ -373,8 +382,17 @@ function getAreaType(area) {
 }
 
 function clearResult() {
+    document.getElementById('colorbar').style.backgroundColor = "#D1D1D1"
+    document.getElementById('name').innerText = ''
+    document.getElementById('local-authority').innerText = ''
     document.getElementById('result-text').innerText = ''
     document.getElementById('result').style = ''
+    document.getElementById('table').innerText = ''
+    try {
+      chart.destroy()
+    } catch {
+        //not needed, if there's no chart there's no chart
+    }
 }
 
 function getResultText(info) {

@@ -1,15 +1,13 @@
-export function getStrokeToUse(results, code) {
-  if (results[code]){
-    results = results[code]
+export function getStrokeToUse(allyearflag) {
+  if (allyearflag){
     return [70, 70, 70]
   } else {
-    return "#808080"
+    return [150, 150, 150]
   }
 
 }
 
 export function getColorToUse(results, colors, ff="noflag", hl="nohl") {
-  console.log("hf is", hl)
   if (results){
     if (results != "NONE") {
       if (colors[results["control"]]) {
@@ -46,6 +44,5 @@ function getColorFromHighlight(res, col, hl) {
     "increase": "inc",
     "decrease": "dec"
   }
-  console.log("ababa", hl, highlights[hl])
   return col[res[highlights[hl]]]
 }
