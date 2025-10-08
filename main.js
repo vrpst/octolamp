@@ -206,12 +206,11 @@ map.on('click', async function (evt) {
     }
   }
  // try {
- console.log("sipimpip", simpres[feature[area_code_code]])
+ console.log("sipimpip", feature[area_code_code], simpres[feature[area_code_code]])
   if (simpres[feature[area_code_code]]) {
     await openPanel(feature[area_code_code], simpres[feature[area_code_code]]['election'])
   } else {
-    showNoData()
-    document.getElementById('local-authority').innerText = "No election in " + yearonlyyear.toString()
+    showNoData(feature[area_code_code])
   }
 });
 
@@ -231,57 +230,66 @@ async function openPanel(code, year_to_find) {
       getResultText(detailed_results[code])
     }
     document.getElementById('colorbar').style.backgroundColor = ctu
-    if (detailed_results[code] == "NONE") {
-      showNoData()
-    } 
-    else {
-      document.getElementById('name').insertAdjacentText('beforeend', ", " + detailed_results[code]['election'])
-      const la = document.getElementById('local-authority')
-      la.innerText = ""
+    document.getElementById('name').insertAdjacentText('beforeend', ", " + detailed_results[code]['election'])
+    const la = document.getElementById('local-authority')
+    la.innerText = ""
 
-      la.insertAdjacentText('beforeend', getAreaType(detailed_results[code]) + '; ')
-      const lac = document.createElement('code')
-      lac.setAttribute('id', 'local-authority-code')
-      lac.insertAdjacentText('beforeend', code)
-      la.insertAdjacentElement('beforeend', lac)
+    la.insertAdjacentText('beforeend', getAreaType(detailed_results[code]) + '; ')
+    const lac = document.createElement('code')
+    lac.setAttribute('id', 'local-authority-code')
+    lac.insertAdjacentText('beforeend', code)
+    la.insertAdjacentElement('beforeend', lac)
 
-      const chart_data = await getElectionResult(code, detailed_results[code]['election'], areaswitch)
-      if (areaswitch == "wards") {      
-        try {
-          chart.destroy()
-        } catch {
-          //not needed
-        }
-        chart = createBarChart(chart_data, colors)
-      } else {         
-        try {
-          chart.destroy()
-        } catch {
-          //not needed
-        }
-        chart = createLADChart(chart_data, colors)
+    const chart_data = await getElectionResult(code, detailed_results[code]['election'], areaswitch)
+    if (areaswitch == "wards") {      
+      try {
+        chart.destroy()
+      } catch {
+        //not needed
       }
-      
-      document.getElementById('table').innerText = ""
-      let table = null
-      if (areaswitch == "wards") {
-        table = createWardTable(chart_data, colors)
-      } else {
-        table = await createOtherTable(chart_data, colors, code, areaswitch)
+      chart = createBarChart(chart_data, colors)
+    } else {         
+      try {
+        chart.destroy()
+      } catch {
+        //not needed
       }
-      document.getElementById('table').insertAdjacentElement('beforeend', table)
+      chart = createLADChart(chart_data, colors)
     }
+    
+    document.getElementById('table').innerText = ""
+    let table = null
+    if (areaswitch == "wards") {
+      table = createWardTable(chart_data, colors)
+    } else {
+      table = await createOtherTable(chart_data, colors, code, areaswitch)
+    }
+    document.getElementById('table').insertAdjacentElement('beforeend', table)
 }
 
 // DON'T SHOW ANYTHING IF NO DATA
-function showNoData() {
+function showNoData(code) {
   clearResult()
   try {
     chart.destroy()
   } catch {}
   document.getElementById('colorbar').style.backgroundColor = "#D1D1D1"
   document.getElementById('table').innerText = ""
-  document.getElementById('local-authority').innerText = "No data"
+  const la_error = document.getElementById('local-authority')
+  console.log(code.charAt(0))
+  if (code.charAt(0) == "N") {
+    la_error.innerText = "No data available for Northern Ireland"
+  } else if (code == "E09000001") {
+    la_error.innerText = "No data available for the City Of London"
+  } else if (code == "E06000053") {
+    la_error.innerText = "No data available for the Isles of Scilly"
+  } else {
+    if (!yearonlyflag) {
+      la_error.innerText = "No election in " + yearonlyyear
+    } else {
+      la_error.innerText = "No data available" + yearonlyyear
+    }
+  }
 }
 
 // UPDATE MAP FOR BUTTON SHOWING ONLY RESULTS FROM THAT YEAR
