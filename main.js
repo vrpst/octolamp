@@ -194,8 +194,6 @@ map.addInteraction(selectClick)
 map.on('click', async function (evt) {
   const namePromise = await vectorLayer.getFeatures(evt.pixel)
   const feature = namePromise[0]["values_"]
-  console.log(feature)
-
   try {
     document.getElementById('name').innerText = ''
 
@@ -206,11 +204,10 @@ map.on('click', async function (evt) {
     }
   }
  // try {
- console.log("sipimpip", feature[area_code_code], simpres[feature[area_code_code]])
-  if (simpres[feature[area_code_code]]) {
+  if (simpres[feature[area_code_code]] && getColorToUse(simpres[feature[area_code_code]], colors, filterflag) != "#D1D1D1") {
     await openPanel(feature[area_code_code], simpres[feature[area_code_code]]['election'])
   } else {
-    showNoData(feature[area_code_code])
+    showNoData(feature[area_code_code], filterflag, simpres[feature[area_code_code]], simpres[feature[area_code_code]])
   }
 });
 
@@ -268,7 +265,7 @@ async function openPanel(code, year_to_find) {
 }
 
 // DON'T SHOW ANYTHING IF NO DATA
-function showNoData(code) {
+function showNoData(code, filter, indata) {
   clearResult()
   try {
     chart.destroy()
@@ -276,7 +273,6 @@ function showNoData(code) {
   document.getElementById('colorbar').style.backgroundColor = "#D1D1D1"
   document.getElementById('table').innerText = ""
   const la_error = document.getElementById('local-authority')
-  console.log(code.charAt(0))
   if (code.charAt(0) == "N") {
     la_error.innerText = "No data available for Northern Ireland"
   } else if (code == "E09000001") {
@@ -284,10 +280,26 @@ function showNoData(code) {
   } else if (code == "E06000053") {
     la_error.innerText = "No data available for the Isles of Scilly"
   } else {
-    if (!yearonlyflag) {
-      la_error.innerText = "No election in " + yearonlyyear
+    if (indata) {  // if there is a result (either an election in that year or an election in previous years)
+      if (indata["prev_control"] == "DATA") {  // if there is insufficient data to know if there was a flip or not
+        la_error.innerText = "No pre-" + yearonlyyear + " data to determine a gain/flip"
+      } else if (indata["prev_control"] == "INIT") {  // if the council was first elected then
+          la_error.innerText = "First election to new council; excluded from flips/gains"
+      } else {
+        if (filter == "filter-gain") {
+          la_error.innerText = "No change in control in most recent election (" + indata["election"] + ")"
+        } else if (filter == "filter-flip" && indata["change"] == "gain") {
+          la_error.innerText = "Control changed but not flipped in most recent election (" + indata["election"] + ")"
+        } else {
+          la_error.innerText = "Not flipped in most recent election (" + indata["election"] + ")"
+        }
+      }
     } else {
-      la_error.innerText = "No data available"
+      if (!yearonlyflag) {
+        la_error.innerText = "No election in " + yearonlyyear
+      } else {
+        la_error.innerText = "No data pre-" + yearonlyyear
+      }
     }
   }
 }
