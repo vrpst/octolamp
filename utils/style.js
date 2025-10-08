@@ -1,9 +1,8 @@
-export function getStrokeToUse(results, code) {
-  if (results[code]){
-    results = results[code]
+export function getStrokeToUse(allyearflag) {
+  if (allyearflag){
     return [70, 70, 70]
   } else {
-    return "#808080"
+    return [150, 150, 150]
   }
 
 }
