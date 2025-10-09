@@ -4,12 +4,21 @@
     <meta charset="UTF-8" />
     <title>About | Octolamp</title>
     <link rel="stylesheet" type="text/css" href="../info.css" />
+    <link rel="icon" type="image/x-icon" href="../octo.ico" />
   </head>
-  <body class="text">
+  <body>
+    <div id="top-bar">
+      <div id="top-links-other">
+        <a class="a-top-bar" href="../home/"><h2 class="octolamp top-bar-link">Octolamp</h2></a>
+        <h3 class="top-bar-link"><a class="a-top-bar" href="../about/">About</a></h3>
+        <h3 class="top-bar-link"><a class="a-top-bar" href="../explanation/">Explanation</a></h3>
+        <h3 class="top-bar-link"><a class="a-top-bar" href="../history/">History</a></h3>
+        <h3 class="top-bar-link"><a class="a-top-bar" href="../changelog/">Changelog</a></h3>
+      </div>
+    </div>
     <div id="content-container">
-      <h1 class="octolamp">Octolamp</h1>
-      <h2>About</h2>
-      <p>Octolamp is a data visualization tool for viewing United Kingdom local election results. It started as what I thought would be a simple holiday project to build a web app for my politics-obsessed brother, but eventually grew to be a lot bigger. If you're curious about how it works under the hood, check out the relevant page on my website. If you're confused about what you're seeing, check out the <a href="./explanation/">explanation</a> page.</p>
+      <h1>About</h1>
+      <p>Octolamp is a data visualization tool for viewing United Kingdom local election results. It started as what I thought would be a simple holiday project to build a web app for my politics-obsessed brother, but eventually grew to be a lot bigger. If you're curious about how it works under the hood, check out the relevant page on my website. If you're confused about what you're seeing, check out the <a href="../explanation/">explanation</a> page.</p>
       <h2>Terminology</h2>
       <div id="tables">
         <table>
@@ -102,12 +111,12 @@
             <td>Won control of a council from another party's control or no overall control.</td>
           </tr>
           <tr>
-            <td>FLIP</td>
-            <td>Won control of a council from another party's control. This is only used as a filter.</td>
-          </tr>
-          <tr>
             <td>HOLD</td>
             <td>No change to council control.</td>
+          </tr>
+          <tr>
+            <td>FLIP</td>
+            <td>Won control of a council from another party's control. Only used as a filter.</td>
           </tr>
           <tr>
             <td>INIT</td>
@@ -115,11 +124,11 @@
           </tr>
           <tr>
             <td>INC</td>
-            <td>The party that gained the most seats in the election.</td>
+            <td>The party that gained the most seats in the election. Only used as a highlight.</td>
           </tr>
           <tr>
             <td>DEC</td>
-            <td>The party that lost the most seats in the election.</td>
+            <td>The party that lost the most seats in the election. Only used as a highlight.</td>
           </tr>
           <tr>
             <td colspan="2"><div id="table-gov-info">Explanations of local government terms are available <a href="../explanation/">here</a>.</div></td>
