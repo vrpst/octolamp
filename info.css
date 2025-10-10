@@ -18,6 +18,10 @@ body {
     margin: 0px;
 }
 
+#launch-image {
+    background-image: url('../launch.png');
+
+}
 .h2-top-bar {
     font-size: 34px;
 }
@@ -48,6 +52,7 @@ body {
     width: 100%;
     border-bottom: 1px solid #D1D1D1;
     padding-left: 10vw;
+    background-color: #FFFFFF;
 }
 
 #top-links-other {
