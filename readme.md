@@ -1,25 +1,4 @@
-# OpenLayers + Vite
+# Octolamp
+Octolamp is a data visualisation and analysis tool for viewing United Kingdom local election results. It is built using Vite and hosted at [https://octolamp-omega.vercel.app].
 
-This example demonstrates how the `ol` package can be used with [Vite](https://vitejs.dev/).
-
-To get started, run the following (requires Node 14+):
-
-    npx create-ol-app my-app --template vite
-
-Then change into your new `my-app` directory and start a development server (available at http://localhost:5173):
-
-    cd my-app
-    npm start
-
-To generate a build ready for production:
-
-    npm run build
-
-Then deploy the contents of the `dist` directory to your server.  You can also run `npm run serve` to serve the results of the `dist` directory for preview.
-
-
-"Campbell Park and Old Woughton" NOT "Wroughton" and NOT with an ampersand (only Lincolnshire gets this)
-
-Scarbrough & Seacroft vs Scarborough... too
-
-full on missing W05001154 results from 2022 because htey used W05000325 instead
+More information on the technical details behind the app is available on my website (here)[https://vrpst.github.io/projects/octolamp.html]
