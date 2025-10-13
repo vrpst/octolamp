@@ -1,10 +1,10 @@
-export function getStrokeToUse(allyearflag) {
-  if (allyearflag){
+
+export function getStrokeToUse(result) {
+  if (result){
     return [70, 70, 70]
   } else {
     return [150, 150, 150]
   }
-
 }
 
 export function getColorToUse(results, colors, ff="noflag", hl="nohl") {

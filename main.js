@@ -38,6 +38,7 @@ let filterflag = document.getElementById('filter').value
 let highlightflag = document.getElementById('highlight').value
 
 
+// CONSTANTS FOR PARTY COLORS
 const colors = {
   LAB: "#E4003B",   //[228, 0, 59],
   CON: "#0087DC",   //[0, 135, 220],
@@ -47,7 +48,6 @@ const colors = {
   REF: "#00BED6",   //[0, 190, 214],
   UKIP: "#9507DB",   //[149, 7, 219],
   SNP: "#FDF38E",
-  MIX: "#777777",
   NOC: "#777777",
   PC: "#005B54",    //[0, 91, 84],
   IND: "#F4A8FF",   //[244, 168, 255],
@@ -56,20 +56,30 @@ const colors = {
   DATA: "#D1D1D1",
 }
 
-
+// INITIALISE TEXT ON SLIDER & YEAR ONLY BUTTON
 document.getElementById("slider-year").innerText = document.getElementById("daterange").value
 document.getElementById("year-only").innerText = "Show " + document.getElementById("daterange").value + " only"
 
+// UPDATE COLORS & INFOBOX ON AREA SWITCH
 function switchArea() { //REDO
   clearResult()
   areaswitch = document.querySelector('input[name="area"]:checked').value
   if (areaswitch == "wards") {
       colors['OTH'] = "#964B00"
+      filterflag = "filter-none"
+      highlightflag = "noc"
+      document.getElementById("highlight-noc").selected = "selected"
+      document.getElementById("filter-none").selected = "selected"  
+      document.getElementById('highlight').disabled = true
+      document.getElementById('filter').disabled = true
   } else {
       colors['OTH'] = "#F4A8FF"
+      document.getElementById('highlight').disabled = false
+      document.getElementById('filter').disabled = false
   }
 }
 
+// UPDATE MAP ON AREA SWITCH
 document.getElementById("area-switch").oninput = async function() {
   switchArea()
   await updateMap()  // get new geojson
@@ -78,31 +88,28 @@ document.getElementById("area-switch").oninput = async function() {
   purgeMap()
 }
 
+// UPDATE MAP ON HIGHLIGHT CHANGE
 document.getElementById("highlight").oninput = async function() {
   highlightflag = document.getElementById('highlight').value
   await updateMap(false)
   purgeMap()
 }
 
+
+// UPDATE MAP ON FILTER CHANGE
 document.getElementById("filter").oninput = async function() {
   filterflag = document.getElementById('filter').value
   purgeMap()
 }
 
+// UPDATE GEOJSON & JSON DATA BASED ON CHANGE TO INPUT
 async function updateMap(geoswitch=true) {
   if (geoswitch) {
     let geojsonstring = './geodata/' + areaswitch + '/' + areaswitch + '-' + yearonlyyear.toString() + '.geojson'
     geojson = await fetch(geojsonstring)
     geojsonObject = await geojson.json()
   }
-  let results_end = null  // get the right results file
-  if (areaswitch == "wards") {
-    if (highlightflag == "year") {
-      results_end = "-simplified"
-    } else {
-      results_end = "-past-elections"
-    }
-  }
+
   let resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + areaswitch + "/" + yearonlyyear.toString() + "-" + areaswitch + "-simp.json"
     if (allyearflag) {
       resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + areaswitch + "/" + yearonlyyear.toString() + "-" + areaswitch + "-simp-past.json"
@@ -126,9 +133,10 @@ async function updateMap(geoswitch=true) {
 await updateMap()  // get the data
 purgeVectorSource()  // create the source vector map using new data
 
+// STYLING
 const selected = new Style({  // style for selected object
   stroke: new Stroke({
-    color: getStrokeToUse(allyearflag),
+    color: [70, 70, 70],
     width: 1,
   }),
   fill: new Fill({
@@ -144,7 +152,7 @@ let styleFunction = function(feature, resolution) {  // determines how to render
   let code = feature.get(area_code_code)
   return new Style({
     stroke: new Stroke({
-      color: getStrokeToUse(allyearflag),
+      color: getStrokeToUse(simpres[code]),
       width: 1,
     }),
     fill: new Fill({
@@ -153,6 +161,7 @@ let styleFunction = function(feature, resolution) {  // determines how to render
   })
 }
 
+// INITIALIZE MAP & VECTORLAYER
 let vectorLayer = new VectorLayer({  // layer object for the vector map
   source: vectorSource,
   style: styleFunction,
@@ -213,7 +222,9 @@ map.on('click', async function (evt) {
 async function openPanel(code, year_to_find) {
     let dr = await fetch('./data/' + year_to_find.toString() + '/' + areaswitch + "/" + year_to_find.toString() + "-" + areaswitch + ".json")
     const detailed_results = await dr.json()
+    console.log(detailed_results[code])
     const ctu = getColorToUse(detailed_results[code], colors)
+    console.log(ctu)
     if (areaswitch != "wards" ) {
       const result = document.getElementById('result')
       if (detailed_results[code]['control'] == "PC") {
@@ -252,7 +263,7 @@ async function openPanel(code, year_to_find) {
     document.getElementById('table').insertAdjacentElement('beforeend', table)
 }
 
-// DON'T SHOW ANYTHING IF NO DATA
+// PANEL DISPLAY IF NO DATA
 function showNoData(code, filter, indata) {
   document.getElementById('colorbar').style.backgroundColor = "#D1D1D1"
   document.getElementById('table').innerText = ""
@@ -289,7 +300,7 @@ function showNoData(code, filter, indata) {
   }
 }
 
-// UPDATE MAP FOR BUTTON SHOWING ONLY RESULTS FROM THAT YEAR
+// UPDATE MAP FOR YEAR ONLY BUTTON
 document.getElementById("year-only").addEventListener('click', async function() {
   if (allyearflag) {
     document.getElementById("slider-year").innerText = yearonlyyear + " only";
@@ -304,10 +315,8 @@ document.getElementById("year-only").addEventListener('click', async function() 
   purgeMap()
 })
 
-/*document.getElementById("filter-gain").addEventListener('click', async function() {
-})*/
 
-// UPDATE MAP FOR CHANGE IN DATE
+// UPDATE MAP FOR SLIDER CHANGE IN DATE
 document.getElementById("daterange").oninput = async function() {
   yearonlyyear = this.value
   const ward_years = ["2021", "2022", "2023", "2024"]
@@ -346,6 +355,7 @@ document.getElementById("daterange").oninput = async function() {
   }
 } 
 
+// PURGE MAP LAYER ON UPDATE
 function purgeMap() {
   map.removeLayer(vectorLayer)
 
@@ -359,12 +369,14 @@ function purgeMap() {
 
 }
 
+// PURGE VECTORSOURCE FOR TILES
 function purgeVectorSource() {
   vectorSource = new VectorSource({
     features: new GeoJSON().readFeatures(geojsonObject),
   });
 }
 
+// GET AREA TYPE TO RENDER AREA
 function getAreaType(area) {
   const types = {
     "U": "Unitary authority",
@@ -381,6 +393,7 @@ function getAreaType(area) {
   }
 }
 
+// CLEAR PANEL
 function clearResult() {
     document.getElementById('colorbar').style.backgroundColor = "#D1D1D1"
     document.getElementById('name').innerText = ''
@@ -395,6 +408,7 @@ function clearResult() {
     }
 }
 
+// GET RESULT TEXT FOR INFOBOX
 function getResultText(info) {
   if (info["flip"] == "true") {
     if (info["control"] == "NOC") {

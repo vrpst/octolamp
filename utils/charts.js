@@ -1,15 +1,8 @@
 import Chart from 'chart.js/auto'
 
 export async function getElectionResult(id, year, sw) {
-    let url_end = ""
-    if (sw == "wards") {
-        url_end = "-results.json"
-    } else if (sw == "lads") {
-        url_end = "-lads.json"
-    } else if (sw == "cuas") {
-        url_end = "-cuas.json"
-    }
-    const url =  './data/' + year.toString() + '/' + sw +'/' + year.toString() + url_end
+    const url =  './data/' + year.toString() + '/' + sw +'/' + year.toString() + '-' + sw + '.json'
+    console.log(url)
     const chartjson = await fetch(url)
     const chartjsonObject = await chartjson.json()
     return await chartjsonObject[id]
@@ -79,17 +72,10 @@ export function createLADChart(info, colors) {
 }
 
 export function getPercentages(info) {
-    let seat_count = 0
-    for (let i=0; i<info['parties'].length; i++) {
-        if (info['elected'][info['parties'][i]]) {
-            seat_count += Number(info['elected'][info['parties'][i]])
-        }
-    }
-    let tvn = Number(info['total_votes'].replace(/,/g,''))
     let pcts = []
     for (let i=0; i<info['votes'].length; i++) {
-        let num = Number(info['votes'][i])*10000/seat_count
-        pcts.push(Math.round(num/tvn)/100)
+        let num = Number(info['votes'][i])/info['contested'][i]
+        pcts.push(Math.round(num*100/(info['total_votes']/info["seats_up"])))
     }
     return pcts
 }
