@@ -48,7 +48,6 @@ const colors = {
   REF: "#00BED6",   //[0, 190, 214],
   UKIP: "#9507DB",   //[149, 7, 219],
   SNP: "#FDF38E",
-  MIX: "#777777",
   NOC: "#777777",
   PC: "#005B54",    //[0, 91, 84],
   IND: "#F4A8FF",   //[244, 168, 255],
@@ -67,8 +66,16 @@ function switchArea() { //REDO
   areaswitch = document.querySelector('input[name="area"]:checked').value
   if (areaswitch == "wards") {
       colors['OTH'] = "#964B00"
+      filterflag = "filter-none"
+      highlightflag = "noc"
+      document.getElementById("highlight-noc").selected = "selected"
+      document.getElementById("filter-none").selected = "selected"  
+      document.getElementById('highlight').disabled = true
+      document.getElementById('filter').disabled = true
   } else {
       colors['OTH'] = "#F4A8FF"
+      document.getElementById('highlight').disabled = false
+      document.getElementById('filter').disabled = false
   }
 }
 
@@ -129,7 +136,7 @@ purgeVectorSource()  // create the source vector map using new data
 // STYLING
 const selected = new Style({  // style for selected object
   stroke: new Stroke({
-    color: getStrokeToUse(allyearflag),
+    color: [70, 70, 70],
     width: 1,
   }),
   fill: new Fill({
@@ -145,7 +152,7 @@ let styleFunction = function(feature, resolution) {  // determines how to render
   let code = feature.get(area_code_code)
   return new Style({
     stroke: new Stroke({
-      color: getStrokeToUse(allyearflag),
+      color: getStrokeToUse(simpres[code]),
       width: 1,
     }),
     fill: new Fill({
