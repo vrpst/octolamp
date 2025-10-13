@@ -60,16 +60,20 @@ def generateResults(output):
                     "votes": [],
                     "lad_code": "",
                     "election": year,
-                    "seats_up": 0
+                    "seats_up": 0,
+                    "control": ""
                 }
-            data[code]["table_data"].append([df.loc[i]["CANDNAME"], int(fixnum(df.loc[i]["VOTES"])), df.loc[i]["PARTYGROUP"]])
+            data[code]["table_data"].append([df.loc[i]["PARTYGROUP"], df.loc[i]["CANDNAME"], int(fixnum(df.loc[i]["VOTES"]))])
             data[code]["total_votes"] += int(fixnum(df.loc[i]["VOTES"]))
             if df.loc[i]["ELECTED"] in ["Yes", 1]:
+                data[code]["table_data"][-1].append(1)
                 data[code]["seats_up"] += 1
                 if df.loc[i]["PARTYGROUP"] in data[code]["elected"].keys():
                     data[code]["elected"][df.loc[i]["PARTYGROUP"]] += 1
                 else:
                     data[code]["elected"][df.loc[i]["PARTYGROUP"]] = 1
+            else:
+                data[code]["table_data"][-1].append(0)
             if df.loc[i]["PARTYGROUP"] in data[code]["parties"]:
                 data[code]["votes"][data[code]["parties"].index(df.loc[i]["PARTYGROUP"])] += int(fixnum(df.loc[i]["VOTES"]))
                 data[code]["contested"][data[code]["parties"].index(df.loc[i]["PARTYGROUP"])] += 1
@@ -81,6 +85,10 @@ def generateResults(output):
                 data[code]["lad_code"] = hash23lads[get2023Code(df.loc[i]["LACNAME"])] 
             else:
                 data[code]["lad_code"] = df.loc[i]["LACCODE"]
+            if len(data[code]["elected"].keys()) > 1:
+                    data[code]["control"] = "NOC"
+            else:
+                data[code]["control"] = list(data[code]["elected"].keys())[0]
         with open(f'./public/data/{year}/{output}/{year}-{output}.json', 'w') as f:  # thank you stack overflow
             f.write(json.dumps(data, ensure_ascii=True))
 

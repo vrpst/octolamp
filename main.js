@@ -215,7 +215,9 @@ map.on('click', async function (evt) {
 async function openPanel(code, year_to_find) {
     let dr = await fetch('./data/' + year_to_find.toString() + '/' + areaswitch + "/" + year_to_find.toString() + "-" + areaswitch + ".json")
     const detailed_results = await dr.json()
+    console.log(detailed_results[code])
     const ctu = getColorToUse(detailed_results[code], colors)
+    console.log(ctu)
     if (areaswitch != "wards" ) {
       const result = document.getElementById('result')
       if (detailed_results[code]['control'] == "PC") {

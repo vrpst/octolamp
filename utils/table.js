@@ -1,28 +1,26 @@
-import { getPercentages } from "./charts"
-
 export function createWardTable(chart_data, colors) {
   const data = createWardTableData(chart_data)
   const table = document.createElement('table')
   table.setAttribute('class', 'text')
   for (let i=0; i<data.length; i++){
       let row = table.insertRow(-1)
-      if (data[i][1].includes("*")) {
+      if (data[i][2].includes("*")) {
           row.setAttribute('class', 'row-winner')
       }
       let color = row.insertCell(0)
       let party = row.insertCell(1)
-      let share = row.insertCell(2)
-      let change = row.insertCell(3)
+      let name = row.insertCell(2)
+      let votes = row.insertCell(3)
       color.setAttribute('class', 'cell-color')
       party.setAttribute('class', 'cell-standard')
-      share.setAttribute('class', 'cell-standard')
-      change.setAttribute('class', 'cell-change')
+      name.setAttribute('class', 'cell-standard')
+      votes.setAttribute('class', 'cell-standard')
 
-      let row_data = [color, party, share, change]
+      let row_data = [color, party, name, votes]
 
       for (let j=0; j<4; j++) {
           let text_to_insert = document.createTextNode(data[i][j])
-          color.style.backgroundColor = colors[chart_data["parties"][i]]
+          color.style.backgroundColor = colors[data[i][1]]
           row_data[j].appendChild(text_to_insert)
       }
   } 
@@ -31,20 +29,19 @@ export function createWardTable(chart_data, colors) {
 
 function createWardTableData(data) {
   let table_data = []
-  const percentages = getPercentages(data)
-  for (let i=0; i<data['parties'].length; i++) {
+  for (let i=0; i<data['table_data'].length; i++) {
     let row_data = []
     row_data.push('')
-    if (data['elected'][data['parties'][i]]){
-      row_data.push(data['parties'][i] + "*".repeat(Number(data['elected'][data['parties'][i]])))
+    row_data.push(data['table_data'][i][0])  // PARTY GROUP
+    if (data['table_data'][i][3] == 1){
+      row_data.push(data['table_data'][i][1] + "*")  // CAND NAME
     } else {
-        row_data.push(data['parties'][i])
-
+      row_data.push(data['table_data'][i][1])    
     }
-    row_data.push(percentages[i].toString() + "%")
-    row_data.push("change")
+    row_data.push(data['table_data'][i][2])  // CAND VOTES
     table_data.push(row_data)
   }
+  console.log("TD", table_data)
   return table_data
 }
 

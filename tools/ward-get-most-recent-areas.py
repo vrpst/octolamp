@@ -29,12 +29,8 @@ def makeSimplifiedYear(output):
         with open(f'./public/data/20{y}/{output}/20{y}-{output}.json') as g:
             e = json.load(g)
             for code in e.keys():
-                if len(e[code]["elected"].keys()) > 1:
-                    control = "NOC"
-                else:
-                    control = list(e[code]["elected"].keys())[0]
                 data[code] = {
-                    "control": control,
+                    "control": e[code]["control"],
                     "election": e[code]["election"]
                     }
         with open(f'./public/data/20{y}/{output}/20{y}-{output}-simp.json', 'w') as h:
