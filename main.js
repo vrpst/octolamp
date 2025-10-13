@@ -102,14 +102,7 @@ async function updateMap(geoswitch=true) {
     geojson = await fetch(geojsonstring)
     geojsonObject = await geojson.json()
   }
-  let results_end = null  // get the right results file
-  if (areaswitch == "wards") {
-    if (highlightflag == "year") {
-      results_end = "-simplified"
-    } else {
-      results_end = "-past-elections"
-    }
-  }
+
   let resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + areaswitch + "/" + yearonlyyear.toString() + "-" + areaswitch + "-simp.json"
     if (allyearflag) {
       resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + areaswitch + "/" + yearonlyyear.toString() + "-" + areaswitch + "-simp-past.json"
