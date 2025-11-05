@@ -274,3 +274,16 @@ td {
     background-clip: text;
     font-size: 35px;
 }
+
+
+#placeholder-o {
+    background-image: linear-gradient(to bottom right, #BF368D, #6356D6, #6BEDC2);
+    font-weight: bold;
+    width: fit-content;
+    height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    color: transparent;
+    background-clip: text;
+    font-size: 10dvw;
+}

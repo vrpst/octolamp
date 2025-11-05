@@ -56,6 +56,8 @@ const colors = {
   DATA: "#D1D1D1",
 }
 
+switchArea()
+
 // INITIALISE TEXT ON SLIDER & YEAR ONLY BUTTON
 document.getElementById("slider-year").innerText = document.getElementById("daterange").value
 document.getElementById("year-only").innerText = "Show " + document.getElementById("daterange").value + " only"
@@ -64,6 +66,12 @@ document.getElementById("year-only").innerText = "Show " + document.getElementBy
 function switchArea() { //REDO
   clearResult()
   areaswitch = document.querySelector('input[name="area"]:checked').value
+
+  // default setup
+  document.getElementById('colorbar').style.backgroundColor = "#D1D1D1"
+  document.getElementById('name').innerText = 'Octolamp 0.2.1'
+  document.getElementById('placeholder-o').innerText = 'O'
+  document.getElementById('table-chart').style = "display: none;"
   if (areaswitch == "wards") {
       colors['OTH'] = "#964B00"
       filterflag = "filter-none"
@@ -72,10 +80,17 @@ function switchArea() { //REDO
       document.getElementById("filter-none").selected = "selected"  
       document.getElementById('highlight').disabled = true
       document.getElementById('filter').disabled = true
+      document.getElementById('local-authority').innerText = 'Viewing wards'
   } else {
       colors['OTH'] = "#F4A8FF"
       document.getElementById('highlight').disabled = false
       document.getElementById('filter').disabled = false
+      if (areaswitch == "lads") {
+        document.getElementById('local-authority').innerText = `Viewing local authority districts,`
+
+      } else {
+        document.getElementById('local-authority').innerText = `Viewing county councils & unitary authorities`
+      }
   }
 }
 
@@ -220,6 +235,8 @@ map.on('click', async function (evt) {
 
 // RENDER INFO PANEL
 async function openPanel(code, year_to_find) {
+    document.getElementById('table-chart').style = ""
+    document.getElementById('placeholder-o').innerText = ""
     let dr = await fetch('../data/' + year_to_find.toString() + '/' + areaswitch + "/" + year_to_find.toString() + "-" + areaswitch + ".json")
     const detailed_results = await dr.json()
     console.log(detailed_results[code])
