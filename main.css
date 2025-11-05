@@ -42,27 +42,27 @@ table {
 
 /* SIDEBAR AND PIECES */
 
-@media (min-aspect-ratio: 12/10) {  /* landscape */
-    #sidebar {
-        position: fixed;
-        top: 0dvh;
-        right: 0dvw;
-        width: 20dvw;
-        height: fit-content;
-        max-height: 90%;
-        overflow-x: hidden;
-        overflow-y: scroll;
-        padding-right: 2dvw;
-        padding-top: 3dvh;
-    }
-    #table {
-        width: fit-content;
-        margin: auto;
-        padding: 2%;
-        overflow-x: scroll;
-        margin-top: 5%;
-        margin-bottom: 5%;
-    }
+#sidebar {
+    position: fixed;
+    top: 0dvh;
+    right: 0dvw;
+    width: 20dvw;
+    height: fit-content;
+    max-height: 90%;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    padding-right: 2dvw;
+    padding-top: 3dvh;
+}
+
+#table {
+    width: fit-content;
+    margin: auto;
+    overflow-x: scroll;
+    max-width: 100%;
+    padding: 2%;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 @media (max-aspect-ratio: 12/10) {  /* portrait */
@@ -181,6 +181,7 @@ table {
     margin-left: auto;
     margin-right: auto;
     width: fit-content;
+    height: fit-content;
 
 }
 
