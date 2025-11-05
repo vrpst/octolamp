@@ -65,6 +65,12 @@ table {
     margin-bottom: 5%;
 }
 
+@media ((max-width: 1400px) and (orientation: landscape)) {
+    #sidebar {
+        width: 25dvw;
+    }
+
+}
 @media (max-aspect-ratio: 12/10) {  /* portrait */
     #sidebar {
         background-color: rgb(256,256,256,0.1);
@@ -81,7 +87,6 @@ table {
         justify-content: space-between;
     }
     #infobox {
-        /*flex: 1;*/
         width: 45dvw;
         height: fit-content;
         margin-left: 4dvw;
@@ -89,7 +94,6 @@ table {
 
     }
     #sidebar-other {
-        /*flex: 1;*/
         width: 45dvw;
         margin-right: 4dvw;
         
