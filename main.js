@@ -59,8 +59,8 @@ const colors = {
 switchArea()
 
 // INITIALISE TEXT ON SLIDER & YEAR ONLY BUTTON
-document.getElementById("slider-year").innerText = document.getElementById("daterange").value
-document.getElementById("year-only").innerText = "Show " + document.getElementById("daterange").value + " only"
+document.getElementById("slider-year").innerText = document.getElementById("daterange").value + " council compositions"
+document.getElementById("year-only").innerText = "Show " + document.getElementById("daterange").value + " elections only"
 
 // UPDATE COLORS & INFOBOX ON AREA SWITCH
 function switchArea() { //REDO
@@ -80,16 +80,16 @@ function switchArea() { //REDO
       document.getElementById("filter-none").selected = "selected"  
       document.getElementById('highlight').disabled = true
       document.getElementById('filter').disabled = true
-      document.getElementById('local-authority').innerText = 'Viewing wards'
+      document.getElementById('local-authority').innerText = 'Viewing wards.'
   } else {
       colors['OTH'] = "#F4A8FF"
       document.getElementById('highlight').disabled = false
       document.getElementById('filter').disabled = false
       if (areaswitch == "lads") {
-        document.getElementById('local-authority').innerText = `Viewing local authority districts,`
+        document.getElementById('local-authority').innerText = `Viewing local authority districts.`
 
       } else {
-        document.getElementById('local-authority').innerText = `Viewing county councils & unitary authorities`
+        document.getElementById('local-authority').innerText = `Viewing county councils & unitary authorities.`
       }
   }
 }
@@ -320,12 +320,12 @@ function showNoData(code, filter, indata) {
 // UPDATE MAP FOR YEAR ONLY BUTTON
 document.getElementById("year-only").addEventListener('click', async function() {
   if (allyearflag) {
-    document.getElementById("slider-year").innerText = yearonlyyear + " only";
+    document.getElementById("slider-year").innerText = yearonlyyear + " elections only";
     document.getElementById("year-only").innerText = "Show past years"
   }
   else {
-      document.getElementById("year-only").innerText = "Show " + yearonlyyear + " only"
-      document.getElementById("slider-year").innerText = yearonlyyear
+      document.getElementById("year-only").innerText = "Show " + yearonlyyear + " elections only"
+      document.getElementById("slider-year").innerText = yearonlyyear + " council compositions"
   }
   allyearflag = !allyearflag
   await updateMap(false)
@@ -364,11 +364,11 @@ document.getElementById("daterange").oninput = async function() {
   purgeMap()
 
   if (allyearflag) {
-    document.getElementById("year-only").innerText = "Show " + yearonlyyear + " only"
-    document.getElementById("slider-year").innerText = this.value;
+    document.getElementById("year-only").innerText = "Show " + yearonlyyear + " elections only"
+    document.getElementById("slider-year").innerText = this.value + " elections only"
   } else {
     document.getElementById("year-only").innerText = "Show past years"
-    document.getElementById("slider-year").innerText = this.value + " only"
+    document.getElementById("slider-year").innerText = this.value + " elections only"
   }
 } 
 
