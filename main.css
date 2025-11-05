@@ -42,19 +42,85 @@ table {
 
 /* SIDEBAR AND PIECES */
 
-#sidebar {
-    position: fixed;
-    top: 0dvh;
-    right: 0dvw;
-    width: 20dvw;
-    height: fit-content;
-    max-height: 90%;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    padding-right: 2dvw;
-    padding-top: 3dvh;
+@media (min-aspect-ratio: 12/10) {  /* landscape */
+    #sidebar {
+        position: fixed;
+        top: 0dvh;
+        right: 0dvw;
+        width: 20dvw;
+        height: fit-content;
+        max-height: 90%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        padding-right: 2dvw;
+        padding-top: 3dvh;
+    }
+    #table {
+        width: fit-content;
+        margin: auto;
+        padding: 2%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
 }
 
+@media (max-aspect-ratio: 12/10) {  /* portrait */
+    #sidebar {
+        background-color: rgb(256,256,256,0.1);
+        backdrop-filter: blur(2px);
+        position: fixed;
+        border-radius: 20px;
+        top: 60dvh;
+        width: 100dvw;
+        height: 36dvh;
+        max-height: 90%;
+        padding-top: 2vh;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        display: flex;
+        justify-content: space-between;
+    }
+    #infobox {
+        /*flex: 1;*/
+        width: 45dvw;
+        height: fit-content;
+        margin-left: 4dvw;
+        margin-bottom: 1dvh;
+
+    }
+    #sidebar-other {
+        /*flex: 1;*/
+        width: 45dvw;
+        margin-right: 4dvw;
+        
+    }
+    #infobox-content {
+        margin-left: auto;
+        margin-right: auto;
+        width: 85%;
+    }
+    #table-chart {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    #chart-container {
+        width: 45%;
+        margin-bottom: 1dvh;
+    }
+    #table {
+        min-width: 45%;
+        max-width: fit-content;
+    }
+    #hover-container {
+        display: none;
+    }
+}
+
+#chart {
+    margin-left: auto;
+    margin-right: auto;
+}
 #area-switch {
     font-size: 14px;
     width: 99%;
@@ -85,6 +151,9 @@ table {
     width: 99%;
 }
 
+#infobox {
+    margin-bottom: 1dvh;
+}
 #infobox-content {
     margin-left: auto;
     margin-right: auto;
@@ -106,14 +175,6 @@ table {
     margin-right: auto;
     width: fit-content;
 
-}
-
-#table {
-    width: fit-content;
-    margin: auto;
-    padding: 2%;
-    margin-top: 5%;
-    margin-bottom: 5%;
 }
 
 #slider-year {
