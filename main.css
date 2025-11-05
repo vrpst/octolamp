@@ -107,6 +107,7 @@ table {
     #chart-container {
         width: 45%;
         margin-bottom: 1dvh;
+        overflow: hidden;
     }
     #table {
         min-width: 45%;
@@ -123,7 +124,9 @@ table {
 #chart {
     margin-left: auto;
     margin-right: auto;
+    overflow-x: scroll;
 }
+
 #area-switch {
     font-size: 14px;
     width: 99%;
