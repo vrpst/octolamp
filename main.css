@@ -111,6 +111,9 @@ table {
     #table {
         min-width: 45%;
         max-width: fit-content;
+        height: fit-content;
+        margin-top: auto;
+        margin-bottom: auto;
     }
     #hover-container {
         display: none;
@@ -258,4 +261,16 @@ td {
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
+}
+
+#octolamp {
+    position: fixed;
+    /*background-image: linear-gradient(to bottom right, #BF368D, #6356D6, #6BEDC2);*/
+    width: fit-content;
+    margin-top: 1dvh;
+    left: 50%;
+    transform: translate(-50%,0%);
+    color: #333333;
+    background-clip: text;
+    font-size: 35px;
 }
