@@ -74,7 +74,7 @@ table {
         width: 100dvw;
         height: 36dvh;
         max-height: 90%;
-        padding-top: 2vh;
+        padding-top: 2dvh;
         overflow-x: hidden;
         overflow-y: scroll;
         display: flex;
@@ -105,13 +105,13 @@ table {
         flex-wrap: wrap;
     }
     #chart-container {
-        width: 45%;
+        min-width: 45%;
+        max-width: 100%;
         margin-bottom: 1dvh;
-        overflow: hidden;
     }
     #table {
         min-width: 45%;
-        max-width: fit-content;
+        max-width: 100%;
         height: fit-content;
         margin-top: auto;
         margin-bottom: auto;
@@ -124,7 +124,6 @@ table {
 #chart {
     margin-left: auto;
     margin-right: auto;
-    overflow-x: scroll;
 }
 
 #area-switch {
