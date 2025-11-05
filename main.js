@@ -105,14 +105,14 @@ document.getElementById("filter").oninput = async function() {
 // UPDATE GEOJSON & JSON DATA BASED ON CHANGE TO INPUT
 async function updateMap(geoswitch=true) {
   if (geoswitch) {
-    let geojsonstring = './geodata/' + areaswitch + '/' + areaswitch + '-' + yearonlyyear.toString() + '.geojson'
+    let geojsonstring = '../geodata/' + areaswitch + '/' + areaswitch + '-' + yearonlyyear.toString() + '.geojson'
     geojson = await fetch(geojsonstring)
     geojsonObject = await geojson.json()
   }
 
-  let resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + areaswitch + "/" + yearonlyyear.toString() + "-" + areaswitch + "-simp.json"
+  let resultsjsonstring = '../data/' + yearonlyyear.toString() + '/' + areaswitch + "/" + yearonlyyear.toString() + "-" + areaswitch + "-simp.json"
     if (allyearflag) {
-      resultsjsonstring = './data/' + yearonlyyear.toString() + '/' + areaswitch + "/" + yearonlyyear.toString() + "-" + areaswitch + "-simp-past.json"
+      resultsjsonstring = '../data/' + yearonlyyear.toString() + '/' + areaswitch + "/" + yearonlyyear.toString() + "-" + areaswitch + "-simp-past.json"
 
   }
   resultsjson = await fetch(resultsjsonstring)
@@ -220,7 +220,7 @@ map.on('click', async function (evt) {
 
 // RENDER INFO PANEL
 async function openPanel(code, year_to_find) {
-    let dr = await fetch('./data/' + year_to_find.toString() + '/' + areaswitch + "/" + year_to_find.toString() + "-" + areaswitch + ".json")
+    let dr = await fetch('../data/' + year_to_find.toString() + '/' + areaswitch + "/" + year_to_find.toString() + "-" + areaswitch + ".json")
     const detailed_results = await dr.json()
     console.log(detailed_results[code])
     const ctu = getColorToUse(detailed_results[code], colors)

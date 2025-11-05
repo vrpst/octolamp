@@ -1,7 +1,7 @@
 import Chart from 'chart.js/auto'
 
 export async function getElectionResult(id, year, sw) {
-    const url =  './data/' + year.toString() + '/' + sw +'/' + year.toString() + '-' + sw + '.json'
+    const url =  '../data/' + year.toString() + '/' + sw +'/' + year.toString() + '-' + sw + '.json'
     console.log(url)
     const chartjson = await fetch(url)
     const chartjsonObject = await chartjson.json()

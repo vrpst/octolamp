@@ -8,7 +8,7 @@ export default {
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        home: resolve(__dirname, 'home/index.html'),
+        map: resolve(__dirname, 'map/index.html'),
         about: resolve(__dirname, 'about/index.html'),
         explanation: resolve(__dirname, 'explanation/index.html'),
         history: resolve(__dirname, 'history/index.html'),
