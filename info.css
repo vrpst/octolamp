@@ -3,7 +3,7 @@ html {
 }
 
 h1 {
-    font-size: 60px;
+    font-size: 55px;
 }
 
 h2 {
@@ -20,14 +20,17 @@ body {
 
 #launch-image {
     background-image: url('../launch.png');
-
+    background-size: cover;
+    height: 100vh;
 }
+
 .h2-top-bar {
     font-size: 34px;
 }
 
 .octolamp {
     background-image: linear-gradient(to bottom right, #BF368D, #6356D6, #6BEDC2);
+    font-weight: bold;
     width: fit-content;
     color: transparent;
     background-clip: text;
@@ -46,8 +49,8 @@ body {
 }
 
 #top-bar {
-    padding-top: 2vh;
-    padding-bottom: 2vh;
+    padding-top: 1dvh;
+    padding-bottom: 1dvh;
     height: fit-content;
     width: 90vw;
     border-bottom: 1px solid #D1D1D1;
@@ -73,6 +76,18 @@ body {
 #home-title {
     font-size: 120px;
     width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0dvh;
+}
+
+#home-desc {
+    margin-top: 1dvh;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: normal;
+    margin-bottom: 12dvh;
 }
 
 #title-container {
@@ -97,13 +112,14 @@ body {
 }
 
 #map-launch:hover {
-    background-color: #80c0c9;
+    background-color: #c5d5d8;
 }
 
 #content-container {
     margin-top: 5vh;
-    margin-left: 10vw;
-    margin-right: 10vw;
+    margin-left: 15dvw;
+    margin-right: 15dvw;
+    line-height: 1.5;
 }
 
 th, td {
@@ -127,4 +143,8 @@ table {
 code {
     font-size: larger;
     color: green;
+}
+
+#octo-o {
+    font-size: 40px;
 }
