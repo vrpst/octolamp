@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="../octo.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../main.css" />
+    <title>Octolamp</title>
+  </head>
+  <body>
+    <div id="map"></div>
+      <script type="module" src="../main.js"></script>
+    <div id="sidebar">
+      <div id="infobox" class="border sb-background">
+        <div id="colorbar"></div>
+        <div id="infobox-content">
+          <p id="name"></p>
+          <p id="local-authority"><code id="local-authority-code"></code></p>
+          <div id="result">
+            <p id="result-text"></p>
+          </div>
+          <div id="chart-container">
+            <canvas id="chart"></canvas>
+          </div>
+          <div id="table"></div>
+        </div>
+      </div>
+      <div id="slider" class="border sb-top-padding sb-background">
+        <div id="slider-content">
+          <p id="slider-year" style="font-weight: bold;"></p>
+          <input type="range" min="2016" max="2025" id="daterange">
+        </div>
+      </div>
+      <div id="hover-container">
+        <p id="hover-name"></p>
+      </div>
+      <button id="year-only" class="border sb-top-padding sb-background">Show 2025 only</button>
+      <form id="area-switch" class="border sb-top-padding sb-background">
+        <input type="radio" id="radio-cuas" name="area" value="cuas">
+        <label for="radio-cuas">County councils & unitary authorities</label><br>
+        <input type="radio" id="radio-lads" name="area" value="lads" checked="checked">
+        <label for="radio-lads">Local authority districts</label><br>
+        <input type="radio" id="radio-wards" name="area" value="wards" disabled="true">
+        <label id="wards-label" class="ward-disable" for="radio-wards">Ward data unavailable for 2025</label>
+      </form>
+      <div id="highlight-container" class="border sb-top-padding sb-background">
+        <div class="sb-dropdown">
+          <label for="highlight">Color by</label>
+          <select name="highlight" id="highlight">
+            <option value="noc" id="highlight-noc">control</option>
+            <option value="plural">plurality</option>
+            <option value="increase">biggest increase</option>
+            <option value="decrease">biggest decrease</option>  
+          </select>
+        </div>
+      </div>
+      <div id="filter-container" class="border sb-top-padding sb-background">
+        <div class="sb-dropdown">
+          <label for="filter">Show</label>
+          <select name="filter" id="filter">
+            <option value="filter-none" id="filter-none">everything</option>
+            <option value="filter-flip">only flips</option>
+            <option value="filter-gain">only gains</option>
+          </select>
+        </div>
+      </div>      
+    </div> 
+    <div id="bottom-container">
+      <p id="bottom-text"><a href="./about/">About</a> · <a href="https://github.com/vrpst/octolamp">GitHub</a> · updated September 2025</p>
+    </div>
+  </body>
+</html>
