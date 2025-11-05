@@ -67,7 +67,6 @@ table {
 @media (max-aspect-ratio: 12/10) {  /* portrait */
     #sidebar {
         background-color: rgb(256,256,256,0.1);
-        backdrop-filter: blur(2px);
         position: fixed;
         border-radius: 20px;
         top: 60dvh;
@@ -112,6 +111,7 @@ table {
     #table {
         min-width: 45%;
         max-width: 100%;
+        overflow-x: scroll;
         height: fit-content;
         margin-top: auto;
         margin-bottom: auto;
