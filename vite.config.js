@@ -5,6 +5,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default {
   build: {
+    base: '/',
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),

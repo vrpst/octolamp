@@ -69,7 +69,7 @@ function switchArea() { //REDO
 
   // default setup
   document.getElementById('colorbar').style.backgroundColor = "#D1D1D1"
-  document.getElementById('name').innerText = 'Octolamp 0.2.1'
+  document.getElementById('name').innerText = 'Octolamp 0.3.1'
   document.getElementById('placeholder-o').innerText = 'O'
   document.getElementById('table-chart').style = "display: none;"
   if (areaswitch == "wards") {
