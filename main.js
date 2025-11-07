@@ -324,8 +324,8 @@ document.getElementById("year-only").addEventListener('click', async function() 
     document.getElementById("year-only").innerText = "Show past years"
   }
   else {
-      document.getElementById("year-only").innerText = "Show " + yearonlyyear + " elections only"
       document.getElementById("slider-year").innerText = yearonlyyear + " council compositions"
+      document.getElementById("year-only").innerText = "Show " + yearonlyyear + " elections only"
   }
   allyearflag = !allyearflag
   await updateMap(false)
@@ -365,7 +365,7 @@ document.getElementById("daterange").oninput = async function() {
 
   if (allyearflag) {
     document.getElementById("year-only").innerText = "Show " + yearonlyyear + " elections only"
-    document.getElementById("slider-year").innerText = this.value + " elections only"
+    document.getElementById("slider-year").innerText = this.value + " council compositions"
   } else {
     document.getElementById("year-only").innerText = "Show past years"
     document.getElementById("slider-year").innerText = this.value + " elections only"
