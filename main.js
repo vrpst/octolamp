@@ -73,6 +73,11 @@ function switchArea() { //REDO
   document.getElementById('placeholder-o').innerText = 'O'
   document.getElementById('table-chart').style = "display: none;"
 
+  try {
+    chart.destroy()
+    chart = null
+  } catch{console.error("Failed to destroy chart on area switch")}
+
   if (areaswitch == "wards") {
       colors['OTH'] = "#964B00"
       filterflag = "filter-none"
