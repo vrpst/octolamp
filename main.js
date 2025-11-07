@@ -263,13 +263,13 @@ async function openPanel(code, year_to_find) {
       chart = createLADChart(chart_data, colors, chart)
     }
     
-    document.getElementById('table').innerText = ""
     let table = null
     if (areaswitch == "wards") {
       table = createWardTable(chart_data, colors)
     } else {
       table = await createOtherTable(chart_data, colors, code, areaswitch)
     }
+    document.getElementById('table').innerText = ""
     document.getElementById('table').insertAdjacentElement('beforeend', table)
 }
 
