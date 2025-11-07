@@ -72,6 +72,7 @@ function switchArea() { //REDO
   document.getElementById('name').innerText = 'Octolamp 0.4.0'
   document.getElementById('placeholder-o').innerText = 'O'
   document.getElementById('table-chart').style = "display: none;"
+
   if (areaswitch == "wards") {
       colors['OTH'] = "#964B00"
       filterflag = "filter-none"
@@ -411,11 +412,6 @@ function clearResult() {
     document.getElementById('result-text').innerText = ''
     document.getElementById('result').style = ''
     document.getElementById('table').innerText = ''
-    try {
-      chart.destroy()
-    } catch {
-        //not needed, if there's no chart there's no chart
-    }
 }
 
 // GET RESULT TEXT FOR INFOBOX
