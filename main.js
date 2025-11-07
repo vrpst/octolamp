@@ -69,7 +69,7 @@ function switchArea() { //REDO
 
   // default setup
   document.getElementById('colorbar').style.backgroundColor = "#D1D1D1"
-  document.getElementById('name').innerText = 'Octolamp 0.3.1'
+  document.getElementById('name').innerText = 'Octolamp 0.4.0'
   document.getElementById('placeholder-o').innerText = 'O'
   document.getElementById('table-chart').style = "display: none;"
   if (areaswitch == "wards") {
@@ -239,9 +239,7 @@ async function openPanel(code, year_to_find) {
     document.getElementById('placeholder-o').innerText = ""
     let dr = await fetch('../data/' + year_to_find.toString() + '/' + areaswitch + "/" + year_to_find.toString() + "-" + areaswitch + ".json")
     const detailed_results = await dr.json()
-    console.log(detailed_results[code])
     const ctu = getColorToUse(detailed_results[code], colors)
-    console.log(ctu)
     if (areaswitch != "wards" ) {
       const result = document.getElementById('result')
       if (detailed_results[code]['control'] == "PC") {

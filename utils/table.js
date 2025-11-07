@@ -41,7 +41,6 @@ function createWardTableData(data) {
     row_data.push(data['table_data'][i][2])  // CAND VOTES
     table_data.push(row_data)
   }
-  console.log("TD", table_data)
   return table_data
 }
 
@@ -89,6 +88,10 @@ export async function createOtherTable(chart_data, colors, code, areaswitch) {
 
 async function createOtherTableData(data, code, areaswitch) {
   let table_data = []
+  let prev_data = null
+  if (data["prev_up"][0] == "2") {
+    prev_data = await getChange(data, code, areaswitch)
+  }
   for (let i=0; i<data['parties'].length; i++) {
     let row_data = []
     row_data.push('')
@@ -99,7 +102,6 @@ async function createOtherTableData(data, code, areaswitch) {
     } else if (data['prev_up'] == "DATA") {
       row_data.push('')
     } else {
-      let prev_data = await getChange(data, code, areaswitch)
       if (!(data['parties'][i] in prev_data)) {
         prev_data[data['parties'][i]] = 0
       }
