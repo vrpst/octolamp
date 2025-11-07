@@ -11,7 +11,7 @@ export function createBarChart(info, colors, chart) {
     const percentages = getPercentages(info)
     if (!chart) {
         if (info['total_votes'] == "0") {
-            return "UNOPPOSED"
+            return null
         } else {
             chart = new Chart(
             document.getElementById('chart'),
@@ -40,7 +40,6 @@ export function createBarChart(info, colors, chart) {
                     }
                 }
             })
-            return chart
         }
         
     } else {
@@ -50,7 +49,8 @@ export function createBarChart(info, colors, chart) {
         chart.data.datasets[0].backgroundColor = findColors(info['parties'], colors);
         chart.options.scales.y.max = Math.min((Math.round(Math.max(...percentages)/10)+1)*10, 100)
         chart.update();
-    }   
+    }
+    return chart   
 }
 
 export function createLADChart(info, colors, chart) {

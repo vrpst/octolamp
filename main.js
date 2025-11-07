@@ -264,6 +264,7 @@ async function openPanel(code, year_to_find) {
 
     const chart_data = await getElectionResult(code, detailed_results[code]['election'], areaswitch)
     if (areaswitch == "wards") {      
+      console.log(chart)
       chart = createBarChart(chart_data, colors, chart)
     } else {         
       chart = createLADChart(chart_data, colors, chart)
