@@ -219,11 +219,6 @@ map.addInteraction(selectClick)
 map.on('click', async function (evt) {
   const namePromise = await vectorLayer.getFeatures(evt.pixel)
   const feature = namePromise[0]["values_"]
-  try {
-    chart.destroy()
-  } catch {
-      //not needed, if there's no chart there's no chart
-  }
   document.getElementById('name').innerText = ''
   document.getElementById('name').insertAdjacentText('beforeend', feature[area_name])
   if (simpres[feature[area_code_code]] && getColorToUse(simpres[feature[area_code_code]], colors, filterflag) != "#D1D1D1") {
@@ -263,9 +258,9 @@ async function openPanel(code, year_to_find) {
 
     const chart_data = await getElectionResult(code, detailed_results[code]['election'], areaswitch)
     if (areaswitch == "wards") {      
-      chart = createBarChart(chart_data, colors)
+      chart = createBarChart(chart_data, colors, chart)
     } else {         
-      chart = createLADChart(chart_data, colors)
+      chart = createLADChart(chart_data, colors, chart)
     }
     
     document.getElementById('table').innerText = ""

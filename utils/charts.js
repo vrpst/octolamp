@@ -45,29 +45,36 @@ export function createBarChart(info, colors) {
     
 }
 
-export function createLADChart(info, colors) {
-    const chart = new Chart(
-    document.getElementById('chart'),
-    {
-        type: 'doughnut',
-        data: { 
-            labels: info['parties'],
-            datasets: [
-                {
-                    label: null,
-                    data: info["seats"],
-                    backgroundColor: findColors(info['parties'], colors)
+export function createLADChart(info, colors, chart) {
+    if (!chart) {
+        chart = new Chart(
+            document.getElementById('chart'),
+            {
+                type: 'doughnut',
+                data: { 
+                    labels: info['parties'],
+                    datasets: [
+                        {
+                            label: null,
+                            data: info["seats"],
+                            backgroundColor: findColors(info['parties'], colors)
+                        }
+                    ]
+                },
+                options: {
+                    plugins: {
+                    legend: {
+                        display: false
+                    }
+                    },
                 }
-            ]
-        },
-        options: {
-            plugins: {
-            legend: {
-                display: false
-            }
-            },
-        }
-    })
+        })   
+    } else {
+        chart.data.labels = info['parties'];
+        chart.data.datasets[0].data = info["seats"];
+        chart.data.datasets[0].backgroundColor = findColors(info['parties'], colors);
+        chart.update();
+    }
     return chart
 }
 
