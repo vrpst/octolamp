@@ -128,7 +128,7 @@ document.getElementById("filter").oninput = async function() {
 // UPDATE GEOJSON & JSON DATA BASED ON CHANGE TO INPUT
 async function updateMap(geoswitch=true) {
   if (geoswitch) {  // if the map is being updated on a change in geography
-    let geojsonstring = '../geodata/' + areaswitch + '/' + areaswitch + '-' + slider_year.toString() + '.fetching_geojson'
+    let geojsonstring = '../geodata/' + areaswitch + '/' + areaswitch + '-' + slider_year.toString() + '.geojson'
     fetching_geojson = await fetch(geojsonstring)
     geoJSON = await fetching_geojson.json()  // new geoJSON
   }
