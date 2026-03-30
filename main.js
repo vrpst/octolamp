@@ -337,7 +337,7 @@ document.getElementById("year-only").addEventListener('click', async function() 
 // UPDATE MAP FOR SLIDER CHANGE IN DATE
 document.getElementById("daterange").oninput = async function() {
   slider_year = this.value
-  const ward_years = ["2021", "2022", "2023", "2024"]
+  const ward_years = ["2021", "2022", "2023", "2024", "2025"]
   if (slider_year == "2020") { // no elections in 2020
       document.getElementById('daterange').value = "2021"
       slider_year = "2021"
