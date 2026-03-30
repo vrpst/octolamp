@@ -1,21 +1,22 @@
 import pandas as pd
 import json
 
-def checkValid(tocheck, typ):  # CHECK IF THE DATA APPLIES TO THE DESIRED TYPE
+def checkValid(tocheck, typ):  # split areas into LADs and CUAs (with overlap)
     if typ == "LAD":  # LAD
-        if tocheck != "C":
+        if tocheck != "C":  # if it's not a county council, it's an LAD
             return True
         else:
             return False
     elif typ == "CUA":  # COUNTY AND UNITARY AUTHORITY
-        if tocheck != "D":
+        if tocheck != "D":  # if it's not a district council, it's a CUA
             return True
         else:
             return False
     else:
         raise ValueError
     
-def hashName2019(thing):
+def hashName(thing):  # hash 2019 data since it has no codes
+    print(thing)
     thing = thing.lower()
     thing = thing.replace(' ', '')
     thing = thing.replace('-','')
@@ -36,14 +37,18 @@ def fillOut2024(p, d):
     return d
 
 
-with open(f'./public/geodata/lads/lads-2019.geojson', ) as g2:  # thank you stack overflow
+with open('./public/geodata/lads/lads-2019.geojson', ) as g2:  # thank you stack overflow
     geo = json.load(g2)      
-    geo = geo['features']  
+    geo = geo['features']
+with open('./public/geodata/lads/lads-2024.geojson', ) as g3:  # thank you stack overflow
+    geo24 = json.load(g3)      
+    geo24 = geo24['features']
+
 def generateResults(tp, output):
-    years = ["2025", "2023", "2022", "2021", "2019", "2018", "2017", "2016"]
+    years = ["2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016"]
     for year in years:
         print(year)
-        df = pd.read_csv(f'./csvs/areas/{year}.csv')
+        df = pd.read_csv(f'./csvs/{year}.csv')
         data = {}
 
         def checkInCSV(name):
@@ -56,18 +61,23 @@ def generateResults(tp, output):
         if year == "2019":
             places = {}
             for place in geo:
-                places[hashName2019(place['properties']['LAD19NM'])] = place['properties']['LAD19CD']
+                places[hashName(place['properties']['LAD19NM'])] = place['properties']['LAD19CD']  # generate dict of hash to code
+        elif year == "2024":
+            places = {}
+            for place in geo24:
+                places[hashName(place['properties']['LAD24NM'])] = place['properties']['LAD24CD']  # generate dict of hash to code
         for i in range(len(df)):
-            if checkValid(df.loc[i]['TYPE'], tp):
-                if year != "2019":
-                    code = df.loc[i]['CODE']
-                else:
-                    code = places[hashName2019(df.loc[i]['NAME'])]
+            if checkValid(df.loc[i]['TYPE'], tp):  # check the entry in the df can be added (i.e. not county council to LAD)
+                if year not in ["2024", "2019"]:
+                    code = df.loc[i]['CODE']  # just use the code
+                else:  # if 2014 or 2019, use the hash to find the code
+                    code = places[hashName(df.loc[i]['NAME'])]  # hash name and retrieve code
                 data[code] = {
                     "total": int(df.loc[i]['TOTAL']),
                     "parties": ["CON", "LAB", "LD"],
                     "seats": [int(df.loc[i]['CON']), int(df.loc[i]['LAB']), int(df.loc[i]['LD'])],
                 }
+                # check the other parties are in the cSV/received votes
                 checkInCSV("GRN")
                 checkInCSV("SNP")
                 checkInCSV("PC")
@@ -75,55 +85,20 @@ def generateResults(tp, output):
                 checkInCSV("UKIP")
                 checkInCSV("OTH")
 
-                if max(data[code]['seats']) > 0.5*data[code]['total']:
-                    data[code]['control'] = data[code]['parties'][data[code]['seats'].index(max(data[code]['seats']))]
+                if max(data[code]['seats']) > 0.5*data[code]['total']:  # if majority
+                    data[code]['control'] = data[code]['parties'][data[code]['seats'].index(max(data[code]['seats']))]  # set control to that party
                 else:
-                    data[code]['control'] = "NOC"
-                data[code]['election'] = year
-                data[code]['type'] = df.loc[i]['TYPE']
+                    data[code]['control'] = "NOC"  # otherwise no overall control
+                data[code]['election'] = year  # set year
+                data[code]['type'] = df.loc[i]['TYPE']  # set election type
         with open(f'./public/data/{year}/{output}/{year}-{output}.json', 'w') as f:  # thank you stack overflow
             f.write(json.dumps(data, ensure_ascii=True))
-
-    # USE WARD DATA TO MAKE 2024 RESULT; doesn't actually matter since 2024 had no C elections
-    year = "2024"
-    print(year)
-    df = pd.read_csv(f'./csvs/areas/{year}.csv')
-    data = {}
-    for i in range(len(df)):
-        if checkValid(df.loc[i]['TYPE'], tp):
-            code = df.loc[i]['CODE']
-            if code not in data:
-                data[code] = {}
-                data[code]['total'] = 0
-                data[code]['parties'] = []
-                data[code]['seats'] = []
-                data[code]['type'] = df.loc[i]['TYPE']
-            if df.loc[i]["Elected"] == "Yes":
-                data[code]['total'] += 1
-                pg = df.loc[i]["Party Group"]
-                if df.loc[i]["Party Group"] == "IND":  # change all independents to other for now
-                    pg = "OTH"
-                if pg not in data[code]['parties']:
-                    data[code]['parties'].append(pg)
-                    data[code]['seats'].append(0)
-                data[code]['seats'][data[code]['parties'].index(pg)] += 1
-
-            if max(data[code]['seats']) > 0.5*data[code]['total']:
-                data[code]['control'] = data[code]['parties'][data[code]['seats'].index(max(data[code]['seats']))]
-            else:
-                data[code]['control'] = "NOC"
-            data[code]['election'] = year
-            for p in ["CON", "LAB", "LD", "GRN", "SNP", "PC", "REF", "UKIP", "OTH"]:
-                if p not in list(data[code]['parties']):
-                    data[code] = fillOut2024(p, data[code])
-    with open(f'./public/data/{year}/{output}/{year}-{output}.json', "w") as f:  # thank you stack overflow
-        f.write(json.dumps(data, ensure_ascii=True))
 
     # GET FLIPS AND PREVIOUS ELECTION DATES
     years = ["2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016"]
     flips = years.copy()
     flips.reverse()
-    flips = flips[:-1]
+    flips = flips[:-1]  # oldest to newest excluding current year
     results = {}
     print(years, flips)
     for i in years:
@@ -133,40 +108,38 @@ def generateResults(tp, output):
         for j in flips:
             with open(f'./public/data/{j}/{output}/{j}-{output}.json') as f:
                 g = json.load(f)
-                for k in g:
+                for k in g:  # build a dict of results from that year
                     results[k] = {}
                     incdec[k] = {}
                     results[k]['prev_up'] = j
                     results[k]['prev_control'] = g[k]['control']
                     incdec[k]["parties"] = g[k]["parties"]
                     incdec[k]["seats"] = g[k]["seats"]
-        flips = flips[:-1]
+        flips = flips[:-1]  # get rid of the year
         year_lads = []
         flip_lads = {}
         with open(f'./public/data/{i}/{output}/{i}-{output}.json') as x:
-            y = json.load(x)
+            y = json.load(x)  # load the curent year
             for n in y:
-                year_lads.append(n)
-                flip_lads[n] = y[n]['control']
+                year_lads.append(n)  # create a list of all area codes from current year
+                flip_lads[n] = y[n]['control']  # and a dict mapping area code to control
         print("WRITING", i)
         for m in year_lads:
-            if m in results:
+            if m in results:  # if the code is in the new year
                 incdec[m]["incdec"] = []
                 for q in range(len(incdec[m]["parties"])):
+                    # for each party, get the change in seats between the current year and the first year
                     incdec[m]["incdec"].append(y[m]["seats"][y[m]["parties"].index(incdec[m]["parties"][q])] - incdec[m]["seats"][q])
                 y[m]['prev_up'] = results[m]['prev_up']
                 y[m]['prev_control'] = results[m]['prev_control']
                 y[m]['inc'] = incdec[m]["parties"][incdec[m]['incdec'].index(max(incdec[m]['incdec']))]
                 y[m]['dec'] = incdec[m]["parties"][incdec[m]['incdec'].index(min(incdec[m]['incdec']))]
-                if incdec[m]['incdec'].count(max(incdec[m]['incdec'])) > 1:
-                    y[m]['inc'] = "NOC"
-                if incdec[m]['incdec'].count(max(incdec[m]['incdec'])) > 1:
-                    y[m]['dec'] = "NOC"
                 if results[m]['prev_control'] != flip_lads[m]:
                     y[m]['flip'] = "true"
                 else:
                     y[m]['flip'] = "false"
-            elif (int(i) <= 2017 and m[:1] in ['S', 'W']) or (int(i) < 2019) or (int(i) == 2019 and (m not in ['E07000244', 'E07000246', 'E07000245', 'E06000058', ' E06000059'])) :  # GET TYPES AND DO IT THEN
+            # if the data is pre-2017 in Scotland or Wales, pre-2019 anywhere else, or 2019 and not created that year
+            elif (int(i) <= 2017 and m[:1] in ['S', 'W']) or (int(i) < 2019) or (int(i) == 2019 and (m not in ['E07000244', 'E07000246', 'E07000245', 'E06000058', ' E06000059'])) :
                 y[m]['prev_up'] = "DATA"
                 y[m]['prev_control'] = "DATA"
                 y[m]['flip'] = "DATA"

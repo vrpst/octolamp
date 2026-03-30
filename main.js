@@ -12,23 +12,25 @@ import { getElectionResult, createBarChart, createLADChart } from './utils/chart
 import { createWardTable, createOtherTable } from './utils/table.js';
 import { getStrokeToUse, getColorToUse } from './utils/style.js' 
 
-let yearonlyyear = 2025
+// DEFAULT PARAMETERS
+let slider_year = 2025
 
-let allyearflag = true
+let all_years = true  // show all years vs just the current year
 
-let geojson = null
-let geojsonObject = null
+let fetching_geojson = null  // placeholder when fetching geoJSON
+let geoJSON = null  // actual JSON object
 
-let resultsjson = null
-let simpres = null
+let fetching_results = null  // placeholder when fetching results JSON
+let simple_results = null  // actual results JSON
 
-let area_code_code = null
-let area_name = null
+let area_code_code = null  // code for area code (e.g WD or LAD)
+let area_name = null  // area name
 
 let chart = null
-let areaswitch = "cuas"
+let areaswitch = "cuas"  // switch between areas for JSON
 
 let vectorSource = null
+
 document.getElementById("daterange").value = 2025 
 document.getElementById("radio-cuas").checked = "checked"
 document.getElementById("highlight-noc").selected = "selected"
@@ -76,24 +78,24 @@ function switchArea() { //REDO
   try {
     chart.destroy()
     chart = null
-  } catch{console.error("Failed to destroy chart on area switch")}
+  } catch {console.error("Failed to destroy chart on area switch")}
 
-  if (areaswitch == "wards") {
-      colors['OTH'] = "#964B00"
-      filterflag = "filter-none"
-      highlightflag = "noc"
+  if (areaswitch == "wards") {  // if wards now being used
+      colors['OTH'] = "#964B00"  // change the color of others
+      filterflag = "filter-none"  // reset filter
+      highlightflag = "noc"  // set the highlight to control (inc. NOC)
+      // set parameters
       document.getElementById("highlight-noc").selected = "selected"
       document.getElementById("filter-none").selected = "selected"  
-      document.getElementById('highlight').disabled = true
+      document.getElementById('highlight').disabled = true  // disable highlight and filtering
       document.getElementById('filter').disabled = true
       document.getElementById('local-authority').innerText = 'Viewing wards.'
   } else {
-      colors['OTH'] = "#F4A8FF"
-      document.getElementById('highlight').disabled = false
+      colors['OTH'] = "#F4A8FF"  // otherwise change OTH color
+      document.getElementById('highlight').disabled = false  // reenable filters and highlights
       document.getElementById('filter').disabled = false
       if (areaswitch == "lads") {
         document.getElementById('local-authority').innerText = `Viewing local authority districts.`
-
       } else {
         document.getElementById('local-authority').innerText = `Viewing county councils & unitary authorities.`
       }
@@ -103,7 +105,7 @@ function switchArea() { //REDO
 // UPDATE MAP ON AREA SWITCH
 document.getElementById("area-switch").oninput = async function() {
   switchArea()
-  await updateMap()  // get new geojson
+  await updateMap()  // get new fetching_geojson
   vectorSource.clear()
   purgeVectorSource()
   purgeMap()
@@ -125,29 +127,30 @@ document.getElementById("filter").oninput = async function() {
 
 // UPDATE GEOJSON & JSON DATA BASED ON CHANGE TO INPUT
 async function updateMap(geoswitch=true) {
-  if (geoswitch) {
-    let geojsonstring = '../geodata/' + areaswitch + '/' + areaswitch + '-' + yearonlyyear.toString() + '.geojson'
-    geojson = await fetch(geojsonstring)
-    geojsonObject = await geojson.json()
+  if (geoswitch) {  // if the map is being updated on a change in geography
+    let geojsonstring = '../geodata/' + areaswitch + '/' + areaswitch + '-' + slider_year.toString() + '.fetching_geojson'
+    fetching_geojson = await fetch(geojsonstring)
+    geoJSON = await fetching_geojson.json()  // new geoJSON
   }
 
-  let resultsjsonstring = '../data/' + yearonlyyear.toString() + '/' + areaswitch + "/" + yearonlyyear.toString() + "-" + areaswitch + "-simp.json"
-    if (allyearflag) {
-      resultsjsonstring = '../data/' + yearonlyyear.toString() + '/' + areaswitch + "/" + yearonlyyear.toString() + "-" + areaswitch + "-simp-past.json"
+  let fetching_resultsstring = '../data/' + slider_year.toString() + '/' + areaswitch + "/" + slider_year.toString() + "-" + areaswitch + "-simp.json"
+    if (all_years) {
+      fetching_resultsstring = '../data/' + slider_year.toString() + '/' + areaswitch + "/" + slider_year.toString() + "-" + areaswitch + "-simp-past.json"
 
   }
-  resultsjson = await fetch(resultsjsonstring)
-  simpres = await resultsjson.json()
+  fetching_results = await fetch(fetching_resultsstring)
+  simple_results = await fetching_results.json()  // new data JSON
   
+  // create the new area code code
   if (areaswitch == "wards") {
-    area_code_code = "WD" + yearonlyyear.toString().slice(2,4) + "CD"
-    area_name = "WD" + yearonlyyear.toString().slice(2,4) + "NM"
+    area_code_code = "WD" + slider_year.toString().slice(2,4) + "CD"
+    area_name = "WD" + slider_year.toString().slice(2,4) + "NM"
   } else if (areaswitch == "lads") {
-    area_code_code = "LAD" + yearonlyyear.toString().slice(2,4) + "CD"
-    area_name = "LAD" + yearonlyyear.toString().slice(2,4) + "NM"
+    area_code_code = "LAD" + slider_year.toString().slice(2,4) + "CD"
+    area_name = "LAD" + slider_year.toString().slice(2,4) + "NM"
   } else if (areaswitch == "cuas"){
-    area_code_code = "CTYUA" + yearonlyyear.toString().slice(2,4) + "CD"
-    area_name = "CTYUA" + yearonlyyear.toString().slice(2,4) + "NM"
+    area_code_code = "CTYUA" + slider_year.toString().slice(2,4) + "CD"
+    area_name = "CTYUA" + slider_year.toString().slice(2,4) + "NM"
   }
 }
 
@@ -173,11 +176,11 @@ let styleFunction = function(feature, resolution) {  // determines how to render
   let code = feature.get(area_code_code)
   return new Style({
     stroke: new Stroke({
-      color: getStrokeToUse(simpres[code]),
+      color: getStrokeToUse(simple_results[code]),
       width: 1,
     }),
     fill: new Fill({
-      color: getColorToUse(simpres[code], colors, filterflag, highlightflag), //styleFunction
+      color: getColorToUse(simple_results[code], colors, filterflag, highlightflag), //styleFunction
     })
   })
 }
@@ -210,12 +213,9 @@ map.on('pointermove', async function (evt) {
       return feature;
   })
   try {
-    if (highlightflag != "year" || (highlightflag == "year" && Number(simpres[f['values_'][area_code_code]]['election']) == yearonlyyear)) {
       document.getElementById('hover-name').style.display = "block"
       document.getElementById('hover-name').innerText = f['values_'][area_name]
-    } else {  // only hover in certain circumstances
-        document.getElementById('hover-name').style.display = "none"
-  }} catch {
+  } catch {
       document.getElementById('hover-name').style.display = "none"
   }
 })
@@ -223,14 +223,14 @@ map.on('pointermove', async function (evt) {
 // MAP CLICK FUNCTIONALITY
 map.addInteraction(selectClick)
 map.on('click', async function (evt) {
-  const namePromise = await vectorLayer.getFeatures(evt.pixel)
-  const feature = namePromise[0]["values_"]
+  const name_promise = await vectorLayer.getFeatures(evt.pixel)
+  const feature = name_promise[0]["values_"]  // get the feature
   document.getElementById('name').innerText = ''
-  document.getElementById('name').insertAdjacentText('beforeend', feature[area_name])
-  if (simpres[feature[area_code_code]] && getColorToUse(simpres[feature[area_code_code]], colors, filterflag) != "#D1D1D1") {
-    await openPanel(feature[area_code_code], simpres[feature[area_code_code]]['election'])
+  document.getElementById('name').insertAdjacentText('beforeend', feature[area_name])  // show the name in the panel
+  if (simple_results[feature[area_code_code]] && getColorToUse(simple_results[feature[area_code_code]], colors, filterflag) != "#D1D1D1") {  // if a valid result
+    await openPanel(feature[area_code_code], simple_results[feature[area_code_code]]['election'])
   } else {
-    showNoData(feature[area_code_code], filterflag, simpres[feature[area_code_code]], simpres[feature[area_code_code]])
+    showNoData(feature[area_code_code], filterflag, simple_results[feature[area_code_code]], simple_results[feature[area_code_code]])
   }
 });
 
@@ -241,7 +241,7 @@ async function openPanel(code, year_to_find) {
     let dr = await fetch('../data/' + year_to_find.toString() + '/' + areaswitch + "/" + year_to_find.toString() + "-" + areaswitch + ".json")
     const detailed_results = await dr.json()
     const ctu = getColorToUse(detailed_results[code], colors)
-    if (areaswitch != "wards" ) {
+    if (areaswitch != "wards" ) {  // if pie chart, make sure Plaid are on white
       const result = document.getElementById('result')
       if (detailed_results[code]['control'] == "PC") {
         result.style.color = "#FFFFFF"
@@ -251,19 +251,19 @@ async function openPanel(code, year_to_find) {
       result.style.backgroundColor = ctu
       getResultText(detailed_results[code])
     }
-    document.getElementById('colorbar').style.backgroundColor = ctu
-    document.getElementById('name').insertAdjacentText('beforeend', ", " + detailed_results[code]['election'])
+    document.getElementById('colorbar').style.backgroundColor = ctu  // set top color bar
+    document.getElementById('name').insertAdjacentText('beforeend', ", " + detailed_results[code]['election'])  // insert name and code
     const la = document.getElementById('local-authority')
     la.innerText = ""
 
-    la.insertAdjacentText('beforeend', getAreaType(detailed_results[code]) + '; ')
+    la.insertAdjacentText('beforeend', getAreaType(detailed_results[code]) + '; ')  //  insert area type
     const lac = document.createElement('code')
     lac.setAttribute('id', 'local-authority-code')
-    lac.insertAdjacentText('beforeend', code)
+    lac.insertAdjacentText('beforeend', code)  // insert area code
     la.insertAdjacentElement('beforeend', lac)
 
     const chart_data = await getElectionResult(code, detailed_results[code]['election'], areaswitch)
-    if (areaswitch == "wards") {      
+    if (areaswitch == "wards") {  // bar chart if wards, pie chard if not
       console.log(chart)
       chart = createBarChart(chart_data, colors, chart)
     } else {         
@@ -271,7 +271,7 @@ async function openPanel(code, year_to_find) {
     }
     
     let table = null
-    if (areaswitch == "wards") {
+    if (areaswitch == "wards") {  // create table
       table = createWardTable(chart_data, colors)
     } else {
       table = await createOtherTable(chart_data, colors, code, areaswitch)
@@ -286,6 +286,7 @@ function showNoData(code, filter, indata) {
   document.getElementById('table').innerText = ""
   document.getElementById('result-text').innerText = ""
   const la_error = document.getElementById('local-authority')
+  // custom exceptions for NI, COL, Scilly
   if (code.charAt(0) == "N") {
     la_error.innerText = "No data available for Northern Ireland"
   } else if (code == "E09000001") {
@@ -295,7 +296,7 @@ function showNoData(code, filter, indata) {
   } else {
     if (indata) {  // if there is a result (either an election in that year or an election in previous years)
       if (indata["prev_control"] == "DATA") {  // if there is insufficient data to know if there was a flip or not
-        la_error.innerText = "No pre-" + yearonlyyear + " data to determine a gain/flip"
+        la_error.innerText = "No pre-" + slider_year + " data to determine a gain/flip"
       } else if (indata["prev_control"] == "INIT") {  // if the council was first elected then
           la_error.innerText = "First election to new council; excluded from flips/gains"
       } else {
@@ -308,10 +309,10 @@ function showNoData(code, filter, indata) {
         }
       }
     } else {
-      if (!allyearflag) {
-        la_error.innerText = "No election in " + yearonlyyear
+      if (!all_years) {
+        la_error.innerText = "No election in " + slider_year
       } else {
-        la_error.innerText = "No data pre-" + yearonlyyear
+        la_error.innerText = "No data pre-" + slider_year
       }
     }
   }
@@ -319,15 +320,15 @@ function showNoData(code, filter, indata) {
 
 // UPDATE MAP FOR YEAR ONLY BUTTON
 document.getElementById("year-only").addEventListener('click', async function() {
-  if (allyearflag) {
-    document.getElementById("slider-year").innerText = yearonlyyear + " elections only";
+  if (all_years) {
+    document.getElementById("slider-year").innerText = slider_year + " elections only";
     document.getElementById("year-only").innerText = "Show past years"
   }
   else {
-      document.getElementById("slider-year").innerText = yearonlyyear + " council compositions"
-      document.getElementById("year-only").innerText = "Show " + yearonlyyear + " elections only"
+      document.getElementById("slider-year").innerText = slider_year + " council compositions"
+      document.getElementById("year-only").innerText = "Show " + slider_year + " elections only"
   }
-  allyearflag = !allyearflag
+  all_years = !all_years
   await updateMap(false)
   purgeMap()
 })
@@ -335,22 +336,22 @@ document.getElementById("year-only").addEventListener('click', async function() 
 
 // UPDATE MAP FOR SLIDER CHANGE IN DATE
 document.getElementById("daterange").oninput = async function() {
-  yearonlyyear = this.value
+  slider_year = this.value
   const ward_years = ["2021", "2022", "2023", "2024"]
-  if (yearonlyyear == "2020") {
+  if (slider_year == "2020") { // no elections in 2020
       document.getElementById('daterange').value = "2021"
-      yearonlyyear = "2021"
+      slider_year = "2021"
     }
-  if (ward_years.includes(yearonlyyear)) {
+  if (ward_years.includes(slider_year)) {
     document.getElementById('radio-wards').disabled = false
     if (areaswitch != "wards") {
       document.getElementById('wards-label').innerText = 'Wards'
       document.getElementById('wards-label').classList.remove('ward-disable')
 
     }
-  } else {
+  } else {  // if no ward data, move to LADs and update ward button
     document.getElementById('radio-wards').disabled = true
-    document.getElementById('wards-label').innerText = "Ward data unavailable for " + yearonlyyear.toString()
+    document.getElementById('wards-label').innerText = "Ward data unavailable for " + slider_year.toString()
     document.getElementById('wards-label').classList.add('ward-disable')
     if (areaswitch == "wards") {
       document.getElementById("radio-lads").checked = "checked"  
@@ -358,13 +359,15 @@ document.getElementById("daterange").oninput = async function() {
     }
 
   }
+  // update everything
   await updateMap()
   vectorSource.clear()
   purgeVectorSource()
   purgeMap()
 
-  if (allyearflag) {
-    document.getElementById("year-only").innerText = "Show " + yearonlyyear + " elections only"
+  // year-only bar updates
+  if (all_years) {
+    document.getElementById("year-only").innerText = "Show " + slider_year + " elections only"
     document.getElementById("slider-year").innerText = this.value + " council compositions"
   } else {
     document.getElementById("year-only").innerText = "Show past years"
@@ -389,7 +392,7 @@ function purgeMap() {
 // PURGE VECTORSOURCE FOR TILES
 function purgeVectorSource() {
   vectorSource = new VectorSource({
-    features: new GeoJSON().readFeatures(geojsonObject),
+    features: new GeoJSON().readFeatures(geoJSON),
   });
 }
 

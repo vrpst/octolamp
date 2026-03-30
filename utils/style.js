@@ -9,11 +9,11 @@ export function getStrokeToUse(result) {
 
 export function getColorToUse(results, colors, ff="noflag", hl="nohl") {
   if (results){
-    if (results != "NONE") {
+    if (results != "NONE") {  // return gray if no reaults
       if (colors[results["control"]]) {
-        if (ff == "filter-none") {
+        if (ff == "filter-none") {  // if no filter get control color
           return getColorFromHighlight(results, colors, hl)
-        } else if (ff == "filter-gain") {
+        } else if (ff == "filter-gain") {  // if gain filter, only return party color if gain
           if (results["change"] == "gain" || results["change"] == "flip")
             return getColorFromHighlight(results, colors, hl)
           else {
@@ -38,7 +38,7 @@ export function getColorToUse(results, colors, ff="noflag", hl="nohl") {
 }
 
 function getColorFromHighlight(res, col, hl) {
-  const highlights = {
+  const highlights = {  // mapping of highlight to JSON election result
     "noc": "control",
     "plural": "plurality",
     "increase": "inc",

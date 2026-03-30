@@ -1,14 +1,14 @@
 import pandas as pd
 import json
 
-def checkValid(tocheck, typ):  # CHECK IF THE DATA APPLIES TO THE DESIRED TYPE
+def checkValid(tocheck, typ):  # split areas into LADs and CUAs (with overlap)
     if typ == "LAD":  # LAD
-        if tocheck != "C":
+        if tocheck != "C":  # if it's not a county council, it's an LAD
             return True
         else:
             return False
     elif typ == "CUA":  # COUNTY AND UNITARY AUTHORITY
-        if tocheck != "D":
+        if tocheck != "D":  # if it's not a district council, it's a CUA
             return True
         else:
             return False
@@ -16,7 +16,6 @@ def checkValid(tocheck, typ):  # CHECK IF THE DATA APPLIES TO THE DESIRED TYPE
         raise ValueError
     
 def hashName2019(thing):
-    print(thing)
     thing = thing.lower()
     thing = thing.replace(' ', '')
     thing = thing.replace('-','')
@@ -37,17 +36,15 @@ def fillOut2024(p, d):
     return d
 
 
-with open(f'./public/geodata/lads/lads-2019.geojson', ) as g2:  # thank you stack overflow
+with open('./public/geodata/lads/lads-2019.geojson', ) as g2:  # thank you stack overflow
     geo = json.load(g2)      
-    geo = geo['features']
-with open(f'./public/geodata/lads/lads-2024.geojson', ) as g3:  # thank you stack overflow
-    geo24 = json.load(g3)      
-    geo24 = geo24['features']    
+    geo = geo['features']  
+
 def generateResults(tp, output):
-    years = ["2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016"]
+    years = ["2025", "2023", "2022", "2021", "2019", "2018", "2017", "2016"]
     for year in years:
         print(year)
-        df = pd.read_csv(f'./csvs/{year}.csv')
+        df = pd.read_csv(f'./csvs/areas/{year}.csv')
         data = {}
 
         def checkInCSV(name):
@@ -60,17 +57,13 @@ def generateResults(tp, output):
         if year == "2019":
             places = {}
             for place in geo:
-                places[hashName2019(place['properties']['LAD19NM'])] = place['properties']['LAD19CD']  # generate dict of hash to code
-        elif year == "2024":
-            places = {}
-            for place in geo24:
-                places[hashName2019(place['properties']['LAD24NM'])] = place['properties']['LAD24CD']
+                places[hashName2019(place['properties']['LAD19NM'])] = place['properties']['LAD19CD']
         for i in range(len(df)):
             if checkValid(df.loc[i]['TYPE'], tp):
-                if year not in ["2024", "2019"]:
+                if year != "2019":
                     code = df.loc[i]['CODE']
                 else:
-                    code = places[hashName2019(df.loc[i]['NAME'])]  # hash name and retrieve code
+                    code = places[hashName2019(df.loc[i]['NAME'])]
                 data[code] = {
                     "total": int(df.loc[i]['TOTAL']),
                     "parties": ["CON", "LAB", "LD"],
@@ -91,6 +84,41 @@ def generateResults(tp, output):
                 data[code]['type'] = df.loc[i]['TYPE']
         with open(f'./public/data/{year}/{output}/{year}-{output}.json', 'w') as f:  # thank you stack overflow
             f.write(json.dumps(data, ensure_ascii=True))
+
+    # USE WARD DATA TO MAKE 2024 RESULT; doesn't actually matter since 2024 had no C elections
+    year = "2024"
+    print(year)
+    df = pd.read_csv(f'./csvs/areas/{year}.csv')
+    data = {}
+    for i in range(len(df)):
+        if checkValid(df.loc[i]['TYPE'], tp):
+            code = df.loc[i]['CODE']
+            if code not in data:
+                data[code] = {}
+                data[code]['total'] = 0
+                data[code]['parties'] = []
+                data[code]['seats'] = []
+                data[code]['type'] = df.loc[i]['TYPE']
+            if df.loc[i]["Elected"] == "Yes":
+                data[code]['total'] += 1
+                pg = df.loc[i]["Party Group"]
+                if df.loc[i]["Party Group"] == "IND":  # change all independents to other for now
+                    pg = "OTH"
+                if pg not in data[code]['parties']:
+                    data[code]['parties'].append(pg)
+                    data[code]['seats'].append(0)
+                data[code]['seats'][data[code]['parties'].index(pg)] += 1
+
+            if max(data[code]['seats']) > 0.5*data[code]['total']:
+                data[code]['control'] = data[code]['parties'][data[code]['seats'].index(max(data[code]['seats']))]
+            else:
+                data[code]['control'] = "NOC"
+            data[code]['election'] = year
+            for p in ["CON", "LAB", "LD", "GRN", "SNP", "PC", "REF", "UKIP", "OTH"]:
+                if p not in list(data[code]['parties']):
+                    data[code] = fillOut2024(p, data[code])
+    with open(f'./public/data/{year}/{output}/{year}-{output}.json', "w") as f:  # thank you stack overflow
+        f.write(json.dumps(data, ensure_ascii=True))
 
     # GET FLIPS AND PREVIOUS ELECTION DATES
     years = ["2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016"]

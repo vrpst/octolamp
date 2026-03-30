@@ -27,14 +27,14 @@ def fixnum(t):
     t = int(t)
     return t
 
-with open(f'./public/geodata/wards/wards-2023.geojson', ) as g2:  # thank you stack overflow
+with open('./public/geodata/wards/wards-2023.geojson', ) as g2:  # thank you stack overflow
     geo = json.load(g2)      
     geo = geo['features']
     hash23 = {}
     hash23lads = {}
     for i in geo:
         hash23[get2023Code(i["properties"]["WD23NM"]+i["properties"]["LAD23NM"])] = i["properties"]["WD23CD"]
-    with open(f'./public/geodata/lads/lads-2023.geojson', ) as g3:  # thank you stack overflow
+    with open('./public/geodata/lads/lads-2023.geojson', ) as g3:  # thank you stack overflow
         g4 = json.load(g3)
         g4 = g4["features"]
         for j in g4:
