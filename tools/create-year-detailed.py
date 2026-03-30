@@ -134,6 +134,10 @@ def generateResults(tp, output):
                 y[m]['prev_control'] = results[m]['prev_control']
                 y[m]['inc'] = incdec[m]["parties"][incdec[m]['incdec'].index(max(incdec[m]['incdec']))]
                 y[m]['dec'] = incdec[m]["parties"][incdec[m]['incdec'].index(min(incdec[m]['incdec']))]
+                if max(incdec[m]['incdec']) == 0:
+                    y[m]['inc'] = "NOC"
+                if min(incdec[m]['incdec']) == 0:
+                    y[m]['dec'] = "NOC"
                 if results[m]['prev_control'] != flip_lads[m]:
                     y[m]['flip'] = "true"
                 else:
