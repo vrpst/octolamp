@@ -77,5 +77,6 @@ export function clearResult() {
     document.getElementById('local-authority').innerText = ''
     document.getElementById('result-text').innerText = ''
     document.getElementById('result').style = ''
+    document.getElementById('chart-container').innerText = ''
     document.getElementById('table').innerText = ''
 }

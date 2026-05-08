@@ -8,6 +8,7 @@ import Stroke from 'ol/style/Stroke.js';
 import Style from 'ol/style/Style';
 import Fill from 'ol/style/Fill';
 import Select from 'ol/interaction/Select.js'
+
 import { getElectionResult, createBarChart, createLADChart } from './utils/charts.js';
 import { createWardTable, createOtherTable } from './utils/table.js';
 import { getStrokeToUse, getColorToUse } from './utils/style.js' 
@@ -70,11 +71,6 @@ function switchArea() { //REDO
   document.getElementById('name').innerText = 'Octolamp'
   document.getElementById('placeholder-o').innerText = 'O'
   document.getElementById('table-chart').style = "display: none;"
-
-  try {
-    chart.destroy()
-    chart = null
-  } catch {console.warn("Failed to destroy chart on area switch")}
 
   if (areaswitch == "wards") {  // if wards now being used
       colors['OTH'] = "#964B00"  // change the color of others
@@ -278,7 +274,6 @@ async function openPanel(code, year_to_find) {
 
     const chart_data = await getElectionResult(code, detailed_results[code]['election'], areaswitch)
     if (areaswitch == "wards") {  // bar chart if wards, pie chard if not
-      console.log(chart)
       chart = createBarChart(chart_data, colors, chart)
     } else {         
       chart = createLADChart(chart_data, colors, chart)
