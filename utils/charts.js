@@ -1,4 +1,6 @@
 import Chart from 'chart.js/auto'
+import Highcharts from 'highcharts';
+import ItemSeries from 'highcharts/modules/item-series';
 
 export async function getElectionResult(id, year, sw) {
     const url =  '../data/' + year.toString() + '/' + sw +'/' + year.toString() + '-' + sw + '.json'
@@ -13,6 +15,10 @@ export function createBarChart(info, colors, chart) {
         if (info['total_votes'] == "0") {
             return null
         } else {
+            const chart_canvas = document.createElement('canvas')
+            chart_canvas.setAttribute('id', 'chart')
+            document.getElementById('chart-container').insertAdjacentElement('beforeend', chart_canvas)
+
             chart = new Chart(
             document.getElementById('chart'),
             {
@@ -54,36 +60,52 @@ export function createBarChart(info, colors, chart) {
 }
 
 export function createLADChart(info, colors, chart) {
-    if (!chart) {
-        chart = new Chart(
-            document.getElementById('chart'),
-            {
-                type: 'doughnut',
-                data: { 
-                    labels: info['parties'],
-                    datasets: [
-                        {
-                            label: null,
-                            data: info["seats"],
-                            backgroundColor: findColors(info['parties'], colors)
-                        }
-                    ]
-                },
-                options: {
-                    plugins: {
-                    legend: {
-                        display: false
-                    }
-                    },
-                }
-        })   
+    const data = info.parties.map((party, i) => [
+            party,
+            info.seats[i],
+            colors[party]
+        ]);
+    
+    if (chart) {
+        chart.series[0].setData(data, true); // true for redraw
     } else {
-        chart.data.labels = info['parties'];
-        chart.data.datasets[0].data = info['seats'];
-        chart.data.datasets[0].backgroundColor = findColors(info['parties'], colors);
-        chart.update();
+
+        Highcharts.chart('chart-container', {
+            chart: {
+                type: 'item',
+                backgroundColor: 'transparent',
+                margin: [0, 0, 0, 0],
+                spacing: [0, 0, 0, 0],
+                height: '60%',
+            },
+            title: { text: null },
+            subtitle: { text: null },
+            legend: { enabled: false },
+            tooltip: { enabled: false },
+            plotOptions: {
+                series: {
+                    animation: false,
+                    states: {
+                        hover: { enabled: false },
+                        inactive: { opacity: 1 }
+                    }
+                }
+            },
+            series: [{
+                name: 'Seats',
+                keys: ['name', 'y', 'color'],
+                data: data,
+                center: ['50%', '100%'],
+                size: '200%',
+                startAngle: -90,
+                endAngle: 90,
+                dataLabels: {
+                    enabled: false
+                }
+            }],
+            credits: { enabled: false }
+        });
     }
-    return chart
 }
 
 export function getPercentages(info) {
