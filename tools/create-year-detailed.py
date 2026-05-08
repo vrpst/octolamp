@@ -45,7 +45,7 @@ with open('./public/geodata/lads/lads-2024.geojson', ) as g3:  # thank you stack
     geo24 = geo24['features']
 
 def generateResults(tp, output):
-    years = ["2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016"]
+    years = ["2026", "2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016"]
     for year in years:
         print(year)
         df = pd.read_csv(f'./csvs/{year}.csv')
@@ -95,7 +95,7 @@ def generateResults(tp, output):
             f.write(json.dumps(data, ensure_ascii=True))
 
     # GET FLIPS AND PREVIOUS ELECTION DATES
-    years = ["2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016"]
+    years = ["2026", "2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016"]
     flips = years.copy()
     flips.reverse()
     flips = flips[:-1]  # oldest to newest excluding current year
