@@ -1,6 +1,6 @@
 import json
 
-ls = [26, 25, 24, 23, 22, 21, 19, 18, 17, 16]
+ls = [25, 24, 23, 22, 21, 19, 18, 17, 16]
 def getMostRecent(output, cd, filter):
     for y in ls:
         data = {}
@@ -12,20 +12,24 @@ def getMostRecent(output, cd, filter):
 
         for code in areas:        
             for j in ls[ls.index(y):]:  # DO NOT REMOVE THE COLON
-                with open(f'./public/data/20{j}/{output}/20{j}-{output}-{filter}.json') as g:
+                with open(f'./public/data/20{j}/{output}/20{j}-{output}{filter}.json') as g:
                     e = json.load(g)
                     if code in e.keys():
                         data[code] = e[code]
                         break
             #print(f"{areas.index(code)+1}/{len(areas)}")
-        with open(f'./public/data/20{y}/{output}/20{y}-{output}-{filter}-past.json', 'w') as h:
+        if filter == "-simp":
+            writestr = f'./public/data/20{y}/{output}/20{y}-{output}-simp.json'
+        else:
+            writestr = f'./public/data/20{y}/{output}/20{y}-{output}.json'
+        with open(writestr, 'w') as h:
             h.write(json.dumps(data, ensure_ascii=True))
 
 def makeSimplifiedYear(output):
     for y in ls:
         print(y)
         data = {}
-        with open(f'./public//data/20{y}/{output}/20{y}-{output}.json') as g:
+        with open(f'./public/data/20{y}/{output}/20{y}-{output}.json') as g:
             e = json.load(g)
             for code in e.keys():
                 print(code, e[code])
@@ -49,5 +53,7 @@ def makeSimplifiedYear(output):
 
 makeSimplifiedYear("lads")
 makeSimplifiedYear("cuas")
-getMostRecent("lads", "LAD", "simp")  # DO LADS
-getMostRecent("cuas", "CTYUA", "simp")  # DO LADS
+getMostRecent("lads", "LAD", "-simp")  # DO LADS
+getMostRecent("cuas", "CTYUA", "-simp")  # DO LADS
+getMostRecent("lads", "LAD", "")  # DO LADS
+getMostRecent("cuas", "CTYUA", "")  # DO LADS

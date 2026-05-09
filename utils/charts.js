@@ -49,6 +49,7 @@ export function createBarChart(info, colors, chart) {
         }
         
     } else {
+        console.log("exists")
         chart.type = "bar"
         chart.data.labels = info['parties'];
         chart.data.datasets[0].data = percentages;

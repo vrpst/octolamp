@@ -20,7 +20,7 @@ let slider_year = 2025
 let all_years = true  // show all years vs just the current year
 
 let geoJSON = await (await fetch('../geodata/cuas/cuas-2025.geojson')).json()   // actual results JSON  // actual JSON object
-let simple_results = await (await fetch('../data/2025/cuas/2025-cuas-simp-past.json')).json() // actual results JSON
+let simple_results = await (await fetch('../data/2025/cuas/2025-cuas-simp.json')).json() // actual results JSON
 
 let area_code_code = "CTYUA25CD"  // code for area code (e.g WD or LAD)
 let area_name = "CTYUA25NM"  // area name
@@ -30,11 +30,11 @@ let areaswitch = "cuas"  // switch between areas for JSON
 
 document.getElementById("daterange").value = 2025 
 document.getElementById("radio-cuas").checked = "checked"
-document.getElementById("highlight-noc").selected = "selected"
+document.getElementById("highlight-noc").checked = "checked"
 document.getElementById("filter-none").selected = "selected"  
 
 let filterflag = document.getElementById('filter').value
-let highlightflag = document.getElementById('highlight').value
+let highlightflag = document.querySelector('input[name="highlight"]:checked').value
 
 
 // CONSTANTS FOR PARTY COLORS
@@ -77,14 +77,24 @@ function switchArea() { //REDO
       filterflag = "filter-none"  // reset filter
       highlightflag = "noc"  // set the highlight to control (inc. NOC)
       // set parameters
-      document.getElementById("highlight-noc").selected = "selected"
+      document.getElementById("highlight-noc").checked = "checked"
       document.getElementById("filter-none").selected = "selected"  
-      document.getElementById('highlight').disabled = true  // disable highlight and filtering
+      document.getElementById('highlight-plural').disabled = true
+      document.getElementById('highlight-increase').disabled = true
+      document.getElementById('highlight-decrease').disabled = true
+      document.getElementById('highlight-party').disabled = true
       document.getElementById('filter').disabled = true
       document.getElementById('local-authority').innerText = 'Viewing wards.'
   } else {
+      try {
+        chart.destroy()
+        chart = null
+      } catch {}
       colors['OTH'] = "#F4A8FF"  // otherwise change OTH color
-      document.getElementById('highlight').disabled = false  // reenable filters and highlights
+      document.getElementById('highlight-plural').disabled = false
+      document.getElementById('highlight-increase').disabled = false
+      document.getElementById('highlight-decrease').disabled = false
+      document.getElementById('highlight-party').disabled = false
       document.getElementById('filter').disabled = false
       if (areaswitch == "lads") {
         document.getElementById('local-authority').innerText = `Viewing local authority districts.`
@@ -102,7 +112,11 @@ document.getElementById("area-switch").oninput = async function() {
 
 // UPDATE MAP ON HIGHLIGHT CHANGE
 document.getElementById("highlight").oninput = async function() {
-  highlightflag = document.getElementById('highlight').value
+  highlightflag = document.querySelector('input[name="highlight"]:checked').value
+  if (highlightflag == "party") {
+    highlightflag = `party-${document.getElementById('party').value}`
+  }
+  console.log(highlightflag)
   await updateMap(false)
 }
 
@@ -115,10 +129,9 @@ document.getElementById("filter").oninput = async function() {
 // UPDATE GEOJSON & JSON DATA BASED ON CHANGE TO INPUT
 async function updateMap(geoswitch=true) {
   let results_string = `../data/${slider_year.toString()}/${areaswitch}/${slider_year.toString()}-${areaswitch}-simp.json`
-    if (all_years) {
-      results_string = `../data/${slider_year.toString()}/${areaswitch}/${slider_year.toString()}-${areaswitch}-simp-past.json`
+  if (highlightflag.includes('-')){
+    results_string = `../data/${slider_year.toString()}/${areaswitch}/${slider_year.toString()}-${areaswitch}.json`
   }
-
   simple_results = await (await fetch(results_string)).json()
   
   // create the new area code code
@@ -148,11 +161,11 @@ let styleFunction = function(feature, resolution) {  // determines how to render
   let code = feature.get(area_code_code)
   return new Style({
     stroke: new Stroke({
-      color: getStrokeToUse(simple_results[code]),
+      color: getStrokeToUse(simple_results[code], all_years, slider_year),
       width: 1,
     }),
     fill: new Fill({
-      color: getColorToUse(simple_results[code], colors, filterflag, highlightflag), //styleFunction
+      color: getColorToUse(simple_results[code], colors, filterflag, highlightflag, all_years, slider_year), //styleFunction
     })
   })
 }
@@ -165,7 +178,7 @@ let selectedStyle = function(feature) {
       width: 1,
     }),
     fill: new Fill({
-      color: getColorToUse(simple_results[code], colors, filterflag, highlightflag) + "20",
+      color: getColorToUse(simple_results[code], colors, filterflag, highlightflag).slice(0,7) + "05",
     })
   })
 }
@@ -237,20 +250,22 @@ selectClick.on('select', async function (evt) {
   document.getElementById('name').innerText = '';
   document.getElementById('name').insertAdjacentText('beforeend', feature_data[area_name]);
 
-  if (simple_results[feature_data[area_code_code]] && getColorToUse(simple_results[feature_data[area_code_code]], colors, filterflag) != "#D1D1D1") {
-    await openPanel(feature_data[area_code_code], simple_results[feature_data[area_code_code]]['election']);
+  if (all_years && simple_results[feature_data[area_code_code]]) {  // all years and result exists
+    await openPanel(feature_data[area_code_code], simple_results[feature_data[area_code_code]]["election"]);
+  } else if (!all_years && simple_results[feature_data[area_code_code]]["election"] == slider_year) {  // not all years, right year, and results exist
+    await openPanel(feature_data[area_code_code], simple_results[feature_data[area_code_code]]["election"]);
   } else {
-    showNoData(feature_data[area_code_code], filterflag, simple_results[feature_data[area_code_code]], simple_results[feature_data[area_code_code]]);
+    chart = null
+    showNoData(feature_data[area_code_code], filterflag, simple_results[feature_data[area_code_code]], all_years, slider_year);
   }
 });
 
 // RENDER INFO PANEL
-async function openPanel(code, year_to_find) {
+async function openPanel(code, results_year) {
     document.getElementById('table-chart').style = ""
     document.getElementById('placeholder-o').innerText = ""
-    let dr = await fetch(`../data/${year_to_find.toString()}/${areaswitch}/${year_to_find.toString()}-${areaswitch}.json`)
-    const detailed_results = await dr.json()
-    const ctu = getColorToUse(detailed_results[code], colors)
+    const detailed_results = await (await fetch(`../data/${results_year.toString()}/${areaswitch}/${results_year.toString()}-${areaswitch}.json`)).json()
+    const ctu = getColorToUse(detailed_results[code], colors, filterflag, "noc", all_years, results_year)  // always color the box by control
     if (areaswitch != "wards" ) {  // if pie chart, make sure Plaid are on white
       const result = document.getElementById('result')
       if (detailed_results[code]['control'] == "PC") {

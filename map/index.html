@@ -28,48 +28,63 @@
           </div>
         </div>
       </div>
-      <div id="sidebar-other">
-        <div id="slider" class="border sb-background">
-          <div id="slider-content">
-            <p id="slider-year" style="font-weight: bold;"></p>
-            <input type="range" min="2016" max="2025" id="daterange">
-          </div>
-        </div>
-        <div id="hover-container">
-          <p id="hover-name"></p>
-        </div>
-        <button id="year-only" class="border sb-top-padding sb-background">Show 2025 only</button>
-        <form id="area-switch" class="border sb-top-padding sb-background">
-          <input type="radio" id="radio-cuas" name="area" value="cuas">
-          <label for="radio-cuas">County councils & unitary authorities</label><br>
-          <input type="radio" id="radio-lads" name="area" value="lads" checked="checked">
-          <label for="radio-lads">Local authority districts</label><br>
-          <input type="radio" id="radio-wards" name="area" value="wards">
-          <label id="wards-label" for="radio-wards">Wards</label>
-        </form>
-        <div id="highlight-container" class="border sb-top-padding sb-background">
-          <div class="sb-dropdown">
-            <label for="highlight">Color by</label>
-            <select name="highlight" id="highlight">
-              <option value="noc" id="highlight-noc">control</option>
-              <option value="plural">plurality</option>
-              <option value="increase">biggest increase</option>
-              <option value="decrease">biggest decrease</option>  
-            </select>
-          </div>
-        </div>
-        <div id="filter-container" class="border sb-top-padding sb-background">
-          <div class="sb-dropdown">
-            <label for="filter">Show</label>
-            <select name="filter" id="filter">
-              <option value="filter-none" id="filter-none">everything</option>
-              <option value="filter-flip">only flips</option>
-              <option value="filter-gain">only gains</option>
-            </select>
-          </div>
-        </div> 
-      </div>     
     </div> 
+    <div id="config">
+      <h3>Year & type</h3>
+      <div id="slider" class="border sb-background">
+        <div id="slider-content">
+          <p id="slider-year" style="font-weight: bold;"></p>
+          <input type="range" min="2016" max="2025" id="daterange">
+        </div>
+      </div>
+      <div id="hover-container">
+        <p id="hover-name"></p>
+      </div>
+      <button id="year-only" class="border sb-top-padding sb-background">Show 2025 only</button>
+      <form id="area-switch" class="border sb-top-padding sb-background">
+        <input type="radio" id="radio-cuas" name="area" value="cuas">
+        <label for="radio-cuas">County councils & unitary authorities</label><br>
+        <input type="radio" id="radio-lads" name="area" value="lads" checked="checked">
+        <label for="radio-lads">Local authority districts</label><br>
+        <input type="radio" id="radio-wards" name="area" value="wards">
+        <label id="wards-label" for="radio-wards">Wards</label>
+      </form>
+      <div id="filter-container" class="border sb-top-padding sb-background">
+        <div class="sb-dropdown">
+          <label for="filter">Show</label>
+          <select name="filter" id="filter">
+            <option value="filter-none" id="filter-none">everything</option>
+            <option value="filter-flip">only flips</option>
+            <option value="filter-gain">only gains</option>
+          </select>
+        </div>
+      </div> 
+      <h3>Color by</h3>
+      <form id="highlight" class="border sb-top-padding sb-background">
+        <input type="radio" id="highlight-noc" name="highlight" value="noc" checked>
+        <label for="highlight-noc">Control</label><br>
+        <input type="radio" id="highlight-plural" name="highlight" value="plural">
+        <label for="highlight-plural">Plurality</label><br>
+        <input type="radio" id="highlight-increase" name="highlight" value="increase">
+        <label for="highlight-increase">Biggest increase</label><br>
+        <input type="radio" id="highlight-decrease" name="highlight" value="decrease">
+        <label for="highlight-decrease">Biggest decrease</label><br>
+        <input type="radio" id="highlight-party" name="highlight" value="party">
+        <label for="highlight-party">Party strength of
+          <select name="party" id="party">
+            <option value="LAB">Labour</option>
+            <option value="CON">Conservatives</option>
+            <option value="LD">Liberal Democrats</option>
+            <option value="REF">Reform UK</option>
+            <option value="GRN">Green Party</option>
+            <option value="OTH">Other/Ind.</option>
+            <option value="PC">Plaid Cymru</option>
+            <option value="SNP">SNP</option>
+            <option value="UKIP">UKIP</option>
+          </select>
+        </label>
+      </form>
+    </div>
     <div id="bottom-container">
       <p id="bottom-text">Octolamp 2026 · <a href="../about/">What am I seeing?</a> · <a href="https://github.com/vrpst/octolamp">GitHub</a> · Contains Parliamentary information licensed under the <a href="https://www.parliament.uk/site-information/copyright-parliament/open-parliament-licence/">Open Parliament Licence v3.0</a></p>
     </div>

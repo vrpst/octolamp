@@ -19,7 +19,7 @@ def getMostRecent(output, cd, filter):
                         data[code] = e[code]
                         break
             #print(f"{areas.index(code)+1}/{len(areas)}")
-        with open(f'./public/data/20{y}/{output}/20{y}-{output}-{filter}-past.json', 'w') as h:
+        with open(f'./public/data/20{y}/{output}/20{y}-{output}-{filter}.json', 'w') as h:
             h.write(json.dumps(data, ensure_ascii=True))
 
 def makeSimplifiedYear(output):

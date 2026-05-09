@@ -16,10 +16,12 @@ export function getResultText(info) {
 }
 
 // PANEL DISPLAY IF NO DATA
-export function showNoData(code, filter, indata) {
+export function showNoData(code, filter, indata, all_years, slider_year) {
   document.getElementById('colorbar').style.backgroundColor = "#D1D1D1"
   document.getElementById('table').innerText = ""
   document.getElementById('result-text').innerText = ""
+  document.getElementById('chart-container').innerText = ""
+  document.getElementById('placeholder-o').innerText = 'O'
   const la_error = document.getElementById('local-authority')
   // custom exceptions for NI, COL, Scilly
   if (code.charAt(0) == "N") {
@@ -29,7 +31,7 @@ export function showNoData(code, filter, indata) {
   } else if (code == "E06000053") {
     la_error.innerText = "No data available for the Isles of Scilly"
   } else {
-    if (indata) {  // if there is a result (either an election in that year or an election in previous years)
+    if (indata && (all_years || indata["election"] == slider_year)) {  // if there is a result (either an election in that year or an election in previous years)
       if (indata["prev_control"] == "DATA") {  // if there is insufficient data to know if there was a flip or not
         la_error.innerText = "No pre-" + slider_year + " data to determine a gain/flip"
       } else if (indata["prev_control"] == "INIT") {  // if the council was first elected then
