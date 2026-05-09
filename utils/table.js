@@ -1,3 +1,15 @@
+const names = {
+    "CON": "Conservatives",
+    "LAB": "Labour",
+    "LD": "Liberal Democrats",
+    "REF": "Reform UK",
+    "GRN": "Green Party",
+    "PC": "Plaid Cymru",
+    "SNP": "Scottish National Party",
+    "OTH": "Other/Independent",
+    "UKIP": "UK Independence Party"
+}
+
 export function createWardTable(chart_data, colors) {
   const data = createWardTableData(chart_data)
   const table = document.createElement('table')
@@ -43,6 +55,35 @@ function createWardTableData(data) {
   }
   return table_data
 }
+
+export async function createMenuTable(colors, year) {
+  let data = await (await fetch('../data/menu.json')).json()
+  data = data[year]
+  const table = document.createElement('table')
+  table.setAttribute('class', 'text')
+  for (let i=0; i<data["parties"].length; i++){
+      let row = table.insertRow(-1)
+      let color = row.insertCell(0)
+      let party = row.insertCell(1)
+      let councils = row.insertCell(2)
+      let councillors = row.insertCell(3)
+      color.setAttribute('class', 'cell-color')
+      party.setAttribute('class', 'cell-standard')
+      councils.setAttribute('class', 'cell-standard')
+      councillors.setAttribute('class', 'cell-standard')
+
+      let row_data = [color, party, councils, councillors]
+
+
+      color.style.backgroundColor = colors[data["parties"][i]]
+      row_data[1].appendChild(document.createTextNode(names[data["parties"][i]]))
+      row_data[2].appendChild(document.createTextNode(data["councils"][i]))
+      row_data[3].appendChild(document.createTextNode(data["councillors"][i]))      
+  }
+
+  return table
+}   
+
 
 export async function createOtherTable(chart_data, colors, code, areaswitch) {
   const data = await createOtherTableData(chart_data, code, areaswitch)
