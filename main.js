@@ -114,7 +114,7 @@ document.getElementById("filter").oninput = async function() {
 
 // UPDATE GEOJSON & JSON DATA BASED ON CHANGE TO INPUT
 async function updateMap(geoswitch=true) {
-  let results_string = `../data/${slider_year.toString()}/${areaswitch}/"${slider_year.toString()}-${areaswitch}-simp.json`
+  let results_string = `../data/${slider_year.toString()}/${areaswitch}/${slider_year.toString()}-${areaswitch}-simp.json`
     if (all_years) {
       results_string = `../data/${slider_year.toString()}/${areaswitch}/${slider_year.toString()}-${areaswitch}-simp-past.json`
   }
