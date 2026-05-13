@@ -9,7 +9,6 @@ export function getStrokeToUse(result, allyears=false, year=null) {
 
 export function getColorToUse(results, colors, ff="noflag", hl="nohl", allyears=false, year=null) {
   if (results){
-    console.log(ff, hl, allyears, year, results["change"])
     if (results != "NONE" && (allyears || results["election"] == year)) {  // return gray if no reaults
       if (colors[results["control"]]) {
         if (ff == "filter-none") {  // if no filter get control color

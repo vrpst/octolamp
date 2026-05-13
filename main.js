@@ -61,6 +61,16 @@ switchArea()
 document.getElementById("slider-year").innerText = document.getElementById("daterange").value + " council compositions"
 document.getElementById("year-only").innerText = "Show " + document.getElementById("daterange").value + " elections only"
 
+
+const config = document.getElementById('config');
+const btn = document.getElementById('toggle-btn');
+
+btn.addEventListener('click', () => {
+  config.classList.toggle('collapsed');
+  btn.innerText = config.classList.contains('collapsed') ? '▶' : '◀';
+});
+
+
 // UPDATE COLORS & INFOBOX ON AREA SWITCH
 function switchArea() { //REDO
   clearResult()

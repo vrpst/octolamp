@@ -32,7 +32,7 @@ table {
 }
 
 .sb-background {
-    background-color: #F8F8F8;
+    background-color: #F8F8F8F8;
 }
 
 .border {
@@ -55,21 +55,36 @@ table {
     padding-top: 3dvh;
 }
 
-#config {
-    background-color: rgba(256,256,256, 0.6);
+#config-container {
+    display: flex;
     position: fixed;
-    bottom: 20dvh;
+    top: 20dvh;
     left: 0dvw;
-    width: 15dvw;
-    height: fit-content;
-    max-height: 90%;
+    width: fit-content;
+    max-height: 80dvh;
+    border: 2px solid #AAAAAA;
+    border-radius: 5px;
+    background-color: #F8F8F8DD;
     overflow-x: hidden;
     overflow-y: scroll;
+}
+
+#config {
+    transition: 0.3s ease;
+    width: 15dvw;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 100%;
     padding-left: 1.5dvw;
     padding-right: 1.5dvw;
-    padding-top: 3dvh;
-    padding-bottom: 3dvh;
-    border-radius: 5px;
+    padding-top: 1.5dvh;
+    padding-bottom: 4.5dvh;
+}
+
+#config.collapsed {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: -15dvw;
 }
 
 #table {
@@ -82,20 +97,24 @@ table {
     margin-bottom: 5%;
 }
 
+#toggle-btn {
+    border: none;
+}
+
 @media ((max-width: 1400px) and (orientation: landscape)) {
     #sidebar {
         width: 25dvw;
     }
 
 }
-@media (max-aspect-ratio: 12/10) {  /* portrait */
+@media (max-aspect-ratio: 10/10) {  /* portrait */
     #sidebar {
         background-color: rgb(256,256,256,0.1);
         position: fixed;
         border-radius: 20px;
-        top: 60dvh;
+        top: 65dvh;
         width: 100dvw;
-        height: 36dvh;
+        height: 30dvh;
         max-height: 90%;
         padding-top: 2dvh;
         overflow-x: hidden;
@@ -104,7 +123,7 @@ table {
         justify-content: space-between;
     }
     #infobox {
-        width: 45dvw;
+        width: 90dvw;
         height: fit-content;
         margin-left: 4dvw;
         margin-bottom: 1dvh;
@@ -115,6 +134,26 @@ table {
         margin-right: 4dvw;
         
     }
+    #config {
+        width: 75dvw;
+        max-height: 90%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-left: -75dvw;
+    }
+    #config-container{
+        bottom: 30dvh;
+        max-height: 54dvh;
+    }
+    #config.collapsed {
+        padding-left: 1.5dvw;
+        padding-right: 1.5dvw;
+        margin-left: 0;
+
+    }   
     #infobox-content {
         margin-left: auto;
         margin-right: auto;
@@ -124,6 +163,9 @@ table {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+    }
+    #chart-container {
+        display: none;
     }
     #table {
         min-width: 45%;
