@@ -275,6 +275,8 @@ async function openPanel(code, results_year) {
     document.getElementById('table-chart').style = ""
     document.getElementById('placeholder-o').innerText = ""
     const detailed_results = await (await fetch(`../data/${results_year.toString()}/${areaswitch}/${results_year.toString()}-${areaswitch}.json`)).json()
+    console.log(code, `../data/${results_year.toString()}/${areaswitch}/${results_year.toString()}-${areaswitch}.json`)
+    console.log(detailed_results, detailed_results[code])
     const ctu = getColorToUse(detailed_results[code], colors, filterflag, "noc", all_years, results_year)  // always color the box by control
     if (areaswitch != "wards" ) {  // if pie chart, make sure Plaid are on white
       const result = document.getElementById('result')

@@ -17,6 +17,15 @@ def getMostRecent(output, cd, filter):
                     if code in e.keys():
                         data[code] = e[code]
                         break
+
+        # some elections are held BEFORE councils are added to the map
+        # therefore store all elections related to geodata and any additional elections held in that year not on the map
+        with open(f'./public/data/20{j}/{output}/20{j}-{output}{filter}.json') as x:
+            base = json.load(x)
+            for code in base.keys():
+                if code not in data:
+                    data[code] = base[code]
+        
             #print(f"{areas.index(code)+1}/{len(areas)}")
         if filter == "-simp":
             writestr = f'./public/data/20{y}/{output}/20{y}-{output}-simp.json'
@@ -27,12 +36,11 @@ def getMostRecent(output, cd, filter):
 
 def makeSimplifiedYear(output):
     for y in ls:
-        print(y)
         data = {}
         with open(f'./public/data/20{y}/{output}/20{y}-{output}.json') as g:
             e = json.load(g)
             for code in e.keys():
-                print(code, e[code])
+                #print(code, e[code])
                 data[code] = {
                     "control": e[code]["control"],
                     "prev_control": e[code]["prev_control"],
