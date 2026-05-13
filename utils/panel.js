@@ -1,14 +1,14 @@
  // GET RESULT TEXT FOR INFOBOX
 export function getResultText(info) {
-  if (info["flip"] == "true") {
+  if (info["change"] == "true") {
     if (info["control"] == "NOC") {
       document.getElementById('result-text').innerText = info['prev_control'] + " LOSS"
     } else {
       document.getElementById('result-text').innerText = info['control'] + " GAIN FROM " +  info['prev_control']
     } 
-  } else if (info["flip"] == "INIT") {
+  } else if (info["change"] == "INIT") {
       document.getElementById('result-text').innerText = info['control'] + " INIT"
-  } else if (info["flip"] == "DATA") {
+  } else if (info["change"] == "DATA") {
     document.getElementById('result-text').innerText = info['control']
   } else {
       document.getElementById('result-text').innerText = info['control'] + " HOLD"

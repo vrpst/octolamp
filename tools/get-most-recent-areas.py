@@ -42,12 +42,9 @@ def makeSimplifiedYear(output):
                     "dec": e[code]["dec"]
                 }
                 if data[code]["control"] != data[code]["prev_control"] and data[code]["prev_control"] not in ["INIT", "DATA"]:
-                    if data[code]["control"] != "NOC" and data[code]["prev_control"] != "NOC":
-                        data[code]["change"] = "flip"
-                    else:
-                        data[code]["change"] = "gain"
+                    data[code]["change"] = "true"
                 else:
-                    data[code]["change"] = "none"
+                    data[code]["change"] = "false"
         with open(f'./public/data/20{y}/{output}/20{y}-{output}-simp.json', 'w') as h:
             h.write(json.dumps(data, ensure_ascii=True))
 

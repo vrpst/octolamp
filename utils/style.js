@@ -9,24 +9,17 @@ export function getStrokeToUse(result, allyears=false, year=null) {
 
 export function getColorToUse(results, colors, ff="noflag", hl="nohl", allyears=false, year=null) {
   if (results){
+    console.log(ff, hl, allyears, year, results["change"])
     if (results != "NONE" && (allyears || results["election"] == year)) {  // return gray if no reaults
       if (colors[results["control"]]) {
         if (ff == "filter-none") {  // if no filter get control color
           return getColorFromHighlight(results, colors, hl)
-        } else if (ff == "filter-gain") {  // if gain filter, only return party color if gain
-          if (results["change"] == "gain" || results["change"] == "flip")
+        } else {  // if gain filter, only return party color if gain
+          if (results["change"] == "true")
             return getColorFromHighlight(results, colors, hl)
           else {
             return "#D1D1D1"
           }
-        } else if (ff == "filter-flip") {
-          if (results["change"] == "flip") {
-            return getColorFromHighlight(results, colors, hl)
-          } else {
-            return "#D1D1D1"
-          }
-        } else {
-            return colors[results["control"]]
         }
       }
     } else {

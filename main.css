@@ -65,10 +65,11 @@ table {
     max-height: 90%;
     overflow-x: hidden;
     overflow-y: scroll;
-    padding-left: 2dvw;
-    padding-right: 2dvw;
+    padding-left: 1.5dvw;
+    padding-right: 1.5dvw;
     padding-top: 3dvh;
     padding-bottom: 3dvh;
+    border-radius: 5px;
 }
 
 #table {

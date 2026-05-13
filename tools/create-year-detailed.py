@@ -139,20 +139,20 @@ def generateResults(tp, output):
                 if min(incdec[m]['incdec']) == 0:
                     y[m]['dec'] = "NOC"
                 if results[m]['prev_control'] != flip_lads[m]:
-                    y[m]['flip'] = "true"
+                    y[m]['change'] = "true"
                 else:
-                    y[m]['flip'] = "false"
+                    y[m]['change'] = "false"
             # if the data is pre-2017 in Scotland or Wales, pre-2019 anywhere else, or 2019 and not created that year
             elif (int(i) <= 2017 and m[:1] in ['S', 'W']) or (int(i) < 2019) or (int(i) == 2019 and (m not in ['E07000244', 'E07000246', 'E07000245', 'E06000058', ' E06000059'])) :
                 y[m]['prev_up'] = "DATA"
                 y[m]['prev_control'] = "DATA"
-                y[m]['flip'] = "DATA"
+                y[m]['change'] = "DATA"
                 y[m]['inc'] = "DATA"
                 y[m]['dec'] = "DATA"
             else:
                 y[m]['prev_up'] = "INIT"
                 y[m]['prev_control'] = "INIT"
-                y[m]['flip'] = "INIT"
+                y[m]['change'] = "INIT"
                 y[m]['inc'] = "INIT"
                 y[m]['dec'] = "INIT"
         print("WRITTEN", i)
