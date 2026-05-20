@@ -22,7 +22,33 @@
       <h2>What am I seeing?</h2>
       <p>Octolamp is a data visualization tool for viewing United Kingdom local election results. It started as what I thought would be a simple holiday project to build a web app for my politics-obsessed brother, but eventually grew to be a lot bigger. If you're curious about how it works under the hood, check out the relevant page on my website. If you're confused about how local government works, check out the <a href="../explanation/">explanation</a> page.</p>
       <p>Clicking on an area on the map will pull up the council composition following the election in the year selected by the year slider. Because local-government is multi-tier, there are options to change the tier you are viewing and filter councils by certain properties.</p>
-      <h2>Terminology</h2>
+      <h2>Overview</h2>
+      <p>The results panel (on the right) shows:</p>
+      <ul>
+        <li>The name of the council and the year it was most recently elected (e.g. Shropshire, 2025).</li>
+        <li>The council type and its unique government code (e.g. Unitary authority, E06000051).</li>
+        <li>A result banner (e.g. LD GAIN FROM CON). The terminology here is explained in the Legend section below.</li>
+        <li>A seat diagram showing the council composition, or for wards, a barchart of the vote proportion by party group.</li>
+        <li>For councils, a table of each party and the seats won and seat change; for wards, a table of each candidate and their vote total.</li>
+      </ul>
+      The analysis panel (on the left) gives you five main ways to modify the map: by changing the year.
+      <ol>
+        <li>Changing the year.</li>
+        <li>Toggling whether to include previous years' elections.</li>
+        <li>Changing the area.</li>
+        <li>Toggling whether to view only changes in control, or all elections.</li>
+        <li>Changing the coloring method.</li>
+      </ol>
+      The following coloring methods are available:
+      <ul>
+        <li>Control: the color of the party controlling the council. Grey is used for no overall control.</li>
+        <li>Plurality: the color of the largest party, regardless of whether they have control or the council is under NOC.</li>
+        <li>Biggest increase: the color of the party that had the greatest numerical increase in seats in the last election.</li>
+        <li>Biggest decrease: the color of the party that had the greatest numerical decrease in seats in the last election.</li>
+        <li>Party strength: shades from white to the actual party color based on the proportion of council seats controlled in that area.</li>
+      </ul> 
+      More detailed clarifications on some parts of the map and UI can be found in the Notes section below.
+      <h2>Legend</h2>
       <div id="tables">
         <table>
           <tr>
@@ -124,22 +150,6 @@
           <tr>
             <td>INIT</td>
             <td>The first election for the council, i.e. no change or hold.</td>
-          </tr>
-          <tr>
-            <td>Plurality</td>
-            <td>The party that holds the most seats on the council, majority or not.</td>
-          </tr>
-          <tr>
-            <td>Increase</td>
-            <td>The party that gained the most seats in the election. Only used as a highlight.</td>
-          </tr>
-          <tr>
-            <td>Decrease</td>
-            <td>The party that lost the most seats in the election. Only used as a highlight.</td>
-          </tr>
-          <tr>
-            <td>Party strength</td>
-            <td>Proportion of seats on each council held by a given party. Only used as a highlight.</td>
           </tr>
           <tr>
             <td colspan="2"><div id="table-gov-info">Explanations of local government terms are available <a href="../explanation/">here</a>.</div></td>
