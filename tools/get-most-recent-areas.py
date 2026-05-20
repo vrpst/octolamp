@@ -1,6 +1,6 @@
 import json
 
-ls = [25, 24, 23, 22, 21, 19, 18, 17, 16]
+ls = [26, 25, 24, 23, 22, 21, 19, 18, 17, 16]
 def getMostRecent(output, cd, filter):
     for y in ls:
         data = {}
@@ -58,7 +58,7 @@ def makeSimplifiedYear(output):
 
 makeSimplifiedYear("lads")
 makeSimplifiedYear("cuas")
-getMostRecent("lads", "LAD", "-simp")  # DO LADS
-getMostRecent("cuas", "CTYUA", "-simp")  # DO LADS
 getMostRecent("lads", "LAD", "")  # DO LADS
 getMostRecent("cuas", "CTYUA", "")  # DO LADS
+getMostRecent("lads", "LAD", "-simp")  # DO LADS
+getMostRecent("cuas", "CTYUA", "-simp")  # DO LADS

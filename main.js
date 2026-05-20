@@ -15,20 +15,24 @@ import { getStrokeToUse, getColorToUse } from './utils/style.js'
 import { getResultText, showNoData, getAreaType, clearResult } from './utils/panel.js';
 
 // DEFAULT PARAMETERS
-let slider_year = 2025
+let slider_year = 2026
 
 let all_years = true  // show all years vs just the current year
 
-let geoJSON = await (await fetch('../geodata/cuas/cuas-2025.geojson')).json()   // actual results JSON  // actual JSON object
-let simple_results = await (await fetch('../data/2025/cuas/2025-cuas-simp.json')).json() // actual results JSON
+let geoJSON = await (await fetch('../geodata/cuas/cuas-2026.geojson')).json()   // actual results JSON  // actual JSON object
+let simple_results = await (await fetch('../data/2026/cuas/2026-cuas-simp.json')).json() // actual results JSON
 
-let area_code_code = "CTYUA25CD"  // code for area code (e.g WD or LAD)
-let area_name = "CTYUA25NM"  // area name
+let area_code_code = "CTYUA26CD"  // code for area code (e.g WD or LAD)
+let area_name = "CTYUA26NM"  // area name
 
 let chart = null
 let areaswitch = "cuas"  // switch between areas for JSON
 
-document.getElementById("daterange").value = 2025 
+document.getElementById('radio-wards').disabled = true
+document.getElementById('wards-label').innerText = `Ward data unavailable for ${slider_year.toString()}`
+document.getElementById('wards-label').classList.add('ward-disable')
+
+document.getElementById("daterange").value = 2026 
 document.getElementById("radio-cuas").checked = "checked"
 document.getElementById("highlight-noc").checked = "checked"
 document.getElementById("filter-none").selected = "selected"  
