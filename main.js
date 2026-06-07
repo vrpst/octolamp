@@ -129,6 +129,8 @@ document.getElementById("highlight").oninput = async function() {
   highlightflag = document.querySelector('input[name="highlight"]:checked').value
   if (highlightflag == "party") {
     highlightflag = `party-${document.getElementById('party').value}`
+  } else if (highlightflag == "party-change") {
+    highlightflag = `party-change-${document.getElementById('party-change').value}`
   }
   console.log(highlightflag)
   await updateMap(false)

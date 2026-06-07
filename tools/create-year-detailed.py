@@ -35,6 +35,19 @@ def fillOut2024(p, d):
     d['seats'].append(0)
     return d
 
+def createComp(prev, n_seats, n_parties):
+    # input will be all parties including ones that didn't run, so no worries about comparison errors
+    o_seats = prev[0]
+    o_parties = prev[1]
+    data = {}
+    for i, party in enumerate(o_parties):
+        if n_seats[n_parties.index(party)] == 0 and o_seats[i] == 0:
+            continue
+        elif n_seats[n_parties.index(party)] > 0:
+            data[party] = round((n_seats[n_parties.index(party)] - o_seats[i])/sum(n_seats), 3)
+        else:
+            data[party] = round((0 - o_seats[i])/sum(n_seats), 3)
+    return data
 
 with open('./public/geodata/lads/lads-2019.geojson', ) as g2:  # thank you stack overflow
     geo = json.load(g2)      
@@ -113,6 +126,7 @@ def generateResults(output):
                     results[k] = {}
                     results[k]['prev_up'] = j
                     results[k]['prev_control'] = g[k]['control']
+                    results[k]['prev_comp'] = [g[k]["seats"], g[k]["parties"]]
                     incdec[k] = {}
                     incdec[k]["parties"] = g[k]["parties"]
                     incdec[k]["seats"] = g[k]["seats"]
@@ -135,6 +149,7 @@ def generateResults(output):
                 for q in range(len(incdec[m]["parties"])):
                     incdec[m]["incdec"].append(year_data[m]["seats"][year_data[m]["parties"].index(incdec[m]["parties"][q])] - incdec[m]["seats"][q])
                 year_data[m]['prev_up'] = results[m]['prev_up']
+                year_data[m]['prev_comp'] = createComp(results[m]['prev_comp'], year_data[m]["seats"], year_data[m]["parties"])
                 year_data[m]['prev_control'] = results[m]['prev_control']
                 year_data[m]['inc'] = incdec[m]["parties"][incdec[m]['incdec'].index(max(incdec[m]['incdec']))]
                 year_data[m]['dec'] = incdec[m]["parties"][incdec[m]['incdec'].index(min(incdec[m]['incdec']))]
@@ -152,6 +167,7 @@ def generateResults(output):
             elif (int(i) <= 2017 and m[:1] in ['S', 'W']) or (int(i) < 2019) or (int(i) == 2019 and (m not in ['E07000244', 
             'E07000246', 'E07000245', 'E06000058', ' E06000059'])) :
                 year_data[m]['prev_up'] = "DATA"
+                year_data[m]['prev_comp'] = "DATA"
                 year_data[m]['prev_control'] = "DATA"
                 year_data[m]['change'] = "DATA"
                 year_data[m]['inc'] = "DATA"
@@ -159,6 +175,7 @@ def generateResults(output):
             # otherwise there is no data because the councils haven't had more than one election
             else:
                 year_data[m]['prev_up'] = "INIT"
+                year_data[m]['prev_comp'] = "INIT"
                 year_data[m]['prev_control'] = "INIT"
                 year_data[m]['change'] = "INIT"
                 year_data[m]['inc'] = "INIT"

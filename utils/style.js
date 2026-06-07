@@ -38,6 +38,21 @@ function getColorFromHighlight(res, col, hl) {
       "decrease": "dec"
     }
     return col[res[highlights[hl]]]
+  } else if (hl.includes("change")) {  // otherwise it is a party color
+    const party = hl.split('-')[2]
+    let prop = res["prev_comp"][party]
+    let alpha = Math.round(((Math.abs(prop)**0.6)*255)).toString(16)
+    if (alpha.length == 1) { alpha = '0' + alpha }
+    if (prop == 0) {
+      return '#FFFFFF'
+    } else if (prop > 0) {
+      return '#00FF00' + alpha
+    } else if (prop < 0) {
+      return '#FF0000' + alpha
+    } else {
+      return '#D1D1D1'
+    }
+
   } else {
     const party = hl.split('-')[1]
     let base_color = col[party]
