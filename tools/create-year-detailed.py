@@ -200,6 +200,11 @@ def generateResults(output):
                     del g[lad]["seats"][maxi]
                 else:
                     break
+            if g[lad]["prev_comp"] not in ["INIT", "DATA"]:
+                for i, seat in enumerate(g[lad]["seats"]):  # include parties which won seats in the previous but none in this
+                    if seat == 0 and g[lad]["parties"][i] in g[lad]["prev_comp"].keys():
+                        max_seats.append(0)
+                        max_parties.append(g[lad]["parties"][i])
             g[lad]["parties"] = max_parties
             g[lad]["seats"] = max_seats
         with open(f'./public/data/{year_data}/{output}/{year_data}-{output}.json', "w") as x:
