@@ -26,6 +26,7 @@ def hashName(place):  # hash 2019 data since it has no codes
     place = place.replace(",","")
     place = place.replace("countyof","")
     place = place.replace("cityof","")
+    place = place.replace("st.","st")
     place = place.replace("the","")
     place = place.replace("kingstonon","")
     return place
@@ -49,15 +50,32 @@ def createComp(prev, n_seats, n_parties):
             data[party] = round((0 - o_seats[i])/sum(n_seats), 3)
     return data
 
-with open('./public/geodata/lads/lads-2019.geojson', ) as g2:  # thank you stack overflow
-    geo = json.load(g2)      
-    geo = geo['features']
-with open('./public/geodata/lads/lads-2024.geojson', ) as g3:  # thank you stack overflow
-    geo24 = json.load(g3)      
-    geo24 = geo24['features']
+with open('./public/geodata/cuas/cuas-2019.geojson', ) as g19c:
+    cgeo19 = json.load(g19c)      
+    with open('./public/geodata/lads/lads-2019.geojson', ) as g19l:
+        lgeo19 = json.load(g19l)      
+        geo19 = lgeo19['features'] + cgeo19['features']
+
+with open('./public/geodata/cuas/cuas-2024.geojson', ) as g24c:
+    cgeo24 = json.load(g24c)      
+    with open('./public/geodata/lads/lads-2024.geojson', ) as g24l:
+        lgeo24 = json.load(g24l)      
+        geo24 = lgeo24['features'] + cgeo24['features']
+
+with open('./public/geodata/cuas/cuas-2015.geojson', ) as g15c:
+    cgeo15 = json.load(g15c)  
+    with open('./public/geodata/lads/lads-2015.geojson', ) as g15l:
+        lgeo15 = json.load(g15l)      
+        geo15 = lgeo15['features'] + cgeo15['features']
+
+with open('./public/geodata/cuas/cuas-2014.geojson', ) as g14c:
+    cgeo14 = json.load(g14c)         
+    with open('./public/geodata/lads/lads-2014.geojson', ) as g14l:
+        lgeo14 = json.load(g14l)      
+        geo14 = lgeo14['features'] + cgeo14['features']
 
 def generateResults(output):
-    years = ["2026", "2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016"]
+    years = ["2026", "2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016", "2015", "2014"]
     # for each year
     for year in years:
         print(f"INITIAL\t{year}\t{output}")
@@ -73,17 +91,40 @@ def generateResults(output):
         
         if year == "2019":  # 2019 does not have area codes, hash the names instead
             places = {}  # create a mapping of hash -> area code
-            for place in geo:
-                places[hashName(place['properties']['LAD19NM'])] = place['properties']['LAD19CD']  # mapping for 2019
+            for place in geo19:
+                try:
+                    places[hashName(place['properties']['LAD19NM'])] = place['properties']['LAD19CD']  # mapping for 2019
+                except KeyError:
+                    places[hashName(place['properties']['CTYUA19NM'])] = place['properties']['CTYUA19CD']  # mapping for 2019
         elif year == "2024":
             places = {}
             for place in geo24:
-                places[hashName(place['properties']['LAD24NM'])] = place['properties']['LAD24CD']  # mapping for 2024
+                try:
+                    places[hashName(place['properties']['LAD24NM'])] = place['properties']['LAD24CD']  # mapping for 2024
+                except KeyError:
+                    places[hashName(place['properties']['CTYUA24NM'])] = place['properties']['CTYUA24CD']            
+        elif year == "2015":
+            places = {}
+            for place in geo15:
+                try:
+                    places[hashName(place['properties']['LAD15NM'])] = place['properties']['LAD15CD']  # mapping for 2024
+                except KeyError:
+                    places[hashName(place['properties']['CTYUA15NM'])] = place['properties']['CTYUA15CD']
+        elif year == "2014":
+            places = {}
+            for place in geo14:
+                #print(place['properties']['LAD14NM'])
+                try:
+                    places[hashName(place['properties']['LAD14NM'])] = place['properties']['LAD14CD']  # mapping for 2024
+                except KeyError:
+                    places[hashName(place['properties']['CTYUA14NM'])] = place['properties']['CTYUA14CD']
+
         for i in range(len(df)):  # for every entry in the CSV
             if checkValid(df.loc[i]['TYPE'], output):  # check the correct area type
-                if year not in ["2024", "2019"]: # just use the code if not 2019, 2024
+                if year not in ["2024", "2019", "2015", "2014"]: # just use the code if not 2019, 2024
                     code = df.loc[i]['CODE']
                 else:  # if 2024 or 2019, use the hash to find the code
+                    print(df.loc[i]['NAME'])
                     code = places[hashName(df.loc[i]['NAME'])]  # hash name and retrieve code
                 data[code] = {
                     "total": int(df.loc[i]['TOTAL']),
@@ -110,7 +151,7 @@ def generateResults(output):
     # at this point there should be files for all areas with entries for each election and schema {total, parties, seats, control, election, type}
 
     # GET FLIPS AND PREVIOUS ELECTION DATES
-    years = ["2026", "2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016"]
+    years = ["2026", "2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016", "2015", "2014"]
     flips = years.copy()
     flips.reverse()
     flips = flips[:-1]  # oldest to newest excluding current year

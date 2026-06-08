@@ -1,6 +1,6 @@
 import json
 
-years = [26, 25, 24, 23, 22, 21, 19, 18, 17, 16]
+years = [26, 25, 24, 23, 22, 21, 19, 18, 17, 16, 15, 14]
 def getMostRecent(output, cd, filter=""):
     for year in years:
         data = {}

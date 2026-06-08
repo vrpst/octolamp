@@ -97,6 +97,7 @@ function switchArea() { //REDO
       document.getElementById('highlight-increase').disabled = true
       document.getElementById('highlight-decrease').disabled = true
       document.getElementById('highlight-party').disabled = true
+      document.getElementById('highlight-party-change').disabled = true
       document.getElementById('filter').disabled = true
       document.getElementById('local-authority').innerText = 'Viewing wards.'
   } else {
@@ -109,6 +110,7 @@ function switchArea() { //REDO
       document.getElementById('highlight-increase').disabled = false
       document.getElementById('highlight-decrease').disabled = false
       document.getElementById('highlight-party').disabled = false
+      document.getElementById('highlight-party-change').disabled = false
       document.getElementById('filter').disabled = false
       if (areaswitch == "lads") {
         document.getElementById('local-authority').innerText = `Viewing local authority districts.`
@@ -341,6 +343,7 @@ document.getElementById("year-only").addEventListener('click', async function() 
 document.getElementById("daterange").oninput = async function() {
   slider_year = this.value
   const ward_years = ["2021", "2022", "2023", "2024", "2025"]
+  const not_change_years = ["2016", "2017"]
   if (slider_year == "2020") { // no elections in 2020
       document.getElementById('daterange').value = "2021"
       slider_year = "2021"
@@ -362,6 +365,30 @@ document.getElementById("daterange").oninput = async function() {
     }
 
   }
+  if (not_change_years.includes(slider_year)) {
+      document.getElementById('highlight-party-change').disabled = true
+      document.getElementById('highlight-party-change-label').classList.add('ward-disable')
+      document.getElementById('party-change').disabled = true
+      document.getElementById('highlight-increase').disabled = true
+      document.getElementById('highlight-increase-label').classList.add('ward-disable')
+      document.getElementById('highlight-decrease').disabled = true
+      document.getElementById('highlight-decrease-label').classList.add('ward-disable')
+
+      if (highlightflag.includes("party-change-") || highlightflag.includes("crease")) {
+          document.getElementById("highlight-noc").checked = "checked"
+          highlightflag = "noc"
+      }
+  } else {
+      document.getElementById('highlight-party-change').disabled = false
+      document.getElementById('highlight-party-change-label').classList.remove('ward-disable')
+      document.getElementById('party-change').disabled = false
+      document.getElementById('highlight-increase').disabled = false
+      document.getElementById('highlight-decrease').disabled = false
+      document.getElementById('highlight-increase-label').classList.remove('ward-disable')
+      document.getElementById('highlight-decrease-label').classList.remove('ward-disable')
+
+  }
+
 
   // update everything
   await updateMap()
