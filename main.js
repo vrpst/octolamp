@@ -35,7 +35,8 @@ document.getElementById('wards-label').classList.add('ward-disable')
 document.getElementById("daterange").value = 2026 
 document.getElementById("radio-cuas").checked = "checked"
 document.getElementById("highlight-noc").checked = "checked"
-document.getElementById("filter-none").selected = "selected"  
+document.getElementById("party-LAB").selected = "selected"  
+document.getElementById("party-change-LAB").selected = "selected"  
 
 let filterflag = document.getElementById('filter').value
 let highlightflag = document.querySelector('input[name="highlight"]:checked').value
@@ -344,6 +345,7 @@ document.getElementById("daterange").oninput = async function() {
   slider_year = this.value
   const ward_years = ["2021", "2022", "2023", "2024", "2025"]
   const not_change_years = ["2016", "2017"]
+  const UKIP = ["2017", "2018", "2019", "2021", "2022", "2023"]
   if (slider_year == "2020") { // no elections in 2020
       document.getElementById('daterange').value = "2021"
       slider_year = "2021"
@@ -387,6 +389,17 @@ document.getElementById("daterange").oninput = async function() {
       document.getElementById('highlight-increase-label').classList.remove('ward-disable')
       document.getElementById('highlight-decrease-label').classList.remove('ward-disable')
 
+  }
+  if (UKIP.includes(slider_year)) {
+    document.getElementById('party-UKIP').classList.remove('hide')
+    document.getElementById('party-change-UKIP').classList.remove('hide')
+    document.getElementById('party-REF').classList.add('hide')
+    document.getElementById('party-change-REF').classList.add('hide')
+  } else {
+    document.getElementById('party-UKIP').classList.add('hide')
+    document.getElementById('party-change-UKIP').classList.add('hide')
+    document.getElementById('party-REF').classList.remove('hide')
+    document.getElementById('party-change-REF').classList.remove('hide')
   }
 
 
